@@ -4,7 +4,7 @@ A complete first playable anniversary adventure in Godot 4.7.2 / GDScript: 2D pi
 
 ## Play on Windows
 
-Open builds/chapter-1-2-polish/One More Adventure Amor.exe, keeping its .pck in the same folder. Godot installation is not required to play. Alternatively extract builds/One More Adventure Amor Chapters 1-2 Polish.zip and open the executable. The build is unsigned.
+Open builds/redesign-phase-a/One More Adventure Amor.exe, keeping its .pck in the same folder. Godot installation is not required to play. Alternatively extract builds/One More Adventure Amor Redesign Phase A.zip and open the executable. The build is unsigned.
 
 WASD: walk. E / Space / Enter: interact or advance dialogue. Mouse or 1–3: choices. Esc: pause. In 3D, move the mouse to look and left-click to swing the sword. Follow the objective and nearby marker; failed activities/combat retry generously. Pause includes save, restart scene, settings and menu. Progress autosaves and unlocks chapter selection.
 
@@ -19,3 +19,6 @@ Chapters 1–2 now include populated MUN/restaurant environments, optional UN tr
 
 
 Current polish adds visible required props/NPCs and doors/gates throughout, ambient MUN/Ikura interactions and music-folder reload without rebuilding. See docs/POLISH_PASS.md and docs/AUDIO.md.
+
+
+The latest package is a **Phase A redesign checkpoint**, not the completed cinematic overhaul. Room architecture/seating/chat and the editable Guillermo quiz are implemented; final art, broader 2D staging, Minecraft reconstruction and kidnapping/rescue animation remain pending. See docs/REDESIGN_STATUS.md for exact continuation.

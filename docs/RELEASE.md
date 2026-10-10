@@ -26,3 +26,5 @@ Final release completed 10 October 2026: builds/windows/One More Adventure Amor.
 Current feature release: export_presets.cfg now defaults to builds/chapter-1-2-overhaul/One More Adventure Amor.exe. The original builds/windows release is preserved. Package name: builds/One More Adventure Amor Chapters 1-2.zip. Update includes the accessible-exit/NPC/trivia/restaurant/audio-pipeline overhaul; actual replacement instrumental music is pending.
 
 Current polish export: builds/chapter-1-2-polish/One More Adventure Amor.exe and builds/One More Adventure Amor Chapters 1-2 Polish.zip. Keep PCK and music folder beside the executable. Prior releases remain preserved.
+
+Latest intermediate redesign checkpoint: builds/redesign-phase-a/One More Adventure Amor.exe; ZIP builds/One More Adventure Amor Redesign Phase A.zip. Explicitly incomplete against the full cinematic specification; see REDESIGN_STATUS.md.

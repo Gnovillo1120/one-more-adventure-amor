@@ -22,3 +22,4 @@ Remaining: personalize the placeholder letter in data/story.json, supply license
 
 ## Active complete-redesign request
 Phase A is implemented as an architectural checkpoint: layered MUN/dining/Ikura rooms, depth-sorted actors and foreground tables, integrated seating animation, accessible delegations, clipped container chat and an editable Guillermo quiz. Full production art, Phase B staging, Minecraft reconstruction and animated kidnapping/rescue remain unfinished. See REDESIGN_STATUS.md for exact continuation. Do not treat the earlier playable release as meeting the new cinematic acceptance bar.
+Phase A release validation: all seven suites pass (503/231/177/255/220/12/63 checks), 29 native source/exported captures, UI and camera smoke checks. Intermediate build: builds/redesign-phase-a/One More Adventure Amor.exe; ZIP: builds/One More Adventure Amor Redesign Phase A.zip. It does not include the requested 3D reconstruction or cinematics.
