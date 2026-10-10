@@ -1,0 +1,374 @@
+{
+  "debate": {
+    "fixtures": [
+      {
+        "id": "chad_table",
+        "kind": "desk",
+        "position": [
+          300,
+          350
+        ],
+        "width": 180,
+        "label": "CHAD",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "france_table",
+        "kind": "desk",
+        "position": [
+          950,
+          350
+        ],
+        "width": 180,
+        "label": "FRANCIA",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "brasil_table",
+        "kind": "desk",
+        "position": [
+          300,
+          495
+        ],
+        "width": 180,
+        "label": "BRASIL",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "kenia_table",
+        "kind": "desk",
+        "position": [
+          950,
+          495
+        ],
+        "width": 180,
+        "label": "KENIA",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "chair_table",
+        "kind": "desk",
+        "position": [
+          640,
+          310
+        ],
+        "width": 180,
+        "label": "PRESIDENCIA",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "plant_left",
+        "kind": "plant",
+        "position": [
+          145,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "plant_right",
+        "kind": "plant",
+        "position": [
+          1135,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      }
+    ]
+  },
+  "dining": {
+    "fixtures": [
+      {
+        "id": "left_top",
+        "kind": "table",
+        "position": [
+          320,
+          350
+        ],
+        "width": 180,
+        "label": "",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "left_bottom",
+        "kind": "table",
+        "position": [
+          320,
+          510
+        ],
+        "width": 180,
+        "label": "",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "right_top",
+        "kind": "table",
+        "position": [
+          940,
+          300
+        ],
+        "width": 180,
+        "label": "",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "couple_table",
+        "kind": "table",
+        "position": [
+          915,
+          450
+        ],
+        "width": 180,
+        "label": "",
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "seat_anami",
+        "kind": "chair",
+        "position": [
+          885,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "seat_guillermo",
+        "kind": "chair",
+        "position": [
+          950,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "spare_seat",
+        "kind": "chair",
+        "position": [
+          1045,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "plant_left",
+        "kind": "plant",
+        "position": [
+          150,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "plant_right",
+        "kind": "plant",
+        "position": [
+          1135,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      }
+    ]
+  },
+  "ikura": {
+    "fixtures": [
+      {
+        "id": "left_top",
+        "kind": "table",
+        "position": [
+          320,
+          350
+        ],
+        "width": 180,
+        "label": "",
+        "decor": [
+          "sushi"
+        ],
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "left_bottom",
+        "kind": "table",
+        "position": [
+          320,
+          510
+        ],
+        "width": 180,
+        "label": "",
+        "decor": [
+          "sushi"
+        ],
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "right_top",
+        "kind": "table",
+        "position": [
+          940,
+          300
+        ],
+        "width": 180,
+        "label": "",
+        "decor": [
+          "sushi"
+        ],
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "couple_table",
+        "kind": "table",
+        "position": [
+          915,
+          450
+        ],
+        "width": 180,
+        "label": "",
+        "decor": [
+          "sushi"
+        ],
+        "collision": [
+          -90,
+          -18,
+          180,
+          30
+        ]
+      },
+      {
+        "id": "seat_anami",
+        "kind": "chair",
+        "position": [
+          885,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "seat_guillermo",
+        "kind": "chair",
+        "position": [
+          950,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "spare_seat",
+        "kind": "chair",
+        "position": [
+          1045,
+          420
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "plant_left",
+        "kind": "plant",
+        "position": [
+          150,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "plant_right",
+        "kind": "plant",
+        "position": [
+          1135,
+          250
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "lamp_left",
+        "kind": "lamp",
+        "position": [
+          550,
+          270
+        ],
+        "width": 180,
+        "label": ""
+      },
+      {
+        "id": "lamp_right",
+        "kind": "lamp",
+        "position": [
+          1100,
+          270
+        ],
+        "width": 180,
+        "label": ""
+      }
+    ]
+  }
+}

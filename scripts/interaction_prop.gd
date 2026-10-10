@@ -8,6 +8,8 @@ var time := 0.0
 var visual_kind := ""
 var interaction_area: Area2D
 var interaction_radius := 72.0
+var environment_object: Node2D
+var actor_visual: Node2D
 
 func _ready() -> void:
 	texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
@@ -22,11 +24,13 @@ func _process(delta: float) -> void:
 	time+=delta;queue_redraw()
 
 func has_representation() -> bool:
+	if descriptor.has("fixture"):return is_instance_valid(environment_object) and environment_object.get_meta("rendered_fixture",false)
 	return texture!=null or visual_kind in ["door","gate","arch","lectern","chair","phone","notice","table","companion","badge","document","letter"]
 
 func _pixel(rect: Rect2, color: String) -> void:draw_rect(rect,Color(color))
 
 func _draw() -> void:
+	if descriptor.has("fixture") or is_instance_valid(actor_visual):return
 	if visual_kind=="companion":return # Registered to the existing animated actor.
 	if texture:
 		var actor: bool=visual_kind=="npc"

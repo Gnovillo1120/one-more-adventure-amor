@@ -13,7 +13,11 @@ func cell(p: Vector2) -> Vector2i:
 
 func edge(a: Vector2, b: Vector2) -> bool:
 	for i in range(6):
-		if not world.can_stand(a.lerp(b,float(i)/5.0)):return false
+		var p:=a.lerp(b,float(i)/5.0)
+		if not world.can_stand(p):return false
+		# Avoid exact tangent routes: accumulated movement floats can cross the edge.
+		for margin in [Vector2.ZERO,Vector2(.25,0),Vector2(-.25,0),Vector2(0,.25),Vector2(0,-.25)]:
+			if world.WALK_BOUNDS.has_point(p+margin) and not world.can_stand(p+margin):return false
 	return true
 
 func scan(memory: Node2D) -> void:

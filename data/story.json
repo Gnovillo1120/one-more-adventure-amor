@@ -87,7 +87,7 @@
                 "label": "Recoger acreditación",
                 "position": [
                   320,
-                  540
+                  560
                 ],
                 "lines": [
                   {
@@ -112,7 +112,7 @@
                 "label": "Presentarte a presidencia",
                 "position": [
                   640,
-                  350
+                  270
                 ],
                 "lines": [],
                 "kind": "talk",
@@ -128,8 +128,8 @@
                 "id": "chad",
                 "label": "Delegación de Chad",
                 "position": [
-                  535,
-                  405
+                  300,
+                  317
                 ],
                 "lines": [
                   {
@@ -154,8 +154,8 @@
                 "id": "brasil",
                 "label": "Delegación de Brasil",
                 "position": [
-                  335,
-                  490
+                  300,
+                  462
                 ],
                 "lines": [
                   {
@@ -180,8 +180,8 @@
                 "id": "paper",
                 "label": "Consultar documento",
                 "position": [
-                  670,
-                  425
+                  650,
+                  370
                 ],
                 "lines": [
                   {
@@ -195,25 +195,67 @@
                 "visual": {
                   "kind": "notice"
                 }
+              },
+              {
+                "id": "france",
+                "label": "Delegación de Francia",
+                "position": [
+                  950,
+                  317
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Francia",
+                    "text": "Estamos revisando cómo facilitar el comercio sin perder de vista la ayuda humanitaria. ¿Ustedes ya acordaron prioridades?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              },
+              {
+                "id": "kenia",
+                "label": "Delegación de Kenia",
+                "position": [
+                  950,
+                  462
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Kenia",
+                    "text": "Acceso a alimentos también es poder comprarlos. Queremos que eso quede claro en la propuesta.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
               }
             ],
             "npcs": [
               {
-                "name": "Togo",
+                "name": "Chad",
                 "sprite": 0,
                 "position": [
-                  180,
-                  310
-                ],
-                "walk": 0,
-                "seated": true
-              },
-              {
-                "name": "Observador",
-                "sprite": 2,
-                "position": [
-                  370,
-                  350
+                  300,
+                  317
                 ],
                 "walk": 0,
                 "seated": true
@@ -222,8 +264,18 @@
                 "name": "Francia",
                 "sprite": 1,
                 "position": [
-                  875,
-                  310
+                  950,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Brasil",
+                "sprite": 2,
+                "position": [
+                  300,
+                  462
                 ],
                 "walk": 0,
                 "seated": true
@@ -232,51 +284,21 @@
                 "name": "Kenia",
                 "sprite": 0,
                 "position": [
-                  1080,
-                  360
+                  950,
+                  462
                 ],
                 "walk": 0,
                 "seated": true
               },
               {
-                "name": "Observadora",
-                "sprite": 3,
+                "name": "Presidencia",
+                "sprite": 1,
                 "position": [
-                  1150,
-                  405
+                  640,
+                  270
                 ],
                 "walk": 0,
                 "seated": true
-              },
-              {
-                "name": "Secretaría",
-                "sprite": 2,
-                "position": [
-                  490,
-                  480
-                ],
-                "walk": 18,
-                "seated": false
-              },
-              {
-                "name": "Chad",
-                "sprite": 0,
-                "position": [
-                  535,
-                  405
-                ],
-                "walk": 0,
-                "seated": false
-              },
-              {
-                "name": "Brasil",
-                "sprite": 2,
-                "position": [
-                  335,
-                  490
-                ],
-                "walk": 0,
-                "seated": false
               }
             ],
             "exit_visual": {
@@ -382,8 +404,8 @@
                 "id": "brief",
                 "label": "Revisar propuesta",
                 "position": [
-                  615,
-                  455
+                  570,
+                  395
                 ],
                 "lines": [
                   {
@@ -407,8 +429,8 @@
                 "id": "main",
                 "label": "Solicitar la palabra",
                 "position": [
-                  720,
-                  475
+                  640,
+                  425
                 ],
                 "lines": [],
                 "kind": "talk",
@@ -423,8 +445,8 @@
                 "id": "chad",
                 "label": "Delegación de Chad",
                 "position": [
-                  535,
-                  405
+                  300,
+                  317
                 ],
                 "lines": [
                   {
@@ -449,8 +471,8 @@
                 "id": "brasil",
                 "label": "Delegación de Brasil",
                 "position": [
-                  335,
-                  490
+                  300,
+                  462
                 ],
                 "lines": [
                   {
@@ -475,8 +497,8 @@
                 "id": "paper",
                 "label": "Consultar documento",
                 "position": [
-                  670,
-                  425
+                  650,
+                  370
                 ],
                 "lines": [
                   {
@@ -509,8 +531,8 @@
                 "id": "notes",
                 "label": "Escribir una observación",
                 "position": [
-                  990,
-                  520
+                  1040,
+                  550
                 ],
                 "kind": "talk",
                 "sprite": -1,
@@ -529,25 +551,67 @@
                     "mood": "happy"
                   }
                 ]
+              },
+              {
+                "id": "france",
+                "label": "Delegación de Francia",
+                "position": [
+                  950,
+                  317
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Francia",
+                    "text": "Estamos revisando cómo facilitar el comercio sin perder de vista la ayuda humanitaria. ¿Ustedes ya acordaron prioridades?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              },
+              {
+                "id": "kenia",
+                "label": "Delegación de Kenia",
+                "position": [
+                  950,
+                  462
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Kenia",
+                    "text": "Acceso a alimentos también es poder comprarlos. Queremos que eso quede claro en la propuesta.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
               }
             ],
             "npcs": [
               {
-                "name": "Togo",
+                "name": "Chad",
                 "sprite": 0,
                 "position": [
-                  180,
-                  310
-                ],
-                "walk": 0,
-                "seated": true
-              },
-              {
-                "name": "Observador",
-                "sprite": 2,
-                "position": [
-                  370,
-                  350
+                  300,
+                  317
                 ],
                 "walk": 0,
                 "seated": true
@@ -556,8 +620,18 @@
                 "name": "Francia",
                 "sprite": 1,
                 "position": [
-                  875,
-                  310
+                  950,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Brasil",
+                "sprite": 2,
+                "position": [
+                  300,
+                  462
                 ],
                 "walk": 0,
                 "seated": true
@@ -566,8 +640,8 @@
                 "name": "Kenia",
                 "sprite": 0,
                 "position": [
-                  1080,
-                  360
+                  950,
+                  462
                 ],
                 "walk": 0,
                 "seated": true
@@ -577,50 +651,10 @@
                 "sprite": 1,
                 "position": [
                   640,
-                  290
-                ],
-                "walk": 0,
-                "seated": false
-              },
-              {
-                "name": "Observadora",
-                "sprite": 3,
-                "position": [
-                  1150,
-                  405
+                  270
                 ],
                 "walk": 0,
                 "seated": true
-              },
-              {
-                "name": "Secretaría",
-                "sprite": 2,
-                "position": [
-                  490,
-                  480
-                ],
-                "walk": 18,
-                "seated": false
-              },
-              {
-                "name": "Chad",
-                "sprite": 0,
-                "position": [
-                  535,
-                  405
-                ],
-                "walk": 0,
-                "seated": false
-              },
-              {
-                "name": "Brasil",
-                "sprite": 2,
-                "position": [
-                  335,
-                  490
-                ],
-                "walk": 0,
-                "seated": false
               }
             ],
             "exit_visual": {
@@ -822,8 +856,8 @@
               550
             ],
             "companion": [
-              865,
-              475
+              950,
+              420
             ],
             "exit": [
               1080,
@@ -834,14 +868,15 @@
                 "id": "main",
                 "label": "Elegir la silla de al lado",
                 "position": [
-                  865,
-                  475
+                  885,
+                  420
                 ],
                 "lines": [],
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "chair"
+                  "kind": "chair",
+                  "fixture": "seat_anami"
                 }
               }
             ],
@@ -850,8 +885,8 @@
                 "id": "lunch_delegate",
                 "label": "Conversar en otra mesa",
                 "position": [
-                  560,
-                  405
+                  320,
+                  317
                 ],
                 "lines": [
                   {
@@ -876,8 +911,8 @@
                 "id": "photographer",
                 "label": "Preguntar por las fotos",
                 "position": [
-                  320,
-                  485
+                  500,
+                  535
                 ],
                 "lines": [
                   {
@@ -904,8 +939,8 @@
                 "name": "Delegada",
                 "sprite": 1,
                 "position": [
-                  390,
-                  300
+                  320,
+                  317
                 ],
                 "walk": 0,
                 "seated": true
@@ -914,46 +949,30 @@
                 "name": "Delegado",
                 "sprite": 0,
                 "position": [
-                  705,
-                  345
+                  320,
+                  477
                 ],
                 "walk": 0,
                 "seated": true
-              },
-              {
-                "name": "Staff",
-                "sprite": 3,
-                "position": [
-                  325,
-                  490
-                ],
-                "walk": 0,
-                "seated": false
               },
               {
                 "name": "Comensal",
                 "sprite": 2,
                 "position": [
-                  1070,
-                  360
+                  940,
+                  267
                 ],
                 "walk": 0,
                 "seated": true
-              },
-              {
-                "name": "Delegada",
-                "sprite": 1,
-                "position": [
-                  480,
-                  530
-                ],
-                "walk": 0,
-                "seated": false
               }
             ],
             "exit_visual": {
               "kind": "door"
-            }
+            },
+            "seat": [
+              885,
+              420
+            ]
           }
         },
         {
@@ -1667,8 +1686,8 @@
               550
             ],
             "companion": [
-              805,
-              490
+              950,
+              420
             ],
             "exit": [
               1080,
@@ -1679,8 +1698,8 @@
                 "id": "host",
                 "label": "Consultar la reserva",
                 "position": [
-                  300,
-                  535
+                  240,
+                  545
                 ],
                 "lines": [
                   {
@@ -1705,8 +1724,8 @@
                 "id": "seat",
                 "label": "Elegir la mesa de dos",
                 "position": [
-                  760,
-                  465
+                  885,
+                  420
                 ],
                 "lines": [
                   {
@@ -1718,22 +1737,23 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "chair"
+                  "kind": "chair",
+                  "fixture": "seat_anami"
                 }
               },
               {
                 "id": "main",
                 "label": "Sentarte y pedir",
                 "position": [
-                  805,
-                  490
+                  885,
+                  420
                 ],
                 "lines": [],
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
                   "kind": "item",
-                  "art": "res://assets/art/overhaul/gyozas.png"
+                  "fixture": "couple_table"
                 }
               }
             ],
@@ -1742,7 +1762,7 @@
                 "id": "waiter",
                 "label": "Preguntar al mesero",
                 "position": [
-                  990,
+                  1060,
                   535
                 ],
                 "lines": [
@@ -1764,7 +1784,7 @@
                 "label": "Mirar las decoraciones",
                 "position": [
                   550,
-                  360
+                  270
                 ],
                 "lines": [
                   {
@@ -1776,15 +1796,16 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "table"
+                  "kind": "table",
+                  "fixture": "lamp_left"
                 }
               },
               {
                 "id": "customer",
                 "label": "Conversar con una clienta",
                 "position": [
-                  875,
-                  365
+                  940,
+                  267
                 ],
                 "lines": [
                   {
@@ -1804,8 +1825,8 @@
                 "id": "drama",
                 "label": "¿Quién era quién? · opcional",
                 "position": [
-                  665,
-                  530
+                  650,
+                  540
                 ],
                 "lines": [],
                 "kind": "drama",
@@ -1818,8 +1839,8 @@
                 "id": "topics",
                 "label": "Revisar temas guardados",
                 "position": [
-                  420,
-                  525
+                  500,
+                  535
                 ],
                 "lines": [
                   {
@@ -1853,8 +1874,8 @@
                 "id": "tea",
                 "label": "Pedir un poco de té",
                 "position": [
-                  565,
-                  505
+                  700,
+                  330
                 ],
                 "kind": "talk",
                 "sprite": 5,
@@ -1879,83 +1900,71 @@
                     "mood": "playful"
                   }
                 ]
+              },
+              {
+                "id": "guillermo_quiz",
+                "label": "Pop quiz de Guillermo · plantilla",
+                "position": [
+                  780,
+                  540
+                ],
+                "kind": "guillermo_quiz",
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                },
+                "lines": []
               }
             ],
             "npcs": [
               {
-                "name": "Mesero",
-                "sprite": 5,
-                "position": [
-                  990,
-                  535
-                ],
-                "walk": 20,
-                "seated": false
-              },
-              {
                 "name": "Cliente",
                 "sprite": 6,
                 "position": [
-                  145,
-                  390
+                  320,
+                  317
                 ],
                 "walk": 0,
                 "seated": true
-              },
-              {
-                "name": "Clienta",
-                "sprite": 7,
-                "position": [
-                  1130,
-                  430
-                ],
-                "walk": 0,
-                "seated": true
-              },
-              {
-                "name": "Clienta",
-                "sprite": 7,
-                "position": [
-                  880,
-                  335
-                ],
-                "walk": 0,
-                "seated": false
-              },
-              {
-                "name": "Cliente",
-                "sprite": 6,
-                "position": [
-                  700,
-                  375
-                ],
-                "walk": 0,
-                "seated": false
               },
               {
                 "name": "Pareja",
                 "sprite": 7,
                 "position": [
-                  460,
-                  395
+                  320,
+                  477
                 ],
                 "walk": 0,
                 "seated": true
               },
               {
-                "name": "Comensal",
-                "sprite": 6,
+                "name": "Clienta",
+                "sprite": 7,
                 "position": [
-                  920,
-                  400
+                  940,
+                  267
                 ],
                 "walk": 0,
                 "seated": true
+              },
+              {
+                "name": "Servicio",
+                "sprite": 5,
+                "position": [
+                  720,
+                  310
+                ],
+                "walk": 22,
+                "seated": false
               }
             ],
             "exit_visual": {
               "kind": "door"
-            }
+            },
+            "seat": [
+              885,
+              420
+            ]
           }
         }
       ]

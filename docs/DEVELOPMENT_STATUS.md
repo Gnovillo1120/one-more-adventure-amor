@@ -19,3 +19,6 @@ Automated suites: story 503, production persistence/input 231, focused overhaul 
 Updated executable: builds/chapter-1-2-polish/One More Adventure Amor.exe, with matching PCK, notices and music instructions. ZIP: builds/One More Adventure Amor Chapters 1-2 Polish.zip. Earlier builds remain available. Private references, concepts and test scripts are excluded.
 
 Remaining: personalize the placeholder letter in data/story.json, supply licensed instrumental recordings and audition loops, human-test pacing/camera comfort and older 8 GB laptop performance. Automated runs do not establish the target 30–45 minute duration. HEIC references remain untouched and are not runtime dependencies.
+
+## Active complete-redesign request
+Phase A is implemented as an architectural checkpoint: layered MUN/dining/Ikura rooms, depth-sorted actors and foreground tables, integrated seating animation, accessible delegations, clipped container chat and an editable Guillermo quiz. Full production art, Phase B staging, Minecraft reconstruction and animated kidnapping/rescue remain unfinished. See REDESIGN_STATUS.md for exact continuation. Do not treat the earlier playable release as meeting the new cinematic acceptance bar.

@@ -1,0 +1,14 @@
+{
+  "is_placeholder": true,
+  "instructions": "Replace questions, choices, zero-based answer and responses with Guillermo's supplied facts. No personal facts are inferred. image may be an optional res:// original/licensed image path.",
+  "questions": [
+    {"question":"[PLANTILLA 1] Sustituye por una pregunta de Guillermo.","choices":["[Respuesta A]","[Respuesta B]","[Respuesta C]"],"answer":0,"image":"","explanation":"Pregunta de ejemplo; no representa un dato personal.","reaction_correct":"Esta es una respuesta de prueba.","reaction_wrong":"Esto sigue siendo una plantilla editable."},
+    {"question":"[PLANTILLA 2] Añade una anécdota que quieras compartir.","choices":["[Respuesta A]","[Respuesta B]","[Respuesta C]"],"answer":1,"image":"","explanation":"Pendiente de los datos que proporcione Guillermo.","reaction_correct":"Probamos también la segunda opción.","reaction_wrong":"Ninguna respuesta bloquea la historia."},
+    {"question":"[PLANTILLA 3] Añade una pregunta sobre un recuerdo.","choices":["[Respuesta A]","[Respuesta B]","[Respuesta C]"],"answer":2,"image":"","explanation":"No se han inventado preferencias ni recuerdos privados.","reaction_correct":"La plantilla funciona.","reaction_wrong":"Las preguntas finales se editan en el archivo JSON."}
+  ],
+  "score_responses": [
+    {"minimum_score":3,"text":"Tres respuestas de prueba correctas. Falta personalizar el quiz."},
+    {"minimum_score":1,"text":"La plantilla ya funciona; todavía faltan las preguntas personales."},
+    {"minimum_score":0,"text":"Sin recuperación ni penalización. Esta sigue siendo una plantilla."}
+  ]
+}

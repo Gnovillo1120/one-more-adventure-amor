@@ -41,7 +41,7 @@ func run() -> void:
 		for index in range(game.story.chapters[chapter].scenes.size()):
 			game.chapter_index=chapter;game.scene_index=index;game.start_scene()
 			for target in game.memory.scene_config.get("optional",[]):
-				if target.kind in ["trivia","drama"]:continue
+				if target.kind in ["trivia","drama","guillermo_quiz"]:continue
 				at(target);verify(game.memory.optional_seen.has(target.id),"optional conversation tracked: "+target.id)
 	# Optional quizzes: perfect/good/zero scores; exit midway; answered-save resume.
 	for desired in [6,4,0]:
@@ -82,7 +82,7 @@ func run() -> void:
 	game._activity_key(KEY_2);game.activity_buttons[2].pressed.emit();dialogue()
 	verify(game.scene_completed,"restaurant story completes")
 	var nav: RefCounted=load("res://scripts/memory_navigation.gd").new();nav.scan(game.memory)
-	verify(nav.path_to(Vector2(1145,410)).is_empty(),"regression detector rejects old blocked exit")
+	verify(nav.path_to(Vector2(915,445)).is_empty(),"regression detector rejects rebuilt table footprint")
 	for target in game.memory.scene_config.optional:
 		if target.kind=="drama":
 			at(target)

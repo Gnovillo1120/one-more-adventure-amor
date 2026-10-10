@@ -65,6 +65,9 @@ var capture_directory := "res://docs/screenshots"
 
 func _ready() -> void:
 	story = JSON.parse_string(FileAccess.get_file_as_string("res://data/story.json"))
+	var quiz_template: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/guillermo_quiz_template.json"))
+	story["guillermo_quiz"]=quiz_template.questions
+	story["guillermo_quiz_responses"]=quiz_template.score_responses
 	if ResourceLoader.exists("res://assets/fonts/PixelifySans.ttf"):
 		pixel_font=load("res://assets/fonts/PixelifySans.ttf")
 		pixel_font.antialiasing=TextServer.FONT_ANTIALIASING_NONE
@@ -111,7 +114,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		if is_paused: return
-		if minigame_kind in ["trivia","drama","food"]:
+		if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible and event.physical_keycode in [KEY_PAGEUP,KEY_PAGEDOWN,KEY_HOME,KEY_END]:
+			memory.scroll_phone(event.physical_keycode);get_viewport().set_input_as_handled();return
+		if minigame_kind in ["trivia","drama","food","guillermo_quiz"]:
 			_activity_key(event.physical_keycode)
 			get_viewport().set_input_as_handled();return
 		if minigame_kind == "dance":
@@ -267,7 +272,9 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	add_child(memory)
 	var local: Dictionary=chapter_state.get(s.id,{})
 	memory.quest_step=int(local.get("step",0));memory.optional_seen=local.get("seen",[]).duplicate()
+	memory.seated=bool(local.get("seated",false))
 	if position_data.size()==2:memory.player_position=memory.safe_position(Vector2(position_data[0],position_data[1]))
+	memory.restore_pose()
 	memory.interacted.connect(_scene_interaction)
 	memory.target_interacted.connect(_target_interaction)
 	memory.exited.connect(_next_scene)
@@ -308,7 +315,11 @@ func _scene_interaction() -> void:
 	_sfx("interact")
 	var s := _scene()
 	if s.task=="sit":
-		memory.seated=true;memory.player_position=memory.companion_position+Vector2(-55,0)
+		memory.seat_couple(_scene_dialogue);return
+	_scene_dialogue()
+
+func _scene_dialogue() -> void:
+	var s := _scene()
 	var scene_lines: Array = s.lines.duplicate(true)
 	if s.id=="award":_sfx("applause")
 	if s.id in ["lunch","award"] and chapter_state.get("caucus",{}).has("trivia_score"):
@@ -330,16 +341,19 @@ func _store_memory_state() -> void:
 	if not is_instance_valid(memory):return
 	var local: Dictionary=chapter_state.get(_scene().id,{})
 	local.step=memory.quest_step;local.seen=memory.optional_seen.duplicate()
+	local.seated=memory.seated
 	chapter_state[_scene().id]=local
 
 func _target_interaction(id: String) -> void:
 	if _dialogue_open() or minigame_kind!="" or is_paused:return
+	if id=="seat" and not memory.seated:
+		memory.seat_couple(func():_target_interaction(id));return
 	var target: Dictionary={}
 	for item in memory.interaction_targets():
 		if item.id==id:target=item;break
 	if target.is_empty():return
 	_sfx("interact")
-	if target.kind in ["trivia","drama"]:
+	if target.kind in ["trivia","drama","guillermo_quiz"]:
 		if target.kind=="trivia":
 			_show_dialogue([{ "speaker":"Guillermo","text":"Bueno, ADHOC. Ya que tienes tantas correcciones, vamos a ver cuánto sabes.","mood":"playful"},{"speaker":"Anami","text":"¿Me estás tomando examen o qué?","mood":"surprised"},{"speaker":"Guillermo","text":"Digamos que es una evaluación diplomática. Sin nota en el diploma.","mood":"happy"}],func():_open_activity(target.kind))
 		else:_open_activity(target.kind)
@@ -479,7 +493,7 @@ func _draw_activity() -> void:
 	var food: bool=minigame_kind=="food"
 	modal=_panel(ui,Rect2(140,135,1000,520) if food else Rect2(235,175,810,460))
 	var width:=940 if food else 750
-	_label(modal,"IKURA · Carta para dos" if food else "Evaluación diplomática" if minigame_kind=="trivia" else "¿Quién era quién?",Rect2(30,20,width,40),30,GOLD)
+	_label(modal,"IKURA · Carta para dos" if food else "Evaluación diplomática" if minigame_kind=="trivia" else "Guillermo · plantilla editable" if minigame_kind=="guillermo_quiz" else "¿Quién era quién?",Rect2(30,20,width,40),30,GOLD)
 	var question: String
 	if food:question=["Para compartir · elegimos gyozas","Guillermo · miso ramen","Anami · sushi"][minigame_step]
 	else:question=story[minigame_kind][minigame_step].question
@@ -496,6 +510,9 @@ func _draw_activity() -> void:
 		_label(modal,activity_feedback if activity_feedback!="" else "1–6 o clic · Flechas + Enter · Sin prisa, sin penalización.",Rect2(30,388,940,95),20,GOLD)
 	else:
 		var entry: Dictionary=story[minigame_kind][minigame_step]
+		if entry.get("image","")!="" and ResourceLoader.exists(entry.image):
+			minigame_prompt.size.x=630
+			var image:=TextureRect.new();image.texture=load(entry.image);image.position=Vector2(660,65);image.size=Vector2(110,75);image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;image.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;modal.add_child(image)
 		for i in range(entry.choices.size()):
 			var button:=_button(modal,"%d · %s" % [i+1,entry.choices[i]],Rect2(30,150+i*55,750,46),func():_activity_answer(i));button.add_theme_font_size_override("font_size",19);button.disabled=activity_answered;activity_buttons.append(button)
 		_label(modal,activity_feedback if activity_feedback!="" else "Opcional · ninguna respuesta bloquea el recuerdo.",Rect2(30,320,750,70),19,GOLD)
@@ -565,6 +582,10 @@ func _finish_activity() -> void:
 	var reaction: String
 	if kind=="trivia":
 		reaction="Seis de seis. Ya, tampoco era para quitarme el puesto. Bien respondido." if activity_score==6 else "Bien ahí. Esto ya parece una delegación de dos." if activity_score>=4 else "No hay examen de recuperación. Yo pongo las respuestas y tú las correcciones."
+	elif kind=="guillermo_quiz":
+		reaction="Plantilla terminada; las preguntas personales aún están pendientes."
+		for response in story.guillermo_quiz_responses:
+			if activity_score>=int(response.minimum_score):reaction=response.text;break
 	else:reaction="Ya entendí. Y si me pierdo otra vez, me preguntas qué sentí, no quién era el ex de quién."
 	_show_dialogue([{ "speaker":"Guillermo","text":"Resultado: "+score_text+". "+reaction,"mood":"happy"},{"speaker":"Anami","text":"Listo. Ahora sí seguimos conversando.","mood":"happy"}],func():_store_memory_state();save_game())
 
@@ -794,12 +815,20 @@ func _capture_gallery() -> void:
 	await _capture_frame("03e_trivia")
 	chapter_index=0;scene_index=3;start_scene()
 	await _capture_frame("03c_dining")
+	memory.player_position=Vector2(820,420);_scene_interaction()
+	await get_tree().create_timer(.9).timeout
+	dialog_panel.hide();_set_world_active(false)
+	await _capture_frame("03g_dining_seated")
 	chapter_index=0;scene_index=4;start_scene()
 	await _capture_frame("03d_auditorium")
 	memory.quest_step=1;_refresh_objective()
 	await _capture_frame("03f_diploma")
 	chapter_index=1;scene_index=2;start_scene()
 	await _capture_frame("04_ikura")
+	memory.quest_step=1;memory.player_position=Vector2(820,420)
+	memory.seat_couple(func():pass)
+	await get_tree().create_timer(.9).timeout
+	await _capture_frame("04f_ikura_seated")
 	_complete_scene()
 	await _capture_frame("04e_ikura_exit")
 	start_scene();memory.quest_step=2;_refresh_objective()
@@ -818,6 +847,15 @@ func _capture_gallery() -> void:
 	await _capture_frame("04c_yacht")
 	chapter_index=1;scene_index=1;start_scene();_scene_interaction();line_index=1;_show_line();revealed=9999
 	await _capture_frame("04d_phone")
+	memory.phone_messages.clear()
+	memory.apply_line("Guillermo","Prueba de lectura: "+"Este mensaje largo en español debe ajustarse al ancho de la conversación, sin salir de su burbuja ni de la pantalla. ".repeat(10))
+	memory.apply_line("Anami","Sí, podemos seguir la conversación con calma. ".repeat(8))
+	await get_tree().create_timer(.4).timeout
+	for label in memory.phone_labels:label.visible_characters=-1
+	await _capture_frame("04g_phone_long")
+	DisplayServer.window_set_size(Vector2i(960,540))
+	await _capture_frame("04h_phone_960")
+	DisplayServer.window_set_size(Vector2i(1280,720))
 	chapter_index=2;scene_index=1;start_scene()
 	await _capture_frame("05_halloween")
 	_scene_interaction();line_index=1;_show_line();revealed=9999

@@ -7,6 +7,17 @@ const INTERACTION_RADIUS := 72.0
 const PLAYER_HALF := Vector2(10, 6)
 const WALK_BOUNDS := Rect2(110,225,1080,355)
 const InteractionProp = preload("res://scripts/interaction_prop.gd")
+const RoomLayer = preload("res://scripts/layered_room.gd")
+const RoomFixture = preload("res://scripts/room_fixture.gd")
+const MemoryActor = preload("res://scripts/memory_actor.gd")
+const Navigation = preload("res://scripts/memory_navigation.gd")
+var depth_root: Node2D
+var layered := false
+var fixtures: Dictionary = {}
+var actors: Dictionary = {}
+var population_actors: Array = []
+var seating := false
+var seating_tween: Tween
 var target_visuals: Dictionary = {}
 var scene_config: Dictionary = {}
 var exit_position := Vector2(1080,550)
@@ -16,6 +27,9 @@ var npc_art: Array[Texture2D] = []
 var prop_art: Dictionary = {}
 var phone_ui: Control
 var phone_labels: Array[Label] = []
+var phone_scroll: ScrollContainer
+var phone_stack: VBoxContainer
+var phone_revision := 0
 var location: String = "debate"
 var outfit: String = "formal"
 var player_position := Vector2(230, 520)
@@ -69,9 +83,70 @@ func _ready() -> void:
 		var path: String="res://assets/art/overhaul/npc_%d.png" % i
 		if ResourceLoader.exists(path):npc_art.append(load(path))
 	if location=="yacht":blockers=[Rect2(110,225,1080,120)]
+	_build_layers()
 	if location=="phone":_build_phone()
 	_register_target_visuals()
 	queue_redraw()
+
+func _build_layers() -> void:
+	depth_root=Node2D.new();depth_root.y_sort_enabled=true;add_child(depth_root)
+	var layouts: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/room_layouts.json"))
+	layered=layouts.has(location)
+	if layered:
+		background=null;blockers.clear()
+		var room: Node2D=RoomLayer.new();room.location=location;room.z_index=-10;add_child(room)
+		for entry in layouts[location].fixtures:
+			var fixture: Node2D=RoomFixture.new();fixture.kind=entry.kind;fixture.variant=location;fixture.label=entry.get("label","");fixture.width=float(entry.get("width",180));fixture.decor=entry.get("decor",[])
+			fixture.position=_point(entry.position);depth_root.add_child(fixture);fixtures[entry.id]=fixture
+			if entry.has("collision"):
+				var c: Array=entry.collision;blockers.append(Rect2(fixture.position+Vector2(c[0],c[1]),Vector2(c[2],c[3])))
+	for person in ["anami","guillermo"]:
+		var actor: Node2D=MemoryActor.new();actor.world=self;actor.person=person;actor.texture=sprites[person];depth_root.add_child(actor);actors[person]=actor
+		if person=="guillermo":actor.visible=location not in ["phone","yacht"]
+	for i in range(scene_config.get("npcs",[]).size()):
+		var entry: Dictionary=scene_config.npcs[i]
+		if int(entry.sprite)>=npc_art.size():continue
+		var actor: Node2D=MemoryActor.new();actor.world=self;actor.npc=true;actor.texture=npc_art[int(entry.sprite)];actor.position=_point(entry.position);actor.seated=entry.get("seated",false);actor.idle_phase=i
+		depth_root.add_child(actor);population_actors.append({"actor":actor,"data":entry})
+		if layered and actor.seated:
+			var chair: Node2D=RoomFixture.new();chair.kind="chair";chair.variant=location;chair.position=actor.position;depth_root.add_child(chair);depth_root.move_child(chair,0)
+	_update_actors()
+
+func _update_actors() -> void:
+	if actors.is_empty():return
+	actors.anami.position=player_position;actors.anami.row=direction;actors.anami.column=(int(clock*8)%4) if moving or dancing else 0;actors.anami.seated=seated
+	actors.guillermo.position=companion_position;actors.guillermo.column=(int(clock*4)%4) if dancing else 0
+	actors.guillermo.seated=location in ["dining","beach","pool"] or (location=="ikura" and seated)
+	for entry in population_actors:
+		var npc: Dictionary=entry.data;var actor: Node2D=entry.actor
+		var base:=_point(npc.position);var offset:=Vector2(roundf(sin(clock*.65+actor.idle_phase)*float(npc.get("walk",0))),0)
+		actor.position=base+offset if can_stand(base+offset) else base
+
+func seat_couple(on_done: Callable) -> void:
+	if seating:return
+	active=false;seating=true
+	var destination:=_point(scene_config.get("seat",[companion_position.x-55,companion_position.y]))
+	if DisplayServer.get_name()=="headless":
+		player_position=destination;seated=true;seating=false;_update_actors();on_done.call();return
+	seating_tween=create_tween()
+	var nav: RefCounted=Navigation.new();nav.scan(self)
+	var route: Array=nav.path_to(destination)
+	if route.is_empty():
+		seating=false;active=true;seating_tween.kill();return
+	var previous:=player_position
+	for waypoint in route:
+		var distance: float=previous.distance_to(waypoint)
+		if distance<.1:continue
+		seating_tween.tween_method(func(p: Vector2):move_by(p-player_position);moving=true;direction=0;_update_actors(),previous,waypoint,maxf(.02,distance/180.0))
+		previous=waypoint
+	seating_tween.tween_callback(func():seated=true;moving=false;_update_actors())
+	seating_tween.tween_interval(.25)
+	seating_tween.tween_callback(func():seating=false;on_done.call())
+
+func restore_pose() -> void:
+	if seated and location in ["ikura","dining"]:
+		seated=true;player_position=_point(scene_config.seat)
+	_update_actors()
 
 func all_targets() -> Array:
 	var result: Array=scene_config.get("steps",[]).duplicate(true)
@@ -88,7 +163,15 @@ func _register_target_visuals() -> void:
 		prop.position=_point(target.position)
 		prop.name="Target_"+str(target.id)
 		prop.required=target.id=="exit" or target.id in scene_config.get("steps",[]).map(func(t: Dictionary):return t.id)
-		add_child(prop);target_visuals[target.id]=prop
+		depth_root.add_child(prop);target_visuals[target.id]=prop
+		if prop.descriptor.has("fixture"):
+			prop.environment_object=fixtures.get(prop.descriptor.fixture)
+		if prop.visual_kind=="npc":
+			var actor: Node2D=MemoryActor.new();actor.world=self;actor.npc=true;actor.texture=prop.texture
+			for entry in population_actors:
+				if entry.actor.position.distance_to(prop.position)<1:
+					actor.seated=entry.actor.seated;entry.actor.visible=false
+			prop.add_child(actor);prop.actor_visual=actor
 	_sync_target_visuals()
 
 func _sync_target_visuals() -> void:
@@ -173,8 +256,9 @@ func _process(delta: float) -> void:
 			var step := motion.normalized() * 205.0 * delta
 			move_by(step)
 			if seated:seated=false
-	for i in range(phone_labels.size()):
-		phone_labels[i].visible_characters=int((clock-phone_messages[i].get("time",0))*40)
+	_update_actors()
+	# Chat messages arrive complete; dialogue retains its own paced reveal.
+	# Revealing inside a pre-shaped long bubble would scroll into blank text.
 	queue_redraw()
 
 func _blocked(p: Vector2) -> bool:
@@ -227,7 +311,7 @@ func apply_line(speaker: String, text: String) -> void:
 	if location in ["phone","yacht"]:
 		if speaker!="Narrador":
 			phone_messages.append({"speaker":speaker,"text":text,"time":clock})
-			if phone_messages.size()>2:phone_messages.pop_front()
+			if phone_messages.size()>100:phone_messages.pop_front()
 			if is_instance_valid(phone_ui) and phone_ui.visible:_refresh_phone()
 	if scene_id=="foot" and (text.contains("aterrizó") or text=="¡Ay!"):
 		player_position=companion_position+Vector2(-38,0)
@@ -242,12 +326,13 @@ func draw_ellipse_shadow(pos: Vector2) -> void:
 	draw_rect(Rect2(pos+Vector2(-23,-3),Vector2(46,9)),Color(0.07,0.1,0.16,.3))
 
 func _draw() -> void:
-	if background:
+	if layered:pass
+	elif background:
 		draw_texture_rect(background,Rect2(0,0,1280,720),false)
 	else:
 		_draw_room()
 	if location=="yacht":_draw_yacht()
-	_draw_population()
+	if not layered:_draw_population()
 	if location in ["beach","party","pool"]:
 		for i in range(18):
 			var p := Vector2(fmod(i*89+clock*6,1280),140+sin(clock*.2+i)*50)
@@ -255,8 +340,7 @@ func _draw() -> void:
 	if location == "beach":
 		for i in range(10):
 			draw_line(Vector2(i*145+sin(clock+i)*15,350+i%3*10),Vector2(i*145+85+sin(clock+i)*15,350+i%3*10),Color(1,.83,.64,.35),2)
-	if location not in ["phone","yacht"]:_sprite("guillermo",companion_position,0,(int(clock*4)%4) if dancing else 0)
-	_sprite("anami",player_position,direction,(int(clock*8)%4) if moving or dancing else 0)
+	# Actors are children of depth_root, interleaved with the furniture by ground Y.
 	if effect_time>0:
 		if effect=="ouch":
 			draw_string(ThemeDB.fallback_font,player_position+Vector2(-10,-100),"¡AY!",HORIZONTAL_ALIGNMENT_LEFT,-1,28,Color("f5c58b"))
@@ -277,61 +361,54 @@ func _draw() -> void:
 		draw_rect(Rect2(335,600,610,45),Color("152331"))
 		draw_string(ThemeDB.fallback_font,Vector2(355,630),text,HORIZONTAL_ALIGNMENT_LEFT,570,21,Color("ffe1a0"))
 
-func _draw_phone() -> void:
-	draw_rect(Rect2(370,140,540,310),Color("1d293d"))
-	draw_rect(Rect2(385,157,510,45),Color("33485b"))
-	draw_string(ThemeDB.fallback_font,Vector2(410,187),"MENSAJES · Moncayo",HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("f1d2a0"))
-	for i in range(phone_messages.size()):
-		var item: Dictionary=phone_messages[i]
-		draw_rect(Rect2(393,218+i*72,490,64),Color("364c60") if item.speaker=="Guillermo" else Color("566b71"))
-		draw_string(ThemeDB.fallback_font,Vector2(407,240+i*72),item.speaker,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("f1d2a0"))
-		var excerpt: String=item.text.left(52)+("…" if item.text.length()>52 else "")
-		draw_string(ThemeDB.fallback_font,Vector2(407,268+i*72),excerpt,HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f5ead6"))
-
 func _build_phone() -> void:
-	phone_ui=Control.new();phone_ui.mouse_filter=Control.MOUSE_FILTER_IGNORE
-	add_child(phone_ui)
+	phone_ui=PanelContainer.new();phone_ui.position=Vector2(355,145);phone_ui.size=Vector2(580,305)
+	phone_ui.mouse_filter=Control.MOUSE_FILTER_STOP;phone_ui.z_index=20;add_child(phone_ui)
+	var style:=StyleBoxFlat.new();style.bg_color=Color("142331");style.border_color=Color("aa936f");style.set_border_width_all(4);style.set_content_margin_all(12);phone_ui.add_theme_stylebox_override("panel",style)
+	var column:=VBoxContainer.new();column.add_theme_constant_override("separation",8);phone_ui.add_child(column)
+	var header:=Label.new();header.text="MENSAJES · "+("Guillermo" if scene_id=="reconnect" else "Conversación");header.add_theme_font_size_override("font_size",20);header.add_theme_color_override("font_color",Color("ebc48a"));column.add_child(header)
+	phone_scroll=ScrollContainer.new();phone_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;phone_scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL;phone_scroll.custom_minimum_size.y=230;phone_scroll.focus_mode=Control.FOCUS_ALL;column.add_child(phone_scroll)
+	phone_stack=VBoxContainer.new();phone_stack.size_flags_horizontal=Control.SIZE_EXPAND_FILL;phone_stack.add_theme_constant_override("separation",10);phone_scroll.add_child(phone_stack)
 	_refresh_phone()
 
 func show_phone(value: bool) -> void:
 	if value and not is_instance_valid(phone_ui):_build_phone()
 	if is_instance_valid(phone_ui):phone_ui.visible=value
 
+func scroll_phone(key: int) -> void:
+	if not is_instance_valid(phone_scroll):return
+	if key==KEY_HOME:phone_scroll.scroll_vertical=0
+	elif key==KEY_END:phone_scroll.scroll_vertical=int(phone_scroll.get_v_scroll_bar().max_value)
+	else:phone_scroll.scroll_vertical+=-170 if key==KEY_PAGEUP else 170
+
 func _refresh_phone() -> void:
-	if not is_instance_valid(phone_ui):return
-	for child in phone_ui.get_children():phone_ui.remove_child(child);child.queue_free()
+	if not is_instance_valid(phone_stack):return
+	phone_revision+=1
+	for child in phone_stack.get_children():phone_stack.remove_child(child);child.queue_free()
 	phone_labels.clear()
-	var frame:=ColorRect.new();frame.color=Color("142331");frame.position=Vector2(360,155);frame.size=Vector2(570,295);frame.mouse_filter=Control.MOUSE_FILTER_IGNORE;phone_ui.add_child(frame)
-	var header:=Label.new();header.text="MENSAJES · "+("Guillermo" if scene_id=="reconnect" else "Conversación");header.position=Vector2(385,165);header.add_theme_font_size_override("font_size",20);header.add_theme_color_override("font_color",Color("ebc48a"));phone_ui.add_child(header)
-	for i in range(phone_messages.size()):
-		var item: Dictionary=phone_messages[i]
+	for item in phone_messages:
 		var outgoing: bool=item.speaker=="Anami"
-		var bubble:=ColorRect.new();bubble.color=Color("426764") if outgoing else Color("30475c");bubble.position=Vector2(410 if outgoing else 378,204+i*116);bubble.size=Vector2(495,108);bubble.mouse_filter=Control.MOUSE_FILTER_IGNORE;phone_ui.add_child(bubble)
-		var sender:=Label.new();sender.text=item.speaker+" · "+("enviado" if outgoing else "recibido");sender.position=bubble.position+Vector2(10,4);sender.add_theme_font_size_override("font_size",15);sender.add_theme_color_override("font_color",Color("ebc48a"));phone_ui.add_child(sender)
-		var content:=Label.new();content.text=item.text;content.position=bubble.position+Vector2(10,28);content.size=Vector2(475,74);content.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;content.add_theme_font_size_override("font_size",18);phone_ui.add_child(content);phone_labels.append(content)
+		var row:=HBoxContainer.new();row.size_flags_horizontal=Control.SIZE_EXPAND_FILL;phone_stack.add_child(row)
+		var spacer:=Control.new();spacer.custom_minimum_size.x=36
+		if outgoing:row.add_child(spacer)
+		var bubble:=PanelContainer.new();bubble.size_flags_horizontal=Control.SIZE_EXPAND_FILL;row.add_child(bubble)
+		var style:=StyleBoxFlat.new();style.bg_color=Color("426764") if outgoing else Color("30475c");style.set_corner_radius_all(5);style.set_content_margin_all(12);bubble.add_theme_stylebox_override("panel",style)
+		var column:=VBoxContainer.new();column.add_theme_constant_override("separation",4);bubble.add_child(column)
+		var sender:=Label.new();sender.text=item.speaker+" · "+("enviado" if outgoing else "recibido");sender.add_theme_font_size_override("font_size",14);sender.add_theme_color_override("font_color",Color("ebc48a"));column.add_child(sender)
+		var content:=Label.new();content.text=item.text;content.visible_characters_behavior=TextServer.VC_GLYPHS_AUTO;content.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;content.size_flags_horizontal=Control.SIZE_EXPAND_FILL;content.add_theme_font_size_override("font_size",18);column.add_child(content);phone_labels.append(content)
+		if not outgoing:row.add_child(spacer)
+	_scroll_latest.call_deferred(phone_revision)
+
+func _scroll_latest(revision: int) -> void:
+	if not is_inside_tree():return
+	await get_tree().process_frame
+	if not is_inside_tree():return
+	await get_tree().process_frame
+	if is_instance_valid(phone_scroll) and revision==phone_revision:
+		phone_scroll.scroll_vertical=int(phone_scroll.get_v_scroll_bar().max_value)
 
 func _draw_population() -> void:
 	var npcs: Array=scene_config.get("npcs",[])
-	for i in range(npcs.size()):
-		var npc: Dictionary=npcs[i]
-		var pos:=_point(npc.position)
-		var registered:=false
-		for prop in target_visuals.values():
-			if prop.visual_kind=="npc" and prop.position.distance_to(pos)<1:registered=true;break
-		if registered:continue
-		var walk: float=float(npc.get("walk",0))
-		var offset:=Vector2(sin(clock*.65+i)*walk,0)
-		if walk>0 and can_stand(pos+offset):pos+=offset
-		var sprite_index:=int(npc.sprite)
-		if sprite_index<npc_art.size():
-			var size:=Vector2(64,70) if npc.get("seated",false) else Vector2(64,96)
-			var nod:=2.0 if int(clock+i)%7==0 else 0.0
-			if walk>0:nod=roundf(sin(clock*5+i))*2
-			draw_texture_rect(npc_art[sprite_index],Rect2(pos-Vector2(32,size.y-5+nod),size),false)
-			if location=="debate" and int(clock+i*2)%11==0:
-				draw_rect(Rect2(pos+Vector2(24,-42),Vector2(6,14)),Color("d9b78e"))
-		if int(clock*.4+i)%9==0:
-			draw_string(ThemeDB.fallback_font,pos+Vector2(-10,-105),"…",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("d6e2cd"))
 	if location=="debate":
 		for item in npcs:
 			var p:=_point(item.position)
