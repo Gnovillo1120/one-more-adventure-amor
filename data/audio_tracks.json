@@ -1,0 +1,13 @@
+{
+  "note": "Replacement recordings have NOT been supplied. Existing synthetic music is preserved but muted. Sound cues remain enabled.",
+  "tracks": {
+    "uees": {"instruments": "light acoustic piano, pizzicato strings, flute", "loop_start": 0},
+    "ikura": {"instruments": "romantic acoustic piano, gentle strings", "loop_start": 0},
+    "halloween": {"instruments": "rhythmic party ambience", "loop_start": 0},
+    "intimate": {"instruments": "intimate piano, soft strings", "loop_start": 0},
+    "cookies": {"instruments": "playful pizzicato strings, woodwinds", "loop_start": 0},
+    "minecraft": {"instruments": "atmospheric strings, flute, harp", "loop_start": 0},
+    "boss": {"instruments": "dramatic orchestral percussion and strings", "loop_start": 0},
+    "ending": {"instruments": "expressive piano, soft string arrangement", "loop_start": 0}
+  }
+}

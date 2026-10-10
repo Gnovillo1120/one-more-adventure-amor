@@ -20,6 +20,7 @@ var enemies: Array = []
 var targets: Dictionary = {}
 var materials: Dictionary = {}
 var marker_labels: Dictionary = {}
+var target_objects: Dictionary = {}
 var danger_ring: MeshInstance3D
 var world_environment: Environment
 var daylight: DirectionalLight3D
@@ -97,6 +98,28 @@ func _label(pos: Vector3, text: String) -> Label3D:
 func _marker(key: String, pos: Vector3, title: String) -> void:
 	targets[key] = pos
 	marker_labels[key] = _label(pos + Vector3(0, 2.8, 0), title)
+	var object:=Node3D.new();object.name="Object_"+key;object.position=pos;add_child(object)
+	target_objects[key]=object
+	if key=="cat":
+		target_objects[key]=cat;object.queue_free();return
+	if key=="villager":_avatar(Vector3.ZERO,Color("8eaa76"),Color("5e4a39"),object)
+	elif key=="portal":
+		for x in [-1.3,1.3]:_box(Vector3(x,1.4,0),Vector3(.3,2.8,.4),Color("b696bd"),false,object)
+		_box(Vector3(0,2.8,0),Vector3(2.9,.3,.4),Color("b696bd"),false,object)
+		_box(Vector3(0,1.3,0),Vector3(2.3,2.3,.08),Color("7193b4"),false,object)
+	elif key.begins_with("switch"):
+		_box(Vector3(0,.25,0),Vector3(.8,.5,.8),Color("aa9273"),false,object)
+		_box(Vector3(0,.85,0),Vector3(.18,.8,.18),Color("759ead") if key=="switch0" else Color("c9c7bd") if key=="switch1" else Color("91b16f"),false,object)
+		_box(Vector3(.25,1.2,0),Vector3(.7,.2,.3),Color("bdab8a"),false,object)
+	elif key=="bridge":
+		_box(Vector3(0,.75,0),Vector3(.2,1.5,.2),Color("907157"),false,object)
+		_box(Vector3(0,1.45,0),Vector3(1.2,.6,.2),Color("d4b886"),false,object)
+	elif key=="fish" or key.begins_with("memory"):
+		var icon: String="fish" if key=="fish" else ["diploma","gyoza","bandana","cookie"][int(key.trim_prefix("memory"))]
+		var sprite:=Sprite3D.new();sprite.texture=load("res://assets/art/sprites/%s.png" % icon);sprite.pixel_size=.045;sprite.billboard=BaseMaterial3D.BILLBOARD_ENABLED;sprite.texture_filter=BaseMaterial3D.TEXTURE_FILTER_NEAREST;sprite.position.y=.7 if key=="fish" else 2.15;object.add_child(sprite)
+	elif key=="guillermo":
+		# Ground-anchor stone points into the visible crystal and rescued actor.
+		_box(Vector3(0,.12,0),Vector3(1,.24,1),Color("cbaedb"),false,object)
 
 func _avatar(pos: Vector3, clothing: Color, hair: Color, parent: Node3D = null) -> Node3D:
 	var a := Node3D.new()

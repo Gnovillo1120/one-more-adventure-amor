@@ -13,245 +13,2974 @@
   },
   "chapters": [
     {
-      "id": "uees", "title": "El delegado y la ADHOC", "subtitle": "UEES · 20 de septiembre · El último de tres días", "keepsake": "Diploma de Mejor Delegado",
+      "id": "uees",
+      "title": "El delegado y la ADHOC",
+      "subtitle": "UEES · 20 de septiembre · El último de tres días",
+      "keepsake": "Diploma de Mejor Delegado",
       "scenes": [
-        {"id":"arrival","location":"debate","title":"Una llegada inesperada","objective":"Acércate a Guillermo. WASD para caminar; E para interactuar.","task":"talk","interact_label":"Entrar al debate","lines":[
-          {"speaker":"Narrador","text":"El modelo llevaba tres días. Era 20 de septiembre, el último día, y todavía faltaba una pequeña sorpresa.","mood":"neutral"},
-          {"speaker":"Presidencia","text":"Delegados, recibimos a Anami, quien nos acompañará como ADHOC.","mood":"neutral"},
-          {"speaker":"Anami","text":"Hola. Prometo ayudar… y escuchar con atención.","mood":"happy"},
-          {"speaker":"Guillermo","text":"La delegación de Ucrania les da la bienvenida.","mood":"neutral"},
-          {"speaker":"Anami","text":"Qué formal. ¿Hasta para saludar necesitas una moción?","mood":"playful"},
-          {"speaker":"Guillermo","text":"Solo si la presidencia me niega la palabra.","mood":"playful"},
-          {"speaker":"Anami","text":"Entonces voy a tener que estar pendiente de esa delegación.","mood":"happy"},
-          {"speaker":"Narrador","text":"Por ahora, solo eran la ADHOC y el delegado de Ucrania. Por ahora.","mood":"affectionate"}
-        ],"after":[]},
-        {"id":"caucus","location":"debate","title":"Una réplica bien puesta","objective":"Escucha el argumento y elige tu réplica.","task":"choice","interact_label":"Tomar la palabra","lines":[
-          {"speaker":"Presidencia","text":"Abrimos el caucus moderado. Ucrania tiene la palabra.","mood":"neutral"},
-          {"speaker":"Guillermo","text":"Si una estadística muestra avances limitados, debemos revisar la eficacia de los compromisos. La delegación de Chad podría explicarnos su posición.","mood":"neutral"},
-          {"speaker":"Narrador","text":"Este argumento es una recreación: la estadística exacta de aquel debate no se recuerda.","mood":"neutral"},
-          {"speaker":"Anami","text":"Una cifra sin contexto no cuenta toda la historia. También hay que considerar las condiciones de cada país.","mood":"neutral"},
-          {"speaker":"Anami","text":"Y creo que Ucrania acaba de descubrir un pequeño problema con su argumento.","mood":"playful","choices":["Solicito contexto y un poquito de humildad.","Qué bonito dato. Ahora veamos qué significa.","¿Esa estadística venía con instrucciones?"]},
-          {"speaker":"Guillermo","text":"La delegación… acepta la observación.","mood":"embarrassed"},
-          {"speaker":"Anami","text":"Muy diplomático de tu parte.","mood":"playful"},
-          {"speaker":"Guillermo","text":"Me avisaron que habría debate. No que la ADHOC venía con contraataque incluido.","mood":"playful"},
-          {"speaker":"Anami","text":"Servicio completo.","mood":"happy"}
-        ],"after":[]},
-        {"id":"foot","location":"lobby","title":"El incidente diplomático","objective":"Encuentra a Guillermo junto a la salida.","task":"talk","interact_label":"Cruzar la puerta","lines":[
-          {"speaker":"Guillermo","text":"Permiso, voy un momento al baño y…","mood":"neutral"},
-          {"speaker":"Anami","text":"¡Ay!","mood":"surprised"},
-          {"speaker":"Narrador","text":"En la salida, un paso distraído aterrizó justo sobre el pie de Anami.","mood":"neutral"},
-          {"speaker":"Guillermo","text":"¡Perdón! No te vi el pie. ¿Estás bien?","mood":"worried"},
-          {"speaker":"Anami","text":"Primero me cuestionas en el debate y ahora me pisas. Tremenda estrategia.","mood":"playful"},
-          {"speaker":"Guillermo","text":"Prometo que no era una represalia diplomática.","mood":"embarrassed"},
-          {"speaker":"Anami","text":"Queda registrado en actas.","mood":"playful"},
-          {"speaker":"Guillermo","text":"¿Puedo negociar la paz con una disculpa?","mood":"happy"},
-          {"speaker":"Anami","text":"Aceptada. Pero mira por dónde caminas, delegado.","mood":"happy"}
-        ],"after":[]},
-        {"id":"lunch","location":"dining","title":"La silla de al lado","objective":"Siéntate junto a Guillermo en el comedor.","task":"sit","interact_label":"Elegir esta silla","lines":[
-          {"speaker":"Narrador","text":"Había otras sillas libres. Anami eligió la que estaba junto a Guillermo.","mood":"affectionate"},
-          {"speaker":"Guillermo","text":"¿Otra ronda de debate durante el almuerzo?","mood":"playful"},
-          {"speaker":"Anami","text":"Solo si no me vuelves a pisar.","mood":"happy"},
-          {"speaker":"Guillermo","text":"Trato. ¿En qué colegio estás?","mood":"neutral"},
-          {"speaker":"Anami","text":"En el Delta. Y antes de que preguntes: no vine buscando una discusión contigo.","mood":"playful"},
-          {"speaker":"Guillermo","text":"Entonces, ¿cómo terminaste de ADHOC?","mood":"happy"},
-          {"speaker":"Anami","text":"Mi hermano Nestor es fotógrafo del modelo. Me pidió que viniera a ayudar porque no tenía nada más que hacer.","mood":"neutral"},
-          {"speaker":"Guillermo","text":"Qué buena decisión la de Nestor.","mood":"happy"},
-          {"speaker":"Anami","text":"¿Por la ayuda o por alguien que te ponga en tu sitio?","mood":"playful"},
-          {"speaker":"Guillermo","text":"Estoy evaluando ambas posibilidades.","mood":"embarrassed"},
-          {"speaker":"Anami","text":"Tómate tu tiempo. Yo ya escogí silla.","mood":"affectionate"},
-          {"speaker":"Narrador","text":"Una conversación pequeña. Una elección que después se volvería enorme.","mood":"affectionate"}
-        ],"after":[]},
-        {"id":"award","location":"auditorium","title":"Mejor Delegado","objective":"Acércate al diploma en el auditorio.","task":"talk","interact_label":"Examinar el diploma","lines":[
-          {"speaker":"Presidencia","text":"El reconocimiento a Mejor Delegado es para Guillermo, delegado de Ucrania.","mood":"happy"},
-          {"speaker":"Anami","text":"¡Guillermo! Felicitaciones.","mood":"happy"},
-          {"speaker":"Guillermo","text":"Gracias. Todavía estoy procesándolo.","mood":"happy"},
-          {"speaker":"Anami","text":"A ver ese diploma. Necesito verificar que no diga ‘Mejor Pisador de Pies’.","mood":"playful"},
-          {"speaker":"Narrador","text":"Anami tomó el diploma para mirarlo de cerca.","mood":"neutral"},
-          {"speaker":"Guillermo","text":"Ese premio era secreto.","mood":"playful"},
-          {"speaker":"Anami","text":"Sí dice Mejor Delegado. Bueno… te lo ganaste.","mood":"affectionate"},
-          {"speaker":"Guillermo","text":"Esa aprobación vale bastante, viniendo de mi crítica más exigente.","mood":"happy"},
-          {"speaker":"Anami","text":"No te acostumbres. Todavía reviso tus argumentos.","mood":"playful"}
-        ],"after":[]},
-        {"id":"goodbye","location":"lobby","title":"Una despedida pendiente","objective":"Camina hasta la salida del vestíbulo.","task":"choice","interact_label":"Mirar hacia la salida","lines":[
-          {"speaker":"Narrador","text":"En el vestíbulo, Guillermo estaba mirando su teléfono.","mood":"neutral"},
-          {"speaker":"Anami","text":"Podría acercarme y despedirme.","mood":"neutral","choices":["Ensayar un ‘nos vemos’ en la cabeza.","Esperar a que levante la mirada.","Dar dos pasos… y pensarlo otra vez."]},
-          {"speaker":"Anami","text":"Seguro está ocupado. Mejor no lo interrumpo.","mood":"embarrassed"},
-          {"speaker":"Narrador","text":"No se acercó. La despedida quedó sin decir.","mood":"neutral"},
-          {"speaker":"Anami","text":"Qué raro. Hace unas horas ni lo conocía y ahora me quedé con ganas de hablar más.","mood":"affectionate"},
-          {"speaker":"Narrador","text":"A veces una historia empieza con un diploma, una silla y una frase que todavía no te animas a decir.","mood":"affectionate"},
-          {"speaker":"Narrador","text":"Recuerdo guardado: el diploma de Mejor Delegado.","mood":"happy"}
-        ],"after":[]}
+        {
+          "id": "arrival",
+          "location": "debate",
+          "title": "El último día del modelo",
+          "objective": "Recoge tu acreditación y acércate a la presidencia.",
+          "task": "talk",
+          "interact_label": "Entrar al debate",
+          "lines": [
+            {
+              "speaker": "Presidencia",
+              "text": "Delegados, Anami se incorpora hoy como ADHOC. Puede apoyar a la mesa y participar cuando se le conceda la palabra.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Buenos días. Gracias, presidenta.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Presidencia",
+              "text": "Seguimos con seguridad alimentaria y comercio. Ucrania, conserve su turno; la ADHOC puede revisar el documento de trabajo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Gracias, presidencia. ¿Te paso una copia?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Sí, por favor. Voy a ponerme al día antes de meter la cuchara.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Hay bastante que revisar. Nos fuimos un poco de largo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Eso ya lo noté. La hoja tiene más tachones que texto.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Versión de trabajo. Suena mejor que desastre.",
+              "mood": "embarrassed"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              805,
+              490
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "badge",
+                "label": "Recoger acreditación",
+                "position": [
+                  320,
+                  560
+                ],
+                "lines": [
+                  {
+                    "speaker": "Secretaría",
+                    "text": "Aquí está tu acreditación. ADHOC, junto a la mesa. ¿Necesitas un esfero?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Sí. Llegué con ganas de ayudar y cero útiles.",
+                    "mood": "embarrassed"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 3,
+                "visual": {
+                  "kind": "badge"
+                }
+              },
+              {
+                "id": "main",
+                "label": "Presentarte a presidencia",
+                "position": [
+                  640,
+                  270
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "chad",
+                "label": "Delegación de Chad",
+                "position": [
+                  300,
+                  317
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegación de Chad",
+                    "text": "No buscamos que todo se explique con una sola causa. Importaciones, clima, conflictos y pobreza se cruzan.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Eso merece un párrafo propio. Gracias.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                }
+              },
+              {
+                "id": "brasil",
+                "label": "Delegación de Brasil",
+                "position": [
+                  300,
+                  462
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegación de Brasil",
+                    "text": "Tengo tres borradores. El bueno probablemente está debajo del café.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Mientras no sea el que vas a entregar…",
+                    "mood": "playful"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 2,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_2.png"
+                }
+              },
+              {
+                "id": "paper",
+                "label": "Consultar documento",
+                "position": [
+                  650,
+                  370
+                ],
+                "lines": [
+                  {
+                    "speaker": "Documento de trabajo",
+                    "text": "Prioridades: acceso a alimentos, comercio seguro, apoyo agrícola y coordinación humanitaria. Sin cifras inventadas.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              },
+              {
+                "id": "france",
+                "label": "Delegación de Francia",
+                "position": [
+                  950,
+                  317
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Francia",
+                    "text": "Estamos revisando cómo facilitar el comercio sin perder de vista la ayuda humanitaria. ¿Ustedes ya acordaron prioridades?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              },
+              {
+                "id": "kenia",
+                "label": "Delegación de Kenia",
+                "position": [
+                  950,
+                  462
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Kenia",
+                    "text": "Acceso a alimentos también es poder comprarlos. Queremos que eso quede claro en la propuesta.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Chad",
+                "sprite": 0,
+                "position": [
+                  300,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Francia",
+                "sprite": 1,
+                "position": [
+                  950,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Brasil",
+                "sprite": 2,
+                "position": [
+                  300,
+                  462
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Kenia",
+                "sprite": 0,
+                "position": [
+                  950,
+                  462
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Presidencia",
+                "sprite": 1,
+                "position": [
+                  640,
+                  270
+                ],
+                "walk": 0,
+                "seated": true
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "caucus",
+          "location": "debate",
+          "title": "Una réplica bien puesta",
+          "objective": "Lee el documento de trabajo y participa en el caucus.",
+          "task": "choice",
+          "interact_label": "Tomar la palabra",
+          "lines": [
+            {
+              "speaker": "Presidencia",
+              "text": "Se abre un caucus moderado sobre el acceso a alimentos. Tiene la palabra la delegación de Ucrania.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "La guerra ha interrumpido rutas de exportación del mar Negro. Países que importan alimentos quedan expuestos a precios y transporte más caros.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Proponemos facilitar envíos y coordinar asistencia con el PMA. Recuperar el comercio ayudaría a países vulnerables, incluido Chad.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Delegación de Chad",
+              "text": "Agradecemos la propuesta. También necesitamos considerar producción local, sequías y la capacidad de las familias para pagar los alimentos.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Presidencia",
+              "text": "ADHOC, tiene una breve intervención.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Reabrir una ruta ayuda, pero no hace que todos puedan comprar. Los fertilizantes y otros insumos también se han encarecido.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Si el productor no puede sembrar, el problema sigue. ¿Podemos incluir apoyo agrícola con la FAO, además de ayuda urgente?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "De acuerdo. Mi propuesta se concentró demasiado en el transporte.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Entonces añadimos…",
+              "mood": "neutral",
+              "choices": [
+                "Apoyo a productores y asistencia para familias vulnerables.",
+                "Rutas de comercio y compras humanitarias coordinadas.",
+                "Una respuesta que distinga urgencia y recuperación agrícola."
+              ]
+            },
+            {
+              "speaker": "Presidencia",
+              "text": "Las tres líneas pueden complementar el documento. Delegados, trabajen una redacción conjunta.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Llegaste hace cinco minutos y ya me corregiste la propuesta.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Seis. Me demoré buscando un esfero.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Bueno, bien vista la observación. Hablemos en el receso.",
+              "mood": "happy"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              805,
+              490
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "brief",
+                "label": "Revisar propuesta",
+                "position": [
+                  570,
+                  395
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Exportaciones y ayuda urgente… falta decir cómo apoyar a quien produce y a quien no puede comprar.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Ya. Ahora sí tengo una observación.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "document"
+                }
+              },
+              {
+                "id": "main",
+                "label": "Solicitar la palabra",
+                "position": [
+                  640,
+                  425
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "lectern"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "chad",
+                "label": "Delegación de Chad",
+                "position": [
+                  300,
+                  317
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegación de Chad",
+                    "text": "No buscamos que todo se explique con una sola causa. Importaciones, clima, conflictos y pobreza se cruzan.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Eso merece un párrafo propio. Gracias.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                }
+              },
+              {
+                "id": "brasil",
+                "label": "Delegación de Brasil",
+                "position": [
+                  300,
+                  462
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegación de Brasil",
+                    "text": "Tengo tres borradores. El bueno probablemente está debajo del café.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Mientras no sea el que vas a entregar…",
+                    "mood": "playful"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 2,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_2.png"
+                }
+              },
+              {
+                "id": "paper",
+                "label": "Consultar documento",
+                "position": [
+                  650,
+                  370
+                ],
+                "lines": [
+                  {
+                    "speaker": "Documento de trabajo",
+                    "text": "Prioridades: acceso a alimentos, comercio seguro, apoyo agrícola y coordinación humanitaria. Sin cifras inventadas.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              },
+              {
+                "id": "trivia",
+                "label": "Reto diplomático · opcional",
+                "position": [
+                  805,
+                  490
+                ],
+                "lines": [],
+                "kind": "trivia",
+                "sprite": -1,
+                "visual": {
+                  "kind": "companion"
+                }
+              },
+              {
+                "id": "notes",
+                "label": "Escribir una observación",
+                "position": [
+                  1040,
+                  550
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                },
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Nota para el documento: abrir rutas ayuda; también hay que pensar quién puede pagar y quién puede producir.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Delegada",
+                    "text": "Eso sí cabe en una propuesta. Lo paso a la mesa.",
+                    "mood": "happy"
+                  }
+                ]
+              },
+              {
+                "id": "france",
+                "label": "Delegación de Francia",
+                "position": [
+                  950,
+                  317
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Francia",
+                    "text": "Estamos revisando cómo facilitar el comercio sin perder de vista la ayuda humanitaria. ¿Ustedes ya acordaron prioridades?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              },
+              {
+                "id": "kenia",
+                "label": "Delegación de Kenia",
+                "position": [
+                  950,
+                  462
+                ],
+                "kind": "talk",
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Delegación de Kenia",
+                    "text": "Acceso a alimentos también es poder comprarlos. Queremos que eso quede claro en la propuesta.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Déjame revisar el borrador con ustedes.",
+                    "mood": "neutral"
+                  }
+                ]
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Chad",
+                "sprite": 0,
+                "position": [
+                  300,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Francia",
+                "sprite": 1,
+                "position": [
+                  950,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Brasil",
+                "sprite": 2,
+                "position": [
+                  300,
+                  462
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Kenia",
+                "sprite": 0,
+                "position": [
+                  950,
+                  462
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Presidencia",
+                "sprite": 1,
+                "position": [
+                  640,
+                  270
+                ],
+                "walk": 0,
+                "seated": true
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "foot",
+          "location": "lobby",
+          "title": "El incidente diplomático",
+          "objective": "Encuentra a Guillermo junto a la salida.",
+          "task": "talk",
+          "interact_label": "Cruzar la puerta",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "Permiso, voy al baño antes de que vuelvan a cerrar el caucus…",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¡Ay!",
+              "mood": "surprised"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Al pasar por la puerta, Guillermo pisó accidentalmente el pie de Anami.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¡Chuta, perdón! ¿Te lastimé?",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Estoy bien. Pero mira por dónde caminas, delegado.",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Sí. Debatir y caminar al mismo tiempo salió pésimo.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Una actividad a la vez, por favor.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Anotado. De verdad, disculpa.",
+              "mood": "worried"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              780,
+              495
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Cruzar hacia el receso",
+                "position": [
+                  780,
+                  495
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "water",
+                "label": "Tomar agua",
+                "position": [
+                  440,
+                  485
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Necesitaba esto. Debatir da sed, aunque una no tenga delegación.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "table"
+                }
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Staff",
+                "sprite": 3,
+                "position": [
+                  460,
+                  420
+                ],
+                "walk": 12,
+                "seated": false
+              },
+              {
+                "name": "Delegado",
+                "sprite": 2,
+                "position": [
+                  1000,
+                  470
+                ],
+                "walk": 0,
+                "seated": false
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "lunch",
+          "location": "dining",
+          "title": "La silla de al lado",
+          "objective": "Siéntate junto a Guillermo en el comedor.",
+          "task": "sit",
+          "interact_label": "Elegir esta silla",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "¿Está libre esta silla? Bueno, sí. La pregunta era si quieres sentarte.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Sí, gracias. Y deja mis pies fuera de la negociación.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Prometido. ¿De qué colegio vienes?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Del Delta. Vine porque mi hermano Nestor está tomando las fotos del modelo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Él te trajo?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Me pidió que ayudara. No tenía nada más que hacer, así que aquí estoy.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Y justo hoy cerramos. Te perdiste dos días de corregirnos.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Parece que los aproveché bastante igual.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Eso no te lo discuto. ¿Me pasas el agua?",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Claro. Ya, ahora sí almorcemos.",
+              "mood": "happy"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              950,
+              420
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Elegir la silla de al lado",
+                "position": [
+                  885,
+                  420
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "chair",
+                  "fixture": "seat_anami"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "lunch_delegate",
+                "label": "Conversar en otra mesa",
+                "position": [
+                  320,
+                  317
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegada",
+                    "text": "Fuera de sesión también podemos hablar sin decir «la delegación». Me cuesta acordarme.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "La ADHOC… digo, yo también necesito practicar.",
+                    "mood": "happy"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
+              },
+              {
+                "id": "photographer",
+                "label": "Preguntar por las fotos",
+                "position": [
+                  500,
+                  535
+                ],
+                "lines": [
+                  {
+                    "speaker": "Staff de fotografía",
+                    "text": "Nestor está revisando las fotos de la sesión. Después les pasan las del grupo.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Perfecto, quería guardarlas.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 3,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_3.png"
+                }
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Delegada",
+                "sprite": 1,
+                "position": [
+                  320,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Delegado",
+                "sprite": 0,
+                "position": [
+                  320,
+                  477
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Comensal",
+                "sprite": 2,
+                "position": [
+                  940,
+                  267
+                ],
+                "walk": 0,
+                "seated": true
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            },
+            "seat": [
+              885,
+              420
+            ]
+          }
+        },
+        {
+          "id": "award",
+          "location": "auditorium",
+          "title": "Mejor Delegado",
+          "objective": "Acércate al diploma en el auditorio.",
+          "task": "talk",
+          "interact_label": "Examinar el diploma",
+          "lines": [
+            {
+              "speaker": "Presidencia",
+              "text": "Gracias por estos tres días. El reconocimiento a Mejor Delegado es para Ucrania: Guillermo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Muchas gracias, presidencia.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "A ver, préstame eso.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Mi diploma? ¡Si recién me lo dieron!",
+              "mood": "surprised"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Sí, quiero leerlo. «Mejor Delegado»… ya, sí es oficial.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Había dudas?",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Siempre hay que verificar las fuentes.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Pero devuélveme la fuente antes de irte.",
+              "mood": "happy"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              805,
+              490
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "audience",
+                "label": "Acercarte a la ceremonia",
+                "position": [
+                  620,
+                  430
+                ],
+                "lines": [
+                  {
+                    "speaker": "Staff",
+                    "text": "Pueden acercarse por el pasillo central. Ya empieza la entrega de reconocimientos.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 3,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_3.png"
+                }
+              },
+              {
+                "id": "main",
+                "label": "Ver el diploma",
+                "position": [
+                  770,
+                  500
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/diploma.png"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "applause",
+                "label": "Felicitar a una delegación",
+                "position": [
+                  500,
+                  490
+                ],
+                "lines": [
+                  {
+                    "speaker": "Delegada",
+                    "text": "Al fin podemos aplaudir sin pedir la palabra. Felicitaciones a todos.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Presidencia",
+                "sprite": 1,
+                "position": [
+                  645,
+                  280
+                ],
+                "walk": 0,
+                "seated": false
+              },
+              {
+                "name": "Delegado",
+                "sprite": 0,
+                "position": [
+                  200,
+                  335
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Delegada",
+                "sprite": 1,
+                "position": [
+                  350,
+                  380
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Delegado",
+                "sprite": 2,
+                "position": [
+                  950,
+                  330
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Observadora",
+                "sprite": 3,
+                "position": [
+                  1100,
+                  385
+                ],
+                "walk": 0,
+                "seated": true
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "goodbye",
+          "location": "lobby",
+          "title": "Una despedida pendiente",
+          "objective": "Camina hasta la salida del vestíbulo.",
+          "task": "choice",
+          "interact_label": "Mirar hacia la salida",
+          "lines": [
+            {
+              "speaker": "Anami",
+              "text": "Ya me vienen a recoger.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Guillermo revisaba su teléfono, unos pasos más allá.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Podría acercarme…",
+              "mood": "neutral",
+              "choices": [
+                "Esperar un momento, sin interrumpir.",
+                "Guardar las fotos para mandárselas después.",
+                "Salir tranquila; ya habrá otra ocasión."
+              ]
+            },
+            {
+              "speaker": "Narrador",
+              "text": "La salida empezó a llenarse de gente. Anami se fue sin alcanzarlo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Bueno. Luego le mando las fotos.",
+              "mood": "neutral"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              840,
+              460
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Decidir antes de salir",
+                "position": [
+                  740,
+                  490
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "schedule",
+                "label": "Revisar horario",
+                "position": [
+                  390,
+                  480
+                ],
+                "lines": [
+                  {
+                    "speaker": "Programa",
+                    "text": "Clausura del tercer día · 20 de septiembre. Gracias por participar.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Staff",
+                "sprite": 3,
+                "position": [
+                  1040,
+                  485
+                ],
+                "walk": 25,
+                "seated": false
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        }
       ]
     },
-    {"id":"ikura","title":"El incidente del ghosting","subtitle":"Un mensaje perdido · Una segunda oportunidad","keepsake":"Gyoza compartida","scenes":[
-      {"id":"moncayo","location":"phone","title":"Moncayo descubre todo","objective":"Abre la conversación del teléfono.","task":"talk","interact_label":"Leer mensajes","lines":[
-        {"speaker":"Narrador","text":"Después del modelo, Anami le envió por Instagram fotos de Guillermo y sus amigos.","mood":"neutral"},
-        {"speaker":"Anami","text":"Aquí van las fotos. Salieron lindas.","mood":"happy"},
-        {"speaker":"Narrador","text":"Guillermo no entendió que podía haber interés detrás del mensaje. Más tarde se le pasó una respuesta y dejó de contestar sin querer.","mood":"neutral"},
-        {"speaker":"Anami","text":"Bueno. Parece que el delegado también sabe desaparecer.","mood":"worried"},
-        {"speaker":"Narrador","text":"En el Salinas Yacht Club, Moncayo se encontró con Anami y descubrió lo que su amigo no había entendido.","mood":"neutral"},
-        {"speaker":"Moncayo","text":"Bro, me encontré a la ADHOC.","mood":"playful"},
-        {"speaker":"Guillermo","text":"¿Y?","mood":"neutral"},
-        {"speaker":"Moncayo","text":"LE GUSTAS Y LA DEJASTE EN VISTO.","mood":"surprised"},
-        {"speaker":"Guillermo","text":"…","mood":"surprised"},
-        {"speaker":"Moncayo","text":"Mejor Delegado, peor lector de señales.","mood":"playful"},
-        {"speaker":"Guillermo","text":"No fue a propósito. Pensé que solo me estaba mandando las fotos.","mood":"embarrassed"},
-        {"speaker":"Moncayo","text":"Pues ya sabes. Escríbele y deja de debatir contigo mismo.","mood":"playful"}
-      ],"after":[]},
-      {"id":"reconnect","location":"phone","title":"Una invitación con respuesta","objective":"Responde a Guillermo.","task":"choice","interact_label":"Abrir la conversación","lines":[
-        {"speaker":"Guillermo","text":"Hola, Anami. Perdón por desaparecer. Se me pasó el mensaje y luego no me di cuenta de que no había respondido.","mood":"embarrassed"},
-        {"speaker":"Anami","text":"Ah, ¿sigues en esta dimensión?","mood":"playful","choices":["Declaramos terminada la desaparición diplomática.","Ya iba a emitir una alerta de delegado perdido.","Bienvenido de vuelta, fantasma."]},
-        {"speaker":"Guillermo","text":"Me merezco ese comentario.","mood":"playful"},
-        {"speaker":"Anami","text":"Me quedé pensando que no querías hablar.","mood":"worried"},
-        {"speaker":"Guillermo","text":"Sí quiero. Lo siento de verdad.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Volvieron los mensajes. Las conversaciones empezaron a guardar un espacio para verse.","mood":"neutral"},
-        {"speaker":"Guillermo","text":"¿Te gustaría ir a Ikura conmigo?","mood":"happy"},
-        {"speaker":"Anami","text":"Sí. Pero hay temas que no te voy a contar todavía.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Perfecto. Yo también estoy guardando conversación para ese día.","mood":"happy"},
-        {"speaker":"Anami","text":"Entonces ven preparado. Y con batería en el teléfono.","mood":"playful"}
-      ],"after":[]},
-      {"id":"date","location":"ikura","title":"Reservamos conversación","objective":"Sirve las gyozas compartidas, el miso ramen de Guillermo y el sushi de Anami.","task":"food","interact_label":"Sentarse a cenar","lines":[
-        {"speaker":"Guillermo","text":"Bueno. Llegó la fecha de revelar los temas reservados.","mood":"happy"},
-        {"speaker":"Anami","text":"Espero que no hayas usado todos por chat.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Administración responsable de conversación.","mood":"playful"},
-        {"speaker":"Anami","text":"Podemos compartir gyozas. Yo quiero sushi.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Y para mí, miso ramen.","mood":"happy"},
-        {"speaker":"Anami","text":"Bien. Primero resolvemos la comida, después el chisme.","mood":"playful"}
-      ],"after":[
-        {"speaker":"Anami","text":"En mi colegio pasó un drama. Alguien salió con el ex de una amiga y todo se volvió un problema.","mood":"surprised"},
-        {"speaker":"Guillermo","text":"Ya empezó fuerte el primer tema.","mood":"playful"},
-        {"speaker":"Anami","text":"Y hubo un momento súper emocional en pleno patio. Imagínate la gente mirando.","mood":"worried"},
-        {"speaker":"Guillermo","text":"No sé cómo mantuviste eso guardado para hoy.","mood":"surprised"},
-        {"speaker":"Anami","text":"Disciplina. Quería ver tu reacción en persona.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Entonces estas gyozas vienen con espectáculo incluido.","mood":"happy"},
-        {"speaker":"Anami","text":"Y tú tienes turno. A ver esos temas que reservaste.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Primero uno fácil: me alegra mucho estar aquí contigo.","mood":"affectionate"},
-        {"speaker":"Anami","text":"A mí también. Fue mejor que quedarnos hablando por mensajes.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Una mesa, tres platos y una conversación que ya no necesitaba intermediarios.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Recuerdo guardado: una gyoza compartida.","mood":"happy"}
-      ]}
-    ]},
-    {"id":"halloween","title":"El comienzo de nosotros","subtitle":"21 de octubre de 2023","keepsake":"Bandana roja","scenes":[
-      {"id":"invitation","location":"phone","title":"Un plan de última hora","objective":"Lee la invitación y prepárate para la fiesta.","task":"choice","interact_label":"Leer invitación","lines":[
-        {"speaker":"Narrador","text":"Guillermo estaba en una prefiesta. Sus amigos lo animaron a invitar a Anami.","mood":"neutral"},
-        {"speaker":"Guillermo","text":"Sé que es de última hora… ¿quieres venir a la fiesta de Halloween?","mood":"embarrassed"},
-        {"speaker":"Anami","text":"¿De última hora? Qué organización impecable.","mood":"playful","choices":["Voy, pero mi disfraz merece un aplauso.","Acepto tu misión improvisada.","Dame un rato. La handyman está en camino."]},
-        {"speaker":"Guillermo","text":"Me conformo con que vengas.","mood":"happy"},
-        {"speaker":"Anami","text":"Listo. Vestido de denim y bandana roja. Todo bajo control.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Yo voy con maquillaje inspirado en Terminator.","mood":"playful"},
-        {"speaker":"Anami","text":"¿Entonces voy a arreglar un robot?","mood":"playful"},
-        {"speaker":"Guillermo","text":"Si me ves muy tieso bailando, sí.","mood":"happy"},
-        {"speaker":"Narrador","text":"Lo que empezó como un plan improvisado se convirtió en una fecha para recordar.","mood":"affectionate"}
-      ],"after":[]},
-      {"id":"dance","location":"party","title":"Un robot en la pista","objective":"Encuentra a Guillermo y sigue una secuencia sencilla de baile.","task":"dance","interact_label":"Bailar juntos","lines":[
-        {"speaker":"Narrador","text":"Una casa grande, un patio con césped, zonas de concreto y una piscina. La fiesta llenaba el lugar de luces y conversaciones.","mood":"neutral"},
-        {"speaker":"Anami","text":"¡Ahí estás! Sí pareces Terminator.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Y tú viniste lista para reparar cualquier emergencia.","mood":"playful"},
-        {"speaker":"Anami","text":"Mi primera inspección: ¿vas a bailar o vas a quedarte en modo máquina?","mood":"playful"},
-        {"speaker":"Guillermo","text":"Contigo bailo.","mood":"affectionate"},
-        {"speaker":"Anami","text":"Si nos equivocamos, inventamos un paso nuevo.","mood":"happy"}
-      ],"after":[
-        {"speaker":"Guillermo","text":"Ese giro definitivamente fue una actualización de software.","mood":"playful"},
-        {"speaker":"Anami","text":"No te preocupes, robot. Aprobaste la prueba.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Necesito sentarme un ratito.","mood":"neutral"},
-        {"speaker":"Anami","text":"Vamos junto a la piscina.","mood":"affectionate"}
-      ]},
-      {"id":"pool","location":"pool","title":"A la orilla","objective":"Siéntate junto a Guillermo en el borde de la piscina.","task":"sit","interact_label":"Sentarse a su lado","lines":[
-        {"speaker":"Narrador","text":"Guillermo se sentó de espaldas a la piscina, con los pies en el suelo. Anami se acomodó junto a él.","mood":"neutral"},
-        {"speaker":"Anami","text":"¿Ya no tienes batería?","mood":"playful"},
-        {"speaker":"Guillermo","text":"Para bailar, poquita. Para estar contigo, todavía.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Ella se apoyó en él. Guillermo la abrazó. Por un instante, el ruido de la fiesta pareció quedar más lejos.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Anami, me importas muchísimo.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Quiero estar contigo. Quiero que seas mi novia y tratarte bien.","mood":"affectionate"},
-        {"speaker":"Anami","text":"…","mood":"embarrassed"},
-        {"speaker":"Narrador","text":"Anami lo besó.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Creo que entendí la respuesta.","mood":"happy"},
-        {"speaker":"Anami","text":"Esta vez sí captaste la señal.","mood":"playful"},
-        {"speaker":"Narrador","text":"21 de octubre de 2023. El comienzo de nosotros.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Amor… creo que me dejaste un pequeño recuerdo en el cuello.","mood":"embarrassed"},
-        {"speaker":"Anami","text":"Edición limitada de Halloween.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Mañana voy a necesitar un cuello alto.","mood":"playful"},
-        {"speaker":"Narrador","text":"Recuerdo guardado: la bandana roja de aquella noche.","mood":"happy"}
-      ],"after":[]}
-    ]},
-    {"id":"cookies","title":"El gran debate de las galletas","subtitle":"En casa de Guillermo · Dos chefs, una receta","keepsake":"Galleta","scenes":[
-      {"id":"improvise","location":"kitchen","title":"La chef tiene un plan","objective":"Habla con Guillermo junto a la mesa de cocina.","task":"choice","interact_label":"Empezar a cocinar","lines":[
-        {"speaker":"Anami","text":"Hoy me encargo yo. Vamos a hacer galletas.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Tengo una receta que podemos seguir.","mood":"neutral"},
-        {"speaker":"Anami","text":"Amor, también podemos usar la intuición.","mood":"playful","choices":["La cantidad correcta es la que diga mi corazón.","Un poquito de esto, otro poquito de aquello.","Confía en la chef. Tiene delantal imaginario."]},
-        {"speaker":"Guillermo","text":"La intuición no trae temperatura de horno.","mood":"playful"},
-        {"speaker":"Anami","text":"Detalles administrativos.","mood":"playful"},
-        {"speaker":"Narrador","text":"Un rato después, las primeras galletas no quedaron como esperaban.","mood":"neutral"},
-        {"speaker":"Guillermo","text":"¿Son galletas o materiales de construcción?","mood":"surprised"},
-        {"speaker":"Anami","text":"Textura experimental. No están aprobadas todavía.","mood":"embarrassed"},
-        {"speaker":"Guillermo","text":"¿Probamos ahora con la receta?","mood":"happy"},
-        {"speaker":"Anami","text":"Bueno. Pero seguimos siendo un equipo.","mood":"affectionate"}
-      ],"after":[]},
-      {"id":"recipe","location":"kitchen","title":"Ahora sí, la receta","objective":"Sigue los pasos de la receta: mantequilla, azúcar, huevo y harina.","task":"bake","interact_label":"Preparar otra tanda","lines":[
-        {"speaker":"Guillermo","text":"Primero mezclamos mantequilla y azúcar. Después el huevo y la harina.","mood":"neutral"},
-        {"speaker":"Anami","text":"Entendido. Medir antes de improvisar.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Y horneamos la mezcla. Sin declarar la guerra a la receta.","mood":"happy"},
-        {"speaker":"Anami","text":"Esto en Culinary Wars tendría música dramática.","mood":"playful"}
-      ],"after":[
-        {"speaker":"Anami","text":"¡Estas sí quedaron buenas!","mood":"happy"},
-        {"speaker":"Guillermo","text":"Victoria compartida.","mood":"affectionate"},
-        {"speaker":"Anami","text":"Compartida. No vayas a sumar esto a Monopoly.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Todavía espero esa primera derrota.","mood":"playful"},
-        {"speaker":"Anami","text":"Y las pocas veces que te gano en Clash Royale cuentan doble.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Acepto negociar ese reglamento con una galleta.","mood":"happy"},
-        {"speaker":"Anami","text":"Trato hecho, amor.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Recuerdo guardado: una galleta hecha entre los dos.","mood":"happy"}
-      ]}
-    ]},
-    {"id":"voxel","title":"La dimensión de los recuerdos","subtitle":"Nuestro mundo · Una aventura que cambió las reglas","keepsake":"Recuerdos reunidos","scenes":[
-      {"id":"present","location":"present","title":"Una partida más","objective":"Acércate a Guillermo para entrar a su mundo compartido.","task":"talk","interact_label":"Jugar juntos","lines":[
-        {"speaker":"Anami","text":"¿Una partida más, amor?","mood":"happy"},
-        {"speaker":"Guillermo","text":"Una más. Aunque tú sabes que ‘una’ es una medida bastante flexible.","mood":"playful"},
-        {"speaker":"Anami","text":"Mientras no me mandes otra vez al vacío.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Derrotamos al dragón y después tú caminaste hacia donde no había piso.","mood":"playful"},
-        {"speaker":"Anami","text":"Estaba explorando límites. Literalmente.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Espera. ¿Viste eso junto a la casa?","mood":"worried"},
-        {"speaker":"Anami","text":"Tiene los ojos blancos. No me gusta cómo nos mira.","mood":"worried"},
-        {"speaker":"El Olvidado","text":"Casas, nombres, risas… tantos recuerdos guardados. ¿Qué quedará si se borran?","mood":"worried"},
-        {"speaker":"Guillermo","text":"Anami, quédate…","mood":"worried"},
-        {"speaker":"Narrador","text":"La pantalla se quebró en destellos. Guillermo desapareció.","mood":"surprised"},
-        {"speaker":"El Olvidado","text":"Si tus recuerdos significan tanto, encuéntralo.","mood":"worried"},
-        {"speaker":"Anami","text":"Amor, voy por ti.","mood":"affectionate"}
-      ],"after":[]},
-      {"id":"reunion","location":"present","title":"Encontrarte otra vez","objective":"Habla con Guillermo después de romper el cristal.","task":"talk","interact_label":"Abrazar a Guillermo","lines":[
-        {"speaker":"Guillermo","text":"¡Anami! Sabía que vendrías.","mood":"happy"},
-        {"speaker":"Anami","text":"Esta vez no estabas en visto. Estabas secuestrado en un cristal.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Definitivamente una peor excusa para no responder.","mood":"playful"},
-        {"speaker":"Anami","text":"Tuve que cruzar granjas, una cueva y el End. Y no me caí al vacío.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Eso merece su propio diploma.","mood":"playful"},
-        {"speaker":"Anami","text":"El gato también ayudó. Luego le damos más pescado.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Gracias por venir por mí, amor.","mood":"affectionate"},
-        {"speaker":"Anami","text":"No iba a dejar que se llevara nuestros recuerdos.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Nos falta hacer muchos más.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"El portal se abrió. Esta vez, lo cruzaron juntos.","mood":"affectionate"}
-      ],"after":[]}
-    ]},
-    {"id":"beach","title":"One More Adventure, Amor","subtitle":"Una playa sin nombre · Un atardecer juntos","keepsake":"Una aventura más","scenes":[
-      {"id":"sunset","location":"beach","title":"El lugar al que volvemos","objective":"Camina hacia Guillermo y siéntate a su lado.","task":"sit","interact_label":"Sentarse junto a él","lines":[
-        {"speaker":"Anami","text":"Por fin un lugar sin ojos blancos ni bloques corruptos.","mood":"happy"},
-        {"speaker":"Guillermo","text":"Solo tú, yo y el mar.","mood":"affectionate"},
-        {"speaker":"Anami","text":"Y un rato para respirar.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Quién diría que todo empezaría en aquel modelo.","mood":"affectionate"},
-        {"speaker":"Anami","text":"Con una réplica y un pie pisado. Muy romántico.","mood":"playful"},
-        {"speaker":"Guillermo","text":"Luego una mesa en Ikura, una bandana roja y unas galletas que sobrevivieron al segundo intento.","mood":"happy"},
-        {"speaker":"Anami","text":"Tenemos buen material para otra aventura.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Tengo algo para ti. Una carta que merece mis propias palabras.","mood":"affectionate"}
-      ],"after":[]},
-      {"id":"letter","location":"beach","title":"Para Anami","objective":"Abre la carta personal y disfruta del atardecer.","task":"talk","interact_label":"Leer la carta","lines":[
-        {"speaker":"Narrador","text":"CARTA PERSONAL — MARCADOR EDITABLE. El texto final de Guillermo todavía no ha sido escrito.","mood":"neutral"},
-        {"speaker":"Guillermo","text":"[Escribe aquí tu carta para Anami en data/story.json, sección personal_letter. Estas líneas son un espacio reservado, no palabras privadas atribuidas a Guillermo.]","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"[Puedes recordar lo inesperado de conocerse, las risas, las aventuras compartidas y lo que esperas vivir a su lado.]","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Te amo, amor.","mood":"affectionate"},
-        {"speaker":"Guillermo","text":"Felices 3 años. ❤️","mood":"affectionate"},
-        {"speaker":"Narrador","text":"21 de octubre de 2023 — 21 de octubre de 2026","mood":"affectionate"},
-        {"speaker":"Anami","text":"Una aventura más, amor.","mood":"affectionate"},
-        {"speaker":"Narrador","text":"Gracias por jugar. Esta historia continúa fuera de la pantalla.","mood":"affectionate"}
-      ],"after":[]}
-    ]}
+    {
+      "id": "ikura",
+      "title": "El incidente del ghosting",
+      "subtitle": "Un mensaje perdido · Una segunda oportunidad",
+      "keepsake": "Gyoza compartida",
+      "scenes": [
+        {
+          "id": "moncayo",
+          "location": "yacht",
+          "title": "Un mensaje que sí llegó",
+          "objective": "Revisa las fotos, luego habla con Moncayo en el malecón.",
+          "task": "talk",
+          "interact_label": "Leer mensajes",
+          "lines": [
+            {
+              "speaker": "Moncayo",
+              "text": "¿Tú eres Anami? Nos vimos por las fotos del modelo, ¿no?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Sí. Le mandé unas a Guillermo, pero creo que ni captó que quería hablar.",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Moncayo",
+              "text": "¿Y le volviste a escribir?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Sí. Nada. Capaz está ocupado, pero ya me dio cosa insistir.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Moncayo",
+              "text": "Yo le pregunto. Sin hacerte quedar mal, tranquila.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "No le armes una rueda de prensa, por favor.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Moncayo",
+              "text": "Un mensaje, nada más.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Moncayo",
+              "text": "Guillermo, hablé con Anami en el Yacht Club. Le gustas, loco. Revisa tus mensajes.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿En serio? Yo pensé que solo me estaba pasando las fotos. Qué bestia.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Moncayo",
+              "text": "Entonces contéstale tú. A mí no me pongas a coordinar la cita.",
+              "mood": "neutral"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              815,
+              480
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "photos",
+                "label": "Revisar fotos y mensajes",
+                "position": [
+                  355,
+                  500
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Te paso las fotos del modelo. Saliste bien en la del diploma.",
+                    "mood": "happy"
+                  },
+                  {
+                    "speaker": "Guillermo",
+                    "text": "¡Gracias! Están buenísimas.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Oye, ¿cómo has estado?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Narrador",
+                    "text": "Ese segundo mensaje quedó sin respuesta. Anami guardó el teléfono.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                }
+              },
+              {
+                "id": "main",
+                "label": "Hablar con Moncayo",
+                "position": [
+                  815,
+                  480
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_6.png"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "boats",
+                "label": "Mirar los veleros",
+                "position": [
+                  600,
+                  405
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Qué paz. Cinco minutos sin revisar si alguien respondió.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Socio del club",
+                    "text": "Con ese viento los veleros van despacito. Hoy no hay apuro.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 6,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_6.png"
+                }
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Socia",
+                "sprite": 7,
+                "position": [
+                  1000,
+                  420
+                ],
+                "walk": 12,
+                "seated": false
+              }
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            }
+          }
+        },
+        {
+          "id": "reconnect",
+          "location": "phone",
+          "title": "Ahora sí, sin intermediarios",
+          "objective": "Responde a Guillermo.",
+          "task": "choice",
+          "interact_label": "Abrir la conversación",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "Anami, recién vi bien tus mensajes. Perdón por desaparecer.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Yo ya estaba pensando que no querías hablar.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "No era eso. Me quedé con lo de las fotos y después fui un desastre revisando el chat.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Ya. Gracias por decirlo, al menos.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Te gustaría salir a comer? Pensaba en Ikura.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¿Qué le respondo?",
+              "mood": "happy",
+              "choices": [
+                "Sí. Pero esta vez sí contesta los mensajes.",
+                "Me gusta la idea. ¿Cuándo puedes?",
+                "Acepto. Moncayo ya puede jubilarse de intermediario."
+              ]
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Esta vez me encargo yo, prometido.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Tengo algo del colegio que contarte, pero mejor en persona.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Yo también estaba pensando temas. Guardémoslos para la comida.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¿Hiciste lista?",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Una pequeña. No la voy a llevar impresa.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Menos mal. Nos vemos allá.",
+              "mood": "happy"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              705,
+              480
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Abrir conversación",
+                "position": [
+                  705,
+                  480
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "draft",
+                "label": "Revisar borrador",
+                "position": [
+                  360,
+                  520
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Borrador descartado: «Hola, ¿sigues vivo?». Mejor la respuesta que sí mandé.",
+                    "mood": "embarrassed"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              }
+            ],
+            "npcs": [],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "date",
+          "location": "ikura",
+          "title": "Una mesa, por fin",
+          "objective": "Habla con la anfitriona y explora antes de sentarte.",
+          "task": "food",
+          "interact_label": "Sentarse a cenar",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "Hola. ¿Llegaste hace mucho?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "No, estaba viendo el lugar. Me gusta.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Qué bueno verte. Y gracias por darme otra oportunidad con los mensajes.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Ya pasó. Hoy estás aquí.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Mesero",
+              "text": "Buenas noches. ¿Revisamos la carta?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Gyozas para compartir, ¿sí?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Sí. Yo voy por el miso ramen.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Y yo sushi. Ya, una decisión fácil al fin.",
+              "mood": "happy"
+            }
+          ],
+          "after": [
+            {
+              "speaker": "Mesero",
+              "text": "Gyozas al centro, miso ramen y sushi. Enseguida les traigo.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Preparé temas para que no nos quedáramos callados.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Yo guardé el chisme del Delta para hoy. Va primero.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Una amiga estaba enredada con el ex de otra persona. Hubo un momento bien emocional en el patio y todos pendientes.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Espera. ¿La amiga de quién? Ya perdí una persona.",
+              "mood": "surprised"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Te lo cuento con calma. No necesitas memorizar nombres.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Bien, porque mi lista no incluía un árbol genealógico.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Y tu primer tema, ¿cuál era?",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Iba a preguntarte qué haces fuera del colegio. Pero me gusta que la conversación se fue sola.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "A mí también. Esto fue mejor que seguir esperando el chat.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "La cena siguió sin tanta preparación. Antes de irte puedes hablar, jugar con el chisme o simplemente quedarte un rato.",
+              "mood": "neutral"
+            }
+          ],
+          "exploration": {
+            "spawn": [
+              265,
+              550
+            ],
+            "companion": [
+              950,
+              420
+            ],
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "host",
+                "label": "Consultar la reserva",
+                "position": [
+                  240,
+                  545
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anfitriona",
+                    "text": "Buenas noches. ¿Dos personas? La mesa del centro está lista; pueden mirar la carta antes de sentarse.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Gracias. Voy a esperar a Guillermo un momento.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 4,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_4.png"
+                }
+              },
+              {
+                "id": "seat",
+                "label": "Elegir la mesa de dos",
+                "position": [
+                  885,
+                  420
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Esta mesa está bien. Lejos de la puerta y cerca de las gyozas.",
+                    "mood": "happy"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "chair",
+                  "fixture": "seat_anami"
+                }
+              },
+              {
+                "id": "main",
+                "label": "Sentarte y pedir",
+                "position": [
+                  885,
+                  420
+                ],
+                "lines": [],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "item",
+                  "fixture": "couple_table"
+                }
+              }
+            ],
+            "optional": [
+              {
+                "id": "waiter",
+                "label": "Preguntar al mesero",
+                "position": [
+                  1060,
+                  535
+                ],
+                "lines": [
+                  {
+                    "speaker": "Mesero",
+                    "text": "Tenemos ramen, sushi, gyozas, edamame y tempura. Si quieren compartir, las gyozas van bien al centro.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 5,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_5.png"
+                }
+              },
+              {
+                "id": "lantern",
+                "label": "Mirar las decoraciones",
+                "position": [
+                  550,
+                  270
+                ],
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Las lámparas dan una luz bonita. Y yo pensando en qué decir en lugar de mirar el sitio.",
+                    "mood": "embarrassed"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "table",
+                  "fixture": "lamp_left"
+                }
+              },
+              {
+                "id": "customer",
+                "label": "Conversar con una clienta",
+                "position": [
+                  940,
+                  267
+                ],
+                "lines": [
+                  {
+                    "speaker": "Clienta",
+                    "text": "Nosotros siempre pedimos algo al centro. Así nadie se queda mirando el plato del otro.",
+                    "mood": "neutral"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": 7,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_7.png"
+                }
+              },
+              {
+                "id": "drama",
+                "label": "¿Quién era quién? · opcional",
+                "position": [
+                  650,
+                  540
+                ],
+                "lines": [],
+                "kind": "drama",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              },
+              {
+                "id": "topics",
+                "label": "Revisar temas guardados",
+                "position": [
+                  500,
+                  535
+                ],
+                "lines": [
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Tenía música, películas y qué te pareció el modelo. Una lista bastante normal, la verdad.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Mi primera impresión fue «este man habla bien… y camina mal».",
+                    "mood": "playful"
+                  },
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Justo eso iba a preguntar. Ya me arrepentí.",
+                    "mood": "embarrassed"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Fuera de broma, me gustó que sí escuchaste lo que te dije.",
+                    "mood": "happy"
+                  }
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              },
+              {
+                "id": "tea",
+                "label": "Pedir un poco de té",
+                "position": [
+                  700,
+                  330
+                ],
+                "kind": "talk",
+                "sprite": 5,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_5.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Mesero",
+                    "text": "¿Un poco de té mientras esperan?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Sí, gracias. Así no me quedo jugando con la servilleta.",
+                    "mood": "embarrassed"
+                  },
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Yo ya la doblé tres veces. No estaba en mi lista de temas.",
+                    "mood": "playful"
+                  }
+                ]
+              },
+              {
+                "id": "guillermo_quiz",
+                "label": "Pop quiz de Guillermo · plantilla",
+                "position": [
+                  780,
+                  540
+                ],
+                "kind": "guillermo_quiz",
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                },
+                "lines": []
+              }
+            ],
+            "npcs": [
+              {
+                "name": "Cliente",
+                "sprite": 6,
+                "position": [
+                  320,
+                  317
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Pareja",
+                "sprite": 7,
+                "position": [
+                  320,
+                  477
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Clienta",
+                "sprite": 7,
+                "position": [
+                  940,
+                  267
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Servicio",
+                "sprite": 5,
+                "position": [
+                  720,
+                  310
+                ],
+                "walk": 22,
+                "seated": false
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            },
+            "seat": [
+              885,
+              420
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "halloween",
+      "title": "El comienzo de nosotros",
+      "subtitle": "21 de octubre de 2023",
+      "keepsake": "Bandana roja",
+      "scenes": [
+        {
+          "id": "invitation",
+          "location": "phone",
+          "title": "Un plan de última hora",
+          "objective": "Lee la invitación y prepárate para la fiesta.",
+          "task": "choice",
+          "interact_label": "Leer invitación",
+          "lines": [
+            {
+              "speaker": "Narrador",
+              "text": "Guillermo estaba en una prefiesta. Sus amigos lo animaron a invitar a Anami.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Sé que es de última hora… ¿quieres venir a la fiesta de Halloween?",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¿De última hora? Qué organización impecable.",
+              "mood": "playful",
+              "choices": [
+                "Voy, pero mi disfraz merece un aplauso.",
+                "Acepto tu misión improvisada.",
+                "Dame un rato. La handyman está en camino."
+              ]
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Me conformo con que vengas.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Listo. Vestido de denim y bandana roja. Todo bajo control.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Yo voy con maquillaje inspirado en Terminator.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¿Entonces voy a arreglar un robot?",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Si me ves muy tieso bailando, sí.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Lo que empezó como un plan improvisado se convirtió en una fecha para recordar.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Leer invitación",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "phone"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "dance",
+          "location": "party",
+          "title": "Un robot en la pista",
+          "objective": "Encuentra a Guillermo y sigue una secuencia sencilla de baile.",
+          "task": "dance",
+          "interact_label": "Bailar juntos",
+          "lines": [
+            {
+              "speaker": "Narrador",
+              "text": "Una casa grande, un patio con césped, zonas de concreto y una piscina. La fiesta llenaba el lugar de luces y conversaciones.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¡Ahí estás! Sí pareces Terminator.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Y tú viniste lista para reparar cualquier emergencia.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Mi primera inspección: ¿vas a bailar o vas a quedarte en modo máquina?",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Contigo bailo.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Si nos equivocamos, inventamos un paso nuevo.",
+              "mood": "happy"
+            }
+          ],
+          "after": [
+            {
+              "speaker": "Guillermo",
+              "text": "Ese giro definitivamente fue una actualización de software.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "No te preocupes, robot. Aprobaste la prueba.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Necesito sentarme un ratito.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Vamos junto a la piscina.",
+              "mood": "affectionate"
+            }
+          ],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Bailar juntos",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/bandana.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            }
+          }
+        },
+        {
+          "id": "pool",
+          "location": "pool",
+          "title": "A la orilla",
+          "objective": "Siéntate junto a Guillermo en el borde de la piscina.",
+          "task": "sit",
+          "interact_label": "Sentarse a su lado",
+          "lines": [
+            {
+              "speaker": "Narrador",
+              "text": "Guillermo se sentó de espaldas a la piscina, con los pies en el suelo. Anami se acomodó junto a él.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "¿Ya no tienes batería?",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Para bailar, poquita. Para estar contigo, todavía.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Ella se apoyó en él. Guillermo la abrazó. Por un instante, el ruido de la fiesta pareció quedar más lejos.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Anami, me importas muchísimo.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Quiero estar contigo. Quiero que seas mi novia y tratarte bien.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "…",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Anami lo besó.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Creo que entendí la respuesta.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Esta vez sí captaste la señal.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "21 de octubre de 2023. El comienzo de nosotros.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Amor… creo que me dejaste un pequeño recuerdo en el cuello.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Edición limitada de Halloween.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Mañana voy a necesitar un cuello alto.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Recuerdo guardado: la bandana roja de aquella noche.",
+              "mood": "happy"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1110,
+              545
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Sentarse a su lado",
+                "position": [
+                  850,
+                  395
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            },
+            "companion": [
+              850,
+              395
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cookies",
+      "title": "El gran debate de las galletas",
+      "subtitle": "En casa de Guillermo · Dos chefs, una receta",
+      "keepsake": "Galleta",
+      "scenes": [
+        {
+          "id": "improvise",
+          "location": "kitchen",
+          "title": "La chef tiene un plan",
+          "objective": "Habla con Guillermo junto a la mesa de cocina.",
+          "task": "choice",
+          "interact_label": "Empezar a cocinar",
+          "lines": [
+            {
+              "speaker": "Anami",
+              "text": "Hoy me encargo yo. Vamos a hacer galletas.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Tengo una receta que podemos seguir.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Amor, también podemos usar la intuición.",
+              "mood": "playful",
+              "choices": [
+                "La cantidad correcta es la que diga mi corazón.",
+                "Un poquito de esto, otro poquito de aquello.",
+                "Confía en la chef. Tiene delantal imaginario."
+              ]
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "La intuición no trae temperatura de horno.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Detalles administrativos.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Un rato después, las primeras galletas no quedaron como esperaban.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Son galletas o materiales de construcción?",
+              "mood": "surprised"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Textura experimental. No están aprobadas todavía.",
+              "mood": "embarrassed"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "¿Probamos ahora con la receta?",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Bueno. Pero seguimos siendo un equipo.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Empezar a cocinar",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/cookie.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        },
+        {
+          "id": "recipe",
+          "location": "kitchen",
+          "title": "Ahora sí, la receta",
+          "objective": "Sigue los pasos de la receta: mantequilla, azúcar, huevo y harina.",
+          "task": "bake",
+          "interact_label": "Preparar otra tanda",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "Primero mezclamos mantequilla y azúcar. Después el huevo y la harina.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Entendido. Medir antes de improvisar.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Y horneamos la mezcla. Sin declarar la guerra a la receta.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Esto en Culinary Wars tendría música dramática.",
+              "mood": "playful"
+            }
+          ],
+          "after": [
+            {
+              "speaker": "Anami",
+              "text": "¡Estas sí quedaron buenas!",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Victoria compartida.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Compartida. No vayas a sumar esto a Monopoly.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Todavía espero esa primera derrota.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Y las pocas veces que te gano en Clash Royale cuentan doble.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Acepto negociar ese reglamento con una galleta.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Trato hecho, amor.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Recuerdo guardado: una galleta hecha entre los dos.",
+              "mood": "happy"
+            }
+          ],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Preparar otra tanda",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/cookie.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "voxel",
+      "title": "La dimensión de los recuerdos",
+      "subtitle": "Nuestro mundo · Una aventura que cambió las reglas",
+      "keepsake": "Recuerdos reunidos",
+      "scenes": [
+        {
+          "id": "present",
+          "location": "present",
+          "title": "Una partida más",
+          "objective": "Acércate a Guillermo para entrar a su mundo compartido.",
+          "task": "talk",
+          "interact_label": "Jugar juntos",
+          "lines": [
+            {
+              "speaker": "Anami",
+              "text": "¿Una partida más, amor?",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Una más. Aunque tú sabes que ‘una’ es una medida bastante flexible.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Mientras no me mandes otra vez al vacío.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Derrotamos al dragón y después tú caminaste hacia donde no había piso.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Estaba explorando límites. Literalmente.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Espera. ¿Viste eso junto a la casa?",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Tiene los ojos blancos. No me gusta cómo nos mira.",
+              "mood": "worried"
+            },
+            {
+              "speaker": "El Olvidado",
+              "text": "Casas, nombres, risas… tantos recuerdos guardados. ¿Qué quedará si se borran?",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Anami, quédate…",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "La pantalla se quebró en destellos. Guillermo desapareció.",
+              "mood": "surprised"
+            },
+            {
+              "speaker": "El Olvidado",
+              "text": "Si tus recuerdos significan tanto, encuéntralo.",
+              "mood": "worried"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Amor, voy por ti.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Jugar juntos",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/sword.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            }
+          }
+        },
+        {
+          "id": "reunion",
+          "location": "present",
+          "title": "Encontrarte otra vez",
+          "objective": "Habla con Guillermo después de romper el cristal.",
+          "task": "talk",
+          "interact_label": "Abrazar a Guillermo",
+          "lines": [
+            {
+              "speaker": "Guillermo",
+              "text": "¡Anami! Sabía que vendrías.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Esta vez no estabas en visto. Estabas secuestrado en un cristal.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Definitivamente una peor excusa para no responder.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Tuve que cruzar granjas, una cueva y el End. Y no me caí al vacío.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Eso merece su propio diploma.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Anami",
+              "text": "El gato también ayudó. Luego le damos más pescado.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Gracias por venir por mí, amor.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "No iba a dejar que se llevara nuestros recuerdos.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Nos falta hacer muchos más.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "El portal se abrió. Esta vez, lo cruzaron juntos.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1080,
+              550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Abrazar a Guillermo",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            },
+            "companion": [
+              805,
+              490
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "beach",
+      "title": "One More Adventure, Amor",
+      "subtitle": "Una playa sin nombre · Un atardecer juntos",
+      "keepsake": "Una aventura más",
+      "scenes": [
+        {
+          "id": "sunset",
+          "location": "beach",
+          "title": "El lugar al que volvemos",
+          "objective": "Camina hacia Guillermo y siéntate a su lado.",
+          "task": "sit",
+          "interact_label": "Sentarse junto a él",
+          "lines": [
+            {
+              "speaker": "Anami",
+              "text": "Por fin un lugar sin ojos blancos ni bloques corruptos.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Solo tú, yo y el mar.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Y un rato para respirar.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Quién diría que todo empezaría en aquel modelo.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Con una réplica y un pie pisado. Muy romántico.",
+              "mood": "playful"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Luego una mesa en Ikura, una bandana roja y unas galletas que sobrevivieron al segundo intento.",
+              "mood": "happy"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Tenemos buen material para otra aventura.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Tengo algo para ti. Una carta que merece mis propias palabras.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1110,
+              545
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Sentarse junto a él",
+                "position": [
+                  715,
+                  430
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            },
+            "companion": [
+              715,
+              430
+            ]
+          }
+        },
+        {
+          "id": "letter",
+          "location": "beach",
+          "title": "Para Anami",
+          "objective": "Abre la carta personal y disfruta del atardecer.",
+          "task": "talk",
+          "interact_label": "Leer la carta",
+          "lines": [
+            {
+              "speaker": "Narrador",
+              "text": "CARTA PERSONAL — MARCADOR EDITABLE. El texto final de Guillermo todavía no ha sido escrito.",
+              "mood": "neutral"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "[Escribe aquí tu carta para Anami en data/story.json, sección personal_letter. Estas líneas son un espacio reservado, no palabras privadas atribuidas a Guillermo.]",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "[Puedes recordar lo inesperado de conocerse, las risas, las aventuras compartidas y lo que esperas vivir a su lado.]",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Te amo, amor.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Guillermo",
+              "text": "Felices 3 años. ❤️",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "21 de octubre de 2023 — 21 de octubre de 2026",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Anami",
+              "text": "Una aventura más, amor.",
+              "mood": "affectionate"
+            },
+            {
+              "speaker": "Narrador",
+              "text": "Gracias por jugar. Esta historia continúa fuera de la pantalla.",
+              "mood": "affectionate"
+            }
+          ],
+          "after": [],
+          "exploration": {
+            "exit": [
+              1110,
+              545
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Leer la carta",
+                "position": [
+                  715,
+                  430
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "letter"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "research": [
+    {
+      "topic": "Food security: trade disruption and agricultural inputs; no exact conference statements or statistics claimed",
+      "url": "https://executiveboard.wfp.org/document_download/WFP-141530"
+    },
+    {
+      "topic": "Pre-existing, overlapping Sahel vulnerabilities; Chad not blamed",
+      "url": "https://publications.wfp.org/2021/sahel-resilience/Context.html"
+    },
+    {
+      "topic": "FAO agricultural mandate",
+      "url": "https://www.fao.org/about/about-fao/en/"
+    },
+    {
+      "topic": "MUN rules vary; procedure is the convention used by this fictional committee",
+      "url": "https://www.un.org/en/model-united-nations/rules-procedure"
+    }
+  ],
+  "trivia": [
+    {
+      "question": "¿En qué año comenzó oficialmente la ONU?",
+      "choices": [
+        "1919",
+        "1945",
+        "1965"
+      ],
+      "answer": 1,
+      "source": "https://www.un.org/en/about-us/history-of-the-un",
+      "explanation": "1945. La Carta entró en vigor el 24 de octubre.",
+      "reaction_correct": "Guillermo: Ya, arrancaste bien. Eso me pasa por hacer una pregunta fácil.",
+      "reaction_wrong": "Guillermo: Arranque de calentamiento. Todavía no llamamos a presidencia."
+    },
+    {
+      "question": "¿Cuál es miembro permanente del Consejo de Seguridad?",
+      "choices": [
+        "Brasil",
+        "Japón",
+        "Francia"
+      ],
+      "answer": 2,
+      "source": "https://main.un.org/securitycouncil/en/content/current-members",
+      "explanation": "Francia, junto con China, Rusia, Reino Unido y Estados Unidos.",
+      "reaction_correct": "Guillermo: Ni dudaste. Me estoy arrepintiendo de darte opciones.",
+      "reaction_wrong": "Guillermo: Esa delegación quiere el puesto, pero todavía no."
+    },
+    {
+      "question": "¿Cuántos Objetivos de Desarrollo Sostenible hay?",
+      "choices": [
+        "17",
+        "8",
+        "20"
+      ],
+      "answer": 0,
+      "source": "https://sdgs.un.org/goals",
+      "explanation": "Son 17. Sí, varios documentos para repasar.",
+      "reaction_correct": "Guillermo: Diecisiete. Yo también tuve que contarlos una vez.",
+      "reaction_wrong": "Guillermo: Son más de los que parece. Mira, repasamos juntos."
+    },
+    {
+      "question": "¿Qué organismo proporciona asistencia alimentaria humanitaria?",
+      "choices": [
+        "PMA / WFP",
+        "OACI",
+        "OMI"
+      ],
+      "answer": 0,
+      "source": "https://www.wfp.org/who-we-are",
+      "explanation": "El PMA. La comida no debería esperar a que acabemos de debatir.",
+      "reaction_correct": "Guillermo: Correcto. Y de paso me acordaste que ya tengo hambre.",
+      "reaction_wrong": "Guillermo: Ese organismo se encarga de otra cosa. El almuerzo lo dejamos al PMA."
+    },
+    {
+      "question": "En este comité, ¿quién concede la palabra?",
+      "choices": [
+        "Quien hable más fuerte",
+        "La presidencia",
+        "El último que llegó"
+      ],
+      "answer": 1,
+      "source": "https://www.un.org/en/model-united-nations/rules-procedure",
+      "explanation": "La presidencia, según las reglas acordadas para esta sesión.",
+      "reaction_correct": "Guillermo: Sí. Yo sigo levantando la mano aunque estemos en receso.",
+      "reaction_wrong": "Guillermo: En esta mesa decide presidencia. Gritar no suma puntos."
+    },
+    {
+      "question": "¿Para qué sirve negociar una propuesta multilateral?",
+      "choices": [
+        "Para que solo decida un país",
+        "Para evitar escuchar objeciones",
+        "Para buscar acuerdos entre varios países"
+      ],
+      "answer": 2,
+      "source": "https://www.un.org/en/about-us/un-charter/full-text",
+      "explanation": "Para buscar acuerdos. Aceptar una corrección también cuenta.",
+      "reaction_correct": "Guillermo: Bien. Y escuchar correcciones cuenta; ya aprendí eso hoy.",
+      "reaction_wrong": "Guillermo: Si nadie escucha a nadie, terminamos con seis propuestas y cero almuerzo."
+    }
+  ],
+  "drama": [
+    {
+      "question": "Sin nombres: ¿con quién estaba enredada la amiga?",
+      "choices": [
+        "Con el ex de otra persona",
+        "Con el mesero de Ikura",
+        "Con la presidencia del MUN"
+      ],
+      "answer": 0,
+      "explanation": "Exacto. Guillermo puede continuar sin dibujar un organigrama."
+    },
+    {
+      "question": "¿Dónde ocurrió el momento emocional?",
+      "choices": [
+        "En el mar Negro",
+        "En el patio del colegio",
+        "En la ceremonia"
+      ],
+      "answer": 1,
+      "explanation": "En el patio. No hace falta convertir a nadie en villano."
+    },
+    {
+      "question": "¿Qué respuesta ayuda a escucharla?",
+      "choices": [
+        "Exigir todos los nombres",
+        "Cambiar el tema sin escuchar",
+        "Preguntar cómo se sintió ella"
+      ],
+      "answer": 2,
+      "explanation": "Sí. Mejor escuchar que interrogar."
+    }
+  ],
+  "dishes": [
+    {
+      "id": "gyozas",
+      "name": "Gyozas",
+      "description": "Dumplings dorados · para compartir",
+      "art": "res://assets/art/overhaul/gyozas.png"
+    },
+    {
+      "id": "ramen",
+      "name": "Miso ramen",
+      "description": "Caldo de miso, fideos y toppings",
+      "art": "res://assets/art/overhaul/ramen.png"
+    },
+    {
+      "id": "sushi",
+      "name": "Sushi",
+      "description": "Piezas de arroz, pescado y vegetales",
+      "art": "res://assets/art/overhaul/sushi.png"
+    },
+    {
+      "id": "edamame",
+      "name": "Edamame",
+      "description": "Vainas de soya con sal",
+      "art": "res://assets/art/overhaul/edamame.png"
+    },
+    {
+      "id": "tempura",
+      "name": "Tempura",
+      "description": "Vegetales en una masa ligera",
+      "art": "res://assets/art/overhaul/tempura.png"
+    },
+    {
+      "id": "yakitori",
+      "name": "Yakitori",
+      "description": "Brochetas de pollo a la parrilla",
+      "art": "res://assets/art/overhaul/yakitori.png"
+    }
   ]
 }

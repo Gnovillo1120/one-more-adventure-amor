@@ -9,6 +9,7 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	await audit_memories()
 	world = load("res://scripts/voxel_world.gd").new()
 	root.add_child(world)
 	world.set_active(false)
@@ -45,9 +46,38 @@ func run() -> void:
 	for key in ["bridge", "memory0", "memory1", "memory2", "memory3", "guillermo"]:
 		verify(key, world.targets[key], end)
 	verify("boss attack radius", world.boss.position, end)
-	print("NAVIGATION_QA: ", checked, " targets; ", failures, " failures; ", mainland.size(), " mainland cells; ", end.size(), " End cells")
+	print("NAVIGATION_QA: ", checked, " checks; ", failures, " failures; ", mainland.size(), " mainland cells; ", end.size(), " End cells")
 	world.queue_free()
 	quit(0 if failures == 0 else 1)
+
+func audit_memories() -> void:
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/story.json"))
+	var destinations:=0
+	for chapter in data.chapters:
+		for scene in chapter.scenes:
+			var memory: Node2D=load("res://scripts/memory_world.gd").new()
+			memory.location=scene.location;memory.scene_id=scene.id;memory.scene_config=scene.get("exploration",{})
+			if scene.location=="beach":memory.companion_position=Vector2(715,430)
+			if scene.location=="pool":memory.companion_position=Vector2(850,395)
+			root.add_child(memory);memory.active=false
+			var nav: RefCounted=load("res://scripts/memory_navigation.gd").new();nav.scan(memory)
+			var targets: Array=memory.scene_config.get("steps",[]).duplicate()
+			if targets.is_empty():targets.append(memory.mandatory_target())
+			targets.append_array(memory.scene_config.get("optional",[]))
+			targets.append({"id":"exit","position":[memory.exit_position.x,memory.exit_position.y]})
+			for target in targets:
+				destinations+=1;checked+=1
+				var pos:=Vector2(target.position[0],target.position[1])
+				if nav.path_to(pos).is_empty():
+					failures+=1;push_error("Unreachable memory target: %s/%s" % [scene.id,target.id])
+				checked+=1
+				if not memory.has_target_visual(target.id):
+					failures+=1;push_error("Missing visual: %s/%s" % [scene.id,target.id])
+				checked+=1
+				if memory.target_visuals[target.id].position.distance_to(pos)>.01:
+					failures+=1;push_error("Misaligned visual: %s/%s" % [scene.id,target.id])
+			memory.queue_free();await process_frame
+	print("MEMORY_NAVIGATION_QA: ",destinations," targets across 18 scenes; ",failures," failures")
 
 func flood(start: Vector2i) -> Dictionary:
 	var seen: Dictionary = {}
