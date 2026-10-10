@@ -24,3 +24,5 @@ The personal letter is deliberately marked as an editable placeholder: replace d
 
 ## Chapters 1–2 overhaul
 Implemented on feature/chapter-1-2-overhaul, preserving the completed game. Scene-defined accessible exits fix Ikura's blocker; richer MUN/restaurant/NPC activities, UN trivia, food cards, optional school-drama game and readable chat are integrated. Additive save state preserves legacy v1 checkpoints. Existing music is now muted pending real instrumental replacements; crossfade WAV/OGG architecture is implemented. See CHAPTER_OVERHAUL.md and AUDIO.md for current validation and limits. Updated build: builds/chapter-1-2-overhaul/One More Adventure Amor.exe. Earlier release is preserved.
+
+Feature implementation committed as 05e5456 and pushed to origin/feature/chapter-1-2-overhaul. Automated PR creation returned GitHub integration permission denied (403); prepared description and comparison link are in PULL_REQUEST.md. Main is unchanged and no merge was performed.
