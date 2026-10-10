@@ -27,3 +27,5 @@ Manual keyboard/mouse playthrough remains useful for those experiential checks.
 
 ## Memory navigation added
 The same runner now audits 61 memory objective/optional/exit targets across all eighteen scenes, plus the original sixteen voxel destinations: 77 checks, zero failures. scripts/memory_navigation.gd flood-fills a 10-pixel orthogonal grid, checking each edge at 2-pixel intervals with MemoryWorld.can_stand's actual feet rectangle/bounds. Full story and focused overhaul runners replay resulting paths through MemoryWorld.move_by, then interact with E semantics. The focused suite explicitly rejects the old Ikura exit at (1145,410). No increased reach distance masks blocked terrain.
+
+Current polish: 63 memory targets across 18 scenes and 16 voxel destinations; 205 representation/alignment/reachability checks, zero failures.

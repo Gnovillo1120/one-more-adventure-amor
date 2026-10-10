@@ -1,20 +1,30 @@
 # Audio replacement pipeline
 
-No music-generation tool is available in this session. Existing six synthesized draft themes are preserved but muted; they are not described as acoustic/orchestral recordings. Sound effects remain at the configured volume, including original soft notification/applause cues.
+No convincing acoustic/orchestral recording tool or licensed recordings are available in this session. Existing synthesized drafts are preserved but muted. Original soft sound effects remain at the configured volume.
 
-Put original or properly licensed recordings in assets/audio/instrumental using exactly these base names with .ogg (preferred) or .wav:
+## Drop in music without rebuilding
 
-| File | Scene | Arrangement |
-| --- | --- | --- |
-| uees | MUN | Light acoustic piano, pizzicato strings, flute |
-| ikura | Phone/date | Romantic piano and gentle strings |
-| halloween | Party | Rhythmic party ambience |
-| intimate | Pool relationship scene | Intimate piano and soft strings |
-| cookies | Kitchen | Playful pizzicato and woodwinds |
-| minecraft | Voxel exploration | Strings, flute, harp |
-| boss | Rescue battle | Dramatic orchestral percussion/strings |
-| ending | Menu/beach/credits | Expressive piano and soft strings |
+Create/use the music folder beside One More Adventure Amor.exe. Copy original or properly licensed OGG (preferred) or WAV files using these exact base names:
 
-scripts/audio_director.gd prefers OGG over WAV, supports imported assets and direct file decoding, and uses two players with a 1.25-second equal-power crossfade. Rapid changes cancel obsolete fades; missing tracks fade to silence. Volume updates during fades. data/audio_tracks.json records expected instrumentation and per-track loop_start seconds; WAV may also specify loop_end seconds. WAV loop samples account for stereo channels/bit depth. OGG loops from its specified offset to EOF: export an exactly trimmed loop body (or intro plus loop with offset). Crossfade does not repair a badly edited loop seam.
+| Name | Use / arrangement direction |
+| --- | --- |
+| uees | MUN: acoustic piano, pizzicato strings, flute |
+| ikura | Date: warm piano and gentle strings |
+| halloween | Party: rhythmic instrumental ambience |
+| intimate | Pool: soft piano/strings |
+| cookies | Kitchen: playful woodwinds/pizzicato |
+| minecraft | Exploration: strings, flute, harp |
+| boss | Rescue: orchestral percussion/strings |
+| ending | Menu/beach/credits: expressive piano/strings |
 
-Import in Godot and rebuild to ship the supplied music. Audio credits/licensing records must be added with source, creator, permission/license, required attribution and any edits. No external sample or recording rights are implied by this pipeline. Headless QA covers WAV loading, stereo loop math, overlap, volume, missing tracks and rapid changes with isolated silent fixtures. OGG playback and actual replacement musical quality still need audition when recordings are supplied.
+Example: music/ikura.ogg. Open Settings and select “Recargar archivos de música” to reload the current theme. Future scene changes load their matching files automatically. Missing tracks fade to silence. Search priority: executable/music, user://music, then bundled res://assets/audio/instrumental. Source development can use either of the latter folders; bundled changes require re-export.
+
+Optional music/tracks.json overrides loop points in seconds:
+
+```json
+{"ikura":{"loop_start":0.0},"ending":{"loop_start":3.0,"loop_end":90.0}}
+```
+
+Defaults come from data/audio_tracks.json. OGG loops from loop_start to EOF; loop_end applies to WAV. Trim/edit loop seams before supplying recordings. Two players provide a 1.25-second equal-power crossfade, live volume and cancellation of obsolete fades. A reload reads new files and loop configuration.
+
+Supply music credits with creator, source, license/permission, attribution and edits. No recording rights are implied. Automated QA uses isolated silent WAV fixtures to verify loading, stereo loop math, fades, volume, missing tracks and external reload; actual OGG playback and musical quality need audition once recordings are supplied.

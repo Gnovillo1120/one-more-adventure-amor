@@ -46,7 +46,7 @@ func run() -> void:
 	# Optional quizzes: perfect/good/zero scores; exit midway; answered-save resume.
 	for desired in [6,4,0]:
 		game.chapter_index=0;game.scene_index=1;game.chapter_state.erase("caucus");game.start_scene()
-		var trivia: Dictionary=game.memory.scene_config.optional[-1]
+		var trivia: Dictionary=game.memory.scene_config.optional.filter(func(t: Dictionary):return t.id=="trivia")[0]
 		at(trivia);verify(game.minigame_kind=="trivia","prominent world target opens quiz")
 		game._toggle_pause();verify(game.is_paused and not game.suspended_modal.visible,"activity suspends for pause")
 		game._settings(game._return_pause)

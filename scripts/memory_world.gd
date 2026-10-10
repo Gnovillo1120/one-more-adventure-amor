@@ -6,11 +6,14 @@ signal target_interacted(id: String)
 const INTERACTION_RADIUS := 72.0
 const PLAYER_HALF := Vector2(10, 6)
 const WALK_BOUNDS := Rect2(110,225,1080,355)
+const InteractionProp = preload("res://scripts/interaction_prop.gd")
+var target_visuals: Dictionary = {}
 var scene_config: Dictionary = {}
 var exit_position := Vector2(1080,550)
 var quest_step := 0
 var optional_seen: Array = []
 var npc_art: Array[Texture2D] = []
+var prop_art: Dictionary = {}
 var phone_ui: Control
 var phone_labels: Array[Label] = []
 var location: String = "debate"
@@ -67,7 +70,41 @@ func _ready() -> void:
 		if ResourceLoader.exists(path):npc_art.append(load(path))
 	if location=="yacht":blockers=[Rect2(110,225,1080,120)]
 	if location=="phone":_build_phone()
+	_register_target_visuals()
 	queue_redraw()
+
+func all_targets() -> Array:
+	var result: Array=scene_config.get("steps",[]).duplicate(true)
+	if result.is_empty():result.append(mandatory_target())
+	result.append_array(scene_config.get("optional",[]).duplicate(true))
+	result.append({"id":"exit","label":"Siguiente recuerdo","position":[exit_position.x,exit_position.y],"visual":scene_config.get("exit_visual",{})})
+	return result
+
+func _register_target_visuals() -> void:
+	for target in all_targets():
+		var prop: Node2D=InteractionProp.new()
+		prop.descriptor=target.get("visual",{}).duplicate(true)
+		prop.interaction_radius=INTERACTION_RADIUS
+		prop.position=_point(target.position)
+		prop.name="Target_"+str(target.id)
+		prop.required=target.id=="exit" or target.id in scene_config.get("steps",[]).map(func(t: Dictionary):return t.id)
+		add_child(prop);target_visuals[target.id]=prop
+	_sync_target_visuals()
+
+func _sync_target_visuals() -> void:
+	var current: String="exit" if completed else str(mandatory_target().id)
+	for id in target_visuals:
+		var prop: Node2D=target_visuals[id]
+		prop.enabled=id==current
+		prop.visible=id!="exit" or completed
+		if prop.visual_kind=="companion":prop.visible=location not in ["phone","yacht"]
+
+func has_target_visual(id: String) -> bool:
+	if not target_visuals.has(id):return false
+	var prop: Node2D=target_visuals[id]
+	if prop.visual_kind=="companion":
+		return sprites.has("guillermo") and location not in ["phone","yacht"] and prop.position.distance_to(companion_position)<1
+	return prop.has_representation()
 
 func _point(value: Array) -> Vector2:
 	return Vector2(value[0],value[1])
@@ -79,7 +116,7 @@ func mandatory_target() -> Dictionary:
 
 func interaction_targets() -> Array:
 	var result: Array=scene_config.get("optional",[]).duplicate()
-	if completed:result.append({"id":"exit","label":"Siguiente recuerdo","position":[exit_position.x,exit_position.y]})
+	if completed:result.append({"id":"exit","label":"Siguiente recuerdo","position":[exit_position.x,exit_position.y],"visual":scene_config.get("exit_visual",{})})
 	else:result.append(mandatory_target())
 	return result
 
@@ -125,6 +162,7 @@ func move_by(step: Vector2) -> void:
 
 func _process(delta: float) -> void:
 	clock += delta
+	_sync_target_visuals()
 	effect_time=maxf(0,effect_time-delta)
 	moving = false
 	if active:
@@ -134,6 +172,7 @@ func _process(delta: float) -> void:
 			direction = 2 if motion.x > 0 else 1 if motion.x < 0 else 3 if motion.y < 0 else 0
 			var step := motion.normalized() * 205.0 * delta
 			move_by(step)
+			if seated:seated=false
 	for i in range(phone_labels.size()):
 		phone_labels[i].visible_characters=int((clock-phone_messages[i].get("time",0))*40)
 	queue_redraw()
@@ -276,6 +315,10 @@ func _draw_population() -> void:
 	for i in range(npcs.size()):
 		var npc: Dictionary=npcs[i]
 		var pos:=_point(npc.position)
+		var registered:=false
+		for prop in target_visuals.values():
+			if prop.visual_kind=="npc" and prop.position.distance_to(pos)<1:registered=true;break
+		if registered:continue
 		var walk: float=float(npc.get("walk",0))
 		var offset:=Vector2(sin(clock*.65+i)*walk,0)
 		if walk>0 and can_stand(pos+offset):pos+=offset
@@ -283,7 +326,10 @@ func _draw_population() -> void:
 		if sprite_index<npc_art.size():
 			var size:=Vector2(64,70) if npc.get("seated",false) else Vector2(64,96)
 			var nod:=2.0 if int(clock+i)%7==0 else 0.0
+			if walk>0:nod=roundf(sin(clock*5+i))*2
 			draw_texture_rect(npc_art[sprite_index],Rect2(pos-Vector2(32,size.y-5+nod),size),false)
+			if location=="debate" and int(clock+i*2)%11==0:
+				draw_rect(Rect2(pos+Vector2(24,-42),Vector2(6,14)),Color("d9b78e"))
 		if int(clock*.4+i)%9==0:
 			draw_string(ThemeDB.fallback_font,pos+Vector2(-10,-105),"…",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("d6e2cd"))
 	if location=="debate":
@@ -304,12 +350,16 @@ func _draw_population() -> void:
 			_draw_prop("gyozas",Vector2(775,430),48)
 			_draw_prop("ramen",Vector2(845,425),40)
 			_draw_prop("sushi",Vector2(705,425),40)
+		# A passing tray and quiet kettle steam give the counter some activity.
+		_draw_prop("gyozas",Vector2(980+roundf(sin(clock*.65)*20),465),32)
 		for i in range(3):
 			draw_rect(Rect2(Vector2(845+i*5,390-fmod(clock*12+i*10,25)),Vector2(2,5)),Color(1,1,.9,.35))
 
 func _draw_prop(id: String, pos: Vector2, size: float) -> void:
 	var path: String="res://assets/art/overhaul/%s.png" % id
-	if ResourceLoader.exists(path):draw_texture_rect(load(path),Rect2(pos-Vector2(size/2,size/2),Vector2(size,size)),false)
+	# Keep textures alive until the render server consumes the drawing commands.
+	if not prop_art.has(id) and ResourceLoader.exists(path):prop_art[id]=load(path)
+	if prop_art.has(id):draw_texture_rect(prop_art[id],Rect2(pos-Vector2(size/2,size/2),Vector2(size,size)),false)
 
 func _draw_yacht() -> void:
 	if background:return

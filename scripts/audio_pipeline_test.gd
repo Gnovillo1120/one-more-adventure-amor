@@ -37,10 +37,16 @@ func run() -> void:
 	verify(not director.track_available and director.gains==[0.0,0.0],"missing recording fades to silence")
 	director.play("uees",.15);director.play("ikura",.15);director.play("uees",.02);await create_timer(.08).timeout
 	verify(director.track_available and director.theme=="uees","rapid scene changes settle on latest track")
+	director.external_root=folder;director.track_root="res://assets/audio/instrumental"
+	director.reload_tracks();await create_timer(.03).timeout
+	verify(director.track_available and director.loaded_path.begins_with(folder),"drop-in executable music directory is supported")
+	var loops:=FileAccess.open(folder+"/tracks.json",FileAccess.WRITE);loops.store_string('{"uees":{"loop_start":0.01,"loop_end":0.04}}');loops.close()
+	wav=director._stream("uees")
+	verify(wav.loop_begin==220 and wav.loop_end==882,"drop-in loop configuration overrides bundled defaults")
 	for player in director.players:player.stop();player.stream=null
 	await create_timer(.3).timeout
 	director.queue_free();await process_frame;await process_frame
-	for name in ["uees.wav","ikura.wav"]:DirAccess.remove_absolute(folder+"/"+name)
+	for name in ["uees.wav","ikura.wav","tracks.json"]:DirAccess.remove_absolute(folder+"/"+name)
 	DirAccess.remove_absolute(folder)
 	print("AUDIO_PIPELINE_QA: ",checks," checks; ",failures," failures")
 	quit(0 if failures==0 else 1)

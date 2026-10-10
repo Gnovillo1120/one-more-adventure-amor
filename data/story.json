@@ -102,7 +102,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 3
+                "sprite": 3,
+                "visual": {
+                  "kind": "badge"
+                }
               },
               {
                 "id": "main",
@@ -113,7 +116,11 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
               }
             ],
             "optional": [
@@ -137,7 +144,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 0
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                }
               },
               {
                 "id": "brasil",
@@ -159,7 +170,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 2
+                "sprite": 2,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_2.png"
+                }
               },
               {
                 "id": "paper",
@@ -176,7 +191,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               }
             ],
             "npcs": [
@@ -221,16 +239,6 @@
                 "seated": true
               },
               {
-                "name": "Presidencia",
-                "sprite": 1,
-                "position": [
-                  640,
-                  290
-                ],
-                "walk": 0,
-                "seated": false
-              },
-              {
                 "name": "Observadora",
                 "sprite": 3,
                 "position": [
@@ -270,7 +278,10 @@
                 "walk": 0,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -387,7 +398,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "document"
+                }
               },
               {
                 "id": "main",
@@ -398,7 +412,10 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "lectern"
+                }
               }
             ],
             "optional": [
@@ -422,7 +439,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 0
+                "sprite": 0,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_0.png"
+                }
               },
               {
                 "id": "brasil",
@@ -444,7 +465,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 2
+                "sprite": 2,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_2.png"
+                }
               },
               {
                 "id": "paper",
@@ -461,7 +486,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               },
               {
                 "id": "trivia",
@@ -472,7 +500,35 @@
                 ],
                 "lines": [],
                 "kind": "trivia",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "companion"
+                }
+              },
+              {
+                "id": "notes",
+                "label": "Escribir una observación",
+                "position": [
+                  990,
+                  520
+                ],
+                "kind": "talk",
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                },
+                "lines": [
+                  {
+                    "speaker": "Anami",
+                    "text": "Nota para el documento: abrir rutas ayuda; también hay que pensar quién puede pagar y quién puede producir.",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Delegada",
+                    "text": "Eso sí cabe en una propuesta. Lo paso a la mesa.",
+                    "mood": "happy"
+                  }
+                ]
               }
             ],
             "npcs": [
@@ -566,7 +622,10 @@
                 "walk": 0,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -625,8 +684,8 @@
               550
             ],
             "companion": [
-              805,
-              490
+              780,
+              495
             ],
             "exit": [
               1080,
@@ -642,7 +701,10 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "companion"
+                }
               }
             ],
             "optional": [
@@ -661,7 +723,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "table"
+                }
               }
             ],
             "npcs": [
@@ -685,7 +750,10 @@
                 "walk": 0,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -771,7 +839,10 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "chair"
+                }
               }
             ],
             "optional": [
@@ -795,7 +866,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 1
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
               },
               {
                 "id": "photographer",
@@ -817,7 +892,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 3
+                "sprite": 3,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_3.png"
+                }
               }
             ],
             "npcs": [
@@ -871,7 +950,10 @@
                 "walk": 0,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -953,7 +1035,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 3
+                "sprite": 3,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_3.png"
+                }
               },
               {
                 "id": "main",
@@ -964,7 +1050,11 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/diploma.png"
+                }
               }
             ],
             "optional": [
@@ -983,7 +1073,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 1
+                "sprite": 1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_1.png"
+                }
               }
             ],
             "npcs": [
@@ -1037,7 +1131,10 @@
                 "walk": 0,
                 "seated": true
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -1103,7 +1200,10 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               }
             ],
             "optional": [
@@ -1122,7 +1222,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               }
             ],
             "npcs": [
@@ -1136,7 +1239,10 @@
                 "walk": 25,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         }
       ]
@@ -1251,7 +1357,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                }
               },
               {
                 "id": "main",
@@ -1262,7 +1371,11 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_6.png"
+                }
               }
             ],
             "optional": [
@@ -1286,20 +1399,14 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 6
+                "sprite": 6,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_6.png"
+                }
               }
             ],
             "npcs": [
-              {
-                "name": "Moncayo",
-                "sprite": 6,
-                "position": [
-                  815,
-                  480
-                ],
-                "walk": 0,
-                "seated": false
-              },
               {
                 "name": "Socia",
                 "sprite": 7,
@@ -1310,7 +1417,10 @@
                 "walk": 12,
                 "seated": false
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            }
           }
         },
         {
@@ -1411,7 +1521,10 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "phone"
+                }
               }
             ],
             "optional": [
@@ -1430,10 +1543,16 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               }
             ],
-            "npcs": []
+            "npcs": [],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -1576,7 +1695,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 4
+                "sprite": 4,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_4.png"
+                }
               },
               {
                 "id": "seat",
@@ -1593,7 +1716,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "chair"
+                }
               },
               {
                 "id": "main",
@@ -1604,7 +1730,11 @@
                 ],
                 "lines": [],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/overhaul/gyozas.png"
+                }
               }
             ],
             "optional": [
@@ -1623,7 +1753,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 5
+                "sprite": 5,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_5.png"
+                }
               },
               {
                 "id": "lantern",
@@ -1640,7 +1774,10 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "table"
+                }
               },
               {
                 "id": "customer",
@@ -1657,7 +1794,11 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": 7
+                "sprite": 7,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_7.png"
+                }
               },
               {
                 "id": "drama",
@@ -1668,11 +1809,14 @@
                 ],
                 "lines": [],
                 "kind": "drama",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
               },
               {
                 "id": "topics",
-                "label": "Sacar un tema guardado",
+                "label": "Revisar temas guardados",
                 "position": [
                   420,
                   525
@@ -1700,20 +1844,44 @@
                   }
                 ],
                 "kind": "talk",
-                "sprite": -1
+                "sprite": -1,
+                "visual": {
+                  "kind": "notice"
+                }
+              },
+              {
+                "id": "tea",
+                "label": "Pedir un poco de té",
+                "position": [
+                  565,
+                  505
+                ],
+                "kind": "talk",
+                "sprite": 5,
+                "visual": {
+                  "kind": "npc",
+                  "art": "res://assets/art/overhaul/npc_5.png"
+                },
+                "lines": [
+                  {
+                    "speaker": "Mesero",
+                    "text": "¿Un poco de té mientras esperan?",
+                    "mood": "neutral"
+                  },
+                  {
+                    "speaker": "Anami",
+                    "text": "Sí, gracias. Así no me quedo jugando con la servilleta.",
+                    "mood": "embarrassed"
+                  },
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Yo ya la doblé tres veces. No estaba en mi lista de temas.",
+                    "mood": "playful"
+                  }
+                ]
               }
             ],
             "npcs": [
-              {
-                "name": "Anfitriona",
-                "sprite": 4,
-                "position": [
-                  300,
-                  535
-                ],
-                "walk": 0,
-                "seated": false
-              },
               {
                 "name": "Mesero",
                 "sprite": 5,
@@ -1763,8 +1931,31 @@
                 ],
                 "walk": 0,
                 "seated": false
+              },
+              {
+                "name": "Pareja",
+                "sprite": 7,
+                "position": [
+                  460,
+                  395
+                ],
+                "walk": 0,
+                "seated": true
+              },
+              {
+                "name": "Comensal",
+                "sprite": 6,
+                "position": [
+                  920,
+                  400
+                ],
+                "walk": 0,
+                "seated": true
               }
-            ]
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         }
       ]
@@ -1839,7 +2030,25 @@
             "exit": [
               1080,
               550
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Leer invitación",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "phone"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -1907,7 +2116,26 @@
             "exit": [
               1080,
               550
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Bailar juntos",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/bandana.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            }
           }
         },
         {
@@ -1999,6 +2227,28 @@
             "exit": [
               1110,
               545
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Sentarse a su lado",
+                "position": [
+                  850,
+                  395
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "gate"
+            },
+            "companion": [
+              850,
+              395
             ]
           }
         }
@@ -2079,7 +2329,26 @@
             "exit": [
               1080,
               550
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Empezar a cocinar",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/cookie.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         },
         {
@@ -2157,7 +2426,26 @@
             "exit": [
               1080,
               550
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Preparar otra tanda",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/cookie.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "door"
+            }
           }
         }
       ]
@@ -2242,7 +2530,26 @@
             "exit": [
               1080,
               550
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Jugar juntos",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "item",
+                  "art": "res://assets/art/sprites/sword.png"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            }
           }
         },
         {
@@ -2309,6 +2616,28 @@
             "exit": [
               1080,
               550
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Abrazar a Guillermo",
+                "position": [
+                  805,
+                  490
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            },
+            "companion": [
+              805,
+              490
             ]
           }
         }
@@ -2374,6 +2703,28 @@
             "exit": [
               1110,
               545
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Sentarse junto a él",
+                "position": [
+                  715,
+                  430
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "companion"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            },
+            "companion": [
+              715,
+              430
             ]
           }
         },
@@ -2431,7 +2782,25 @@
             "exit": [
               1110,
               545
-            ]
+            ],
+            "steps": [
+              {
+                "id": "main",
+                "label": "Leer la carta",
+                "position": [
+                  715,
+                  430
+                ],
+                "kind": "talk",
+                "lines": [],
+                "visual": {
+                  "kind": "letter"
+                }
+              }
+            ],
+            "exit_visual": {
+              "kind": "arch"
+            }
           }
         }
       ]
@@ -2465,7 +2834,9 @@
       ],
       "answer": 1,
       "source": "https://www.un.org/en/about-us/history-of-the-un",
-      "explanation": "1945. La Carta entró en vigor el 24 de octubre."
+      "explanation": "1945. La Carta entró en vigor el 24 de octubre.",
+      "reaction_correct": "Guillermo: Ya, arrancaste bien. Eso me pasa por hacer una pregunta fácil.",
+      "reaction_wrong": "Guillermo: Arranque de calentamiento. Todavía no llamamos a presidencia."
     },
     {
       "question": "¿Cuál es miembro permanente del Consejo de Seguridad?",
@@ -2476,7 +2847,9 @@
       ],
       "answer": 2,
       "source": "https://main.un.org/securitycouncil/en/content/current-members",
-      "explanation": "Francia, junto con China, Rusia, Reino Unido y Estados Unidos."
+      "explanation": "Francia, junto con China, Rusia, Reino Unido y Estados Unidos.",
+      "reaction_correct": "Guillermo: Ni dudaste. Me estoy arrepintiendo de darte opciones.",
+      "reaction_wrong": "Guillermo: Esa delegación quiere el puesto, pero todavía no."
     },
     {
       "question": "¿Cuántos Objetivos de Desarrollo Sostenible hay?",
@@ -2487,7 +2860,9 @@
       ],
       "answer": 0,
       "source": "https://sdgs.un.org/goals",
-      "explanation": "Son 17. Sí, varios documentos para repasar."
+      "explanation": "Son 17. Sí, varios documentos para repasar.",
+      "reaction_correct": "Guillermo: Diecisiete. Yo también tuve que contarlos una vez.",
+      "reaction_wrong": "Guillermo: Son más de los que parece. Mira, repasamos juntos."
     },
     {
       "question": "¿Qué organismo proporciona asistencia alimentaria humanitaria?",
@@ -2498,7 +2873,9 @@
       ],
       "answer": 0,
       "source": "https://www.wfp.org/who-we-are",
-      "explanation": "El PMA. La comida no debería esperar a que acabemos de debatir."
+      "explanation": "El PMA. La comida no debería esperar a que acabemos de debatir.",
+      "reaction_correct": "Guillermo: Correcto. Y de paso me acordaste que ya tengo hambre.",
+      "reaction_wrong": "Guillermo: Ese organismo se encarga de otra cosa. El almuerzo lo dejamos al PMA."
     },
     {
       "question": "En este comité, ¿quién concede la palabra?",
@@ -2509,7 +2886,9 @@
       ],
       "answer": 1,
       "source": "https://www.un.org/en/model-united-nations/rules-procedure",
-      "explanation": "La presidencia, según las reglas acordadas para esta sesión."
+      "explanation": "La presidencia, según las reglas acordadas para esta sesión.",
+      "reaction_correct": "Guillermo: Sí. Yo sigo levantando la mano aunque estemos en receso.",
+      "reaction_wrong": "Guillermo: En esta mesa decide presidencia. Gritar no suma puntos."
     },
     {
       "question": "¿Para qué sirve negociar una propuesta multilateral?",
@@ -2520,7 +2899,9 @@
       ],
       "answer": 2,
       "source": "https://www.un.org/en/about-us/un-charter/full-text",
-      "explanation": "Para buscar acuerdos. Aceptar una corrección también cuenta."
+      "explanation": "Para buscar acuerdos. Aceptar una corrección también cuenta.",
+      "reaction_correct": "Guillermo: Bien. Y escuchar correcciones cuenta; ya aprendí eso hoy.",
+      "reaction_wrong": "Guillermo: Si nadie escucha a nadie, terminamos con seis propuestas y cero almuerzo."
     }
   ],
   "drama": [

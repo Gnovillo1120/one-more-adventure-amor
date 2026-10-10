@@ -46,7 +46,7 @@ func run() -> void:
 	for key in ["bridge", "memory0", "memory1", "memory2", "memory3", "guillermo"]:
 		verify(key, world.targets[key], end)
 	verify("boss attack radius", world.boss.position, end)
-	print("NAVIGATION_QA: ", checked, " targets; ", failures, " failures; ", mainland.size(), " mainland cells; ", end.size(), " End cells")
+	print("NAVIGATION_QA: ", checked, " checks; ", failures, " failures; ", mainland.size(), " mainland cells; ", end.size(), " End cells")
 	world.queue_free()
 	quit(0 if failures == 0 else 1)
 
@@ -70,6 +70,12 @@ func audit_memories() -> void:
 				var pos:=Vector2(target.position[0],target.position[1])
 				if nav.path_to(pos).is_empty():
 					failures+=1;push_error("Unreachable memory target: %s/%s" % [scene.id,target.id])
+				checked+=1
+				if not memory.has_target_visual(target.id):
+					failures+=1;push_error("Missing visual: %s/%s" % [scene.id,target.id])
+				checked+=1
+				if memory.target_visuals[target.id].position.distance_to(pos)>.01:
+					failures+=1;push_error("Misaligned visual: %s/%s" % [scene.id,target.id])
 			memory.queue_free();await process_frame
 	print("MEMORY_NAVIGATION_QA: ",destinations," targets across 18 scenes; ",failures," failures")
 

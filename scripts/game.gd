@@ -526,7 +526,7 @@ func _activity_answer(index: int) -> void:
 	var correct: bool=index==int(entry.answer)
 	if correct:activity_score+=1
 	activity_answered=true
-	activity_feedback=("Guillermo: Ya, esa sí. " if correct else "Guillermo: Casi. Yo también revisé antes, no te voy a mentir. ")+entry.explanation
+	activity_feedback=entry.get("reaction_correct" if correct else "reaction_wrong","Guillermo: Ya, esa sí." if correct else "Guillermo: Casi. Repasamos juntos.")+"\n"+entry.explanation
 	_sfx("collect" if correct else "menu");_save_activity();_draw_activity()
 
 func _activity_next() -> void:
@@ -672,7 +672,7 @@ func _return_pause() -> void:
 
 func _settings(on_back: Callable) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
-	modal=_panel(ui,Rect2(340,150,600,430))
+	modal=_panel(ui,Rect2(340,115,600,500))
 	_label(modal,"Ajustes",Rect2(30,25,540,50),34,GOLD)
 	_label(modal,"Volumen",Rect2(30,100,170,35),22)
 	var slider:=HSlider.new();slider.position=Vector2(205,108);slider.size=Vector2(340,30);slider.min_value=0;slider.max_value=1;slider.step=.01;slider.value=volume;modal.add_child(slider)
@@ -684,7 +684,9 @@ func _settings(on_back: Callable) -> void:
 	screen.toggled.connect(func(value: bool):fullscreen=value;DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if value else DisplayServer.WINDOW_MODE_WINDOWED);_save_settings())
 	var graphics:=CheckButton.new();graphics.text="Gráficos ligeros (recomendado)";graphics.position=Vector2(30,280);graphics.button_pressed=low_graphics;modal.add_child(graphics)
 	graphics.toggled.connect(func(value: bool):low_graphics=value;get_viewport().scaling_3d_scale=.75 if value else 1.0;_save_settings())
-	_button(modal,"Volver",Rect2(30,350,540,50),func():ui.remove_child(modal);modal.queue_free();modal=null;on_back.call())
+	var music_status:=_label(modal,audio_director.status_text(),Rect2(30,328,540,45),16,GOLD)
+	_button(modal,"Recargar archivos de música",Rect2(30,382,540,42),func():audio_director.reload_tracks();music_status.text=audio_director.status_text())
+	_button(modal,"Volver",Rect2(30,440,540,45),func():ui.remove_child(modal);modal.queue_free();modal=null;on_back.call())
 
 func _load_settings() -> void:
 	var config:=ConfigFile.new()
@@ -781,6 +783,8 @@ func _capture_gallery() -> void:
 	await _capture_frame("01_menu")
 	chapter_index=0;scene_index=0;start_scene()
 	await _capture_frame("02_uees")
+	memory.quest_step=1;_refresh_objective()
+	await _capture_frame("02b_presidencia")
 	_scene_interaction();line_index=3;_show_line();revealed=9999
 	await _capture_frame("03_dialogue")
 	chapter_index=0;scene_index=1;start_scene();_scene_interaction();line_index=4;_show_line();revealed=9999
@@ -792,8 +796,13 @@ func _capture_gallery() -> void:
 	await _capture_frame("03c_dining")
 	chapter_index=0;scene_index=4;start_scene()
 	await _capture_frame("03d_auditorium")
+	memory.quest_step=1;_refresh_objective()
+	await _capture_frame("03f_diploma")
 	chapter_index=1;scene_index=2;start_scene()
 	await _capture_frame("04_ikura")
+	_complete_scene()
+	await _capture_frame("04e_ikura_exit")
+	start_scene();memory.quest_step=2;_refresh_objective()
 	_begin_task("food")
 	await _capture_frame("04b_food")
 	# Real native pointer and keyboard events exercise menu cards in the built UI.

@@ -1,15 +1,9 @@
-# Prepared pull request
+# Active review
 
-Title: **Overhaul Chapters 1–2 and fix unreachable memory exits**
+PR #1: https://github.com/Gnovillo1120/one-more-adventure-amor/pull/1
 
-Base: main. Head: feature/chapter-1-2-overhaul. Draft for review; do not merge.
+Base main; head feature/chapter-1-2-overhaul. Keep open for review; do not merge.
 
-[Open the branch comparison](https://github.com/Gnovillo1120/one-more-adventure-amor/compare/main...feature/chapter-1-2-overhaul?expand=1)
+The branch contains the existing MUN/Ikura overhaul and the current targeted polish: registered visible mandatory props/NPCs, scene-appropriate exits, aligned interaction anchors, voxel object identities, retained prop textures, ambient conference/restaurant life, playful trivia feedback and drop-in instrumental WAV/OGG reload. Chapters 3–6, authored beats and legacy saves are preserved.
 
-Ikura's exit was inside blocked furniture. Exits/objectives are now scene-defined and checked using production feet collision and movement. Chapters 1–2 gain populated MUN/restaurant environments, researched fictionalized debate, optional UN trivia and score callbacks, Yacht Club/chat, illustrated ordering and anonymous school-drama activity. Main characters, Chapters 3–6 and legacy saves are preserved; partial objectives/quizzes/orders save additively. Pause/settings preserve activities.
-
-WAV/OGG replacement pipeline supports loops, crossfades and volume. Orchestral recordings remain pending; synthetic music is preserved but muted.
-
-Validation: 503 story, 231 persistence/input, 153 focused overhaul and 10 audio checks, plus 77 navigation destinations; zero failures. Actual Windows release passes native mouse/keyboard ordering, camera rotation and render captures. Local build/ZIP are ignored artifacts; instructions and evidence are in docs/CHAPTER_OVERHAUL.md.
-
-Human checks: duration, older-laptop performance, pacing/audio audition and personalized letter. Automated PR creation was denied by the GitHub integration's write permissions; the pushed branch and this description are ready for submission. No PR has been merged or main changed.
+Validation: 1,367 automated checks with zero failures, plus source/exported native screenshot, UI input and camera smoke tests. See DEVELOPMENT_STATUS.md and POLISH_PASS.md. Acoustic recordings, letter personalization and human pacing/performance checks remain pending. No merge or changes to main.
