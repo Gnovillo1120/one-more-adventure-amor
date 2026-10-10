@@ -1,0 +1,17 @@
+﻿# Godot generated files
+.godot/
+
+# Exported builds
+/builds/
+*.exe
+*.pck
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local configuration
+.env
+.env.*
+
+/assets/references/
