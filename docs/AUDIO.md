@@ -1,9 +1,20 @@
-# Original score and pixel art
+# Audio replacement pipeline
 
-Run `python tools/generate_audio.py` and `python tools/generate_sprites.py` from the project root to reproduce these assets. Both scripts use deterministic synthesis and handcrafted geometry; no third party samples or art are included.
+No music-generation tool is available in this session. Existing six synthesized draft themes are preserved but muted; they are not described as acoustic/orchestral recordings. Sound effects remain at the configured volume, including original soft notification/applause cues.
 
-Audio is mono 22,050 Hz signed 16-bit PCM WAV. Six 32-beat themes share an original eight-note motif: `memory`, `date`, `halloween`, `mystery`, `boss`, `beach`. Set their Godot AudioStreamWAV loop mode to forward during playback. A 60 ms fade at both boundaries ensures silent endpoints and prevents loop clicks. These are intentionally simple piano-like synthesized drafts, not recorded piano performances. Eight short cues are `collect`, `interact`, `dialogue`, `swing`, `hit`, `victory`, `step`, and `menu`.
+Put original or properly licensed recordings in assets/audio/instrumental using exactly these base names with .ogg (preferred) or .wav:
 
-Character sheets are transparent PNG, 128x192 pixels, with 32x48 cells. Columns: idle, walk A, centered walk, walk B. Rows: down, left, right, up. Frame indices are row * 4 + column. Both characters have casual, formal, and Halloween outfit sheets. Use nearest filtering, and keep cell dimensions identical when replacing artwork. The six transparent keepsake icons are 32x32 pixels.
+| File | Scene | Arrangement |
+| --- | --- | --- |
+| uees | MUN | Light acoustic piano, pizzicato strings, flute |
+| ikura | Phone/date | Romantic piano and gentle strings |
+| halloween | Party | Rhythmic party ambience |
+| intimate | Pool relationship scene | Intimate piano and soft strings |
+| cookies | Kitchen | Playful pizzicato and woodwinds |
+| minecraft | Voxel exploration | Strings, flute, harp |
+| boss | Rescue battle | Dramatic orchestral percussion/strings |
+| ending | Menu/beach/credits | Expressive piano and soft strings |
 
-The original HEIC reference files are preserved. No HEIC decoder was installed, so no speculative or lossy reference conversion was performed.
+scripts/audio_director.gd prefers OGG over WAV, supports imported assets and direct file decoding, and uses two players with a 1.25-second equal-power crossfade. Rapid changes cancel obsolete fades; missing tracks fade to silence. Volume updates during fades. data/audio_tracks.json records expected instrumentation and per-track loop_start seconds; WAV may also specify loop_end seconds. WAV loop samples account for stereo channels/bit depth. OGG loops from its specified offset to EOF: export an exactly trimmed loop body (or intro plus loop with offset). Crossfade does not repair a badly edited loop seam.
+
+Import in Godot and rebuild to ship the supplied music. Audio credits/licensing records must be added with source, creator, permission/license, required attribution and any edits. No external sample or recording rights are implied by this pipeline. Headless QA covers WAV loading, stereo loop math, overlap, volume, missing tracks and rapid changes with isolated silent fixtures. OGG playback and actual replacement musical quality still need audition when recordings are supplied.

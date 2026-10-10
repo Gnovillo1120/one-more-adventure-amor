@@ -2,6 +2,15 @@ extends Node
 ## Shared progression, dialogue, menus, settings and durable chapter checkpoints.
 const MemoryWorld = preload("res://scripts/memory_world.gd")
 const VoxelWorld = preload("res://scripts/voxel_world.gd")
+const AudioDirector = preload("res://scripts/audio_director.gd")
+var audio_director: Node
+var chapter_state: Dictionary = {}
+var suspended_modal: Control
+var activity_score := 0
+var activity_selected := 0
+var activity_feedback := ""
+var activity_answered := false
+var activity_buttons: Array[Button] = []
 const SAVE_PATH := "user://adventure_save.json"
 const SETTINGS_PATH := "user://settings.cfg"
 var save_path := SAVE_PATH
@@ -68,9 +77,9 @@ func _ready() -> void:
 	ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	canvas.add_child(ui)
-	music = AudioStreamPlayer.new()
+	audio_director=AudioDirector.new();add_child(audio_director)
+	music=audio_director.players[0]
 	effects = AudioStreamPlayer.new()
-	add_child(music)
 	add_child(effects)
 	_apply_audio()
 	show_menu()
@@ -102,6 +111,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		if is_paused: return
+		if minigame_kind in ["trivia","drama","food"]:
+			_activity_key(event.physical_keycode)
+			get_viewport().set_input_as_handled();return
 		if minigame_kind == "dance":
 			_dance_key(event.physical_keycode)
 			return
@@ -118,6 +130,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_sfx("swing")
 
 func _clear_ui() -> void:
+	suspended_modal=null
 	for child in ui.get_children():
 		ui.remove_child(child)
 		child.queue_free()
@@ -140,6 +153,7 @@ func _label(parent: Node, text: String, rect: Rect2, size: int = 22, color: Colo
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	parent.add_child(l)
+	l.size=rect.size
 	return l
 
 func _panel(parent: Node, rect: Rect2, alpha: float = .96) -> Panel:
@@ -210,6 +224,7 @@ func _new_game() -> void:
 	else: _start_fresh()
 
 func _start_fresh() -> void:
+	chapter_state={}
 	chapter_index=0;scene_index=0;keepsakes=[];total_play_seconds=0
 	start_scene()
 
@@ -223,6 +238,8 @@ func _chapter_menu() -> void:
 	_button(p,"Volver",Rect2(35,475,630,50),show_menu)
 
 func _restart_chapter(index: int) -> void:
+	# Explicit replay starts that chapter's local objectives again.
+	for scene in story.chapters[index].scenes:chapter_state.erase(scene.id)
 	chapter_index = index; scene_index = 0
 	keepsakes = []
 	for i in range(mini(index,4)): keepsakes.append(story.chapters[i].keepsake)
@@ -244,15 +261,19 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	memory.outfit="formal" if chapter_index==0 else "halloween" if chapter_index==2 else "casual"
 	memory.interaction_label=s.get("interact_label","Hablar")
 	memory.completed=completed
+	memory.scene_config=s.get("exploration",{})
 	if s.location=="beach": memory.companion_position=Vector2(715,430);memory.player_position=Vector2(220,520)
 	if s.location=="pool": memory.companion_position=Vector2(850,395)
-	if position_data.size()==2: memory.player_position=Vector2(position_data[0],position_data[1])
 	add_child(memory)
+	var local: Dictionary=chapter_state.get(s.id,{})
+	memory.quest_step=int(local.get("step",0));memory.optional_seen=local.get("seen",[]).duplicate()
+	if position_data.size()==2:memory.player_position=memory.safe_position(Vector2(position_data[0],position_data[1]))
 	memory.interacted.connect(_scene_interaction)
+	memory.target_interacted.connect(_target_interaction)
 	memory.exited.connect(_next_scene)
 	_build_hud()
-	_set_objective("Recuerdo completo · Camina hacia la salida iluminada y pulsa E." if completed else s.objective)
-	_play_music(["memory","date","halloween","date","mystery","beach"][chapter_index])
+	_refresh_objective()
+	_play_music("intimate" if s.id=="pool" else ["memory","date","halloween","cookies","mystery","beach"][chapter_index])
 	save_game()
 	_transition(_scene().title)
 
@@ -289,6 +310,9 @@ func _scene_interaction() -> void:
 	if s.task=="sit":
 		memory.seated=true;memory.player_position=memory.companion_position+Vector2(-55,0)
 	var scene_lines: Array = s.lines.duplicate(true)
+	if s.id=="award":_sfx("applause")
+	if s.id in ["lunch","award"] and chapter_state.get("caucus",{}).has("trivia_score"):
+		scene_lines.append({"speaker":"Guillermo","text":"Por cierto, tu evaluación diplomática quedó en %d de 6. El diploma sigue siendo mío, ¿ya?" % int(chapter_state.caucus.trivia_score),"mood":"playful"})
 	if chapter_index==5 and s.id=="letter":
 		scene_lines=[]
 		if story.personal_letter.get("is_placeholder",true):
@@ -297,6 +321,39 @@ func _scene_interaction() -> void:
 			scene_lines.append({"speaker":"Guillermo","text":paragraph,"mood":"affectionate"})
 		_scene_letter_intro(scene_lines)
 	_show_dialogue(scene_lines,func(): _begin_task(s.task))
+
+func _refresh_objective() -> void:
+	if not is_instance_valid(memory):return
+	_set_objective("Recuerdo completo · Salida iluminada · E. También puedes seguir explorando." if memory.completed else str(memory.mandatory_target().label)+" · E")
+
+func _store_memory_state() -> void:
+	if not is_instance_valid(memory):return
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	local.step=memory.quest_step;local.seen=memory.optional_seen.duplicate()
+	chapter_state[_scene().id]=local
+
+func _target_interaction(id: String) -> void:
+	if _dialogue_open() or minigame_kind!="" or is_paused:return
+	var target: Dictionary={}
+	for item in memory.interaction_targets():
+		if item.id==id:target=item;break
+	if target.is_empty():return
+	_sfx("interact")
+	if target.kind in ["trivia","drama"]:
+		if target.kind=="trivia":
+			_show_dialogue([{ "speaker":"Guillermo","text":"Bueno, ADHOC. Ya que tienes tantas correcciones, vamos a ver cuánto sabes.","mood":"playful"},{"speaker":"Anami","text":"¿Me estás tomando examen o qué?","mood":"surprised"},{"speaker":"Guillermo","text":"Digamos que es una evaluación diplomática. Sin nota en el diploma.","mood":"happy"}],func():_open_activity(target.kind))
+		else:_open_activity(target.kind)
+		return
+	var mandatory: bool=not memory.completed and id==memory.mandatory_target().id
+	if id=="photos":memory.show_phone(true)
+	var dialogue: Array=target.get("lines",[]).duplicate(true)
+	for entry in dialogue:entry["npc_sprite"]=target.get("sprite",-1)
+	_show_dialogue(dialogue,func():
+		if id=="photos":memory.show_phone(false)
+		if mandatory:memory.quest_step+=1
+		elif not memory.optional_seen.has(id):memory.optional_seen.append(id)
+		if id=="seat":memory.seated=true
+		_store_memory_state();_refresh_objective();save_game())
 
 func _scene_letter_intro(scene_lines: Array) -> void:
 	# Authored dramatic framing is not presented as Guillermo's private letter.
@@ -326,7 +383,10 @@ func _show_line() -> void:
 	if person!="" and ResourceLoader.exists(path): portrait.texture=load(path)
 	elif person!="":
 		var atlas := AtlasTexture.new();atlas.atlas=load("res://assets/art/sprites/%s_%s.png" % [person,"halloween" if chapter_index==2 else "formal" if chapter_index==0 else "casual"]);atlas.region=Rect2(0,0,32,48);portrait.texture=atlas
-	else: portrait.texture=null
+	else:
+		var npc:=int(entry.get("npc_sprite",-1))
+		portrait.texture=load("res://assets/art/overhaul/npc_%d.png" % npc) if npc>=0 and ResourceLoader.exists("res://assets/art/overhaul/npc_%d.png" % npc) else null
+	if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible:_sfx("notify")
 	advance_button.visible=not entry.has("choices")
 	if entry.has("choices"):
 		dialog_panel.position.y=365;dialog_panel.size.y=295
@@ -367,6 +427,7 @@ func _advance_dialogue() -> void:
 	if callback.is_valid(): callback.call()
 
 func _begin_task(kind: String) -> void:
+	if kind=="food":_open_activity("food");return
 	if kind in ["food","dance","bake"]:
 		minigame_kind=kind;minigame_step=0;_set_world_active(false)
 		if kind=="dance" and is_instance_valid(memory):memory.dancing=true
@@ -401,6 +462,111 @@ func _update_recipe() -> void:
 				if minigame_step==3: _close_minigame()
 				else: _update_recipe()
 			else: minigame_prompt.text="Amor… esa opción suena divertida. Probemos otra.\n"+question)
+
+func _open_activity(kind: String) -> void:
+	minigame_kind=kind;_set_world_active(false)
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	minigame_step=int(local.get(kind+"_step",0));activity_score=int(local.get(kind+"_score",0))
+	activity_answered=bool(local.get(kind+"_answered",false));activity_feedback=str(local.get(kind+"_feedback",""))
+	activity_selected=0
+	if minigame_step>= (3 if kind=="food" else story[kind].size()):
+		_finish_activity();return
+	_draw_activity()
+
+func _draw_activity() -> void:
+	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
+	activity_buttons.clear()
+	var food: bool=minigame_kind=="food"
+	modal=_panel(ui,Rect2(140,135,1000,520) if food else Rect2(235,175,810,460))
+	var width:=940 if food else 750
+	_label(modal,"IKURA · Carta para dos" if food else "Evaluación diplomática" if minigame_kind=="trivia" else "¿Quién era quién?",Rect2(30,20,width,40),30,GOLD)
+	var question: String
+	if food:question=["Para compartir · elegimos gyozas","Guillermo · miso ramen","Anami · sushi"][minigame_step]
+	else:question=story[minigame_kind][minigame_step].question
+	minigame_prompt=_label(modal,"%d / %d · %s" % [minigame_step+1,3 if food else story[minigame_kind].size(),question],Rect2(30,70,width,65),22)
+	if food:
+		for i in range(story.dishes.size()):
+			var dish: Dictionary=story.dishes[i]
+			var col:=i%3;var row:=i/3
+			var button:=_button(modal,"",Rect2(30+col*315,145+row*115,300,105),func():_activity_answer(i))
+			_label(button,"%d · %s" % [i+1,dish.name],Rect2(80,14,210,28),20,GOLD)
+			_label(button,dish.description,Rect2(80,46,205,54),16)
+			var texture:=TextureRect.new();texture.texture=load(dish.art) if ResourceLoader.exists(dish.art) else null;texture.position=Vector2(5,22);texture.size=Vector2(64,64);texture.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;texture.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;texture.mouse_filter=Control.MOUSE_FILTER_IGNORE;button.add_child(texture)
+			activity_buttons.append(button)
+		_label(modal,activity_feedback if activity_feedback!="" else "1–6 o clic · Flechas + Enter · Sin prisa, sin penalización.",Rect2(30,388,940,95),20,GOLD)
+	else:
+		var entry: Dictionary=story[minigame_kind][minigame_step]
+		for i in range(entry.choices.size()):
+			var button:=_button(modal,"%d · %s" % [i+1,entry.choices[i]],Rect2(30,150+i*55,750,46),func():_activity_answer(i));button.add_theme_font_size_override("font_size",19);button.disabled=activity_answered;activity_buttons.append(button)
+		_label(modal,activity_feedback if activity_feedback!="" else "Opcional · ninguna respuesta bloquea el recuerdo.",Rect2(30,320,750,70),19,GOLD)
+		if activity_answered:_button(modal,"Siguiente · Enter",Rect2(440,402,340,44),_activity_next).grab_focus()
+		_button(modal,"Volver al recuerdo",Rect2(30,402,370,44),_leave_activity)
+	if not activity_answered and not activity_buttons.is_empty():activity_buttons[0].grab_focus()
+
+func _save_activity() -> void:
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	local[minigame_kind+"_step"]=minigame_step;local[minigame_kind+"_score"]=activity_score
+	local[minigame_kind+"_answered"]=activity_answered;local[minigame_kind+"_feedback"]=activity_feedback
+	chapter_state[_scene().id]=local;save_game()
+
+func _activity_answer(index: int) -> void:
+	if is_paused or minigame_kind=="":return
+	if minigame_kind=="food":
+		if index<0 or index>=story.dishes.size():return
+		if index!=minigame_step:
+			activity_feedback="Anami: Suena rico, pero hoy habíamos quedado en %s. Lo guardamos para otra visita." % ["gyozas","miso ramen","sushi"][minigame_step]
+			_draw_activity();return
+		_sfx("collect");minigame_step+=1;activity_feedback="";_save_activity()
+		if minigame_step==3:_finish_activity()
+		else:_draw_activity()
+		return
+	if activity_answered:return
+	var entry: Dictionary=story[minigame_kind][minigame_step]
+	if index<0 or index>=entry.choices.size():return
+	var correct: bool=index==int(entry.answer)
+	if correct:activity_score+=1
+	activity_answered=true
+	activity_feedback=("Guillermo: Ya, esa sí. " if correct else "Guillermo: Casi. Yo también revisé antes, no te voy a mentir. ")+entry.explanation
+	_sfx("collect" if correct else "menu");_save_activity();_draw_activity()
+
+func _activity_next() -> void:
+	if is_paused or not activity_answered:return
+	minigame_step+=1;activity_answered=false;activity_feedback="";_save_activity()
+	if minigame_step>=story[minigame_kind].size():_finish_activity()
+	else:_draw_activity()
+
+func _activity_key(key: int) -> void:
+	if key>=KEY_1 and key<=KEY_6:_activity_answer(int(key-KEY_1))
+	elif key in [KEY_ENTER,KEY_SPACE]:
+		if activity_answered:_activity_next()
+		elif not activity_buttons.is_empty():
+			for i in range(activity_buttons.size()):
+				if activity_buttons[i].has_focus():_activity_answer(i);return
+	elif key in [KEY_LEFT,KEY_RIGHT,KEY_UP,KEY_DOWN] and not activity_buttons.is_empty():
+		for i in range(activity_buttons.size()):
+			if activity_buttons[i].has_focus():activity_selected=i;break
+		activity_selected=posmod(activity_selected+(-1 if key in [KEY_LEFT,KEY_UP] else 1),activity_buttons.size())
+		activity_buttons[activity_selected].grab_focus()
+
+func _leave_activity() -> void:
+	_save_activity();minigame_kind=""
+	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free();modal=null
+	_set_world_active(true);_refresh_objective()
+
+func _finish_activity() -> void:
+	var kind:=minigame_kind
+	if kind=="":return
+	_save_activity()
+	if is_instance_valid(memory) and not memory.optional_seen.has(kind):memory.optional_seen.append(kind)
+	_leave_activity()
+	if kind=="food":
+		memory.seated=true;_finish_task();return
+	var score_text: String="%d / %d" % [activity_score,story[kind].size()]
+	var reaction: String
+	if kind=="trivia":
+		reaction="Seis de seis. Ya, tampoco era para quitarme el puesto. Bien respondido." if activity_score==6 else "Bien ahí. Esto ya parece una delegación de dos." if activity_score>=4 else "No hay examen de recuperación. Yo pongo las respuestas y tú las correcciones."
+	else:reaction="Ya entendí. Y si me pierdo otra vez, me preguntas qué sentí, no quién era el ex de quién."
+	_show_dialogue([{ "speaker":"Guillermo","text":"Resultado: "+score_text+". "+reaction,"mood":"happy"},{"speaker":"Anami","text":"Listo. Ahora sí seguimos conversando.","mood":"happy"}],func():_store_memory_state();save_game())
 
 func _update_dance() -> void:
 	minigame_prompt.text="%s\nPaso %d de 8 · Tú marcas el ritmo." % [["W ↑","A ←","S ↓","D →","W ↑","D →","S ↓","A ←"][minigame_step],minigame_step+1]
@@ -482,6 +648,9 @@ func _toggle_pause() -> void:
 	if stage=="menu": return
 	is_paused=not is_paused
 	if is_paused:
+		suspended_modal=modal
+		if is_instance_valid(suspended_modal):suspended_modal.hide()
+		modal=null
 		_set_world_active(false);Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 		modal=_panel(ui,Rect2(390,150,500,440))
 		_label(modal,"Una pausa, amor",Rect2(30,25,440,55),34,GOLD)
@@ -492,11 +661,14 @@ func _toggle_pause() -> void:
 		_button(modal,"Guardar y volver al menú",Rect2(30,365,440,50),func(): save_game();show_menu())
 	else:
 		if is_instance_valid(modal): ui.remove_child(modal);modal.queue_free();modal=null
+		if is_instance_valid(suspended_modal):modal=suspended_modal;modal.show();suspended_modal=null
 		_set_world_active(not _dialogue_open() and minigame_kind=="")
 		if stage=="voxel" and not _dialogue_open(): Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 
 func _return_pause() -> void:
+	var activity:=suspended_modal
 	is_paused=false;_toggle_pause()
+	suspended_modal=activity
 
 func _settings(on_back: Callable) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
@@ -526,19 +698,18 @@ func _save_settings() -> void:
 	var config:=ConfigFile.new();config.set_value("audio","volume",volume);config.set_value("accessibility","text_speed",text_speed);config.set_value("graphics","fullscreen",fullscreen);config.set_value("graphics","low",low_graphics);config.save(settings_path)
 
 func _apply_audio() -> void:
+	if is_instance_valid(audio_director):audio_director.volume=volume
 	if is_instance_valid(music):music.volume_db=linear_to_db(maxf(volume,.0001))
 	if is_instance_valid(effects):effects.volume_db=linear_to_db(maxf(volume*.55,.0001))
 
 func _play_music(theme: String) -> void:
 	if current_theme==theme:return
 	current_theme=theme
-	var audio: AudioStreamWAV=load("res://assets/audio/%s.wav" % theme)
-	audio.loop_mode=AudioStreamWAV.LOOP_FORWARD
-	audio.loop_begin=0;audio.loop_end=audio.data.size()/2
-	music.stream=audio;music.play()
+	var mapped: String={"memory":"uees","date":"ikura","mystery":"minecraft","beach":"ending"}.get(theme,theme)
+	audio_director.play(mapped)
 
 func _sfx(name: String) -> void:
-	if test_mode:return
+	if test_mode or DisplayServer.get_name()=="headless":return
 	effects.stream=load("res://assets/audio/%s.wav" % name);effects.play()
 
 func _toast(text: String) -> void:
@@ -546,7 +717,10 @@ func _toast(text: String) -> void:
 
 func _save_payload() -> Dictionary:
 	var payload: Dictionary={"version":1,"chapter":chapter_index,"scene":scene_index,"stage":stage,"completed":scene_completed,"unlocked":unlocked,"keepsakes":keepsakes,"play_seconds":total_play_seconds}
-	if is_instance_valid(memory):payload.position=[memory.player_position.x,memory.player_position.y]
+	if is_instance_valid(memory):
+		_store_memory_state();payload.position=[memory.player_position.x,memory.player_position.y]
+	payload["chapter_state"]=chapter_state.duplicate(true)
+	payload["scene_id"]=_scene().id
 	if is_instance_valid(voxel):payload.voxel=voxel.get_save_data()
 	return payload
 
@@ -582,6 +756,10 @@ func load_game() -> void:
 	if data.is_empty():_start_fresh();return
 	chapter_index=int(data.chapter);scene_index=clampi(int(data.get("scene",0)),0,_chapter().scenes.size()-1)
 	unlocked=maxi(unlocked,int(data.get("unlocked",0)));keepsakes=data.get("keepsakes",[]);total_play_seconds=data.get("play_seconds",0.0)
+	chapter_state=data.get("chapter_state",{}) if data.get("chapter_state",{}) is Dictionary else {}
+	if data.has("scene_id"):
+		for i in range(_chapter().scenes.size()):
+			if _chapter().scenes[i].id==data.scene_id:scene_index=i;break
 	if data.get("stage","")=="voxel":_start_voxel(data.get("voxel",{}))
 	else:start_scene(data.get("completed",false),data.get("position",[]))
 
@@ -590,7 +768,7 @@ func _credits() -> void:
 	var p:=_panel(ui,Rect2(210,120,860,485),.9)
 	_label(p,"One More Adventure, Amor",Rect2(35,30,790,60),40,GOLD)
 	_label(p,"Te amo, amor.\nFelices 3 años. ♥\n21 de octubre de 2023 — 21 de octubre de 2026",Rect2(35,115,790,115),28)
-	_label(p,"Una aventura de Guillermo para Anami\nDesarrollo y arte original: Codex · Motor: Godot\nMúsica instrumental original sintetizada\nDiálogos dramatizados · Carta personal editable",Rect2(35,265,790,115),21)
+	_label(p,"Una aventura de Guillermo para Anami\nDesarrollo y arte original: Codex · Motor: Godot\nMúsica instrumental: archivos de reemplazo pendientes\nDiálogos dramatizados · Carta personal editable",Rect2(35,265,790,115),21)
 	_button(p,"Volver al menú",Rect2(35,405,790,50),show_menu)
 
 func _notification(what: int) -> void:
@@ -606,7 +784,10 @@ func _capture_gallery() -> void:
 	_scene_interaction();line_index=3;_show_line();revealed=9999
 	await _capture_frame("03_dialogue")
 	chapter_index=0;scene_index=1;start_scene();_scene_interaction();line_index=4;_show_line();revealed=9999
+	line_index=8;_show_line();revealed=9999
 	await _capture_frame("03b_choices")
+	dialog_panel.hide();_open_activity("trivia")
+	await _capture_frame("03e_trivia")
 	chapter_index=0;scene_index=3;start_scene()
 	await _capture_frame("03c_dining")
 	chapter_index=0;scene_index=4;start_scene()
@@ -615,6 +796,19 @@ func _capture_gallery() -> void:
 	await _capture_frame("04_ikura")
 	_begin_task("food")
 	await _capture_frame("04b_food")
+	# Real native pointer and keyboard events exercise menu cards in the built UI.
+	var pointer:=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=true
+	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
+	pointer=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=false
+	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
+	print("NATIVE_MENU_MOUSE_OK" if minigame_step==1 else "NATIVE_MENU_MOUSE_FAILED")
+	var order_key:=InputEventKey.new();order_key.physical_keycode=KEY_2;order_key.keycode=KEY_2;order_key.pressed=true
+	Input.parse_input_event(order_key);Input.flush_buffered_events();await get_tree().process_frame
+	print("NATIVE_MENU_KEYBOARD_OK" if minigame_step==2 else "NATIVE_MENU_KEYBOARD_FAILED")
+	chapter_index=1;scene_index=0;start_scene()
+	await _capture_frame("04c_yacht")
+	chapter_index=1;scene_index=1;start_scene();_scene_interaction();line_index=1;_show_line();revealed=9999
+	await _capture_frame("04d_phone")
 	chapter_index=2;scene_index=1;start_scene()
 	await _capture_frame("05_halloween")
 	_scene_interaction();line_index=1;_show_line();revealed=9999

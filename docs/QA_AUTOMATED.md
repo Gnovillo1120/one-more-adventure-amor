@@ -30,3 +30,6 @@ This additional runner overrides `save_path` and `settings_path` before startup,
 
 Injected keyboard events plus buffered-event flushing verify held-key movement in both 2D and 3D, desk collision and E interaction. Camera pivot yaw synchronization passes; headless mouse capture is unavailable, so actual mouse-controlled rotation remains a GUI check. The production corruption fallback now parses quietly and logs no expected-error noise. Windows atomic rename's normal path is exercised by production saving; forced rename-failure fallback and filesystem failure cases remain untested.
 
+
+## Current overhaul results
+The preceding 411-check baseline describes the original release. Current full story: 503 checks, 18 scenes, 247 dialogue steps; production persistence: 231; focused chapter_overhaul_test.gd: 153; audio_pipeline_test.gd: 10; navigation: 77 targets. All pass. Run each new runner with --headless --path . --script scripts/NAME_test.gd -- --self-test. Chapters 1–2 and other memory scenes now walk collision-valid navigation paths. Native release additionally verifies real mouse/keyboard menu events and camera rotation. See CHAPTER_OVERHAUL.md for coverage and honest remaining human checks.

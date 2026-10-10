@@ -132,6 +132,10 @@ func minigame() -> void:
 		game._dance_key(KEY_X)
 		verify(game.minigame_step == 0, "wrong dance key remains forgiving")
 		for key in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_W, KEY_D, KEY_S, KEY_A]: game._dance_key(key)
+	elif kind=="food":
+		game._activity_answer(3)
+		verify(game.minigame_step==0,"wrong restaurant order permits correction")
+		for i in range(3):game._activity_answer(i)
 	else:
 		buttons(game.modal)[1].pressed.emit()
 		verify(game.minigame_step == 0, "%s incorrect answer permits retry" % kind)
@@ -175,18 +179,23 @@ func _run() -> void:
 		var id: String = game._scene().id
 		visited.append("%s/%s" % [game._chapter().id, id])
 		var world: Node2D = game.memory
-		world.player_position = Vector2(110, 550)
+		world.player_position = world.safe_position(Vector2(110, 550))
 		world.interact()
 		verify(not game._dialogue_open(), "%s distant interaction rejected" % id)
-		world.player_position = world.companion_position
-		world.interact()
-		verify(game._dialogue_open(), "%s hotspot starts dialogue" % id)
-		drain_dialogue()
+		var step_guard:=0
+		while not game.scene_completed and game.stage=="memory" and step_guard<8:
+			step_guard+=1
+			var target: Dictionary=game.memory.mandatory_target()
+			walk_to(Vector2(target.position[0],target.position[1]))
+			game.memory.interact()
+			verify(game._dialogue_open(), "%s hotspot starts dialogue" % id)
+			drain_dialogue()
+			if game.minigame_kind!="":break
 		minigame()
 		if game.stage == "credits" or game.stage == "voxel": continue
 		verify(game.scene_completed, "%s scene completes" % id)
 		persistence_roundtrip()
-		game.memory.player_position = Vector2(1145, 410)
+		walk_to(game.memory.exit_position)
 		game.memory.interact()
 		await process_frame
 	verify(game.stage == "credits", "full natural progression reaches credits")
@@ -209,3 +218,11 @@ func _run() -> void:
 	await process_frame
 	await process_frame
 	quit(0 if failures.is_empty() else 1)
+
+func walk_to(target: Vector2) -> void:
+	var nav: RefCounted=load("res://scripts/memory_navigation.gd").new();nav.scan(game.memory)
+	var path: Array=nav.path_to(target)
+	verify(not path.is_empty(),"walkable path to "+str(target))
+	for waypoint in path:
+		game.memory.move_by(waypoint-game.memory.player_position)
+	verify(game.memory.player_position.distance_to(target)<.1,"collision-valid walking reaches "+str(target))

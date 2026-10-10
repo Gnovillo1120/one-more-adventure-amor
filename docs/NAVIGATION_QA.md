@@ -24,3 +24,6 @@ It does not claim to verify mouse navigation, steering comfort, animation,
 camera clipping, enemy avoidance or a human player's completion time. Actual
 quest transitions and combat state are separately covered by `story_test.gd`.
 Manual keyboard/mouse playthrough remains useful for those experiential checks.
+
+## Memory navigation added
+The same runner now audits 61 memory objective/optional/exit targets across all eighteen scenes, plus the original sixteen voxel destinations: 77 checks, zero failures. scripts/memory_navigation.gd flood-fills a 10-pixel orthogonal grid, checking each edge at 2-pixel intervals with MemoryWorld.can_stand's actual feet rectangle/bounds. Full story and focused overhaul runners replay resulting paths through MemoryWorld.move_by, then interact with E semantics. The focused suite explicitly rejects the old Ikura exit at (1145,410). No increased reach distance masks blocked terrain.

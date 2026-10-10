@@ -22,3 +22,5 @@ Godot is MIT licensed. The preparation script retrieves `.tools/GODOT_LICENSE.tx
 The personal letter remains a deliberately marked placeholder until Guillermo edits `data/story.json` → `personal_letter`. Validate the ending after personalizing it before gifting the game.
 
 Final release completed 10 October 2026: builds/windows/One More Adventure Amor.exe (109,268,480 bytes) and matching PCK (1,882,000 bytes). Actual release native-render smoke test completed all 19 screens with NATIVE_CAMERA_ROTATION_OK and CAPTURE_GALLERY_OK; no runtime errors. Screenshots are in docs/export_screenshots. Distribution ZIP includes executable, PCK, README, Godot notices and font license. Personal letter and duration/performance limits remain as documented in DEVELOPMENT_STATUS.md.
+
+Current feature release: export_presets.cfg now defaults to builds/chapter-1-2-overhaul/One More Adventure Amor.exe. The original builds/windows release is preserved. Package name: builds/One More Adventure Amor Chapters 1-2.zip. Update includes the accessible-exit/NPC/trivia/restaurant/audio-pipeline overhaul; actual replacement instrumental music is pending.

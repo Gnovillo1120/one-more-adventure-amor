@@ -1,5 +1,6 @@
 ﻿# Godot generated files
 .godot/
+.tools/
 
 # Exported builds
 /builds/
@@ -15,3 +16,5 @@ Thumbs.db
 .env.*
 
 /assets/references/
+/docs/overhaul_screenshots/
+/docs/overhaul_release_screenshots/
