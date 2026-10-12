@@ -31,7 +31,7 @@ func _pixel(rect: Rect2, color: String) -> void:draw_rect(rect,Color(color))
 
 func _draw() -> void:
 	if descriptor.has("fixture") or is_instance_valid(actor_visual):return
-	if visual_kind=="companion":return # Registered to the existing animated actor.
+	if visual_kind in ["companion","player"]:return # Registered to the existing animated actor.
 	if texture:
 		var actor: bool=visual_kind=="npc"
 		var size:=Vector2(64,96) if actor else Vector2(48,48)

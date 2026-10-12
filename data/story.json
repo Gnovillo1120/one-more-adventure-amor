@@ -2155,7 +2155,7 @@
                 "label": "Sentarse a su lado",
                 "position": [
                   850,
-                  395
+                  335
                 ],
                 "kind": "talk",
                 "lines": [],
@@ -2169,7 +2169,7 @@
             },
             "companion": [
               850,
-              395
+              335
             ]
           }
         }

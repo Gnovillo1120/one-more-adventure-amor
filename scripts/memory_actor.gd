@@ -8,6 +8,10 @@ var row := 0
 var column := 0
 var npc := false
 var idle_phase := 0.0
+var atlas_row := -1
+var action_texture: Texture2D
+var action_row := -1
+var action_frame := 0
 
 func _ready() -> void:texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:queue_redraw()
@@ -16,7 +20,11 @@ func _draw() -> void:
 	var size:=Vector2(64,96)
 	var nod:=2.0 if int(world.clock+idle_phase)%9==0 else 0.0
 	draw_rect(Rect2(-22,-2,44,6),Color(.07,.1,.13,.25))
-	if seated:
+	if action_row>=0 and action_texture!=null:
+		draw_texture_rect_region(action_texture,Rect2(-32,-90,64,96),Rect2(action_frame*32,action_row*48,32,48))
+	elif atlas_row>=0:
+		draw_texture_rect_region(texture,Rect2(-32,-90,64,96),Rect2(column*32,atlas_row*48,32,48))
+	elif seated:
 		# Bent knees/shoes support a shorter torso; table foreground occludes the lap.
 		draw_rect(Rect2(-18,-20,14,12),Color("46505c"));draw_rect(Rect2(4,-20,14,12),Color("46505c"))
 		draw_rect(Rect2(-18,-8,14,6),Color("25343e"));draw_rect(Rect2(4,-8,14,6),Color("25343e"))

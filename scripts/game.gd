@@ -64,6 +64,7 @@ var autosave_pending := false
 var last_autosave := 0.0
 var test_mode := false
 var pixel_font: FontFile
+var phone_button: Button
 var capture_directory := "res://docs/screenshots"
 
 func _ready() -> void:
@@ -71,7 +72,7 @@ func _ready() -> void:
 	if ResourceLoader.exists("res://assets/fonts/PixelifySans.ttf"):
 		pixel_font=load("res://assets/fonts/PixelifySans.ttf")
 		pixel_font.antialiasing=TextServer.FONT_ANTIALIASING_NONE
-	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture") or OS.get_cmdline_user_args().has("--capture-minigames")
+	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture") or OS.get_cmdline_user_args().has("--capture-minigames") or OS.get_cmdline_user_args().has("--capture-living")
 	_load_settings()
 	_read_unlocks()
 	canvas = CanvasLayer.new()
@@ -88,8 +89,10 @@ func _ready() -> void:
 	show_menu()
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
+	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
 
 func _process(delta: float) -> void:
+	if is_instance_valid(phone_button) and is_instance_valid(memory):phone_button.text="▣  Teléfono · P"+("  ●" if memory.living.state.unread else "")
 	if stage != "menu" and not is_paused: total_play_seconds += delta
 	if is_instance_valid(dialog_panel) and dialog_panel.visible and line_index < lines.size():
 		revealed += delta * text_speed
@@ -127,6 +130,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible and event.physical_keycode in [KEY_PAGEUP,KEY_PAGEDOWN,KEY_HOME,KEY_END]:
 			memory.scroll_phone(event.physical_keycode);get_viewport().set_input_as_handled();return
+		if event.physical_keycode==KEY_P and is_instance_valid(memory) and memory.location in ["phone","yacht"]:
+			_toggle_phone();get_viewport().set_input_as_handled();return
+		if event.physical_keycode==KEY_SPACE and is_instance_valid(memory) and not _dialogue_open() and memory.living.dance_beat():
+			get_viewport().set_input_as_handled();return
 		if minigame_kind in ["trivia","drama","food","guillermo_quiz"]:
 			_activity_key(event.physical_keycode)
 			get_viewport().set_input_as_handled();return
@@ -285,6 +292,11 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	var local: Dictionary=chapter_state.get(s.id,{})
 	memory.quest_step=int(local.get("step",0));memory.optional_seen=local.get("seen",[]).duplicate()
 	memory.seated=bool(local.get("seated",false))
+	memory.living.restore(local.get("living",{}))
+	memory.phone_messages=local.get("phone_messages",[]).duplicate(true)
+	if local.get("living",{}).get("phone_open",false):memory.show_phone(true)
+	memory.living.changed.connect(func():_store_memory_state();save_game())
+	memory.living.outfit_finished.connect(func():_finish_task())
 	if position_data.size()==2:memory.player_position=memory.safe_position(Vector2(position_data[0],position_data[1]))
 	memory.restore_pose()
 	memory.interacted.connect(_scene_interaction)
@@ -306,6 +318,8 @@ func _build_hud() -> void:
 	_label(top,"%02d / 06   %s" % [chapter_index+1,_chapter().title],Rect2(20,10,940,30),23,GOLD)
 	objective_label=_label(top,"",Rect2(20,43,940,35),19)
 	_button(hud,"Ⅱ  Pausa",Rect2(1050,25,200,55),_toggle_pause)
+	if is_instance_valid(memory) and memory.location in ["phone","yacht"]:
+		phone_button=_button(hud,"▣  Teléfono · P",Rect2(1050,165,200,44),_toggle_phone)
 	_panel(hud,Rect2(25,669,1230,39),.9)
 	_label(hud,"WASD · Caminar     E · Interactuar / continuar     1–3 · Elegir     Esc · Pausa",Rect2(35,674,1110,30),17,CREAM)
 	_panel(hud,Rect2(25,110,940,42),.75).visible=stage=="voxel"
@@ -330,6 +344,9 @@ func _scene_interaction() -> void:
 	if _dialogue_open() or minigame_kind != "": return
 	_sfx("interact")
 	var s := _scene()
+	if s.id=="foot" and not memory.living.state.encounter:
+		memory.living.encounter(_scene_dialogue);return
+	if s.location=="phone":memory.show_phone(true);_sfx("notify")
 	if s.task=="sit":
 		memory.seat_couple(_scene_dialogue);return
 	_scene_dialogue()
@@ -351,6 +368,8 @@ func _scene_dialogue() -> void:
 
 func _refresh_objective() -> void:
 	if not is_instance_valid(memory):return
+	if memory.scene_id=="invitation" and memory.living.state.outfit_phase in ["active","failed"]:
+		_set_objective("Vestido · bandana roja · zapatillas blancas · E" if memory.living.state.outfit_phase=="active" else "Se hizo tarde · vuelve al espejo para reintentar · E");return
 	_set_objective("Recuerdo completo · Salida iluminada · E. También puedes seguir explorando." if memory.completed else str(memory.mandatory_target().label)+" · E")
 
 func _store_memory_state() -> void:
@@ -358,10 +377,13 @@ func _store_memory_state() -> void:
 	var local: Dictionary=chapter_state.get(_scene().id,{})
 	local.step=memory.quest_step;local.seen=memory.optional_seen.duplicate()
 	local.seated=memory.seated
+	local.living=memory.living.snapshot();local.phone_messages=memory.phone_messages.duplicate(true)
 	chapter_state[_scene().id]=local
 
 func _target_interaction(id: String) -> void:
 	if _dialogue_open() or minigame_kind!="" or is_paused:return
+	if id.begins_with("living:"):
+		memory.living.perform(id);return
 	if id=="seat" and not memory.seated:
 		memory.seat_couple(func():_target_interaction(id));return
 	var target: Dictionary={}
@@ -411,6 +433,7 @@ func _restore_dialogue(checkpoint: Dictionary) -> void:
 			elif not memory.optional_seen.has(id):memory.optional_seen.append(id)
 			_store_memory_state();_refresh_objective();save_game()
 	else:return
+	if is_instance_valid(memory) and (context=="target:photos" or (context=="scene" and memory.location=="phone")):memory.show_phone(true)
 	_show_dialogue(checkpoint.lines.duplicate(true),callback,context)
 	line_index=clampi(int(checkpoint.index),0,lines.size()-1);_show_line()
 
@@ -474,6 +497,8 @@ func _advance_dialogue() -> void:
 	if callback.is_valid(): callback.call()
 
 func _begin_task(kind: String) -> void:
+	if _scene().id=="invitation":
+		memory.show_phone(false);memory.living.start_outfit();_set_world_active(true);_set_objective("Vestido de denim · bandana roja · zapatillas blancas · WASD y E");return
 	if kind in ["debate","order","cookies"]:_open_challenge(kind);return
 	if kind=="food":_open_activity("food");return
 	if kind in ["food","dance","bake"]:
@@ -744,24 +769,26 @@ func _voxel_finished() -> void:
 	start_scene()
 
 func _set_world_active(value: bool) -> void:
-	if is_instance_valid(memory): memory.active=value
+	if is_instance_valid(memory): memory.active=value and (not is_instance_valid(memory.living) or not memory.living.busy)
 	if is_instance_valid(voxel): voxel.set_active(value)
 
 func _toggle_pause() -> void:
 	if stage=="menu": return
 	is_paused=not is_paused
+	if is_instance_valid(memory):memory.living.pause_activities(is_paused)
 	if is_paused:
 		suspended_modal=modal
 		if is_instance_valid(suspended_modal):suspended_modal.hide()
 		modal=null
 		_set_world_active(false);Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
-		modal=_panel(ui,Rect2(390,150,500,440))
+		modal=_panel(ui,Rect2(390,120,500,515))
 		_label(modal,"Una pausa, amor",Rect2(30,25,440,55),34,GOLD)
 		_button(modal,"Continuar",Rect2(30,105,440,50),_toggle_pause)
 		_button(modal,"Guardar partida",Rect2(30,170,440,50),func(): save_game();_toast("Partida guardada"))
 		_button(modal,"Ajustes",Rect2(30,235,440,50),func(): _settings(_return_pause))
 		_button(modal,"Reiniciar capítulo",Rect2(30,300,440,50),func(): _restart_chapter(chapter_index))
 		_button(modal,"Guardar y volver al menú",Rect2(30,365,440,50),func(): save_game();show_menu())
+		_button(modal,"Álbum de recuerdos",Rect2(30,430,440,50),_album)
 	else:
 		if is_instance_valid(modal): ui.remove_child(modal);modal.queue_free();modal=null
 		if is_instance_valid(suspended_modal):modal=suspended_modal;modal.show();suspended_modal=null
@@ -772,6 +799,37 @@ func _return_pause() -> void:
 	var activity:=suspended_modal
 	is_paused=false;_toggle_pause()
 	suspended_modal=activity
+
+func _toggle_phone() -> void:
+	if is_paused or not is_instance_valid(memory):return
+	if memory.living.state.swimming:memory.living.announce("Primero salimos de la piscina.");return
+	var open: bool=not memory.living.phone_open
+	memory.show_phone(open)
+	if open:
+		_sfx("notify")
+		if not _dialogue_open() and not memory.completed:
+			if memory.scene_id=="moncayo" and memory.mandatory_target().id=="photos":_target_interaction("photos")
+			elif memory.location=="phone" and memory.living.state.outfit_phase=="idle":_scene_interaction()
+
+func _album() -> void:
+	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
+	modal=_panel(ui,Rect2(290,145,700,455));_label(modal,"Nuestro álbum",Rect2(30,20,640,45),32,GOLD)
+	var records: Array=[]
+	for id in chapter_state:
+		var local: Dictionary=chapter_state[id]
+		if local.get("living",{}).get("photo",false):records.append("Foto recreada del modelo" if id in ["foot","goodbye"] else "Foto recreada de Halloween")
+	if keepsakes.has("diploma"):records.append("El diploma del modelo")
+	if chapter_state.get("moncayo",{}).get("step",0)>0:records.append("La conversación que quedó en visto")
+	if chapter_state.get("date",{}).get("successful_challenges",{}).has("order"):records.append("Una mesa para dos en Ikura")
+	if keepsakes.has("cookie"):records.append("Nuestra receta de galletas")
+	_label(modal,"Recuerdos del juego y recreaciones opcionales.\n\n"+("Aún nos esperan muchas aventuras." if records.is_empty() else "\n".join(records)),Rect2(30,90,640,280),23)
+	for id in chapter_state:
+		var path: String=chapter_state[id].get("living",{}).get("photo_file","")
+		if path!="" and FileAccess.file_exists(path):
+			var image:=Image.load_from_file(path)
+			if image!=null:
+				var preview:=TextureRect.new();preview.texture=ImageTexture.create_from_image(image);preview.position=Vector2(380,175);preview.size=Vector2(275,155);preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;modal.add_child(preview);break
+	_button(modal,"Volver",Rect2(30,375,640,50),_return_pause)
 
 func _settings(on_back: Callable) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
@@ -987,6 +1045,50 @@ func _capture_frame(name: String) -> void:
 	await RenderingServer.frame_post_draw
 	var frame:=get_viewport().get_texture().get_image()
 	frame.save_png("%s/%s.png" % [capture_directory,name])
+
+func _capture_living() -> void:
+	capture_directory="res://docs/living/screenshots"
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--capture-dir="):capture_directory=argument.trim_prefix("--capture-dir=")
+	DirAccess.make_dir_recursive_absolute(capture_directory)
+	chapter_state={};chapter_index=1;scene_index=0;start_scene();memory.player_position=Vector2(265,445)
+	await get_tree().create_timer(.6).timeout
+	await _capture_frame("01_yacht")
+	var key:=InputEventKey.new();key.physical_keycode=KEY_P;key.keycode=KEY_P;key.pressed=true;Input.parse_input_event(key);Input.flush_buffered_events()
+	await get_tree().create_timer(.6).timeout
+	revealed=9999;await _capture_frame("02_phone")
+	print("LIVING_NATIVE_PHONE_KEY_OK" if memory.living.phone_open and _dialogue_open() else "LIVING_NATIVE_PHONE_KEY_FAILED")
+	while _dialogue_open():revealed=9999;_advance_dialogue()
+	for pressed in [true,false]:
+		var pointer:=InputEventMouseButton.new();pointer.position=phone_button.get_global_rect().get_center();pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=pressed;Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
+	await get_tree().create_timer(.5).timeout
+	print("LIVING_NATIVE_PHONE_MOUSE_OK" if memory.living.phone_open and not _dialogue_open() else "LIVING_NATIVE_PHONE_MOUSE_FAILED")
+	_toggle_phone()
+	memory.living.perform("living:drink");memory.player_position=Vector2(390,435);memory.living.perform("living:sit")
+	await get_tree().create_timer(1.1).timeout;await _capture_frame("03_sit_drink")
+	memory.living.perform("living:wing");memory.living.perform("living:change");await _capture_frame("04_swimwear")
+	memory.living.perform("living:swim");memory.move_by(Vector2(150,-85));await _capture_frame("05_swimming")
+	memory.move_by(Vector2(2000,2000));print("LIVING_NATIVE_POOL_BOUNDS_OK" if memory.living.POOL.grow(-14).has_point(memory.player_position) else "LIVING_NATIVE_POOL_BOUNDS_FAILED")
+	chapter_index=0;scene_index=2;start_scene();await _capture_frame("06_uess")
+	memory.living.perform("living:water");await get_tree().create_timer(.5).timeout;await _capture_frame("07_fountain")
+	await get_tree().create_timer(2.0).timeout;memory.player_position=Vector2(750,495);_scene_interaction();await get_tree().create_timer(.9).timeout;await _capture_frame("08_footstep")
+	chapter_index=2;scene_index=0;start_scene();memory.show_phone(false);memory.living.start_outfit();_refresh_objective();await _capture_frame("09_bedroom")
+	for piece in ["dress","bandana","sneakers"]:
+		var target: Dictionary=memory.living.targets().filter(func(t: Dictionary):return t.id=="living:"+piece)[0]
+		var nav: RefCounted=load("res://scripts/memory_navigation.gd").new();nav.scan(memory)
+		for waypoint in nav.path_to(Vector2(target.position[0],target.position[1])):memory.move_by(waypoint-memory.player_position)
+		var interact_key:=InputEventKey.new();interact_key.physical_keycode=KEY_E;interact_key.keycode=KEY_E;interact_key.pressed=true;Input.parse_input_event(interact_key);Input.flush_buffered_events()
+		await get_tree().create_timer(.7).timeout;await _capture_frame("10_outfit_"+piece)
+	print("LIVING_NATIVE_SPATIAL_OUTFIT_OK" if memory.living.state.outfit_phase=="complete" else "LIVING_NATIVE_SPATIAL_OUTFIT_FAILED")
+	while _dialogue_open():revealed=9999;_advance_dialogue()
+	chapter_index=2;scene_index=1;start_scene();await get_tree().create_timer(1.2).timeout;await _capture_frame("11_party")
+	print("LIVING_PARTY_PROCESS_MS: ",snappedf(Performance.get_monitor(Performance.TIME_PROCESS)*1000,.01),"; actors: ",memory.living.guests.size())
+	memory.player_position=Vector2(675,500);memory.living.perform("living:dance");await _capture_frame("12_dance")
+	chapter_index=2;scene_index=2;start_scene();memory.player_position=Vector2(802,395);memory.apply_line("Guillermo","¿Quieres ser mi novia?");await _capture_frame("13_romance")
+	memory.apply_line("Narrador","Anami lo besó.");await _capture_frame("14_kiss")
+	print("LIVING_CAPTURE_OK")
+	music.stop();music.stream=null;effects.stop();effects.stream=null
+	get_tree().quit()
 
 func _capture_minigames() -> void:
 	capture_directory="res://docs/minigames/screenshots"

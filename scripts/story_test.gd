@@ -193,13 +193,18 @@ func _run() -> void:
 		var world: Node2D = game.memory
 		world.player_position = world.safe_position(Vector2(110, 550))
 		world.interact()
-		verify(not game._dialogue_open(), "%s distant interaction rejected" % id)
+		if world.location!="phone" and world.mandatory_target().id!="photos":verify(not game._dialogue_open(), "%s distant interaction rejected" % id)
+		else:drain_dialogue()
 		var step_guard:=0
 		while not game.scene_completed and game.stage=="memory" and step_guard<8:
 			step_guard+=1
+			if id=="invitation" and game.memory.living.state.outfit_phase=="active":
+				for piece in ["dress","bandana","sneakers"]:game.memory.living.perform("living:"+piece)
+				drain_dialogue();continue
 			var target: Dictionary=game.memory.mandatory_target()
 			walk_to(Vector2(target.position[0],target.position[1]))
 			game.memory.interact()
+			if id=="foot":await create_timer(1.4).timeout
 			verify(game._dialogue_open(), "%s hotspot starts dialogue" % id)
 			drain_dialogue()
 			if game.minigame_kind!="":break
