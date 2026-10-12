@@ -44,6 +44,8 @@ date['exploration']['optional']=[t for t in date['exploration']['optional'] if t
 date['after'][-1]['text']='La comida llegó y la conversación siguió sin tanto plan. Un recuerdo para guardar.'
 date['lines']=date['lines'][:5]
 old=s['chapters'][3]['scenes'];cookie=old[0];cookie['task']='cookies';cookie['title']='La receta de los dos';cookie['objective']='Reconstruye las galletas de avena; cualquier resultado guarda el recuerdo.'
-cookie['lines']=cookie['lines'][:4];cookie['after']=old[1]['after'][1:];cookie['exploration']['steps'][0]['label']='Preparar nuestras galletas'
+cookie['lines']=cookie['lines'][:4]
+if len(old)>1:cookie['after']=old[1]['after'][1:]
+cookie['exploration']['steps'][0]['label']='Preparar nuestras galletas'
 s['chapters'][3]['scenes']=[cookie]
 write('story.json',s)

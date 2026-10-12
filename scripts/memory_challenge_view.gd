@@ -153,7 +153,10 @@ func _result() -> void:
 		heading="¡Tanda terminada! · %d%% de sabor" % int(s.score)
 		message="Ok, amor. Estas están demasiado buenas." if s.score>=90 else "No están nada mal. La próxima hacemos el doble." if s.score>=70 else "Mmm… interesante interpretación de la receta." if s.score>=40 else "Amor… ¿estamos seguros de que esto es una galleta?"
 		var tray:=HBoxContainer.new();body.add_child(tray)
-		for i in range(5):image(tray,"res://assets/art/sprites/cookie.png",Vector2(100,100),Color.WHITE if s.score>=70 else Color("b78563") if s.score>=40 else Color("705549"))
+		image(tray,"res://assets/art/portraits/anami_happy.png",Vector2(80,80))
+		for i in range(4):image(tray,"res://assets/art/sprites/cookie.png",Vector2(80,80),Color.WHITE if s.score>=70 else Color("b78563") if s.score>=40 else Color("705549"))
+		image(tray,"res://assets/art/portraits/guillermo_happy.png",Vector2(80,80))
+		label(body,"Anami: Ya están frías. A ver… probamos juntos.",19,accent)
 	elif kind=="order":
 		heading="Pedido confirmado" if s.passed else "Pedido incorrecto — Inténtalo otra vez"
 		message="Mesero: Gyozas al centro, miso ramen y sushi. Enseguida les traigo." if s.passed else "Guillermo: Mmm… yo no pedí eso.\nAnami: ¿Cómo que no? ¿Seguro?\nGuillermo: Amor, es nuestra primera cita. Acuérdate bien."

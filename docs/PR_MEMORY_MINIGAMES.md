@@ -1,0 +1,9 @@
+Memory chapters previously allowed passive debate progression, incremental food validation and a short placeholder quiz. This change requires Anami to win five diplomatic exchanges, submit the exact three-dish order, then pass the supplied ten-question Guillermo quiz. Failures retry only the relevant challenge, preserving exploration and previous successes.
+
+The cookie chapter is one continuous interactive kitchen. A semantic state machine, editable recipe and deterministic weighted evaluator produce 0–100% tastiness; every completed batch awards the keepsake. Challenge phases and memory dialogue positions persist across saves. Wrapped, scrollable views support mouse and keyboard, animated feedback, Hard Mode and Q10's fifth answer. Claude's merged 3D overhaul is retained unchanged.
+
+Validation: all eight Godot 4.7.2 suites pass, 2,096 checks total. Includes all 216 dish combinations, all quiz scores, debate thresholds, cookie penalties, per-phase checkpoints, pause/settings, dialogue resume, legacy saves, UI bounds, chapter selection and complete story/3D rescue progression. Native source and exported Windows captures pass mouse ordering, keyboard submission and camera rotation, with no stderr errors. Actual screenshots: `docs/minigames/screenshots/` and `docs/minigames/release_screenshots/`.
+
+Windows ZIP prepared locally: `builds/One More Adventure Amor Interactive Memory Minigames.zip`, matching executable/PCK and licenses; CRC validated, question/recipe JSON included, private photos excluded. Earlier builds retained. See `docs/MINIGAMES.md` for file inventory, scoring, animation hooks and factual sources.
+
+Remaining presentation limits: elaborate kitchen action choreography, final licensed instrumental recordings, personalized letter and human pacing/performance testing. This PR is prepared for review only; do not merge automatically.

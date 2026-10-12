@@ -77,7 +77,7 @@ func audit_memories() -> void:
 				if memory.target_visuals[target.id].position.distance_to(pos)>.01:
 					failures+=1;push_error("Misaligned visual: %s/%s" % [scene.id,target.id])
 			memory.queue_free();await process_frame
-	print("MEMORY_NAVIGATION_QA: ",destinations," targets across 18 scenes; ",failures," failures")
+	print("MEMORY_NAVIGATION_QA: ",destinations," targets across 17 scenes; ",failures," failures")
 
 func flood(start: Vector2i) -> Dictionary:
 	var seen: Dictionary = {}

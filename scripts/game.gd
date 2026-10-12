@@ -919,16 +919,18 @@ func _capture_gallery() -> void:
 	await _capture_frame("04e_ikura_exit")
 	start_scene();memory.quest_step=2;_refresh_objective()
 	_begin_task("food")
+	challenge.act("start")
 	await _capture_frame("04b_food")
 	# Real native pointer and keyboard events exercise menu cards in the built UI.
-	var pointer:=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=true
+	var food_pointer: Vector2=challenge.buttons[0].get_global_rect().get_center()
+	var pointer:=InputEventMouseButton.new();pointer.position=food_pointer;pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=true
 	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
-	pointer=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=false
+	pointer=InputEventMouseButton.new();pointer.position=food_pointer;pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=false
 	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
-	print("NATIVE_MENU_MOUSE_OK" if minigame_step==1 else "NATIVE_MENU_MOUSE_FAILED")
+	print("NATIVE_MENU_MOUSE_OK" if challenge.session.state.order[0]=="gyozas" else "NATIVE_MENU_MOUSE_FAILED")
 	var order_key:=InputEventKey.new();order_key.physical_keycode=KEY_2;order_key.keycode=KEY_2;order_key.pressed=true
 	Input.parse_input_event(order_key);Input.flush_buffered_events();await get_tree().process_frame
-	print("NATIVE_MENU_KEYBOARD_OK" if minigame_step==2 else "NATIVE_MENU_KEYBOARD_FAILED")
+	print("NATIVE_MENU_KEYBOARD_OK" if challenge.session.state.order[1]=="ramen" else "NATIVE_MENU_KEYBOARD_FAILED")
 	chapter_index=1;scene_index=0;start_scene()
 	await _capture_frame("04c_yacht")
 	chapter_index=1;scene_index=1;start_scene();_scene_interaction();line_index=1;_show_line();revealed=9999
@@ -988,6 +990,8 @@ func _capture_frame(name: String) -> void:
 
 func _capture_minigames() -> void:
 	capture_directory="res://docs/minigames/screenshots"
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--capture-dir="):capture_directory=argument.trim_prefix("--capture-dir=")
 	DirAccess.make_dir_recursive_absolute(capture_directory)
 	chapter_state={};chapter_index=0;scene_index=1;start_scene();_open_challenge("debate");challenge.act("start")
 	await _capture_frame("01_debate");challenge.act("answer",0);await _capture_frame("02_debate_feedback")
@@ -1020,4 +1024,8 @@ func _capture_minigames() -> void:
 	challenge.act("chill",60);challenge.act("temperature",190);challenge.act("prepare","shape_fork");challenge.act("minutes",9)
 	await _capture_frame("14_cookie_result")
 	chapter_index=4;scene_index=0;_start_voxel();await _capture_frame("15_claude_voxel")
+	var yaw_before: float=voxel.yaw
+	var motion:=InputEventMouseMotion.new();motion.relative=Vector2(80,-20)
+	Input.parse_input_event(motion);Input.flush_buffered_events();await get_tree().process_frame
+	print("MINIGAME_NATIVE_CAMERA_OK" if absf(voxel.yaw-yaw_before)>.01 else "MINIGAME_NATIVE_CAMERA_FAILED")
 	get_tree().quit()

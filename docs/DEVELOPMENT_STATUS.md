@@ -8,7 +8,9 @@ Implemented mandatory five-exchange MUN debate (7/10), exact three-dish Ikura or
 
 Chapter checkpoints now retain active challenge phase, selections, scores, previous successes, exploration and dialogue position. Legacy v1 checkpoints remain accepted; the former second cookie scene maps to the consolidated first scene. Private references and existing generated art are preserved; Guillermo stays clean-shaven.
 
-Initial validation: 299 challenge checks, 481 full-story checks through all 17 memory scenes and the complete 3D rescue; existing layout/phone, chapter, navigation, audio and target suites also pass. Native OpenGL captures and real mouse/keyboard ordering pass. Final regression, Windows packaging and PR preparation are underway. See `MINIGAMES.md` for contracts, sources and final handoff.
+Final validation: all eight suites pass, 2,096 checks total: challenges 699, story 481, persistence/input 206, chapter 170, room/phone 63, visible targets 245, navigation 220, audio 12. The story run traverses all 17 consolidated memory scenes and the complete 3D rescue. Native source and exported OpenGL captures pass real mouse ordering, keyboard submission and camera rotation. The exported Windows executable exits cleanly, with no stderr errors.
+
+Release: `builds/interactive-memory-minigames/One More Adventure Amor.exe`; ZIP: `builds/One More Adventure Amor Interactive Memory Minigames.zip`. Earlier builds remain intact. Runtime question/recipe banks are included, private references are excluded, ZIP CRCs verified. Source/exported screenshots live in `docs/minigames/`. Claude's PR #2 is now merged; this branch's PR targets main and remains unmerged. See `MINIGAMES.md` for contracts, files, sources and limitations.
 
 The complete six-chapter game and Chapters 1–2 overhaul are preserved on feature/chapter-1-2-overhaul. PR #1 remains open and unmerged; main is unchanged. Godot 4.7.2 / GL Compatibility. Memory chapters retain 2D pixel art, nearest filtering, 48 expression portraits and four-direction sprites; Guillermo remains clean-shaven. Only the adventure chapter uses 3D voxel environments.
 
