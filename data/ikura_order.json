@@ -1,0 +1,50 @@
+{
+  "categories": [
+    "Para compartir",
+    "Guillermo",
+    "Anami"
+  ],
+  "correct_order": [
+    "gyozas",
+    "ramen",
+    "sushi"
+  ],
+  "dishes": [
+    {
+      "id": "gyozas",
+      "name": "Gyozas",
+      "description": "Dumplings dorados · para compartir",
+      "art": "res://assets/art/overhaul/gyozas.png"
+    },
+    {
+      "id": "ramen",
+      "name": "Miso ramen",
+      "description": "Caldo de miso, fideos y toppings",
+      "art": "res://assets/art/overhaul/ramen.png"
+    },
+    {
+      "id": "sushi",
+      "name": "Sushi",
+      "description": "Piezas de arroz, pescado y vegetales",
+      "art": "res://assets/art/overhaul/sushi.png"
+    },
+    {
+      "id": "edamame",
+      "name": "Edamame",
+      "description": "Vainas de soya con sal",
+      "art": "res://assets/art/overhaul/edamame.png"
+    },
+    {
+      "id": "tempura",
+      "name": "Tempura",
+      "description": "Vegetales en una masa ligera",
+      "art": "res://assets/art/overhaul/tempura.png"
+    },
+    {
+      "id": "yakitori",
+      "name": "Yakitori",
+      "description": "Brochetas de pollo a la parrilla",
+      "art": "res://assets/art/overhaul/yakitori.png"
+    }
+  ]
+}

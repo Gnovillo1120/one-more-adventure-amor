@@ -1,0 +1,111 @@
+{
+  "pass_score": 7,
+  "max_score": 10,
+  "description": "Dramatización romántica; no afirma que el encuentro real fuera un examen.",
+  "sources": [
+    "https://www.fao.org/new-york/news/news-detail/Conflict-in-Ukraine-likely-to-impact-global-agricultural-markets-and-food-security/en",
+    "https://www.wfp.org/news/global-report-food-crises-number-people-facing-acute-food-insecurity-rose-258-million-58"
+  ],
+  "questions": [
+    {
+      "argument": "Las rutas del mar Negro importan. Si se interrumpen los envíos, comprar alimentos puede salir más caro.",
+      "context": "Guillermo representa a Ucrania y se dirige a Chad. Distingue el mecanismo económico de una acusación.",
+      "question": "ADHOC · Tu respuesta",
+      "choices": [
+        "Reconozcamos la interrupción, pero Chad es vulnerable a ella; no la causó.",
+        "Reabrir rutas es útil; con eso ya está casi todo resuelto.",
+        "Entonces Chad debería asumir la culpa por importar."
+      ],
+      "points": [
+        2,
+        1,
+        0
+      ],
+      "feedback": [
+        "Bien: separas vulnerabilidad y responsabilidad, sin negar el impacto comercial.",
+        "El comercio ayuda, pero faltan acceso económico y producción local.",
+        "Depender de importaciones no convierte a Chad en responsable de la guerra."
+      ]
+    },
+    {
+      "argument": "Si el precio del cereal baja, las familias deberían poder comer mejor.",
+      "context": "Los precios internacionales y el acceso de cada hogar no son lo mismo.",
+      "question": "ADHOC · Tu respuesta",
+      "choices": [
+        "Acordemos esperar y no hacer nada más.",
+        "Una caída ayuda, pero hay que mirar ingresos, transporte y precios locales.",
+        "Propongamos revisar los precios del mercado local."
+      ],
+      "points": [
+        0,
+        2,
+        1
+      ],
+      "feedback": [
+        "Esperar sin asistencia ignora a hogares que ya no pueden comprar.",
+        "Convincente: distingues precios globales de capacidad real para comprar.",
+        "Buena evidencia local; falta incluir los ingresos y apoyo a hogares."
+      ]
+    },
+    {
+      "argument": "La propuesta prioriza sacar más grano. ¿Qué otra parte se nos está escapando?",
+      "context": "Los insumos agrícolas influyen en la producción futura.",
+      "question": "ADHOC · Tu respuesta",
+      "choices": [
+        "Llamaría a todos los fertilizantes un lujo innecesario.",
+        "Añadiría apoyo urgente al transporte de alimentos.",
+        "Incluiría insumos y apoyo a agricultores, además de la ayuda inmediata."
+      ],
+      "points": [
+        0,
+        1,
+        2
+      ],
+      "feedback": [
+        "No es una respuesta fundamentada: los insumos afectan la producción.",
+        "Ayuda a la urgencia, aunque no responde a la capacidad de producir.",
+        "Bien: atiendes la urgencia y la próxima cosecha, sin inventar cifras."
+      ]
+    },
+    {
+      "argument": "La guerra agrava el problema; ¿podemos decir que explica toda la pobreza?",
+      "context": "También importan conflictos locales, clima e ingresos. No atribuyas toda una crisis a una sola causa.",
+      "question": "ADHOC · Tu respuesta",
+      "choices": [
+        "No. Hay varios factores: expliquemos la contribución de la guerra con evidencia.",
+        "Podemos evitar esa frase y hablar solo del comercio.",
+        "Sí: si pasan al mismo tiempo, una cosa demuestra la otra."
+      ],
+      "points": [
+        2,
+        1,
+        0
+      ],
+      "feedback": [
+        "Sólido: una contribución causal no equivale a explicar todo el fenómeno.",
+        "Prudente, pero deja sin analizar los otros factores relevantes.",
+        "Coincidir en el tiempo no demuestra causalidad ni responsabilidad total."
+      ]
+    },
+    {
+      "argument": "Entonces, ¿qué propuesta conjunta presentamos?",
+      "context": "Busca una respuesta coordinada; PMA/WFP y FAO tienen funciones complementarias.",
+      "question": "ADHOC · Tu respuesta",
+      "choices": [
+        "Crear una comisión y dejar las medidas concretas para después.",
+        "Coordinar ayuda alimentaria con el PMA, apoyo agrícola con FAO y comercio seguro.",
+        "Que una sola delegación prometa resolverlo todo."
+      ],
+      "points": [
+        1,
+        2,
+        0
+      ],
+      "feedback": [
+        "Negociar es útil, pero falta especificar qué ayuda llega y cómo.",
+        "Convincente: asistencia urgente, recuperación agrícola y cooperación comercial.",
+        "Una promesa sin coordinación ni evidencia no es una propuesta viable."
+      ]
+    }
+  ]
+}

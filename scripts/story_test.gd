@@ -128,6 +128,18 @@ func run_voxel() -> void:
 func minigame() -> void:
 	if game.minigame_kind == "": return
 	var kind: String = game.minigame_kind
+	if is_instance_valid(game.challenge):
+		var helper=load("res://scripts/memory_minigames_test.gd").new()
+		while is_instance_valid(game.challenge):
+			var session: RefCounted=game.challenge.session
+			if session.state.phase=="intro":session.act("start")
+			if session.kind=="order":
+				for i in range(3):session.act("dish",[i,session.data.correct_order[i]])
+				session.act("submit")
+			elif session.kind=="cookies":helper.bake(session)
+			else:helper.answer_all(session,10)
+			game.challenge.act("continue")
+		helper.free();drain_dialogue();return
 	if kind == "dance":
 		game._dance_key(KEY_X)
 		verify(game.minigame_step == 0, "wrong dance key remains forgiving")
@@ -199,7 +211,7 @@ func _run() -> void:
 		game.memory.interact()
 		await process_frame
 	verify(game.stage == "credits", "full natural progression reaches credits")
-	verify(visited.size() == 18, "all eighteen story scenes traversed")
+	verify(visited.size() == 17, "all seventeen consolidated story scenes traversed")
 	verify(game.unlocked == 5, "all six chapters unlocked")
 	game.show_menu()
 	verify(game.stage == "menu", "credits returns to menu")

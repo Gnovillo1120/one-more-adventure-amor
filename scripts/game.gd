@@ -3,6 +3,8 @@ extends Node
 const MemoryWorld = preload("res://scripts/memory_world.gd")
 const VoxelWorld = preload("res://scripts/voxel_world.gd")
 const AudioDirector = preload("res://scripts/audio_director.gd")
+const ChallengeView = preload("res://scripts/memory_challenge_view.gd")
+var challenge: Control
 var audio_director: Node
 var chapter_state: Dictionary = {}
 var suspended_modal: Control
@@ -43,6 +45,7 @@ var toast_label: Label
 var lines: Array = []
 var line_index := 0
 var dialog_done: Callable
+var dialogue_resume := ""
 var revealed := 0.0
 var text_speed := 45.0
 var volume := .65
@@ -65,13 +68,10 @@ var capture_directory := "res://docs/screenshots"
 
 func _ready() -> void:
 	story = JSON.parse_string(FileAccess.get_file_as_string("res://data/story.json"))
-	var quiz_template: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/guillermo_quiz_template.json"))
-	story["guillermo_quiz"]=quiz_template.questions
-	story["guillermo_quiz_responses"]=quiz_template.score_responses
 	if ResourceLoader.exists("res://assets/fonts/PixelifySans.ttf"):
 		pixel_font=load("res://assets/fonts/PixelifySans.ttf")
 		pixel_font.antialiasing=TextServer.FONT_ANTIALIASING_NONE
-	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture")
+	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture") or OS.get_cmdline_user_args().has("--capture-minigames")
 	_load_settings()
 	_read_unlocks()
 	canvas = CanvasLayer.new()
@@ -87,6 +87,7 @@ func _ready() -> void:
 	_apply_audio()
 	show_menu()
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
+	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 
 func _process(delta: float) -> void:
 	if stage != "menu" and not is_paused: total_play_seconds += delta
@@ -107,6 +108,13 @@ func _process(delta: float) -> void:
 		last_autosave = 0
 		save_game()
 
+func _input(event: InputEvent) -> void:
+	if not is_instance_valid(challenge) or is_paused:return
+	if event is InputEventKey and event.pressed and not event.echo:
+		var code: int=event.physical_keycode
+		if code in [KEY_ENTER,KEY_SPACE] or (code>=KEY_1 and code<=KEY_9) or (challenge.session.kind=="order" and code in [KEY_Q,KEY_W,KEY_R]):
+			challenge.key(code);get_viewport().set_input_as_handled()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE:
@@ -114,6 +122,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		if is_paused: return
+		if is_instance_valid(challenge):
+			challenge.key(event.physical_keycode)
+			return
 		if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible and event.physical_keycode in [KEY_PAGEUP,KEY_PAGEDOWN,KEY_HOME,KEY_END]:
 			memory.scroll_phone(event.physical_keycode);get_viewport().set_input_as_handled();return
 		if minigame_kind in ["trivia","drama","food","guillermo_quiz"]:
@@ -135,6 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_sfx("swing")
 
 func _clear_ui() -> void:
+	challenge=null
 	suspended_modal=null
 	for child in ui.get_children():
 		ui.remove_child(child)
@@ -281,8 +293,12 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	_build_hud()
 	_refresh_objective()
 	_play_music("intimate" if s.id=="pool" else ["memory","date","halloween","cookies","mystery","beach"][chapter_index])
-	save_game()
 	_transition(_scene().title)
+	if not completed and not local.get("dialogue_checkpoint",{}).is_empty():
+		_restore_dialogue(local.dialogue_checkpoint)
+	elif not completed and local.get("active_challenge","")!="":
+		_open_challenge(local.active_challenge)
+	save_game()
 
 func _build_hud() -> void:
 	hud = Control.new();hud.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui.add_child(hud)
@@ -331,7 +347,7 @@ func _scene_dialogue() -> void:
 		for paragraph in story.personal_letter.paragraphs:
 			scene_lines.append({"speaker":"Guillermo","text":paragraph,"mood":"affectionate"})
 		_scene_letter_intro(scene_lines)
-	_show_dialogue(scene_lines,func(): _begin_task(s.task))
+	_show_dialogue(scene_lines,func(): _begin_task(s.task),"scene")
 
 func _refresh_objective() -> void:
 	if not is_instance_valid(memory):return
@@ -367,19 +383,36 @@ func _target_interaction(id: String) -> void:
 		if mandatory:memory.quest_step+=1
 		elif not memory.optional_seen.has(id):memory.optional_seen.append(id)
 		if id=="seat":memory.seated=true
-		_store_memory_state();_refresh_objective();save_game())
+		_store_memory_state();_refresh_objective();save_game(),"target:"+id)
 
 func _scene_letter_intro(scene_lines: Array) -> void:
 	# Authored dramatic framing is not presented as Guillermo's private letter.
 	scene_lines.push_front({"speaker":"Narrador","text":"Una llegada inesperada, una silla elegida, una cita, una bandana… Cada recuerdo abrió el camino a otra aventura juntos.","mood":"affectionate"})
 
-func _show_dialogue(new_lines: Array, on_done: Callable) -> void:
-	lines=new_lines;line_index=0;dialog_done=on_done
+func _show_dialogue(new_lines: Array, on_done: Callable, resume_id: String="") -> void:
+	lines=new_lines;line_index=0;dialog_done=on_done;dialogue_resume=resume_id
 	if lines.is_empty(): on_done.call();return
 	_set_world_active(false)
 	Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 	dialog_panel.visible=true
 	_show_line()
+
+func _restore_dialogue(checkpoint: Dictionary) -> void:
+	var context: String=checkpoint.get("context","")
+	var callback: Callable
+	if context=="scene":callback=func():_begin_task(_scene().task)
+	elif context=="after":callback=_complete_scene
+	elif context=="arrival":callback=_finish_task
+	elif context.begins_with("target:"):
+		var id:=context.trim_prefix("target:")
+		callback=func():
+			if id=="photos":memory.show_phone(false)
+			if id==memory.mandatory_target().id:memory.quest_step+=1
+			elif not memory.optional_seen.has(id):memory.optional_seen.append(id)
+			_store_memory_state();_refresh_objective();save_game()
+	else:return
+	_show_dialogue(checkpoint.lines.duplicate(true),callback,context)
+	line_index=clampi(int(checkpoint.index),0,lines.size()-1);_show_line()
 
 func _show_line() -> void:
 	var entry: Dictionary=lines[line_index]
@@ -441,6 +474,7 @@ func _advance_dialogue() -> void:
 	if callback.is_valid(): callback.call()
 
 func _begin_task(kind: String) -> void:
+	if kind in ["debate","order","cookies"]:_open_challenge(kind);return
 	if kind=="food":_open_activity("food");return
 	if kind in ["food","dance","bake"]:
 		minigame_kind=kind;minigame_step=0;_set_world_active(false)
@@ -478,6 +512,8 @@ func _update_recipe() -> void:
 			else: minigame_prompt.text="Amor… esa opción suena divertida. Probemos otra.\n"+question)
 
 func _open_activity(kind: String) -> void:
+	if kind=="food":_open_challenge("order");return
+	if kind in ["drama","guillermo_quiz"]:return
 	minigame_kind=kind;_set_world_active(false)
 	var local: Dictionary=chapter_state.get(_scene().id,{})
 	minigame_step=int(local.get(kind+"_step",0));activity_score=int(local.get(kind+"_score",0))
@@ -607,16 +643,62 @@ func _close_minigame() -> void:
 
 func _finish_task() -> void:
 	var after: Array=_scene().get("after",[])
-	if not after.is_empty(): _show_dialogue(after,_complete_scene)
+	if not after.is_empty(): _show_dialogue(after,_complete_scene,"after")
 	else: _complete_scene()
 
+func _store_challenge_state() -> void:
+	if not is_instance_valid(challenge):return
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	var sessions: Dictionary=local.get("challenge_sessions",{})
+	sessions[challenge.session.kind]=challenge.session.state.duplicate(true)
+	local["challenge_sessions"]=sessions;local["active_challenge"]=challenge.session.kind
+	chapter_state[_scene().id]=local
+
+func _open_challenge(kind: String) -> void:
+	var paths: Dictionary={"debate":"mun_debate","order":"ikura_order","guillermo":"guillermo_quiz","cookies":"oatmeal_cookie_recipe"}
+	if not paths.has(kind):return
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/%s.json" % paths[kind]))
+	challenge=ChallengeView.new();ui.add_child(challenge);modal=challenge
+	minigame_kind=kind;_set_world_active(false)
+	challenge.changed.connect(func():_store_challenge_state();save_game())
+	challenge.completed.connect(_challenge_complete)
+	challenge.reaction.connect(func(_kind: String, points: int):
+		_sfx("collect" if points>0 else "menu")
+		if is_instance_valid(memory):memory.challenge_reaction(_kind,points))
+	challenge.setup(self,kind,data,local.get("challenge_sessions",{}).get(kind,{}))
+	if kind=="order" and is_instance_valid(memory):memory.waiter_movement(true)
+	_store_challenge_state();save_game()
+
+func _challenge_complete(kind: String) -> void:
+	if not is_instance_valid(challenge) or not challenge.session.state.passed:return
+	_store_challenge_state()
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	var success: Dictionary=local.get("successful_challenges",{})
+	success[kind]=int(challenge.session.state.score);local["successful_challenges"]=success
+	chapter_state[_scene().id]=local
+	ui.remove_child(challenge);challenge.queue_free();challenge=null;modal=null;minigame_kind=""
+	if kind=="order":
+		if is_instance_valid(memory):memory.waiter_movement(false)
+		_open_challenge("guillermo")
+	else:
+		# Keep the passed result as the checkpoint until closing dialogue completes.
+		# Loading during that dialogue offers Continue without replaying the challenge.
+		if kind=="guillermo":
+			_show_dialogue([{"speaker":"Mesero","text":"Listo: sus gyozas, miso ramen y sushi. ¡Buen provecho!","mood":"happy"}],_finish_task,"arrival")
+		else:_finish_task()
+
 func _complete_scene() -> void:
+	var local: Dictionary=chapter_state.get(_scene().id,{})
+	local["active_challenge"]=""
+	chapter_state[_scene().id]=local
 	if chapter_index==4 and scene_index==0:
 		_start_voxel()
 		return
 	if chapter_index==5 and scene_index==_chapter().scenes.size()-1:
 		unlocked=5;save_game();_credits();return
 	scene_completed=true
+	if chapter_index==3 and not keepsakes.has(_chapter().keepsake):keepsakes.append(_chapter().keepsake)
 	if is_instance_valid(memory): memory.completed=true;memory.active=true
 	_set_objective("Recuerdo completo · Camina hacia la salida iluminada y pulsa E.")
 	_sfx("collect")
@@ -739,9 +821,13 @@ func _toast(text: String) -> void:
 	if is_instance_valid(toast_label):toast_label.text=text
 
 func _save_payload() -> Dictionary:
+	_store_challenge_state()
 	var payload: Dictionary={"version":1,"chapter":chapter_index,"scene":scene_index,"stage":stage,"completed":scene_completed,"unlocked":unlocked,"keepsakes":keepsakes,"play_seconds":total_play_seconds}
 	if is_instance_valid(memory):
 		_store_memory_state();payload.position=[memory.player_position.x,memory.player_position.y]
+		var local: Dictionary=chapter_state.get(_scene().id,{})
+		local["dialogue_checkpoint"]={"context":dialogue_resume,"lines":lines.duplicate(true),"index":line_index} if _dialogue_open() and dialogue_resume!="" else {}
+		chapter_state[_scene().id]=local
 	payload["chapter_state"]=chapter_state.duplicate(true)
 	payload["scene_id"]=_scene().id
 	if is_instance_valid(voxel):payload.voxel=voxel.get_save_data()
@@ -809,7 +895,7 @@ func _capture_gallery() -> void:
 	_scene_interaction();line_index=3;_show_line();revealed=9999
 	await _capture_frame("03_dialogue")
 	chapter_index=0;scene_index=1;start_scene();_scene_interaction();line_index=4;_show_line();revealed=9999
-	line_index=8;_show_line();revealed=9999
+	line_index=4;_show_line();revealed=9999
 	await _capture_frame("03b_choices")
 	dialog_panel.hide();_open_activity("trivia")
 	await _capture_frame("03e_trivia")
@@ -833,16 +919,18 @@ func _capture_gallery() -> void:
 	await _capture_frame("04e_ikura_exit")
 	start_scene();memory.quest_step=2;_refresh_objective()
 	_begin_task("food")
+	challenge.act("start")
 	await _capture_frame("04b_food")
 	# Real native pointer and keyboard events exercise menu cards in the built UI.
-	var pointer:=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=true
+	var food_pointer: Vector2=challenge.buttons[0].get_global_rect().get_center()
+	var pointer:=InputEventMouseButton.new();pointer.position=food_pointer;pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=true
 	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
-	pointer=InputEventMouseButton.new();pointer.position=Vector2(320,330);pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=false
+	pointer=InputEventMouseButton.new();pointer.position=food_pointer;pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=false
 	Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
-	print("NATIVE_MENU_MOUSE_OK" if minigame_step==1 else "NATIVE_MENU_MOUSE_FAILED")
+	print("NATIVE_MENU_MOUSE_OK" if challenge.session.state.order[0]=="gyozas" else "NATIVE_MENU_MOUSE_FAILED")
 	var order_key:=InputEventKey.new();order_key.physical_keycode=KEY_2;order_key.keycode=KEY_2;order_key.pressed=true
 	Input.parse_input_event(order_key);Input.flush_buffered_events();await get_tree().process_frame
-	print("NATIVE_MENU_KEYBOARD_OK" if minigame_step==2 else "NATIVE_MENU_KEYBOARD_FAILED")
+	print("NATIVE_MENU_KEYBOARD_OK" if challenge.session.state.order[1]=="ramen" else "NATIVE_MENU_KEYBOARD_FAILED")
 	chapter_index=1;scene_index=0;start_scene()
 	await _capture_frame("04c_yacht")
 	chapter_index=1;scene_index=1;start_scene();_scene_interaction();line_index=1;_show_line();revealed=9999
@@ -862,7 +950,7 @@ func _capture_gallery() -> void:
 	await _capture_frame("05b_halloween_portrait")
 	chapter_index=2;scene_index=2;start_scene()
 	await _capture_frame("05c_pool")
-	chapter_index=3;scene_index=1;start_scene()
+	chapter_index=3;scene_index=0;start_scene()
 	await _capture_frame("06_kitchen")
 	chapter_index=4;scene_index=0;_start_voxel()
 	# Verify mouse rotation in a rendered native window with cursor capture.
@@ -899,3 +987,45 @@ func _capture_frame(name: String) -> void:
 	await RenderingServer.frame_post_draw
 	var frame:=get_viewport().get_texture().get_image()
 	frame.save_png("%s/%s.png" % [capture_directory,name])
+
+func _capture_minigames() -> void:
+	capture_directory="res://docs/minigames/screenshots"
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--capture-dir="):capture_directory=argument.trim_prefix("--capture-dir=")
+	DirAccess.make_dir_recursive_absolute(capture_directory)
+	chapter_state={};chapter_index=0;scene_index=1;start_scene();_open_challenge("debate");challenge.act("start")
+	await _capture_frame("01_debate");challenge.act("answer",0);await _capture_frame("02_debate_feedback")
+	chapter_index=1;scene_index=2;start_scene();memory.seated=true;memory.restore_pose();_open_challenge("order");challenge.act("start")
+	await _capture_frame("03_order")
+	var click_position: Vector2=challenge.buttons[0].get_global_rect().get_center()
+	for pressed in [true,false]:
+		var pointer:=InputEventMouseButton.new();pointer.position=click_position;pointer.button_index=MOUSE_BUTTON_LEFT;pointer.pressed=pressed;Input.parse_input_event(pointer);Input.flush_buffered_events();await get_tree().process_frame
+	print("MINIGAME_NATIVE_MOUSE_OK" if challenge.session.state.order[0]=="gyozas" else "MINIGAME_NATIVE_MOUSE_FAILED")
+	for code in [KEY_2,KEY_3,KEY_ENTER]:
+		var key:=InputEventKey.new();key.physical_keycode=code;key.keycode=code;key.pressed=true;Input.parse_input_event(key);Input.flush_buffered_events();await get_tree().process_frame
+	print("MINIGAME_NATIVE_KEYS_OK" if challenge.session.state.passed else "MINIGAME_NATIVE_KEYS_FAILED")
+	challenge.session.setup("order",challenge.session.data);challenge.act("start")
+	for i in range(3):challenge.act("dish",[i,challenge.session.data.correct_order[i]])
+	challenge.act("submit");await _capture_frame("04_order_confirmed");challenge.act("continue")
+	await _capture_frame("05_quiz_intro");challenge.act("start");await _capture_frame("06_quiz")
+	for i in range(7):challenge.act("answer",challenge.session.data.questions[i].answer);challenge.act("next")
+	await _capture_frame("07_hard_mode");challenge.act("hard_mode")
+	for i in range(2):challenge.act("answer",challenge.session.data.questions[int(challenge.session.state.index)].answer);challenge.act("next")
+	await _capture_frame("08_five_choices");challenge.act("answer",4);challenge.act("next");await _capture_frame("09_quiz_success")
+	DisplayServer.window_set_size(Vector2i(960,540));await _capture_frame("09b_quiz_960")
+	DisplayServer.window_set_size(Vector2i(1280,720))
+	chapter_index=3;scene_index=0;start_scene();await _capture_frame("10_kitchen");_open_challenge("cookies");challenge.act("start")
+	await _capture_frame("11_pantry")
+	for item in challenge.session.data.ingredients:challenge.act("ingredient",item.id)
+	challenge.act("gather");await _capture_frame("12_measure")
+	for item in challenge.session.data.measurements:challenge.act("measure",item.quantity)
+	await _capture_frame("13_preparation")
+	for i in range(5):challenge.act("prepare",challenge.session.data.preparation[i].correct)
+	challenge.act("chill",60);challenge.act("temperature",190);challenge.act("prepare","shape_fork");challenge.act("minutes",9)
+	await _capture_frame("14_cookie_result")
+	chapter_index=4;scene_index=0;_start_voxel();await _capture_frame("15_claude_voxel")
+	var yaw_before: float=voxel.yaw
+	var motion:=InputEventMouseMotion.new();motion.relative=Vector2(80,-20)
+	Input.parse_input_event(motion);Input.flush_buffered_events();await get_tree().process_frame
+	print("MINIGAME_NATIVE_CAMERA_OK" if absf(voxel.yaw-yaw_before)>.01 else "MINIGAME_NATIVE_CAMERA_FAILED")
+	get_tree().quit()

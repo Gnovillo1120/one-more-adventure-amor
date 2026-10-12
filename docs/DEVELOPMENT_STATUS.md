@@ -1,4 +1,18 @@
-# Development status — 10 October 2026
+# Development status — 11 October 2026
+
+## Interactive memory minigames — active branch
+
+Working on `feature/interactive-memory-minigames`, branched from Claude's tested `feature/claude-3d-overhaul` at `9d5a754`. Claude's shaders, voxel characters and rebuilt world are preserved. The older entries below are historical checkpoints; PR #1 has since merged.
+
+Implemented mandatory five-exchange MUN debate (7/10), exact three-dish Ikura ordering, the supplied ten-question Guillermo quiz (8/10, fifth choice on Q10, Hard Mode before Q8), and one continuous kitchen with deterministic 0–100% baking. Poor baking awards the keepsake and advances. Removed the old first-date scored quiz from playable interactions. Semantic challenge state and recipe evaluation live outside UI nodes; each successful action is a visual-animation hook.
+
+Chapter checkpoints now retain active challenge phase, selections, scores, previous successes, exploration and dialogue position. Legacy v1 checkpoints remain accepted; the former second cookie scene maps to the consolidated first scene. Private references and existing generated art are preserved; Guillermo stays clean-shaven.
+
+Final validation: all eight suites pass, 2,096 checks total: challenges 699, story 481, persistence/input 206, chapter 170, room/phone 63, visible targets 245, navigation 220, audio 12. The story run traverses all 17 consolidated memory scenes and the complete 3D rescue. Native source and exported OpenGL captures pass real mouse ordering, keyboard submission and camera rotation. The exported Windows executable exits cleanly, with no stderr errors.
+
+Release: `builds/interactive-memory-minigames/One More Adventure Amor.exe`; ZIP: `builds/One More Adventure Amor Interactive Memory Minigames.zip` (40,010,585 bytes). Earlier builds remain intact. Runtime question/recipe banks are included, private references are excluded, ZIP CRCs verified. Source/exported screenshots live in `docs/minigames/`. Claude's PR #2 is now merged. See `MINIGAMES.md` for contracts, files, sources and limitations.
+
+Commits `e73a3c0` and `756a9d0` are pushed to the requested branch. PR creation returned GitHub 403 “Resource not accessible by integration”; the browser fallback failed to start twice. No PR was created or merged. Complete PR text is prepared in `docs/PR_MEMORY_MINIGAMES.md`; [open the prepared comparison](https://github.com/Gnovillo1120/one-more-adventure-amor/compare/main...feature/interactive-memory-minigames?expand=1).
 
 The complete six-chapter game and Chapters 1–2 overhaul are preserved on feature/chapter-1-2-overhaul. PR #1 remains open and unmerged; main is unchanged. Godot 4.7.2 / GL Compatibility. Memory chapters retain 2D pixel art, nearest filtering, 48 expression portraits and four-direction sprites; Guillermo remains clean-shaven. Only the adventure chapter uses 3D voxel environments.
 

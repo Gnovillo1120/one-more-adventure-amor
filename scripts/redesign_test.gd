@@ -50,11 +50,12 @@ func run() -> void:
 		verify(label.size.y>100,"long text uses dynamic bubble height")
 	phone.scroll_phone(KEY_HOME);verify(phone.phone_scroll.scroll_vertical==0,"keyboard Home reaches first message")
 	phone.scroll_phone(KEY_END);verify(phone.phone_scroll.scroll_vertical>0,"keyboard End reaches latest message")
-	game.chapter_index=1;game.scene_index=2;game.start_scene();game._open_activity("guillermo_quiz")
-	verify(game.story.guillermo_quiz.size()==3,"quiz loads editable template")
-	for entry in game.story.guillermo_quiz:
-		game._activity_answer(int(entry.answer));game._activity_next()
-	verify(game.chapter_state.date.guillermo_quiz_score==3,"data-driven quiz stores score")
+	game.chapter_index=1;game.scene_index=2;game.start_scene();game._open_challenge("guillermo");game.challenge.act("start")
+	verify(game.challenge.session.data.questions.size()==10,"quiz loads complete editable question bank")
+	for entry in game.challenge.session.data.questions:
+		if game.challenge.session.state.phase=="hard_mode":game.challenge.act("hard_mode")
+		game.challenge.act("answer",int(entry.answer));game.challenge.act("next")
+	verify(game.chapter_state.date.challenge_sessions.guillermo.score==10,"data-driven quiz stores score")
 	game.queue_free();await process_frame;await process_frame
 	print("REDESIGN_PHASE_A_QA: ",checks," checks; ",failures," failures")
 	quit(0 if failures==0 else 1)

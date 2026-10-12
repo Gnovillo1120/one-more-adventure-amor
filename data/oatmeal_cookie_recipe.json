@@ -1,0 +1,335 @@
+{
+  "yield": {
+    "quantity": 24,
+    "unit": "cookie",
+    "approximate": true
+  },
+  "ingredients": [
+    {
+      "id": "flour",
+      "name": "Harina común",
+      "quantity": 2,
+      "unit": "cup"
+    },
+    {
+      "id": "cinnamon",
+      "name": "Canela molida",
+      "quantity": 1.5,
+      "unit": "teaspoon"
+    },
+    {
+      "id": "soda",
+      "name": "Bicarbonato",
+      "quantity": 1,
+      "unit": "teaspoon"
+    },
+    {
+      "id": "salt",
+      "name": "Sal",
+      "quantity": 1,
+      "unit": "teaspoon"
+    },
+    {
+      "id": "butter",
+      "name": "Mantequilla sin sal, blanda",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "white_sugar",
+      "name": "Azúcar blanca · masa",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "brown_sugar",
+      "name": "Azúcar morena compactada",
+      "quantity": 1,
+      "unit": "cup"
+    },
+    {
+      "id": "eggs",
+      "name": "Huevos grandes",
+      "quantity": 2,
+      "unit": "item"
+    },
+    {
+      "id": "vanilla",
+      "name": "Extracto de vainilla",
+      "quantity": 1,
+      "unit": "teaspoon"
+    },
+    {
+      "id": "oats",
+      "name": "Avena de cocción rápida",
+      "quantity": 3,
+      "unit": "cup"
+    },
+    {
+      "id": "spray",
+      "name": "Spray antiadherente con harina",
+      "quantity": 1,
+      "unit": "coating"
+    },
+    {
+      "id": "water",
+      "name": "Agua para el tenedor",
+      "quantity": 2,
+      "unit": "tablespoon"
+    },
+    {
+      "id": "topping_sugar",
+      "name": "Azúcar blanca · cobertura",
+      "quantity": 2,
+      "unit": "tablespoon"
+    }
+  ],
+  "pantry": [
+    {
+      "id": "flour",
+      "name": "Harina común"
+    },
+    {
+      "id": "cinnamon",
+      "name": "Canela molida"
+    },
+    {
+      "id": "soda",
+      "name": "Bicarbonato"
+    },
+    {
+      "id": "salt",
+      "name": "Sal"
+    },
+    {
+      "id": "butter",
+      "name": "Mantequilla sin sal, blanda"
+    },
+    {
+      "id": "white_sugar",
+      "name": "Azúcar blanca · masa"
+    },
+    {
+      "id": "brown_sugar",
+      "name": "Azúcar morena compactada"
+    },
+    {
+      "id": "eggs",
+      "name": "Huevos grandes"
+    },
+    {
+      "id": "vanilla",
+      "name": "Extracto de vainilla"
+    },
+    {
+      "id": "oats",
+      "name": "Avena de cocción rápida"
+    },
+    {
+      "id": "spray",
+      "name": "Spray antiadherente con harina"
+    },
+    {
+      "id": "water",
+      "name": "Agua para el tenedor"
+    },
+    {
+      "id": "topping_sugar",
+      "name": "Azúcar blanca · cobertura"
+    },
+    {
+      "id": "yeast",
+      "name": "Levadura de pan"
+    },
+    {
+      "id": "pepper",
+      "name": "Pimienta"
+    },
+    {
+      "id": "rice",
+      "name": "Arroz"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "flour",
+      "name": "Harina común",
+      "quantity": 2,
+      "unit": "cup",
+      "options": [
+        1.0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "cinnamon",
+      "name": "Canela molida",
+      "quantity": 1.5,
+      "unit": "teaspoon",
+      "options": [
+        0.75,
+        1.5,
+        3.0
+      ]
+    },
+    {
+      "id": "butter",
+      "name": "Mantequilla sin sal, blanda",
+      "quantity": 1,
+      "unit": "cup",
+      "options": [
+        0.5,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "eggs",
+      "name": "Huevos grandes",
+      "quantity": 2,
+      "unit": "item",
+      "options": [
+        1.0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "oats",
+      "name": "Avena de cocción rápida",
+      "quantity": 3,
+      "unit": "cup",
+      "options": [
+        1.5,
+        3,
+        6
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "question": "Batir los secos",
+      "detail": "Harina, canela, bicarbonato y sal",
+      "correct": "whisk_dry",
+      "options": [
+        {
+          "id": "whisk_dry",
+          "label": "Batir los secos"
+        },
+        {
+          "id": "melt_butter",
+          "label": "Derretir toda la mantequilla"
+        }
+      ]
+    },
+    {
+      "question": "Cremar 2–3 minutos",
+      "detail": "Mantequilla blanda + azúcar blanca de masa + morena",
+      "correct": "cream",
+      "options": [
+        {
+          "id": "cream",
+          "label": "Cremar 2–3 minutos"
+        },
+        {
+          "id": "skip_cream",
+          "label": "Mezclar todo sin cremar"
+        }
+      ]
+    },
+    {
+      "question": "Huevos uno a uno y vainilla",
+      "detail": "Incorporar cada huevo antes del siguiente",
+      "correct": "eggs_vanilla",
+      "options": [
+        {
+          "id": "eggs_vanilla",
+          "label": "Huevos uno a uno y vainilla"
+        },
+        {
+          "id": "all_eggs",
+          "label": "Echar todos los líquidos de golpe"
+        }
+      ]
+    },
+    {
+      "question": "Añadir secos poco a poco",
+      "detail": "Combinar sin vaciar toda la harina de golpe",
+      "correct": "gradual_dry",
+      "options": [
+        {
+          "id": "gradual_dry",
+          "label": "Añadir secos poco a poco"
+        },
+        {
+          "id": "dump_dry",
+          "label": "Echar harina y avena a la vez"
+        }
+      ]
+    },
+    {
+      "question": "Agregar y mezclar la avena",
+      "detail": "Distribuirla bien en toda la masa",
+      "correct": "mix_oats",
+      "options": [
+        {
+          "id": "mix_oats",
+          "label": "Agregar y mezclar la avena"
+        },
+        {
+          "id": "forget_oats",
+          "label": "Dejar la avena para después del horno"
+        }
+      ]
+    },
+    {
+      "question": "Spray, bolitas y tenedor",
+      "detail": "Separar 2 pulgadas; mojar el tenedor en agua y azúcar de cobertura",
+      "correct": "shape_fork",
+      "options": [
+        {
+          "id": "shape_fork",
+          "label": "Spray, bolitas y tenedor"
+        },
+        {
+          "id": "big_sheet",
+          "label": "Hacer una sola galleta gigante sin preparar la bandeja"
+        }
+      ]
+    }
+  ],
+  "sequence": [
+    "Reunir ingredientes.",
+    "Batir harina, canela, bicarbonato y sal.",
+    "Cremar mantequilla y ambos azúcares de masa 2–3 minutos.",
+    "Incorporar huevos uno a uno y vainilla.",
+    "Combinar secos y húmedos gradualmente.",
+    "Mezclar la avena.",
+    "Refrigerar al menos 1 hora (salto de tiempo en el juego).",
+    "Precalentar a 375°F / 190°C.",
+    "Rociar bandejas con spray antiadherente con harina.",
+    "Formar bolitas del tamaño de una nuez y separar 2 pulgadas.",
+    "Mojar tenedor en agua y azúcar de cobertura; aplanar.",
+    "Hornear 8–10 minutos; cambiar bandejas de rejilla a mitad; dorado claro.",
+    "Enfriar en la bandeja unos 5 minutos.",
+    "Pasar a rejilla y enfriar completamente."
+  ],
+  "weights": {
+    "ingredients": 25,
+    "measurements": 25,
+    "preparation": 20,
+    "chill": 10,
+    "temperature": 10,
+    "time": 10
+  },
+  "oven": {
+    "fahrenheit": 375,
+    "celsius": 190
+  },
+  "bake_minutes": {
+    "minimum": 8,
+    "maximum": 10
+  },
+  "chill_minutes": 60
+}

@@ -48,6 +48,24 @@ var seated := false
 var dancing := false
 var effect := ""
 var effect_time := 0.0
+var waiter_actor: Node2D
+var waiter_tween: Tween
+
+func challenge_reaction(kind: String, points: int) -> void:
+	var text:=Label.new();text.text="Comité: ¡buena intervención!" if kind=="debate" and points==2 else "Guillermo: hmm…" if points==0 else "¡Bien, Anami!"
+	text.position=Vector2(650,230);text.add_theme_font_size_override("font_size",22);text.modulate=Color("ebc48a");add_child(text)
+	var tween:=create_tween();tween.tween_property(text,"position:y",200.0,.5);tween.tween_property(text,"modulate:a",0.0,.8);tween.tween_callback(text.queue_free)
+
+func waiter_movement(approach: bool) -> void:
+	if is_instance_valid(waiter_tween):waiter_tween.kill()
+	if not is_instance_valid(waiter_actor):
+		waiter_actor=MemoryActor.new();waiter_actor.world=self;waiter_actor.npc=true
+		if npc_art.size()>4:waiter_actor.texture=npc_art[4]
+		waiter_actor.position=Vector2(1130,530) if approach else Vector2(1030,430)
+		if is_instance_valid(depth_root):depth_root.add_child(waiter_actor)
+		else:add_child(waiter_actor)
+	waiter_tween=create_tween();waiter_tween.tween_property(waiter_actor,"position",Vector2(1030,430) if approach else Vector2(1130,530),1.0)
+	if not approach:waiter_tween.tween_callback(waiter_actor.queue_free)
 var phone_messages: Array = []
 
 func _ready() -> void:
