@@ -1,0 +1,128 @@
+{
+  "pass_score": 8,
+  "hard_mode_index": 7,
+  "facts_source": "Datos personales proporcionados explícitamente por Guillermo en la especificación del 11 de octubre de 2026.",
+  "questions": [
+    {
+      "question": "¿Cuál es el Pokémon favorito de Guillermo?",
+      "choices": [
+        "Absol",
+        "Lucario",
+        "Lugia",
+        "Dialga"
+      ],
+      "answer": 0,
+      "explanation": "Absol. Primera pregunta, primera oportunidad de lucirse.",
+      "image": ""
+    },
+    {
+      "question": "¿Quién es el jugador de fútbol americano favorito de Guillermo?",
+      "choices": [
+        "Russell Wilson",
+        "Kool-Aid McKinstry",
+        "DJ Lagway",
+        "Jaxon Smith-Njigba (JSN), «The Emerald City Route Artist»"
+      ],
+      "answer": 3,
+      "explanation": "JSN: aquí, «The Emerald City Route Artist».",
+      "image": ""
+    },
+    {
+      "question": "¿Cuál es la comida favorita de Guillermo?",
+      "choices": [
+        "Hamburguesa",
+        "Ramen",
+        "Lasaña",
+        "Beef Wellington"
+      ],
+      "answer": 3,
+      "explanation": "Beef Wellington. El ramen de la cita sigue siendo el ramen de la cita.",
+      "image": ""
+    },
+    {
+      "question": "¿En cuántas ciudades ha vivido Guillermo?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 1,
+      "explanation": "Cuatro ciudades.",
+      "image": ""
+    },
+    {
+      "question": "¿Qué persona famosa cargó a Guillermo cuando era bebé?",
+      "choices": [
+        "Bill Gates",
+        "Steve Jobs",
+        "Antonio Valencia",
+        "Clint Dempsey"
+      ],
+      "answer": 1,
+      "explanation": "Steve Jobs. Esta sí venía con historia.",
+      "image": ""
+    },
+    {
+      "question": "¿Cuántos países ha visitado Guillermo?",
+      "choices": [
+        "5",
+        "7",
+        "9",
+        "11"
+      ],
+      "answer": 2,
+      "explanation": "Nueve países.",
+      "image": ""
+    },
+    {
+      "question": "¿Qué bebida alcohólica terminó emborrachando a toda la clase de Guillermo en Cancún?",
+      "choices": [
+        "Tequila",
+        "Baileys",
+        "Moscow Mule",
+        "Vodka de tamarindo"
+      ],
+      "answer": 1,
+      "explanation": "Baileys. Anécdota para recordar, no un reto para repetir.",
+      "image": ""
+    },
+    {
+      "question": "¿Cuál fue la primera consola de videojuegos de Guillermo?",
+      "choices": [
+        "Nintendo 2DS",
+        "PlayStation 3",
+        "Xbox 360",
+        "PlayStation 4"
+      ],
+      "answer": 1,
+      "explanation": "PlayStation 3. HARD MODE no venía a regalar puntos.",
+      "image": ""
+    },
+    {
+      "question": "¿Cómo se llamaba la academia de fútbol donde Guillermo jugó en Estados Unidos?",
+      "choices": [
+        "Crossfire",
+        "Trust",
+        "FC Alliance",
+        "Surf"
+      ],
+      "answer": 2,
+      "explanation": "FC Alliance.",
+      "image": ""
+    },
+    {
+      "question": "¿Cuál es la cosa más vergonzosa que Guillermo hizo de niño?",
+      "choices": [
+        "Reírse y señalar a una persona de baja estatura en Olive Garden.",
+        "Hacerse pipí en los pantalones en medio de un centro comercial.",
+        "Que se le cayeran los shorts mientras había visitas en casa, incluidos sus hijos.",
+        "Declararle accidentalmente su amor a una niña mientras cantaba una canción y seguía la letra.",
+        "Todas las anteriores."
+      ],
+      "answer": 4,
+      "explanation": "Todas las anteriores. La primera fue una conducta infantil de la que avergonzarse: las personas de baja estatura merecen respeto.",
+      "image": ""
+    }
+  ]
+}

@@ -33,6 +33,10 @@ func _draw() -> void:
 		for x in [116,360,604,848]:
 			r(x,120,188,84,"798b87");r(x+6,124,176,74,"b4ccc1")
 			r(x+86,124,6,74,"e8e3c8");r(x+6,148,176,6,"e8e3c8")
+	elif location=="kitchen":
+		for x in range(140,1140,160):
+			r(x,124,110,72,"647b70");r(x+4,128,102,64,"92a698");r(x+54,132,4,54,"c8d0b4")
+		draw_string(ThemeDB.fallback_font,Vector2(430,166),"NUESTRAS GALLETAS DE AVENA",HORIZONTAL_ALIGNMENT_CENTER,420,20,Color("f0d6a6"))
 	else:
 		for x in range(140,1140,160):
 			r(x,122,94,74,"2f3939");r(x+6,128,82,62,"8b7658")

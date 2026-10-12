@@ -48,6 +48,20 @@ var seated := false
 var dancing := false
 var effect := ""
 var effect_time := 0.0
+
+func challenge_reaction(kind: String, points: int) -> void:
+	var text:=Label.new();text.text="Comité: ¡buena intervención!" if kind=="debate" and points==2 else "Guillermo: hmm…" if points==0 else "¡Bien, Anami!"
+	text.position=Vector2(650,230);text.add_theme_font_size_override("font_size",22);text.modulate=Color("ebc48a");add_child(text)
+	var tween:=create_tween();tween.tween_property(text,"position:y",200.0,.5);tween.tween_property(text,"modulate:a",0.0,.8);tween.tween_callback(text.queue_free)
+
+func waiter_movement(approach: bool) -> void:
+	var actor:=MemoryActor.new();actor.world=self;actor.npc=true
+	if npc_art.size()>4:actor.texture=npc_art[4]
+	actor.position=Vector2(1130,530) if approach else Vector2(1030,430)
+	if is_instance_valid(depth_root):depth_root.add_child(actor)
+	else:add_child(actor)
+	var tween:=create_tween();tween.tween_property(actor,"position",Vector2(1030,430) if approach else Vector2(1130,530),1.0)
+	tween.tween_interval(.5);tween.tween_callback(actor.queue_free)
 var phone_messages: Array = []
 
 func _ready() -> void:

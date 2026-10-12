@@ -21,6 +21,19 @@ func p(x: float,y: float,w: float,h: float,color: String) -> void:
 
 func _draw() -> void:
 	match kind:
+		"fridge","oven","storage":
+			p(-width/2,-108,width,110,"394955");p(-width/2+4,-104,width-8,100,"c9c9b2" if kind=="fridge" else "76543e")
+			if kind=="fridge":
+				p(-width/2+8,-66,width-16,4,"7b8c91");p(width/2-20,-92,4,20,"576d75");p(width/2-20,-52,4,24,"576d75")
+			elif kind=="oven":
+				p(-width/2+12,-66,width-24,48,"243640");p(-width/2+18,-60,width-36,32,"df9e58")
+				for x in [-32,0,32]:p(x-6,-94,12,12,"d6b684")
+			else:
+				for y in [-88,-58,-28]:
+					p(-width/2+8,y,width-16,4,"ba9060")
+					for x in [-48,-16,16,48]:p(x-8,y-20,16,20,"e4d6aa")
+			p(-width/2,-4,width,8,"24333e")
+			draw_string(ThemeDB.fallback_font,Vector2(-width/2+8,-10),label,HORIZONTAL_ALIGNMENT_CENTER,width-16,12,Color("f5ead6"))
 		"desk","table","counter":
 			var half:=width/2
 			p(-half-4,-18,width+8,30,"292b32")
@@ -52,6 +65,10 @@ func _draw() -> void:
 			for i in range(decor.size()):
 				var item: String=decor[i]
 				if textures.has(item):draw_texture_rect(textures[item],Rect2(-width/2+22+i*48,-58,40,40),false)
+			if variant=="kitchen":
+				p(-42,-62,64,10,"dddbb9");p(-34,-52,48,16,"a1b8ad");p(26,-70,4,32,"d9d0b4");p(28,-68,18,4,"bdb197")
+				p(50,-52,30,22,"514942");p(54,-48,22,14,"c99559")
+				draw_string(ThemeDB.fallback_font,Vector2(-width/2+8,-20),label,HORIZONTAL_ALIGNMENT_CENTER,width-16,12,Color("f5ead6"))
 		"chair":
 			var c: String="d7cbb0" if variant=="dining" else "704d37" if variant=="ikura" else "3b4652"
 			p(-20,-66,40,44,"242c35");p(-16,-62,32,28,c)

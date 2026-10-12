@@ -147,7 +147,10 @@ func _run() -> void:
 				if entry.has("choices"):
 					for choice in entry.choices: check_text(choice, scene.id + " choice", 17, 850, 31)
 	for paragraph in game.story.personal_letter.paragraphs: check_text(paragraph, "personal letter")
-	verify(line_count >= 180, "all authored lines measured")
+	var expected_lines:=0
+	for chapter in game.story.chapters:
+		for scene in chapter.scenes:expected_lines+=scene.lines.size()+scene.after.size()
+	verify(line_count == expected_lines, "all authored lines measured")
 	game.test_mode = true
 	for path in originals:
 		var current = FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else null

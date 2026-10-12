@@ -311,7 +311,7 @@
           "location": "debate",
           "title": "Una réplica bien puesta",
           "objective": "Lee el documento de trabajo y participa en el caucus.",
-          "task": "choice",
+          "task": "debate",
           "interact_label": "Tomar la palabra",
           "lines": [
             {
@@ -338,51 +338,6 @@
               "speaker": "Presidencia",
               "text": "ADHOC, tiene una breve intervención.",
               "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Reabrir una ruta ayuda, pero no hace que todos puedan comprar. Los fertilizantes y otros insumos también se han encarecido.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Si el productor no puede sembrar, el problema sigue. ¿Podemos incluir apoyo agrícola con la FAO, además de ayuda urgente?",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "De acuerdo. Mi propuesta se concentró demasiado en el transporte.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Entonces añadimos…",
-              "mood": "neutral",
-              "choices": [
-                "Apoyo a productores y asistencia para familias vulnerables.",
-                "Rutas de comercio y compras humanitarias coordinadas.",
-                "Una respuesta que distinga urgencia y recuperación agrícola."
-              ]
-            },
-            {
-              "speaker": "Presidencia",
-              "text": "Las tres líneas pueden complementar el documento. Delegados, trabajen una redacción conjunta.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Llegaste hace cinco minutos y ya me corregiste la propuesta.",
-              "mood": "playful"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Seis. Me demoré buscando un esfero.",
-              "mood": "playful"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Bueno, bien vista la observación. Hablemos en el receso.",
-              "mood": "happy"
             }
           ],
           "after": [],
@@ -1579,7 +1534,7 @@
           "location": "ikura",
           "title": "Una mesa, por fin",
           "objective": "Habla con la anfitriona y explora antes de sentarte.",
-          "task": "food",
+          "task": "order",
           "interact_label": "Sentarse a cenar",
           "lines": [
             {
@@ -1606,21 +1561,6 @@
               "speaker": "Mesero",
               "text": "Buenas noches. ¿Revisamos la carta?",
               "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Gyozas para compartir, ¿sí?",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Sí. Yo voy por el miso ramen.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Y yo sushi. Ya, una decisión fácil al fin.",
-              "mood": "happy"
             }
           ],
           "after": [
@@ -1676,7 +1616,7 @@
             },
             {
               "speaker": "Narrador",
-              "text": "La cena siguió sin tanta preparación. Antes de irte puedes hablar, jugar con el chisme o simplemente quedarte un rato.",
+              "text": "La comida llegó y la conversación siguió sin tanto plan. Un recuerdo para guardar.",
               "mood": "neutral"
             }
           ],
@@ -1822,20 +1762,6 @@
                 }
               },
               {
-                "id": "drama",
-                "label": "¿Quién era quién? · opcional",
-                "position": [
-                  650,
-                  540
-                ],
-                "lines": [],
-                "kind": "drama",
-                "sprite": -1,
-                "visual": {
-                  "kind": "notice"
-                }
-              },
-              {
                 "id": "topics",
                 "label": "Revisar temas guardados",
                 "position": [
@@ -1900,20 +1826,6 @@
                     "mood": "playful"
                   }
                 ]
-              },
-              {
-                "id": "guillermo_quiz",
-                "label": "Pop quiz de Guillermo · plantilla",
-                "position": [
-                  780,
-                  540
-                ],
-                "kind": "guillermo_quiz",
-                "sprite": -1,
-                "visual": {
-                  "kind": "phone"
-                },
-                "lines": []
               }
             ],
             "npcs": [
@@ -2272,9 +2184,9 @@
         {
           "id": "improvise",
           "location": "kitchen",
-          "title": "La chef tiene un plan",
-          "objective": "Habla con Guillermo junto a la mesa de cocina.",
-          "task": "choice",
+          "title": "La receta de los dos",
+          "objective": "Reconstruye las galletas de avena; cualquier resultado guarda el recuerdo.",
+          "task": "cookies",
           "interact_label": "Empezar a cocinar",
           "lines": [
             {
@@ -2301,100 +2213,9 @@
               "speaker": "Guillermo",
               "text": "La intuición no trae temperatura de horno.",
               "mood": "playful"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Detalles administrativos.",
-              "mood": "playful"
-            },
-            {
-              "speaker": "Narrador",
-              "text": "Un rato después, las primeras galletas no quedaron como esperaban.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "¿Son galletas o materiales de construcción?",
-              "mood": "surprised"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Textura experimental. No están aprobadas todavía.",
-              "mood": "embarrassed"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "¿Probamos ahora con la receta?",
-              "mood": "happy"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Bueno. Pero seguimos siendo un equipo.",
-              "mood": "affectionate"
-            }
-          ],
-          "after": [],
-          "exploration": {
-            "exit": [
-              1080,
-              550
-            ],
-            "steps": [
-              {
-                "id": "main",
-                "label": "Empezar a cocinar",
-                "position": [
-                  805,
-                  490
-                ],
-                "kind": "talk",
-                "lines": [],
-                "visual": {
-                  "kind": "item",
-                  "art": "res://assets/art/sprites/cookie.png"
-                }
-              }
-            ],
-            "exit_visual": {
-              "kind": "door"
-            }
-          }
-        },
-        {
-          "id": "recipe",
-          "location": "kitchen",
-          "title": "Ahora sí, la receta",
-          "objective": "Sigue los pasos de la receta: mantequilla, azúcar, huevo y harina.",
-          "task": "bake",
-          "interact_label": "Preparar otra tanda",
-          "lines": [
-            {
-              "speaker": "Guillermo",
-              "text": "Primero mezclamos mantequilla y azúcar. Después el huevo y la harina.",
-              "mood": "neutral"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Entendido. Medir antes de improvisar.",
-              "mood": "playful"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Y horneamos la mezcla. Sin declarar la guerra a la receta.",
-              "mood": "happy"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Esto en Culinary Wars tendría música dramática.",
-              "mood": "playful"
             }
           ],
           "after": [
-            {
-              "speaker": "Anami",
-              "text": "¡Estas sí quedaron buenas!",
-              "mood": "happy"
-            },
             {
               "speaker": "Guillermo",
               "text": "Victoria compartida.",
@@ -2439,7 +2260,7 @@
             "steps": [
               {
                 "id": "main",
-                "label": "Preparar otra tanda",
+                "label": "Preparar nuestras galletas",
                 "position": [
                   805,
                   490
@@ -2454,7 +2275,89 @@
             ],
             "exit_visual": {
               "kind": "door"
-            }
+            },
+            "optional": [
+              {
+                "id": "pantry",
+                "kind": "prop",
+                "visual": {
+                  "kind": "table",
+                  "fixture": "pantry"
+                },
+                "position": [
+                  270,
+                  395
+                ],
+                "label": "DESPENSA",
+                "lines": [
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Harina, canela, bicarbonato, sal y avena. La levadura de pan se queda aquí.",
+                    "mood": "playful"
+                  }
+                ]
+              },
+              {
+                "id": "mixing",
+                "kind": "prop",
+                "visual": {
+                  "kind": "table",
+                  "fixture": "mixing"
+                },
+                "position": [
+                  550,
+                  395
+                ],
+                "label": "MEZCLA",
+                "lines": [
+                  {
+                    "speaker": "Guillermo",
+                    "text": "Bol y batidor listos. Mantequilla blanda; huevos uno a uno. El azúcar de cobertura va aparte.",
+                    "mood": "playful"
+                  }
+                ]
+              },
+              {
+                "id": "fridge",
+                "kind": "prop",
+                "visual": {
+                  "kind": "table",
+                  "fixture": "fridge"
+                },
+                "position": [
+                  870,
+                  395
+                ],
+                "label": "FRÍO",
+                "lines": [
+                  {
+                    "speaker": "Guillermo",
+                    "text": "La masa reposa al menos una hora. En este recuerdo el tiempo pasa en un instante.",
+                    "mood": "playful"
+                  }
+                ]
+              },
+              {
+                "id": "oven",
+                "kind": "prop",
+                "visual": {
+                  "kind": "table",
+                  "fixture": "oven"
+                },
+                "position": [
+                  1070,
+                  395
+                ],
+                "label": "HORNO",
+                "lines": [
+                  {
+                    "speaker": "Guillermo",
+                    "text": "375 °F / 190 °C; 8–10 minutos. Cambiamos las bandejas a mitad.",
+                    "mood": "playful"
+                  }
+                ]
+              }
+            ]
           }
         }
       ]

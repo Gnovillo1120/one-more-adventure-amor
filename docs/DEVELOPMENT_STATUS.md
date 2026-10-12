@@ -1,4 +1,14 @@
-# Development status — 10 October 2026
+# Development status — 11 October 2026
+
+## Interactive memory minigames — active branch
+
+Working on `feature/interactive-memory-minigames`, branched from Claude's tested `feature/claude-3d-overhaul` at `9d5a754`. Claude's shaders, voxel characters and rebuilt world are preserved. The older entries below are historical checkpoints; PR #1 has since merged.
+
+Implemented mandatory five-exchange MUN debate (7/10), exact three-dish Ikura ordering, the supplied ten-question Guillermo quiz (8/10, fifth choice on Q10, Hard Mode before Q8), and one continuous kitchen with deterministic 0–100% baking. Poor baking awards the keepsake and advances. Removed the old first-date scored quiz from playable interactions. Semantic challenge state and recipe evaluation live outside UI nodes; each successful action is a visual-animation hook.
+
+Chapter checkpoints now retain active challenge phase, selections, scores, previous successes, exploration and dialogue position. Legacy v1 checkpoints remain accepted; the former second cookie scene maps to the consolidated first scene. Private references and existing generated art are preserved; Guillermo stays clean-shaven.
+
+Initial validation: 299 challenge checks, 481 full-story checks through all 17 memory scenes and the complete 3D rescue; existing layout/phone, chapter, navigation, audio and target suites also pass. Native OpenGL captures and real mouse/keyboard ordering pass. Final regression, Windows packaging and PR preparation are underway. See `MINIGAMES.md` for contracts, sources and final handoff.
 
 The complete six-chapter game and Chapters 1–2 overhaul are preserved on feature/chapter-1-2-overhaul. PR #1 remains open and unmerged; main is unchanged. Godot 4.7.2 / GL Compatibility. Memory chapters retain 2D pixel art, nearest filtering, 48 expression portraits and four-direction sprites; Guillermo remains clean-shaven. Only the adventure chapter uses 3D voxel environments.
 
