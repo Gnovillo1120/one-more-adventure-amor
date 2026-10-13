@@ -6,7 +6,7 @@ Bandana symbolism/token/HUD/rescue callbacks corrected while retaining Halloween
 
 Eleven suites pass: 2,465 checks including 69 new scrapbook/hub checks; full 17-scene/219-dialogue-step route and existing voxel rescue. Native source/export viewport proof and WASD/E checks, before captures and GIFs are under `docs/directors/`. Separate build/ZIP under `builds/directors-cut-milestone-1/`; see `DIRECTORS_CUT.md` for provenance, controls, limits and remaining milestones. Three keepsake imagegen atlas requests were rejected without a specific reason; small object sprites were authored as crisp transparent native SVG assets instead. Generated room/book art was retained and normalized.
 
-Milestones 2–4 remain unfinished: deeper 2D staging, actual on-screen kidnapping/rescue, final beach/letter/audio production. The personal letter is still explicitly a placeholder; this is not the final gift build. Whole-chapter replay works; a direct minigame replay shortcut remains pending. No merge to main.
+Milestones 2–4 remain unfinished: deeper 2D staging, actual on-screen kidnapping/rescue, final beach/letter/audio production. The personal letter is still explicitly a placeholder; this is not the final gift build. Whole-chapter replay works; a direct minigame replay shortcut remains pending. Implementation `fff408b` is pushed to `origin/feature/directors-cut`. GitHub draft PR creation returned 403, "Resource not accessible by integration"; prepared description/comparison: `PR_DIRECTORS_CUT.md`. No PR created or merge to main.
 # Development status — 13 October 2026
 
 ## 2D animation polish — feature branch
