@@ -1,0 +1,12 @@
+{
+  "framing": "Recuerdos recreados · aventura mágica ficticia",
+  "title": "One More Adventure, Amor",
+  "pages": [
+    {"title":"Una copia, una réplica, un comienzo","keepsake":"El diploma","chapter":0,"anchor":[445,280],"display":[445,188],"art":"res://assets/art/sprites/diploma.png","scene":"arrival","background":"lobby","note":"Una hoja llena de tachones también puede ser el principio de algo bonito.","challenge":"debate","challenge_scene":1},
+    {"title":"La conversación que volvió","keepsake":"La cuenta de Ikura","chapter":1,"anchor":[557,280],"display":[557,188],"art":"res://assets/art/directors/receipt.png","scene":"moncayo","background":"ikura","note":"Lo importante no fue la lista de temas. Fue que la conversación encontró su camino.","challenge":"guillermo","challenge_scene":2},
+    {"title":"El comienzo de nosotros","keepsake":"21 de octubre de 2023","chapter":2,"anchor":[668,280],"display":[668,188],"art":"res://assets/art/directors/pool_photo.png","scene":"invitation","background":"party","note":"La piscina, una bandana roja y una respuesta que no necesitó muchas palabras."},
+    {"title":"Una receta entre los dos","keepsake":"La tarjeta con migas","chapter":3,"anchor":[784,280],"display":[784,188],"art":"res://assets/art/directors/recipe_card.png","scene":"improvise","background":"kitchen","note":"Esta página no exige una receta perfecta. Guarda lo que hicimos juntos.","challenge":"cookies","challenge_scene":0},
+    {"title":"Todo lo que construimos","keepsake":"Nuestra casita","chapter":4,"anchor":[899,280],"display":[899,188],"art":"res://assets/art/directors/mini_house.png","scene":"present","background":"present","note":"Una casa puede ser pequeña. El mundo que hacemos juntos, no."},
+    {"title":"Una aventura más","keepsake":"La última fotografía","chapter":5,"anchor":[1012,280],"display":[1012,188],"art":"res://assets/art/directors/locked_photo.png","scene":"sunset","background":"beach","note":"El espacio que dejamos para todo lo que todavía nos espera."}
+  ]
+}
