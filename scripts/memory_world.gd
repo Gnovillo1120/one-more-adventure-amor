@@ -299,7 +299,8 @@ func _process(delta: float) -> void:
 			var step := motion.normalized() * 205.0 * delta
 			var before_motion:=player_position
 			move_by(step)
-			moving=player_position.distance_squared_to(before_motion)>.001
+			# Tiny valid steps at high frame rates still count as movement.
+			moving=player_position!=before_motion
 			if seated:seated=false
 	_update_actors()
 	if is_instance_valid(living):living.tick(delta)

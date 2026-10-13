@@ -8,7 +8,7 @@ The old swimwear row zero contained front, left, right and back views. Rows one/
 
 Replaced the defective swimsuit walking atlas with coherent down/left/right/up rows. Added a separate swimming atlas with four genuinely different directional stroke cycles, an upright front-facing treading cycle and a ladder cycle. Land frames are 32×48; wider swimming frames are 48×48. Every sheet has four columns. `atlas.json` records both layouts. Source atlases are retained under `assets/art/concepts/`; the runtime sheets live under `assets/art/living/`. Explicit crop boundaries avoid neighboring-row contamination, found and corrected during native inspection. Normalization registers baseline/scale across directions, applies binary alpha, 24 colors per frame and nearest-neighbor resizing.
 
-`character_animation.gd` centralizes direction/state/frame mappings. `memory_actor.gd` supports explicit action cell dimensions and water anchoring. `living_memories.gd` selects swimming states from movement, with slow treading when stopped. Movement cadence restarts on a direction/action change; blocked movement holds idle rather than cycling walking frames. Seated art holds one authored view rather than cycling through different viewpoints. Partial outfit stage columns are treated as directional views, not walking frames.
+`character_animation.gd` centralizes direction/state/frame mappings. `memory_actor.gd` supports explicit action cell dimensions and water anchoring. `living_memories.gd` selects swimming states from movement, with slow treading when stopped. Movement cadence restarts on a direction/action change; blocked movement holds idle rather than cycling walking frames. Even tiny valid high-frame-rate steps count as movement, preventing cadence resets from an arbitrary displacement threshold. Seated art holds one authored view rather than cycling through different viewpoints. Partial outfit stage columns are treated as directional views, not walking frames.
 
 ## State and interaction rules
 
@@ -46,7 +46,7 @@ The viewer offers all seven requested outfits, simultaneous four-direction cards
 
 ## Validation and release
 
-Ten suites pass, 2,394 checks total: animation polish 220, living activities 89, minigames 699, full story 470, persistence 206, chapter 170, room/phone 63, targets 245, navigation 220, audio 12. The existing 17-scene / 219-dialogue-step story and voxel rescue still pass. Animation tests cover mapping, bounds, distinct direction art, stationary idle, priorities, ladder/pause/splash, outfit restoration and saves during both transitions. Native movement samples confirm correct rows, changing frames and actual movement in every direction.
+Ten suites pass, 2,396 checks total: animation polish 222, living activities 89, minigames 699, full story 470, persistence 206, chapter 170, room/phone 63, targets 245, navigation 220, audio 12. The existing 17-scene / 219-dialogue-step story and voxel rescue still pass. Animation tests cover mapping, bounds, distinct direction art, stationary idle, priorities, ladder/pause/splash, outfit restoration and saves during both transitions. Native movement samples confirm correct rows, changing frames and actual movement in every direction.
 
 Windows release: `builds/2d-animation-polish/One More Adventure Amor.exe`; ZIP: `builds/One More Adventure Amor 2D Animation Polish.zip`. Older builds are preserved. Packaging verifies ZIP integrity, required assets/minigame banks and exclusion of private references, source concepts and the developer viewer.
 

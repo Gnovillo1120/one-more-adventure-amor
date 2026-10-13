@@ -69,6 +69,11 @@ func run() -> void:
 	verify(world.actors.anami.action_row==-1 and living.carried_drink.visible,"walking cancels sip but retains carried drink")
 	world.moving=false;living.perform("sit");living.tick(.5)
 	verify(world.actors.anami.action_row==2 and world.actors.anami.action_frame==0,"sitting holds one coherent seated view")
+	world.player_position=Vector2(700,540);world.seated=false;living.state.sitting=false;living.state.drink=false;living.action="";world.active=true
+	var move_key:=InputEventKey.new();move_key.physical_keycode=KEY_S;move_key.keycode=KEY_S;move_key.pressed=true;Input.parse_input_event(move_key);Input.flush_buffered_events()
+	world._process(.00005);verify(world.moving,"tiny valid frame-rate steps do not reset walking animation")
+	var stop_key: InputEventKey=move_key.duplicate();stop_key.pressed=false;Input.parse_input_event(stop_key);Input.flush_buffered_events();world._process(.01)
+	verify(not world.moving and world.actors.anami.column==0,"released movement returns to idle")
 	game.chapter_index=0;game.scene_index=2;game.start_scene();world=game.memory;world.set_process(false)
 	for direction in range(4):
 		world.direction=direction;world.moving=false;world.clock+=8;world._update_actors();world.living.tick(.2)
