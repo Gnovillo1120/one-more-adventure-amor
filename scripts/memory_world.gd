@@ -289,7 +289,7 @@ func _process(delta: float) -> void:
 	_sync_target_visuals()
 	effect_time=maxf(0,effect_time-delta)
 	moving = false
-	if active:
+	if active and (not is_instance_valid(living) or living.can_move()):
 		var motion := Vector2(float(Input.is_physical_key_pressed(KEY_D))-float(Input.is_physical_key_pressed(KEY_A)),float(Input.is_physical_key_pressed(KEY_S))-float(Input.is_physical_key_pressed(KEY_W)))
 		if motion.length_squared() > 0:
 			if seated and scene_id=="pool":
@@ -297,7 +297,10 @@ func _process(delta: float) -> void:
 			moving = true
 			direction = 2 if motion.x > 0 else 1 if motion.x < 0 else 3 if motion.y < 0 else 0
 			var step := motion.normalized() * 205.0 * delta
+			var before_motion:=player_position
 			move_by(step)
+			# Tiny valid steps at high frame rates still count as movement.
+			moving=player_position!=before_motion
 			if seated:seated=false
 	_update_actors()
 	if is_instance_valid(living):living.tick(delta)

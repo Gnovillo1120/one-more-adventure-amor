@@ -49,3 +49,7 @@ for i,name in enumerate(names):objects.crop(((i%4)*64,(i//4)*64,(i%4+1)*64,(i//4
 for filename,name in [('exec-e7e29e55-4d42-4adf-98b0-ff5f71f60888.png','bedroom'),('exec-1f3d7898-a5bc-4a11-9731-10ceeabb1abd.png','club_pool')]:
     Image.open(SOURCE/SOURCES[filename]).convert('RGB').resize((1280,720),Image.Resampling.NEAREST).save(OUT/(name+'.png'))
 print('Prepared 64 character frames and 16 object sprites, registered baseline, binary alpha')
+if (SOURCE/'animation_swimwear_source.png').exists():
+    # Apply the focused animation correction after the historical asset pipeline.
+    import runpy
+    runpy.run_path(str(ROOT/'tools/prepare_animation_assets.py'))

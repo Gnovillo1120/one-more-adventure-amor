@@ -41,5 +41,39 @@
     "desk",
     "dress",
     "sneakers"
-  ]
+  ],
+  "swimwear": {
+    "cell": [
+      32,
+      48
+    ],
+    "rows": [
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "columns": [
+      "idle",
+      "step_a",
+      "passing",
+      "step_b"
+    ]
+  },
+  "swimming": {
+    "cell": [
+      48,
+      48
+    ],
+    "rows": [
+      "swim_down",
+      "swim_left",
+      "swim_right",
+      "swim_up",
+      "swim_idle",
+      "ladder"
+    ],
+    "columns": 4,
+    "exit": "reverse ladder frames"
+  }
 }

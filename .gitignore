@@ -25,3 +25,6 @@ Thumbs.db
 /docs/living/*_log.txt
 /docs/living/*_stdout.txt
 /docs/living/*_stderr.txt
+/docs/animation/*_log.txt
+/docs/animation/*_stdout.txt
+/docs/animation/*_stderr.txt

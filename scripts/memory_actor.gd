@@ -12,6 +12,9 @@ var atlas_row := -1
 var action_texture: Texture2D
 var action_row := -1
 var action_frame := 0
+var action_cell := Vector2(32,48)
+var action_offset_y := -90.0
+var water_pose := false
 
 func _ready() -> void:texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 func _process(_delta: float) -> void:queue_redraw()
@@ -19,9 +22,9 @@ func _draw() -> void:
 	if texture==null:return
 	var size:=Vector2(64,96)
 	var nod:=2.0 if int(world.clock+idle_phase)%9==0 else 0.0
-	draw_rect(Rect2(-22,-2,44,6),Color(.07,.1,.13,.25))
+	if not water_pose:draw_rect(Rect2(-22,-2,44,6),Color(.07,.1,.13,.25))
 	if action_row>=0 and action_texture!=null:
-		draw_texture_rect_region(action_texture,Rect2(-32,-90,64,96),Rect2(action_frame*32,action_row*48,32,48))
+		draw_texture_rect_region(action_texture,Rect2(Vector2(-action_cell.x,action_offset_y),action_cell*2),Rect2(Vector2(action_frame,action_row)*action_cell,action_cell))
 	elif atlas_row>=0:
 		draw_texture_rect_region(texture,Rect2(-32,-90,64,96),Rect2(column*32,atlas_row*48,32,48))
 	elif seated:
