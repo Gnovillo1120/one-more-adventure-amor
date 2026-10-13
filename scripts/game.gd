@@ -72,7 +72,7 @@ func _ready() -> void:
 	if ResourceLoader.exists("res://assets/fonts/PixelifySans.ttf"):
 		pixel_font=load("res://assets/fonts/PixelifySans.ttf")
 		pixel_font.antialiasing=TextServer.FONT_ANTIALIASING_NONE
-	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture") or OS.get_cmdline_user_args().has("--capture-minigames") or OS.get_cmdline_user_args().has("--capture-living")
+	test_mode = OS.get_cmdline_user_args().has("--self-test") or OS.get_cmdline_user_args().has("--capture") or OS.get_cmdline_user_args().has("--capture-minigames") or OS.get_cmdline_user_args().has("--capture-living") or OS.get_cmdline_user_args().has("--capture-animation")
 	_load_settings()
 	_read_unlocks()
 	canvas = CanvasLayer.new()
@@ -90,6 +90,7 @@ func _ready() -> void:
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
+	if OS.get_cmdline_user_args().has("--capture-animation"):call_deferred("_capture_animation")
 
 func _process(delta: float) -> void:
 	if is_instance_valid(phone_button) and is_instance_valid(memory):phone_button.text="▣  Teléfono · P"+("  ●" if memory.living.state.unread else "")
@@ -801,7 +802,7 @@ func _return_pause() -> void:
 	suspended_modal=activity
 
 func _toggle_phone() -> void:
-	if is_paused or not is_instance_valid(memory):return
+	if is_paused or not is_instance_valid(memory) or memory.living.busy:return
 	if memory.living.state.swimming:memory.living.announce("Primero salimos de la piscina.");return
 	var open: bool=not memory.living.phone_open
 	memory.show_phone(open)
@@ -1046,6 +1047,60 @@ func _capture_frame(name: String) -> void:
 	var frame:=get_viewport().get_texture().get_image()
 	frame.save_png("%s/%s.png" % [capture_directory,name])
 
+func _animation_key(keycode: int, pressed: bool) -> void:
+	var key:=InputEventKey.new();key.physical_keycode=keycode;key.keycode=keycode;key.pressed=pressed
+	Input.parse_input_event(key);Input.flush_buffered_events()
+
+func _animation_tile() -> Image:
+	await RenderingServer.frame_post_draw
+	var image: Image=get_viewport().get_texture().get_image()
+	var p: Vector2=memory.player_position
+	return image.get_region(Rect2i(int(p.x)-70,int(p.y)-110,140,170))
+
+func _capture_animation() -> void:
+	capture_directory="res://docs/animation/source"
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--capture-dir="):capture_directory=argument.trim_prefix("--capture-dir=")
+	DirAccess.make_dir_recursive_absolute(capture_directory)
+	chapter_state={};chapter_index=1;scene_index=0;start_scene()
+	memory.living.perform("wing");memory.living.perform("change")
+	await get_tree().create_timer(1.0).timeout
+	var report: Array=[]
+	for mode in ["walk","swim"]:
+		if mode=="swim":
+			memory.player_position=Vector2(335,540);memory.living.perform("swim")
+			await get_tree().create_timer(.9).timeout
+		var strip:=Image.create(1120,680,false,Image.FORMAT_RGBA8)
+		for direction in range(4):
+			var starts: Array=[Vector2(1030,380),Vector2(1100,550),Vector2(980,550),Vector2(1030,520)] if mode=="walk" else [Vector2(650,340),Vector2(880,425),Vector2(430,425),Vector2(650,500)]
+			memory.player_position=starts[direction];memory.direction=direction
+			var keycode: int=[KEY_S,KEY_A,KEY_D,KEY_W][direction]
+			_animation_key(keycode,true)
+			for sample in range(8):
+				await get_tree().create_timer(.1).timeout
+				var tile: Image=await _animation_tile();strip.blit_rect(tile,Rect2i(0,0,140,170),Vector2i(sample*140,direction*170))
+				report.append({"mode":mode,"direction":direction,"row":memory.actors.anami.action_row if mode=="swim" else memory.actors.anami.row,"frame":memory.actors.anami.action_frame if mode=="swim" else memory.actors.anami.column,"position":[memory.player_position.x,memory.player_position.y]})
+			_animation_key(keycode,false);await get_tree().process_frame
+		strip.save_png(capture_directory+"/"+mode+"_directions.png")
+		await _capture_frame(mode+"_overview")
+	var tread:=Image.create(1120,170,false,Image.FORMAT_RGBA8)
+	for sample in range(8):
+		await get_tree().create_timer(.25).timeout
+		var tile: Image=await _animation_tile();tread.blit_rect(tile,Rect2i(0,0,140,170),Vector2i(sample*140,0))
+	tread.save_png(capture_directory+"/treading.png")
+	var ladder:=Image.create(1400,340,false,Image.FORMAT_RGBA8)
+	for phase in range(2):
+		memory.player_position=Vector2(395,495) if phase==0 else Vector2(335,540)
+		_animation_key(KEY_E,true);_animation_key(KEY_E,false)
+		for sample in range(10):
+			await get_tree().create_timer(.1).timeout
+			var tile: Image=await _animation_tile();ladder.blit_rect(tile,Rect2i(0,0,140,170),Vector2i(sample*140,phase*170))
+		await get_tree().create_timer(.1).timeout
+	ladder.save_png(capture_directory+"/ladder.png")
+	var file:=FileAccess.open(capture_directory+"/frames.json",FileAccess.WRITE);file.store_string(JSON.stringify(report,"\t"));file.close()
+	print("ANIMATION_NATIVE_CAPTURE_OK · real WASD and E input · 64 movement frames")
+	music.stop();music.stream=null;effects.stop();effects.stream=null;get_tree().quit()
+
 func _capture_living() -> void:
 	capture_directory="res://docs/living/screenshots"
 	for argument in OS.get_cmdline_user_args():
@@ -1067,7 +1122,7 @@ func _capture_living() -> void:
 	memory.living.perform("living:drink");memory.player_position=Vector2(390,435);memory.living.perform("living:sit")
 	await get_tree().create_timer(1.1).timeout;await _capture_frame("03_sit_drink")
 	memory.living.perform("living:wing");memory.living.perform("living:change");await _capture_frame("04_swimwear")
-	memory.living.perform("living:swim");memory.move_by(Vector2(150,-85));await _capture_frame("05_swimming")
+	memory.living.perform("living:swim");await get_tree().create_timer(.9).timeout;memory.move_by(Vector2(150,-85));await _capture_frame("05_swimming")
 	memory.move_by(Vector2(2000,2000));print("LIVING_NATIVE_POOL_BOUNDS_OK" if memory.living.POOL.grow(-14).has_point(memory.player_position) else "LIVING_NATIVE_POOL_BOUNDS_FAILED")
 	chapter_index=0;scene_index=2;start_scene();await _capture_frame("06_uess")
 	memory.living.perform("living:water");await get_tree().create_timer(.5).timeout;await _capture_frame("07_fountain")

@@ -5,6 +5,7 @@ signal outfit_finished
 const PEOPLE = preload("res://assets/art/living/ambient_people.png")
 const ACTIONS = preload("res://assets/art/living/anami_actions.png")
 const Actor = preload("res://scripts/memory_actor.gd")
+const Anim = preload("res://scripts/character_animation.gd")
 const POOL = Rect2(365,310,560,215)
 const BEDROOM = preload("res://assets/art/living/bedroom.png")
 const CLUB_POOL = preload("res://assets/art/living/club_pool.png")
@@ -31,6 +32,15 @@ var note_tween: Tween
 var pool_art: Dictionary = {}
 var main_blockers: Array[Rect2] = []
 var carried_drink: Sprite2D
+var held_phone: Sprite2D
+var swim_animation := "swim_idle"
+var pool_transition := ""
+var transition_time := 0.0
+var transition_origin := Vector2.ZERO
+var transition_destination := Vector2.ZERO
+var splash_time := 0.0
+var animation_clock := 0.0
+var animation_key := ""
 
 func _ready() -> void:
 	texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
@@ -41,6 +51,7 @@ func _ready() -> void:
 	timer_label=Label.new();timer_label.position=Vector2(320,110);timer_label.size=Vector2(700,40);timer_label.add_theme_font_size_override("font_size",22);timer_label.z_index=30;add_child(timer_label)
 	timer_label.add_theme_font_override("font",load("res://assets/fonts/PixelifySans.ttf"));timer_label.add_theme_color_override("font_color",Color("ffe0af"))
 	carried_drink=Sprite2D.new();carried_drink.texture=load("res://assets/art/living/drink.png");carried_drink.position=Vector2(18,-34);carried_drink.scale=Vector2(.35,.35);world.actors.anami.add_child(carried_drink);carried_drink.hide()
+	held_phone=Sprite2D.new();held_phone.texture=load("res://assets/art/living/phone.png");held_phone.position=Vector2(20,-38);held_phone.scale=Vector2(.28,.28);world.actors.anami.add_child(held_phone);held_phone.hide()
 	if world.location=="yacht":
 		prop("bench",Vector2(390,410),Vector2(144,112));activity("sit","Sentarse / levantarse",Vector2(390,435))
 		prop("bar",Vector2(1000,410),Vector2(190,140));activity("drink","Pedir / guardar bebida del club",Vector2(950,440))
@@ -90,11 +101,33 @@ func restore(saved: Dictionary) -> void:
 		if saved.has(key):state[key]=saved[key]
 	state.pieces=state.pieces.duplicate()
 	if state.swimming and (world.location!="yacht" or state.zone!="pool" or not state.swimwear):state.swimming=false
+	if state.zone=="pool":state.sitting=false;world.seated=false
 	if state.zone=="pool":world.blockers.clear()
+	pool_transition="";busy=false
 	update_outfit();update_visibility()
 
 func snapshot() -> Dictionary:
 	var result: Dictionary=state.duplicate(true);result["phone_open"]=phone_open;return result
+
+func can_move() -> bool:
+	return not busy and not phone_open and action not in ["phone","outfit","surprise"]
+
+func start_pool_transition() -> void:
+	if pool_transition!="":return
+	phone(false);action="";state.sitting=false;world.seated=false;world.moving=false
+	pool_transition="exit_pool" if state.swimming else "enter_pool"
+	transition_time=0;busy=true
+	# Semantic destination is saved immediately. Reload resolves to its legal bank.
+	state.swimming=pool_transition=="enter_pool"
+	transition_origin=Vector2(395,495) if pool_transition=="exit_pool" else Vector2(335,540)
+	transition_destination=Vector2(395,495) if state.swimming else Vector2(335,540)
+	world.player_position=transition_origin
+
+func tick_pool_transition(delta: float) -> void:
+	transition_time=minf(.85,transition_time+delta)
+	world.player_position=transition_origin.lerp(transition_destination,smoothstep(0.0,.85,transition_time))
+	if transition_time>=.85:
+		world.player_position=transition_destination;pool_transition="";busy=false;world.active=true;splash_time=.65;changed.emit()
 
 func update_visibility() -> void:
 	for id in props:props[id].visible=state.zone=="main"
@@ -118,6 +151,7 @@ func pose(value: String, seconds: float) -> void:
 
 func perform(id: String) -> void:
 	if busy:return
+	if state.swimming and id.trim_prefix("living:")!="swim":return
 	match id.trim_prefix("living:"):
 		"sit":state.sitting=not state.sitting;world.seated=state.sitting;pose("sit",1.0);announce("Cinco minutos mirando el mar. Sin revisar el visto.")
 		"drink":state.drink=not state.drink;pose("drink",1.6);announce("Una bebida del club, sin nombre histórico. La puedes llevar al agua." if state.drink else "La dejo en la barra.")
@@ -125,7 +159,7 @@ func perform(id: String) -> void:
 			if state.drink:pose("drink",1.8);announce("Un sorbito y el ruido del mar.")
 			else:announce("Primero podemos pasar por la barra.")
 		"wing":
-			state.zone="pool";world.blockers.clear();world.player_position=Vector2(1100,550);update_visibility()
+			state.zone="pool";state.sitting=false;world.seated=false;action="";world.blockers.clear();world.player_position=Vector2(1100,550);update_visibility()
 		"back":
 			if state.swimwear:announce("Me cambio antes de volver al paseo.");return
 			state.zone="main";world.blockers.assign(main_blockers);world.player_position=Vector2(1080,520);update_visibility()
@@ -134,7 +168,7 @@ func perform(id: String) -> void:
 			state.swimwear=not state.swimwear;pose("outfit",.8);update_outfit();announce("Lista para la piscina." if state.swimwear else "De vuelta a mi ropa.")
 		"swim":
 			if not state.swimwear:announce("La caseta está a la izquierda. Primero el traje de baño.");return
-			state.swimming=not state.swimming;world.player_position=Vector2(395,495) if state.swimming else Vector2(335,540);pose("swim",.5)
+			start_pool_transition()
 		"water":
 			if not world.optional_seen.has("water"):world.optional_seen.append("water")
 			drink_fountain()
@@ -204,6 +238,7 @@ func pause_activities(value: bool) -> void:
 		else:activity_tween.play()
 
 func phone(value: bool) -> void:
+	if value and (state.swimming or pool_transition!="" or busy):return
 	phone_open=value;phone_token+=1
 	if value:state.unread=false
 	if is_instance_valid(phone_tween):phone_tween.kill()
@@ -240,6 +275,8 @@ func populate() -> void:
 
 func tick(delta: float) -> void:
 	if world.get_parent().get("is_paused")==true:return
+	splash_time=maxf(0,splash_time-delta)
+	if pool_transition!="":tick_pool_transition(delta)
 	if action!="":
 		action_time+=delta;frame=mini(3,int(action_time*6)) if action in ["phone","surprise","outfit"] else int(action_time*6)%4
 		if action_time>=action_duration:action=""
@@ -249,17 +286,46 @@ func tick(delta: float) -> void:
 		if state.remaining<=0:state.outfit_phase="failed";announce("¡Se hizo tarde! Acércate al espejo y E para reintentar. El capítulo sigue guardado.");changed.emit()
 	timer_label.text="VESTIRSE · %02d s · %d / 3 prendas"%[int(ceil(state.remaining)),state.pieces.size()] if state.outfit_phase=="active" else ""
 	if state.sitting and world.moving:state.sitting=false
-	if state.swimming:action="swim";action_time+=delta;frame=int(world.clock*6)%4
+	if world.moving and action in ["drink","sit","dance"]:action=""
+	if pool_transition!="":action=pool_transition
+	elif state.swimming:action=Anim.swim_state(world.direction,world.moving)
+	elif action in Anim.SWIM_ROWS:action=""
 	elif phone_open:action="phone";frame=1 if int(world.clock*2)%2 else 2
 	elif world.dancing:action="dance";frame=int(world.clock*6)%4
-	elif state.sitting and action=="":action="sit";frame=1
+	elif state.sitting and action=="":action="sit";frame=0
 	elif state.drink and not world.moving and action=="":action="drink";frame=0;action_duration=.05;action_time=0
 	var actor: Node2D=world.actors.anami
+	actor.position=world.player_position
+	var next_key: String=action+str(world.direction)+str(world.moving)
+	if next_key!=animation_key:animation_clock=0;animation_key=next_key
+	else:animation_clock+=delta
+	actor.column=Anim.walk_frame(animation_clock,world.moving or world.dancing)
 	carried_drink.visible=state.drink and action not in ["drink","sit"] and not state.swimming
+	held_phone.visible=state.swimwear and phone_open
 	actor.action_texture=ACTIONS;actor.action_row=["phone","drink","sit","swim","dance","surprise","affection","outfit"].find(action);actor.action_frame=frame
+	actor.action_cell=Vector2(32,48)
+	actor.action_offset_y=-90.0
+	actor.water_pose=false
+	if action=="sit":actor.action_frame=0
+	if action=="phone":actor.action_frame=1 if phone_open else 0
+	# Phone/drink art is casual. Preserve other outfits with held object overlays.
+	var casual: bool=world.sprites.anami.resource_path.ends_with("anami_casual.png")
+	if not casual and action in ["phone","drink","surprise","sit"] and not (busy and world.location=="lobby" and action=="drink"):
+		actor.action_row=-1;held_phone.visible=phone_open;carried_drink.visible=state.drink
+		if action=="surprise":actor.position.y-=2 if int(action_time*12)%2==0 else 0
+	if action=="outfit" and (world.scene_id!="invitation" or state.pieces.is_empty()):actor.action_row=-1
+	if state.swimwear:actor.action_row=-1;carried_drink.visible=state.drink and not state.swimming
+	if action in Anim.SWIM_ROWS:
+		swim_animation=action;actor.action_texture=Anim.SWIM;actor.action_row=Anim.SWIM_ROWS[action]
+		actor.action_cell=Vector2(48,48)
+		actor.action_offset_y=-90.0 if action in ["enter_pool","exit_pool"] else -50.0
+		actor.water_pose=action not in ["enter_pool","exit_pool"]
+		actor.action_frame=Anim.swim_frame(action,transition_time if pool_transition!="" else animation_clock)
 	if busy and world.location=="lobby" and action=="drink":actor.action_texture=load("res://assets/art/living/anami_fountain.png");actor.action_row=0
 	if world.scene_id=="invitation" and state.pieces.size()>0 and state.outfit_phase!="complete":
-		actor.action_texture=load("res://assets/art/living/anami_outfits.png");actor.action_row=state.pieces.size()-1;actor.action_frame=int(world.clock*6)%4 if world.moving else 0
+		# These legacy stage rows are directional views, not walking cycles.
+		actor.action_texture=load("res://assets/art/living/anami_outfits.png");actor.action_row=state.pieces.size()-1;actor.action_frame=world.direction
+		held_phone.visible=phone_open
 	if world.scene_id=="pool":
 		var partner: Node2D=world.actors.guillermo
 		partner.action_texture=load("res://assets/art/living/guillermo_affection.png");partner.action_row=0;partner.action_frame=int(state.affection_frame) if state.romance else 0
@@ -271,13 +337,17 @@ func tick(delta: float) -> void:
 		if world.scene_id=="pool" and action=="affection":npc.modulate.a=.4;npc.column=0;continue
 		npc.modulate.a=1
 		guest.wait-=delta
-		if guest.wait>0:npc.column=1+int(world.clock*4+guest.index)%2 if world.location in ["party","pool"] and guest.index%3==0 else 3 if int(world.clock+guest.index)%6==0 else 0;continue
+		if guest.wait>0:
+			# Dance poses 1/2 only on dancers; a brief gesture 3 on chatters.
+			var local_time: float=world.clock*(.7+guest.index%5*.13)+guest.index*1.37
+			npc.column=1+int(local_time*3)%2 if world.location in ["party","pool"] and guest.index%3==0 else 3 if fmod(local_time,7.0)>.0 and fmod(local_time,7.0)<.55 else 0
+			continue
 		var step: Vector2=npc.position.direction_to(guest.destination)*guest.speed*delta
 		var candidate: Vector2=npc.position+step
 		var clear: bool=world.can_stand(candidate)
 		if world.location=="lobby" and candidate.distance_to(Vector2(465,485))<95:clear=false
 		if world.scene_id=="pool" and candidate.distance_to(world.companion_position)<120:clear=false
-		if clear:npc.position=candidate;npc.column=1+int(world.clock*5+guest.index)%2
+		if clear:npc.position=candidate;npc.column=1+int(world.clock*(3.5+guest.index%5*.4)+guest.index)%2 if guest.speed>0 else 0
 		else:guest.wait=2.0
 		if npc.position.distance_to(guest.destination)<4 or guest.wait>0:
 			var previous: Vector2=guest.origin;guest.origin=guest.destination;guest.destination=previous;guest.wait=2.0+guest.index%5
@@ -296,6 +366,10 @@ func _draw() -> void:
 			draw_texture_rect(pool_art[id],Rect2(p-Vector2(64,110),Vector2(128,128)),false)
 	if state.swimming:
 		for i in range(3):draw_arc(world.player_position+Vector2(0,-12),16+i*8+fmod(world.clock*9,8),0,TAU,12,Color(.65,.9,.95,.35),2)
+	if splash_time>0:
+		for i in range(6):
+			var offset:=Vector2(cos(i*TAU/6),sin(i*TAU/6))*(1-splash_time/.65)*28
+			draw_rect(Rect2(Vector2(395,483)+offset,Vector2(4,4)),Color(.7,.95,1,splash_time/.65))
 	if world.location=="yacht" and state.zone=="main":
 		for i in range(12):draw_line(Vector2(i*110+sin(world.clock*.4+i)*8,300+i%3*12),Vector2(i*110+60+sin(world.clock*.4+i)*8,300+i%3*12),Color(1,.85,.7,.25),2)
 		for i in range(3):
