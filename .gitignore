@@ -30,3 +30,4 @@ Thumbs.db
 /docs/animation/*_stderr.txt
 
 /docs/directors/**/*.import
+/docs/playtest/**/*.import

@@ -1,7 +1,8 @@
 {
+	"revision": 2,
   "pass_score": 8,
   "hard_mode_index": 7,
-  "facts_source": "Datos personales proporcionados explícitamente por Guillermo en la especificación del 11 de octubre de 2026.",
+  "facts_source": "Datos proporcionados por Guillermo el 11 de octubre de 2026; ciudades y primera consola corregidas el 13 de octubre de 2026.",
   "questions": [
     {
       "question": "¿Cuál es el Pokémon favorito de Guillermo?",
@@ -47,8 +48,8 @@
         "5",
         "6"
       ],
-      "answer": 1,
-      "explanation": "Cuatro ciudades.",
+      "answer": 2,
+      "explanation": "Cinco ciudades.",
       "image": ""
     },
     {
@@ -95,8 +96,8 @@
         "Xbox 360",
         "PlayStation 4"
       ],
-      "answer": 1,
-      "explanation": "PlayStation 3. HARD MODE no venía a regalar puntos.",
+      "answer": 2,
+      "explanation": "Xbox 360. HARD MODE no venía a regalar puntos.",
       "image": ""
     },
     {

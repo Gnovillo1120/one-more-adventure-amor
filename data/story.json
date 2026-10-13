@@ -193,7 +193,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 }
               },
               {
@@ -465,7 +465,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 }
               },
               {
@@ -492,7 +492,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 },
                 "lines": [
                   {
@@ -1176,7 +1176,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "decision"
                 }
               }
             ],
@@ -1198,7 +1198,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 }
               }
             ],
@@ -1519,7 +1519,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 }
               }
             ],
@@ -1793,7 +1793,7 @@
                 "kind": "talk",
                 "sprite": -1,
                 "visual": {
-                  "kind": "notice"
+                  "kind": "document"
                 }
               },
               {
@@ -2698,10 +2698,10 @@
             "steps": [
               {
                 "id": "main",
-                "label": "Leer la carta",
+                "label": "Leer carta",
                 "position": [
-                  715,
-                  430
+                  820,
+                  465
                 ],
                 "kind": "talk",
                 "lines": [],

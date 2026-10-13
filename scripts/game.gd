@@ -94,6 +94,8 @@ func _ready() -> void:
 	director.restore(startup_save.get("directors_cut",{}) if startup_save.get("directors_cut",{}) is Dictionary else {},startup_save)
 	show_menu()
 	if OS.get_cmdline_user_args().has("--capture-directors"):test_mode=true;director.call_deferred("capture")
+	if OS.get_cmdline_user_args().has("--capture-playtest") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/playtest_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -338,10 +340,6 @@ func _build_hud() -> void:
 	health_label=_label(hud,"",Rect2(35,115,900,35),19,GOLD)
 	_panel(hud,Rect2(25,624,1070,40),.75).visible=stage=="voxel"
 	toast_label=_label(hud,"",Rect2(35,627,1050,40),19,GOLD)
-	var shown := 0
-	for entry in director.data.keepsakes:
-		if not director.state.seen.has(entry.id):continue
-		var icon := TextureRect.new();icon.texture=load(entry.art);icon.size=Vector2(32,32);icon.position=Vector2(1055+shown*38,110);icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;icon.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;icon.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;hud.add_child(icon);shown+=1
 	dialog_panel=_panel(hud,Rect2(65,470,1150,190))
 	dialog_panel.visible=false
 	portrait=TextureRect.new();portrait.position=Vector2(10,0);portrait.size=Vector2(192,192);portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;portrait.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;dialog_panel.add_child(portrait)
@@ -831,13 +829,15 @@ func _toggle_phone() -> void:
 			if memory.scene_id=="moncayo" and memory.mandatory_target().id=="photos":_target_interaction("photos")
 			elif memory.location=="phone" and memory.living.state.outfit_phase=="idle":_scene_interaction()
 
-func _album() -> void:
+func _album(on_back: Callable=Callable()) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
 	modal=_panel(ui,Rect2(290,145,700,455));_label(modal,"Nuestro álbum",Rect2(30,20,640,45),32,GOLD)
 	var records: Array=[]
 	for id in chapter_state:
 		var local: Dictionary=chapter_state[id]
-		if local.get("living",{}).get("photo",false):records.append("Foto recreada del modelo" if id in ["foot","goodbye"] else "Foto recreada de Halloween")
+		if local.get("living",{}).get("photo",false):
+			var record: String="Foto recreada del modelo" if id in ["foot","goodbye"] else "Foto recreada de Halloween"
+			if not records.has(record):records.append(record)
 	if keepsakes.has("diploma"):records.append("El diploma del modelo")
 	if chapter_state.get("moncayo",{}).get("step",0)>0:records.append("La conversación que quedó en visto")
 	if chapter_state.get("date",{}).get("successful_challenges",{}).has("order"):records.append("Una mesa para dos en Ikura")
@@ -848,8 +848,8 @@ func _album() -> void:
 		if path!="" and FileAccess.file_exists(path):
 			var image:=Image.load_from_file(path)
 			if image!=null:
-				var preview:=TextureRect.new();preview.texture=ImageTexture.create_from_image(image);preview.position=Vector2(380,175);preview.size=Vector2(275,155);preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;modal.add_child(preview);break
-	_button(modal,"Volver",Rect2(30,375,640,50),_return_pause)
+				var preview:=TextureRect.new();preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;preview.texture=ImageTexture.create_from_image(image);preview.position=Vector2(380,175);modal.add_child(preview);preview.size=Vector2(275,155);break
+	_button(modal,"Volver",Rect2(30,375,640,50),on_back if on_back.is_valid() else _return_pause)
 
 func _settings(on_back: Callable) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()

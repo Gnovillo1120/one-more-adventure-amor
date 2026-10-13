@@ -170,6 +170,8 @@ func inspect_keepsake(index: int) -> void:
 		var text: String="Tu partida: aún no hemos horneado." if score.is_empty() else "En esta partida · primera tanda: %d%% · última: %d%%" % [int(score.first),int(score.latest)]
 		game._label(panel,text,Rect2(290,372,770,48),19,game.GOLD)
 	game._button(panel,"Páginas / capítulos",Rect2(25,503,320,43),func():inspect_page(game.chapter_index))
+	var photo_unlocked: bool=game.chapter_state.values().any(func(s):return s.get("living",{}).get("photo",false))
+	game._button(panel,"Fotos de la partida",Rect2(375,503,400,43),func():book_visible=false;art_view=null;inspected="";game._album(scrapbook)).disabled=not photo_unlocked
 	game._button(panel,"Cerrar",Rect2(810,503,255,43),close_book).grab_focus()
 	decorate_book(panel)
 	game.save_game()

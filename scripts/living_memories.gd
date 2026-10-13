@@ -6,11 +6,13 @@ const PEOPLE = preload("res://assets/art/living/ambient_people.png")
 const ACTIONS = preload("res://assets/art/living/anami_actions.png")
 const Actor = preload("res://scripts/memory_actor.gd")
 const Anim = preload("res://scripts/character_animation.gd")
+const PhotoAction = preload("res://scripts/photo_action.gd")
+var photo_action: Node2D
 const POOL = Rect2(365,310,560,215)
 const BEDROOM = preload("res://assets/art/living/bedroom.png")
 const CLUB_POOL = preload("res://assets/art/living/club_pool.png")
 var world: Node2D
-var state: Dictionary = {"zone":"main","swimwear":false,"swimming":false,"drink":false,"sitting":false,"pieces":[],"outfit_phase":"idle","remaining":75.0,"photo":false,"encounter":false,"unread":true,"photo_file":"","romance":false,"affection_frame":0}
+var state: Dictionary = {"zone":"main","swimwear":false,"swimming":false,"drink":false,"sitting":false,"pieces":[],"outfit_phase":"idle","remaining":75.0,"photo":false,"photo_count":0,"encounter":false,"unread":true,"photo_file":"","romance":false,"affection_frame":0}
 var props: Dictionary = {}
 var activities: Array = []
 var guests: Array = []
@@ -52,6 +54,7 @@ func _ready() -> void:
 	timer_label.add_theme_font_override("font",load("res://assets/fonts/PixelifySans.ttf"));timer_label.add_theme_color_override("font_color",Color("ffe0af"))
 	carried_drink=Sprite2D.new();carried_drink.texture=load("res://assets/art/living/drink.png");carried_drink.position=Vector2(18,-34);carried_drink.scale=Vector2(.35,.35);world.actors.anami.add_child(carried_drink);carried_drink.hide()
 	held_phone=Sprite2D.new();held_phone.texture=load("res://assets/art/living/phone.png");held_phone.position=Vector2(20,-38);held_phone.scale=Vector2(.28,.28);world.actors.anami.add_child(held_phone);held_phone.hide()
+	photo_action=PhotoAction.new();photo_action.living=self;photo_action.z_index=3;world.actors.anami.add_child(photo_action)
 	if world.location=="yacht":
 		prop("bench",Vector2(390,410),Vector2(144,112));activity("sit","Sentarse / levantarse",Vector2(390,435))
 		prop("bar",Vector2(1000,410),Vector2(190,140));activity("drink","Pedir / guardar bebida del club",Vector2(950,440))
@@ -60,7 +63,7 @@ func _ready() -> void:
 		world.blockers.append(Rect2(335,345,110,55));world.blockers.append(Rect2(930,330,155,75));world.blockers.append(Rect2(1110,365,80,90))
 	elif world.location=="lobby":
 		prop("fountain",Vector2(440,470),Vector2(112,112));activity("water","Tomar agua",Vector2(440,485))
-		activity("photo","Foto de recuerdo del modelo",Vector2(1020,540));prop("bench",Vector2(940,360),Vector2(150,110))
+		activity("photo","Foto de recuerdo del modelo",Vector2(1020,540))
 		world.blockers.append(Rect2(405,405,70,65))
 	elif world.scene_id=="invitation":
 		prop("bed",Vector2(345,350),Vector2(220,190));prop("wardrobe",Vector2(620,310),Vector2(190,170));prop("mirror",Vector2(890,350),Vector2(115,170));prop("desk",Vector2(1070,400),Vector2(170,160))
@@ -100,6 +103,7 @@ func restore(saved: Dictionary) -> void:
 	for key in state:
 		if saved.has(key):state[key]=saved[key]
 	state.pieces=state.pieces.duplicate()
+	if state.photo:state.photo_count=1
 	if state.swimming and (world.location!="yacht" or state.zone!="pool" or not state.swimwear):state.swimming=false
 	if state.zone=="pool":state.sitting=false;world.seated=false
 	if state.zone=="pool":world.blockers.clear()
@@ -178,7 +182,7 @@ func perform(id: String) -> void:
 			if state.outfit_phase=="failed":start_outfit()
 			else:pose("outfit",1.3);announce("Denim, bandana roja y zapatillas blancas. Ese es el plan.")
 		"photo","party_photo":
-			state.photo=true;pose("surprise",1.0);world.effect="diploma";world.effect_time=1;announce("¡Foto! Recreación para el álbum, no una fotografía histórica.");capture_photo();flash()
+			phone(false);action="";world.seated=false;state.sitting=false;photo_action.start()
 		"dance":pose("dance",5);announce("Un baile extra: pulsa espacio al ritmo. Y si no sale, nos reímos igual.");state["dance_started"]=world.clock;state["dance_hits"]=0
 	changed.emit()
 
@@ -274,6 +278,7 @@ func populate() -> void:
 		guests.append({"actor":bartender,"origin":bartender.position,"destination":bartender.position,"wait":6.0,"index":100,"speed":0.0})
 
 func tick(delta: float) -> void:
+	photo_action.advance(delta)
 	if world.get_parent().get("is_paused")==true:return
 	splash_time=maxf(0,splash_time-delta)
 	if pool_transition!="":tick_pool_transition(delta)
@@ -331,6 +336,7 @@ func tick(delta: float) -> void:
 		partner.action_texture=load("res://assets/art/living/guillermo_affection.png");partner.action_row=0;partner.action_frame=int(state.affection_frame) if state.romance else 0
 		if state.romance and world.seated:actor.position=world.companion_position+Vector2(-20,-30) if state.affection_frame==3 else world.companion_position+Vector2(-45,-18)
 	chatter_wait-=delta
+	if photo_action.running:actor.action_row=-1;carried_drink.hide();held_phone.hide()
 	for guest in guests:
 		var npc: Node2D=guest.actor
 		if not npc.visible:continue

@@ -1,3 +1,11 @@
+# Milestone 1 playtest fixes — 13 October 2026
+
+Continued existing `feature/directors-cut` from clean `6fc3c13`. Removed the explicit decorative-keepsake HUD loop, the extra lobby bench and generic interaction signposts. Added nearest-target contextual E indicators with obstruction/range/modal checks, preserving real environment signs. Conference photography now uses five phone-action phases in four directions, formal/Halloween sleeve variants, subject focus/flash and an original shutter sound. Unlock occurs at the shutter, remains separate from the Instagram keepsake, survives saves and deduplicates album entries. Fixed the oversized actual-photo preview. The beach card has its own anchor and bottom prompt, without moving Guillermo.
+
+Quiz Q4 is C / five cities; Q8 is C / Xbox 360. Bank, generation helper and explicit test keys are corrected. Revision 2 migrates cached active-session scores/feedback while preserving completed chapter progression and the ten-question/Hard Mode/8-out-of-10 contract.
+
+Twelve suites pass, 2,563 checks including 98 focused regressions. The complete 17-scene/219-dialogue-step route and voxel rescue still pass. Native source and exported executable captures verify phone poses 0–4, unlock timing, final-card input, overlay/bench removal, quiz feedback and the 960×540 window. Before/after images and GIFs: `docs/playtest/`; details/limitations: `PLAYTEST_FIXES.md`. Corrected build: `builds/directors-cut-playtest-fixes/`; ZIP: `builds/One More Adventure Amor Directors Cut Playtest Fixes.zip`. Previous builds remain untouched. Milestones 2–4, the actual personal letter and final music remain pending. No merge to main.
+
 # Director's Cut — milestone 1, 13 October 2026
 
 Branch `feature/directors-cut`, from main `217b3b4` (PR #5). Safe pre-amendment checkpoint `bf27a37` preserved. Implemented skippable Last Page opening, room title backdrop, explorable Memory Room between chapters, six chapter pages and exactly five optional personal keepsakes: Yoda LEGO keychain, gold A necklace, Guillermo's photograph interpretation, MUN diploma and oatmeal recipe. Childhood box reveal, necklace reflection, first/latest baking notes and optional name restoration persist. Whole-chapter replay returns to its saved main-route checkpoint; interrupted opening saves recover in the hub.

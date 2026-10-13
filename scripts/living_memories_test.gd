@@ -60,7 +60,7 @@ func run() -> void:
 	var before: Vector2=game.memory.living.guests[0].actor.position
 	for i in range(120):game.memory.living.tick(.016)
 	verify(game.memory.living.guests[0].actor.position!=before,"NPC route moves without synchronized sine loop")
-	game.memory.living.perform("living:party_photo");game._store_memory_state();game._toggle_pause();game._album()
+	game.memory.living.perform("living:party_photo");game.memory.living.tick(2.2);game._store_memory_state();game._toggle_pause();game._album()
 	verify(game.modal.get_children()[1].text.contains("Halloween"),"optional photograph unlocks album entry")
 	scene(2,2);game.memory.apply_line("Narrador","Anami lo besó.");game._store_memory_state();game.start_scene(true)
 	verify(game.memory.living.state.affection_frame==3 and game.memory.living.action=="affection","completed romantic pose restores")

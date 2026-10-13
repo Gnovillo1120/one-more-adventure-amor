@@ -3,6 +3,7 @@ extends Node2D
 var descriptor: Dictionary = {}
 var required := false
 var enabled := false
+var highlighted := false
 var texture: Texture2D
 var time := 0.0
 var visual_kind := ""
@@ -25,13 +26,14 @@ func _process(delta: float) -> void:
 
 func has_representation() -> bool:
 	if descriptor.has("fixture"):return is_instance_valid(environment_object) and environment_object.get_meta("rendered_fixture",false)
+	if visual_kind=="decision":return is_instance_valid(interaction_area) # Contextual E only; no invented prop.
 	return texture!=null or visual_kind in ["door","gate","arch","lectern","chair","phone","notice","table","companion","badge","document","letter"]
 
 func _pixel(rect: Rect2, color: String) -> void:draw_rect(rect,Color(color))
 
 func _draw() -> void:
 	if descriptor.has("fixture") or is_instance_valid(actor_visual):return
-	if visual_kind in ["companion","player"]:return # Registered to the existing animated actor.
+	if visual_kind in ["companion","player","decision"]:return # Actor or contextual-only choice hotspot.
 	if texture:
 		var actor: bool=visual_kind=="npc"
 		var size:=Vector2(64,96) if actor else Vector2(48,48)
@@ -60,18 +62,19 @@ func _draw() -> void:
 			"phone":
 				_pixel(Rect2(-16,-52,32,52),"293947");_pixel(Rect2(-12,-44,24,32),"78a7a4");_pixel(Rect2(-8,-36,16,4),"e5d8b8");_pixel(Rect2(-8,-24,12,4),"e5d8b8");_pixel(Rect2(-4,-8,8,4),"acbcb8")
 			"notice":
-				_pixel(Rect2(-28,-60,56,44),"8c6c45");_pixel(Rect2(-24,-56,48,36),"e2cf9d");_pixel(Rect2(-4,-16,8,20),"695236")
-				for y in [-48,-40,-32]:_pixel(Rect2(-16,y,32,4),"7f795f")
+				# Legacy descriptors display a paper document, never a generic signpost.
+				_pixel(Rect2(-18,-18,36,18),"e2cf9d")
+				for y in [-14,-8]:_pixel(Rect2(-12,y,24,2),"7f795f")
 			"badge":
 				_pixel(Rect2(-16,-64,8,36),"4d7e9c");_pixel(Rect2(8,-64,8,36),"4d7e9c");_pixel(Rect2(-16,-64,32,8),"4d7e9c")
 				_pixel(Rect2(-20,-36,40,32),"eadbbb");_pixel(Rect2(-16,-32,16,12),"8da49a");_pixel(Rect2(4,-32,12,4),"5c6572");_pixel(Rect2(4,-24,12,4),"5c6572")
 			"document","letter":
-				_pixel(Rect2(-28,-16,56,16),"a5825c");_pixel(Rect2(-20,-56,40,44),"efe0be")
-				for y in [-44,-36,-28]:_pixel(Rect2(-12,y,24,4),"8e8878")
-				if visual_kind=="letter":_pixel(Rect2(8,-20,8,8),"b76e82")
+				_pixel(Rect2(-20,-20,40,20),"efe0be")
+				for y in [-16,-10]:_pixel(Rect2(-12,y,24,2),"8e8878")
+				if visual_kind=="letter":_pixel(Rect2(8,-8,6,6),"b76e82")
 			"table":
 				_pixel(Rect2(-28,-32,56,16),"cfa473");_pixel(Rect2(-20,-16,8,16),"72563c");_pixel(Rect2(12,-16,8,16),"72563c")
-	if enabled and required:
+	if enabled and required and highlighted:
 		# Small corner glints support the real object, never substitute for it.
 		var y: float=-110 if visual_kind=="npc" else -92 if visual_kind in ["door","gate","arch"] else -60
 		_pixel(Rect2(-5,y,10,4),"f6dc9b");_pixel(Rect2(-2,y-3,4,10),"f6dc9b")

@@ -1,5 +1,7 @@
 # Continue here — Director's Cut
 
+Milestone 1 playtest corrections are complete. Read `PLAYTEST_FIXES.md` before continuing. The explicit gameplay HUD keepsakes, lobby bench and generic signposts are removed; real phone photography, corrected quiz facts/cache migration and unobstructed beach card are implemented. Latest corrected build is `builds/directors-cut-playtest-fixes/`; twelve suites pass 2,563 checks. Preserve these corrections and their native evidence.
+
 Continue `feature/directors-cut`; do not restart or replace working systems. Read `DIRECTORS_CUT.md` and the top of `DEVELOPMENT_STATUS.md`. Milestone 1 and the priority keepsake amendment are implemented. Earlier releases remain preserved. Main is not merged automatically.
 
 Architecture: `game.gd` still owns progression/dialogue/challenge/save/UI/audio. `directors_cut.gd` owns optional hub/book state and whole-chapter replay bookmarks; `memory_room.gd` owns the 2D room. `data/directors_cut.json` separates six chapter pages from five personal objects. Existing memory/voxel worlds, living activities and corrected character animation systems remain working.

@@ -9,3 +9,6 @@ Validation: eleven suites, 2,465 checks; full 17-scene/219-dialogue-step route a
 Base: `main`. Head: `feature/directors-cut`. Draft requested; do not merge automatically.
 
 [Prepared comparison](https://github.com/Gnovillo1120/one-more-adventure-amor/compare/main...feature/directors-cut?expand=1)
+
+
+The same branch also incorporates the targeted milestone-1 playtest corrections: no decorative keepsake HUD in gameplay, removal of the lobby bench/generic posts, consistent contextual prompts, real conference-phone photography with a separate persisted album entry, quiz answers five cities/Xbox 360 with cached-session migration, and an unobstructed beach card. Validation now totals twelve suites/2,563 checks with native corrected-build evidence. `PLAYTEST_FIXES.md` records the separate release and before/after captures.

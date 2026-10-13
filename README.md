@@ -4,7 +4,7 @@ An anniversary game in Godot 4.7.2 / GDScript: nostalgic 2D pixel-art memories a
 
 ## Play on Windows
 
-Latest milestone: `builds/directors-cut-milestone-1/One More Adventure Amor.exe`, with its matching `.pck`. Or extract `builds/One More Adventure Amor Directors Cut Milestone 1.zip`. Earlier releases remain available. This development build still has an explicitly editable personal-letter placeholder and pending final instrumental music.
+Latest milestone 1 playtest-fix build: `builds/directors-cut-playtest-fixes/One More Adventure Amor.exe`, with its matching `.pck`. Or extract `builds/One More Adventure Amor Directors Cut Playtest Fixes.zip`. Earlier releases remain available. This development build still has an explicitly editable personal-letter placeholder and pending final instrumental music.
 
 WASD moves; E interacts; P opens the phone; Esc pauses. Space/E/Esc skips new book cinematics. In 3D, mouse looks and left-click swings the sword. Settings include Reduced Motion. New Game starts in the Memory Room, which returns between chapters. Its five optional personal keepsakes and completed chapter replays never gate the ending. Replay returns to the main journey checkpoint.
 

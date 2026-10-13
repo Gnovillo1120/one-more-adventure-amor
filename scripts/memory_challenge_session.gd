@@ -8,6 +8,18 @@ func setup(which: String, config: Dictionary, saved: Dictionary = {}) -> void:
 	kind=which;data=config
 	state={"phase":"intro","index":0,"answers":[],"score":0,"feedback":"","passed":false,"order":["","",""],"pantry":[],"measures":{},"preparation":[],"chill":0,"temperature":0,"minutes":0}
 	if not saved.is_empty():state.merge(saved.duplicate(true),true)
+	if kind=="guillermo":
+		var revision: int=int(config.get("revision",1))
+		if not saved.is_empty() and int(saved.get("quiz_revision",1))<revision:
+			# Re-evaluate unfinished legacy quizzes against the corrected personal facts.
+			state.score=0
+			for i in range(mini(state.answers.size(),config.questions.size())):
+				if int(state.answers[i])==int(config.questions[i].answer):state.score+=1
+			if state.phase=="feedback" and int(state.index)<state.answers.size():
+				var correct: bool=int(state.answers[int(state.index)])==int(config.questions[int(state.index)].answer)
+				state.feedback=("¡Correcto! " if correct else "Esta no. ")+str(config.questions[int(state.index)].explanation)
+			if state.phase=="result":state.passed=int(state.score)>=int(config.pass_score)
+		state.quiz_revision=float(revision)
 
 func act(id: String, value: Variant = null) -> bool:
 	if id=="retry" and state.phase=="result" and not state.passed and kind!="cookies":setup(kind,data);state.phase="play";return true
