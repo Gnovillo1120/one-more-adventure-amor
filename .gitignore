@@ -22,3 +22,6 @@ Thumbs.db
 /docs/polish_release_screenshots/
 /docs/redesign/
 /docs/minigames/export_log.txt
+/docs/living/*_log.txt
+/docs/living/*_stdout.txt
+/docs/living/*_stderr.txt

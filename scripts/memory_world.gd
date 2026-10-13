@@ -11,6 +11,8 @@ const RoomLayer = preload("res://scripts/layered_room.gd")
 const RoomFixture = preload("res://scripts/room_fixture.gd")
 const MemoryActor = preload("res://scripts/memory_actor.gd")
 const Navigation = preload("res://scripts/memory_navigation.gd")
+const LivingMemories = preload("res://scripts/living_memories.gd")
+var living: Node2D
 var depth_root: Node2D
 var layered := false
 var fixtures: Dictionary = {}
@@ -102,8 +104,14 @@ func _ready() -> void:
 		if ResourceLoader.exists(path):npc_art.append(load(path))
 	if location=="yacht":blockers=[Rect2(110,225,1080,120)]
 	_build_layers()
-	if location=="phone":_build_phone()
+	if location=="phone":_build_phone();phone_ui.hide()
 	_register_target_visuals()
+	living=LivingMemories.new();living.world=self;living.z_index=-5;add_child(living)
+	for id in target_visuals:
+		var prop: Node2D=target_visuals[id]
+		if prop.visual_kind=="phone":prop.visual_kind="player";prop.descriptor={"kind":"player"};prop.queue_redraw()
+		if id=="water" and living.props.has("fountain"):prop.descriptor={"fixture":"living_fountain"};prop.environment_object=living.props.fountain;prop.queue_redraw()
+		if scene_id=="dance" and id=="main":prop.visual_kind="companion";prop.texture=null;prop.descriptor={"kind":"companion"};prop.queue_redraw()
 	queue_redraw()
 
 func _build_layers() -> void:
@@ -164,6 +172,9 @@ func seat_couple(on_done: Callable) -> void:
 func restore_pose() -> void:
 	if seated and location in ["ikura","dining"]:
 		seated=true;player_position=_point(scene_config.seat)
+	if seated and scene_id=="pool" and is_instance_valid(living) and living.state.romance:
+		player_position=companion_position+Vector2(-48,0)
+		living.pose("affection",3600)
 	_update_actors()
 
 func all_targets() -> Array:
@@ -199,10 +210,13 @@ func _sync_target_visuals() -> void:
 		prop.enabled=id==current
 		prop.visible=id!="exit" or completed
 		if prop.visual_kind=="companion":prop.visible=location not in ["phone","yacht"]
+		if prop.visual_kind=="player":prop.position=player_position
+		if is_instance_valid(living) and living.state.zone!="main":prop.hide()
 
 func has_target_visual(id: String) -> bool:
 	if not target_visuals.has(id):return false
 	var prop: Node2D=target_visuals[id]
+	if prop.visual_kind=="player":return actors.anami.visible
 	if prop.visual_kind=="companion":
 		return sprites.has("guillermo") and location not in ["phone","yacht"] and prop.position.distance_to(companion_position)<1
 	return prop.has_representation()
@@ -212,11 +226,19 @@ func _point(value: Array) -> Vector2:
 
 func mandatory_target() -> Dictionary:
 	var steps: Array=scene_config.get("steps",[])
-	if quest_step<steps.size():return steps[quest_step]
+	if quest_step<steps.size():
+		var target: Dictionary=steps[quest_step].duplicate(true)
+		if target.get("visual",{}).get("kind","")=="phone":target.position=[player_position.x,player_position.y]
+		return target
 	return {"id":"main","label":interaction_label,"position":[companion_position.x,companion_position.y]}
 
 func interaction_targets() -> Array:
 	var result: Array=scene_config.get("optional",[]).duplicate()
+	if is_instance_valid(living):
+		if living.state.zone!="main":return living.targets()
+		if scene_id=="invitation" and living.state.outfit_phase in ["active","failed"]:return living.targets()
+		result=result.filter(func(t: Dictionary):return t.id!="water" or location!="lobby")
+		result.append_array(living.targets())
 	if completed:result.append({"id":"exit","label":"Siguiente recuerdo","position":[exit_position.x,exit_position.y],"visual":scene_config.get("exit_visual",{})})
 	else:result.append(mandatory_target())
 	return result
@@ -235,6 +257,7 @@ func prompt() -> String:
 
 func can_stand(p: Vector2) -> bool:
 	if not WALK_BOUNDS.has_point(p):return false
+	if is_instance_valid(living) and not living.legal_position(p):return false
 	var feet:=Rect2(p-PLAYER_HALF,PLAYER_HALF*2)
 	for area in blockers:
 		if area.intersects(feet):return false
@@ -269,12 +292,15 @@ func _process(delta: float) -> void:
 	if active:
 		var motion := Vector2(float(Input.is_physical_key_pressed(KEY_D))-float(Input.is_physical_key_pressed(KEY_A)),float(Input.is_physical_key_pressed(KEY_S))-float(Input.is_physical_key_pressed(KEY_W)))
 		if motion.length_squared() > 0:
+			if seated and scene_id=="pool":
+				player_position=safe_position(companion_position+Vector2(-48,0));living.action="";living.state.romance=false
 			moving = true
 			direction = 2 if motion.x > 0 else 1 if motion.x < 0 else 3 if motion.y < 0 else 0
 			var step := motion.normalized() * 205.0 * delta
 			move_by(step)
 			if seated:seated=false
 	_update_actors()
+	if is_instance_valid(living):living.tick(delta)
 	# Chat messages arrive complete; dialogue retains its own paced reveal.
 	# Revealing inside a pre-shaped long bubble would scroll into blank text.
 	queue_redraw()
@@ -326,25 +352,30 @@ func _sprite(person: String, pos: Vector2, row: int, column: int) -> void:
 		draw_texture_rect_region(sprites[person],Rect2(snapped-Vector2(32,90),Vector2(64,96)),Rect2(column*32,row*48,32,48))
 
 func apply_line(speaker: String, text: String) -> void:
-	if location in ["phone","yacht"]:
+	if location=="phone" or (location=="yacht" and is_instance_valid(living) and living.phone_open):
 		if speaker!="Narrador":
-			phone_messages.append({"speaker":speaker,"text":text,"time":clock})
+			if not phone_messages.any(func(item: Dictionary):return item.speaker==speaker and item.text==text):phone_messages.append({"speaker":speaker,"text":text,"time":clock})
 			if phone_messages.size()>100:phone_messages.pop_front()
 			if is_instance_valid(phone_ui) and phone_ui.visible:_refresh_phone()
 	if scene_id=="foot" and (text.contains("aterrizó") or text=="¡Ay!"):
-		player_position=companion_position+Vector2(-38,0)
+		if not is_instance_valid(living):player_position=companion_position+Vector2(-38,0)
 		effect="ouch";effect_time=1.5
 	if text.contains("Anami kisses") or text.contains("besó") or text.contains("beso"):
 		effect="heart";effect_time=2.5
 	if scene_id=="award" and speaker=="Anami":effect="diploma";effect_time=3
 	if scene_id=="pool" and (text.contains("novia") or text.contains("quiero")):
-		seated=true;player_position=companion_position+Vector2(-48,0)
+		seated=true;player_position=companion_position+Vector2(-48,-15)
+	if scene_id=="pool" and is_instance_valid(living):
+		living.pose("affection",3600);living.state.romance=true
+		living.state.affection_frame=maxi(int(living.state.affection_frame),3 if text.contains("bes") else 2 if text.contains("novia") else 1)
+		seated=true;restore_pose()
 
 func draw_ellipse_shadow(pos: Vector2) -> void:
 	draw_rect(Rect2(pos+Vector2(-23,-3),Vector2(46,9)),Color(0.07,0.1,0.16,.3))
 
 func _draw() -> void:
-	if layered:pass
+	if is_instance_valid(living) and (scene_id=="invitation" or living.state.zone=="pool"):pass
+	elif layered:pass
 	elif background:
 		draw_texture_rect(background,Rect2(0,0,1280,720),false)
 	else:
@@ -368,6 +399,7 @@ func _draw() -> void:
 		elif effect=="diploma":
 			draw_texture_rect(load("res://assets/art/sprites/diploma.png"),Rect2(player_position+Vector2(20,-45),Vector2(40,40)),false)
 	for item in interaction_targets():
+		if str(item.id).begins_with("living:") or item.get("visual",{}).get("kind","")=="phone":continue
 		var target:=_point(item.position)
 		var required: bool=item.id=="exit" or item.id==mandatory_target().id
 		var color:=Color("ffe1a0") if required else Color("9fbfbd")
@@ -384,12 +416,13 @@ func _build_phone() -> void:
 	phone_ui.mouse_filter=Control.MOUSE_FILTER_STOP;phone_ui.z_index=20;add_child(phone_ui)
 	var style:=StyleBoxFlat.new();style.bg_color=Color("142331");style.border_color=Color("aa936f");style.set_border_width_all(4);style.set_content_margin_all(12);phone_ui.add_theme_stylebox_override("panel",style)
 	var column:=VBoxContainer.new();column.add_theme_constant_override("separation",8);phone_ui.add_child(column)
-	var header:=Label.new();header.text="MENSAJES · "+("Guillermo" if scene_id=="reconnect" else "Conversación");header.add_theme_font_size_override("font_size",20);header.add_theme_color_override("font_color",Color("ebc48a"));column.add_child(header)
+	var header:=Label.new();header.text="INSTAGRAM · Guillermo   ·   P para guardar";header.add_theme_font_size_override("font_size",20);header.add_theme_color_override("font_color",Color("ebc48a"));column.add_child(header)
 	phone_scroll=ScrollContainer.new();phone_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;phone_scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL;phone_scroll.custom_minimum_size.y=230;phone_scroll.focus_mode=Control.FOCUS_ALL;column.add_child(phone_scroll)
 	phone_stack=VBoxContainer.new();phone_stack.size_flags_horizontal=Control.SIZE_EXPAND_FILL;phone_stack.add_theme_constant_override("separation",10);phone_scroll.add_child(phone_stack)
 	_refresh_phone()
 
 func show_phone(value: bool) -> void:
+	if is_instance_valid(living):living.phone(value);return
 	if value and not is_instance_valid(phone_ui):_build_phone()
 	if is_instance_valid(phone_ui):phone_ui.visible=value
 

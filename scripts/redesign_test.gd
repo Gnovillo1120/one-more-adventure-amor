@@ -39,7 +39,8 @@ func run() -> void:
 		verify(game.memory.actors.anami.position.distance_to(game.memory.actors.guillermo.position)<80,"couple occupies adjacent chairs")
 		game._store_memory_state();game.start_scene();verify(game.memory.seated,"seated pose restores from chapter state")
 	game.chapter_index=1;game.scene_index=1;game.start_scene()
-	for i in range(8):game.memory.apply_line("Anami" if i%2==0 else "Guillermo","Mensaje largo: "+"¿Seguimos conversando después de revisar el documento? ".repeat(20))
+	game.memory.show_phone(true)
+	for i in range(8):game.memory.apply_line("Anami" if i%2==0 else "Guillermo","Mensaje %d: "%i+"¿Seguimos conversando después de revisar el documento? ".repeat(20))
 	for i in range(5):await process_frame
 	var phone: Node2D=game.memory
 	verify(phone.phone_scroll.clip_contents,"phone clips scrolling contents")

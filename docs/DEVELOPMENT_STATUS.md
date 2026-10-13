@@ -1,4 +1,20 @@
-# Development status — 11 October 2026
+# Development status — 12 October 2026
+
+## Living 2D memories — playable feature branch
+
+Branch `feature/living-2d-memories` starts at latest `origin/main`, `f82f8d0`, after PR #3 merged. The initial working tree was clean. Existing minigames, story text, voxel systems and prior builds are preserved.
+
+Reviewed the supplied references before environment implementation. The named `assets/references/living_2d/` directory is absent in this checkout; the supplied images are instead in the yacht club, bedroom, phone, pixel-art and UEES reference directories. Real pool/marina and atrium photographs guide layout; pixel-art catalogues guide readable silhouettes and context poses. `assets/references/` remains ignored, untracked and excluded from exports. No reference photograph enters generated runtime art.
+
+Implemented transparent context frames, eight ambient archetypes, swimwear/outfit stages, sixteen furniture sprites and two new backgrounds. Handheld phone transitions/history, independent NPC routes, optional club seating/drinks/pool/changing, a 75-second spatial bedroom preparation activity, fountain/footstep staging, 55 party/staff actors, quiet romantic poses and a pause album are integrated. Guillermo's casual, formal, Halloween and seated sprites have neutral cheeks; his clean-shaven likeness and Halloween walking sheet's eye makeup remain.
+
+Validation: nine suites pass, 2,174 checks: living activities 89, minigames 699, full story 470, persistence 206, chapter 170, room/phone 63, targets 245, navigation 220, audio 12. The story traverses all 17 scenes, 219 dialogue steps and the preserved voxel rescue. A late pose regression was fixed by separating seated visual offsets from legal movement ground anchors. Native source/export input verifies P and mouse phone reopening, E outfit collection and pool bounds. Party process-monitor samples measured 3.9 ms in source and 7.36 ms in the export with 55 actors on the RTX 3070 Laptop GPU; these samples are not a benchmark or lower-end performance guarantee.
+
+Windows release: `builds/living-2d-memories/One More Adventure Amor.exe`; ZIP: `builds/One More Adventure Amor Living 2D Memories.zip`. Earlier builds remain untouched. Baseline captures render the preserved pre-overhaul PCK; source/export captures are under `docs/living/`. Reference photos, source concepts, tools, tests and developer screenshots are excluded from the pack.
+
+Limits: lightweight NPC routes and four main party costume families, one swimming stroke set, a fixed dress→bandana→sneakers sequence with a simple wardrobe distractor. Extra dancing uses Anami's new dance frames and Guillermo's existing step frames. The pool wing emphasizes player activity rather than autonomous swimmers. Artist cleanup, human pacing and lower-end playtesting remain useful. The original personal letter/final instrumental recordings still await user content. Implementation committed as `8c32292` and pushed to `origin/feature/living-2d-memories`. Draft PR creation returned GitHub 403, "Resource not accessible by integration". The prepared comparison and PR description are in `PR_LIVING_MEMORIES.md`; no merge was performed.
+
+See `LIVING_MEMORIES.md` for the reference review and implementation contracts.
 
 ## Interactive memory minigames — active branch
 

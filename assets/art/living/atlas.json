@@ -1,0 +1,45 @@
+{
+  "cell": [
+    32,
+    48
+  ],
+  "columns": 4,
+  "actions": [
+    "phone",
+    "drink",
+    "sit",
+    "swim",
+    "dance",
+    "surprise",
+    "affection",
+    "outfit"
+  ],
+  "npcs": [
+    "delegate_woman",
+    "delegate_man",
+    "club_guest",
+    "bartender",
+    "witch",
+    "ghost",
+    "vampire",
+    "pirate"
+  ],
+  "objects": [
+    "fountain",
+    "fountain_flow",
+    "bench",
+    "phone",
+    "bar",
+    "drink",
+    "changing_room",
+    "ladder",
+    "lounger",
+    "umbrella",
+    "bed",
+    "wardrobe",
+    "mirror",
+    "desk",
+    "dress",
+    "sneakers"
+  ]
+}
