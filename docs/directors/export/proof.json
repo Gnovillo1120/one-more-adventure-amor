@@ -1,0 +1,14 @@
+{
+	"adapter": "NVIDIA GeForce RTX 3070 Laptop GPU",
+	"capture_complete": true,
+	"godot": "4.7.2-stable (official)",
+	"logical_viewport": [
+		1280,
+		720
+	],
+	"native_e_book_ok": true,
+	"native_walk_dx": 95.0404663085938,
+	"native_walk_ok": true,
+	"renderer": "GL Compatibility",
+	"staged_restored_room": true
+}

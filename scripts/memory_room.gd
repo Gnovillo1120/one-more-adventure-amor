@@ -18,10 +18,10 @@ func _ready() -> void:
 	texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	background=load("res://assets/art/directors/memory_room.png")
 	var depth:=Node2D.new();depth.y_sort_enabled=true;add_child(depth)
-	for page in director.data.pages:
-		var display:=Sprite2D.new();display.texture=load(page.art if director.recovered(int(page.chapter)) else "res://assets/art/directors/locked_photo.png");display.position=Vector2(page.display[0],page.display[1]);display.scale=Vector2(64,64)/Vector2(display.texture.get_size());depth.add_child(display);displays.append(display)
+	for page in director.data.keepsakes:
+		var display:=Sprite2D.new();display.texture=load(page.art);display.position=Vector2(page.display[0],page.display[1]);display.scale=Vector2.ONE;depth.add_child(display);displays.append(display)
 		blockers.append(Rect2(float(page.display[0])-42,170,84,75))
-	book=Sprite2D.new();book.texture=load("res://assets/art/directors/book_open.png");book.position=Vector2(665,385);book.scale=Vector2(145,100)/Vector2(book.texture.get_size());depth.add_child(book)
+	book=Sprite2D.new();book.texture=load("res://assets/art/directors/book_open.png");book.position=Vector2(665,385);book.scale=Vector2.ONE;depth.add_child(book)
 	actor=Actor.new();actor.world=self;actor.person="anami";actor.texture=load("res://assets/art/sprites-v2/anami_casual.png");depth.add_child(actor)
 	actor.visible=not title_mode
 	prompt=Label.new();prompt.position=Vector2(340,626);prompt.size=Vector2(600,45);prompt.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;prompt.add_theme_font_size_override("font_size",20);prompt.add_theme_color_override("font_color",Color("ffe0af"));add_child(prompt)
@@ -29,11 +29,12 @@ func _ready() -> void:
 
 func refresh() -> void:
 	for i in range(displays.size()):
-		var restored: bool=director.recovered(i)
-		displays[i].texture=load(director.data.pages[i].art if restored else "res://assets/art/directors/locked_photo.png")
-		displays[i].scale=Vector2(64,64)/Vector2(displays[i].texture.get_size())
-		displays[i].modulate=Color.WHITE if restored else Color(.55,.45,.6,.5)
-	if director.state.recovered.size()>=5:book.texture=load("res://assets/art/directors/book_restored.png")
+		var restored: bool=director.state.seen.has(director.data.keepsakes[i].id)
+		displays[i].texture=load(director.data.keepsakes[i].art)
+		displays[i].scale=Vector2.ONE
+		displays[i].modulate=Color.WHITE if restored else Color(.75,.72,.72,1)
+	var progress: float=clampf(director.state.recovered.size()/5.0,0,1)
+	book.modulate=Color(.7+.3*progress,.7+.3*progress,.82+.18*progress)
 
 func legal(p: Vector2) -> bool:
 	if not Rect2(185,270,930,370).has_point(p):return false
@@ -50,8 +51,8 @@ func move_by(step: Vector2) -> void:
 
 func nearest() -> int:
 	var result: int=-1;var best: float=player_position.distance_to(Vector2(665,495))
-	for i in range(director.data.pages.size()):
-		var page: Dictionary=director.data.pages[i]
+	for i in range(director.data.keepsakes.size()):
+		var page: Dictionary=director.data.keepsakes[i]
 		var distance:=player_position.distance_to(Vector2(page.anchor[0],page.anchor[1]))
 		if distance<best:best=distance;result=i
 	return result if best<105 else -2
@@ -60,7 +61,7 @@ func interact() -> void:
 	if not active or director.game.is_paused or is_instance_valid(director.game.modal):return
 	var target:=nearest()
 	if target==-1:director.scrapbook()
-	elif target>=0:director.inspect_page(target)
+	elif target>=0:director.inspect_keepsake(target)
 
 func sync_actor(moving: bool) -> void:
 	if not is_instance_valid(actor):return
@@ -69,7 +70,7 @@ func sync_actor(moving: bool) -> void:
 func _process(delta: float) -> void:
 	if director.game.is_paused:return
 	clock+=delta
-	var moving:=false
+	var moving: bool=director.game.stage=="opening" and player_position.y>510 and not director.game.reduced_motion
 	if active and not title_mode and not is_instance_valid(director.game.modal):
 		var motion:=Vector2(float(Input.is_physical_key_pressed(KEY_D))-float(Input.is_physical_key_pressed(KEY_A)),float(Input.is_physical_key_pressed(KEY_S))-float(Input.is_physical_key_pressed(KEY_W)))
 		if motion.length_squared()>0:
@@ -77,7 +78,7 @@ func _process(delta: float) -> void:
 			var old:=player_position;move_by(motion.normalized()*190*delta);moving=old!=player_position
 	sync_actor(moving)
 	var target:=nearest()
-	prompt.text="" if title_mode or not active else "E · Abrir el scrapbook" if target==-1 else "E · "+str(director.data.pages[target].keepsake) if target>=0 else "WASD · Explorar   ·   Libro: centro de la habitación"
+	prompt.text="" if title_mode or not active else "E · Abrir el scrapbook" if target==-1 else "E · "+str(director.data.keepsakes[target].title) if target>=0 else "WASD · Explorar   ·   Libro: centro de la habitación"
 	queue_redraw()
 
 func _draw() -> void:

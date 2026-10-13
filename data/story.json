@@ -1885,7 +1885,7 @@
       "id": "halloween",
       "title": "El comienzo de nosotros",
       "subtitle": "21 de octubre de 2023",
-      "keepsake": "Bandana roja",
+      "keepsake": "El comienzo de nosotros",
       "scenes": [
         {
           "id": "invitation",
@@ -2139,7 +2139,7 @@
             },
             {
               "speaker": "Narrador",
-              "text": "Recuerdo guardado: la bandana roja de aquella noche.",
+              "text": "Recuerdo guardado: la noche en que empezó lo nuestro.",
               "mood": "happy"
             }
           ],
@@ -2596,7 +2596,7 @@
             },
             {
               "speaker": "Guillermo",
-              "text": "Luego una mesa en Ikura, una bandana roja y unas galletas que sobrevivieron al segundo intento.",
+              "text": "Luego el primer mensaje, el comienzo de nosotros y unas galletas que sobrevivieron al segundo intento.",
               "mood": "happy"
             },
             {

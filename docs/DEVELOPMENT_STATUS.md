@@ -1,10 +1,12 @@
-# Director's Cut — safe checkpoint, 13 October 2026
+# Director's Cut — milestone 1, 13 October 2026
 
-Active branch: `feature/directors-cut`, from main `217b3b4` (PR #5). Existing gameplay, scripts, art and builds are preserved. New Memory Room script and chapter-page data are scaffolding only; they are not yet connected to the game. Generated room/book concepts remain outside the repository until reviewed and normalized.
+Branch `feature/directors-cut`, from main `217b3b4` (PR #5). Safe pre-amendment checkpoint `bf27a37` preserved. Implemented skippable Last Page opening, room title backdrop, explorable Memory Room between chapters, six chapter pages and exactly five optional personal keepsakes: Yoda LEGO keychain, gold A necklace, Guillermo's photograph interpretation, MUN diploma and oatmeal recipe. Childhood box reveal, necklace reflection, first/latest baking notes and optional name restoration persist. Whole-chapter replay returns to its saved main-route checkpoint; interrupted opening saves recover in the hub.
 
-Priority amendment: the featured Memory Book objects are exactly Yoda LEGO keychain, gold A necklace, Guillermo's Instagram photograph, MUN Best Delegate diploma, and oatmeal cookies/recipe. The bandana remains in Halloween clothing/gameplay but must leave symbolic keepsakes and rescue callbacks. Six chapter pages and five personal objects are distinct. Gift dates/chronology will not be invented. Reference photographs remain local and ignored. Future dog/leash, Monopoly and tomato entries are out of scope.
+Bandana symbolism/token/HUD/rescue callbacks corrected while retaining Halloween outfit and preparation activity. Gift dates and historical quotations were not invented. Old v1 memory/voxel saves remain supported. Existing scenes, minigames, scoring, swimming, clean-shaven/no-blush Guillermo and earlier builds are preserved. Private photos remain ignored, untracked and excluded. Reduced Motion is available in Settings.
 
-Next: correct data/art, integrate optional persistent scrapbook inspection, validate legacy saves and Halloween/baking gameplay, then continue the Director's Cut opening/hub milestone. This checkpoint is not a completed Director's Cut release.
+Eleven suites pass: 2,465 checks including 69 new scrapbook/hub checks; full 17-scene/219-dialogue-step route and existing voxel rescue. Native source/export viewport proof and WASD/E checks, before captures and GIFs are under `docs/directors/`. Separate build/ZIP under `builds/directors-cut-milestone-1/`; see `DIRECTORS_CUT.md` for provenance, controls, limits and remaining milestones. Three keepsake imagegen atlas requests were rejected without a specific reason; small object sprites were authored as crisp transparent native SVG assets instead. Generated room/book art was retained and normalized.
+
+Milestones 2–4 remain unfinished: deeper 2D staging, actual on-screen kidnapping/rescue, final beach/letter/audio production. The personal letter is still explicitly a placeholder; this is not the final gift build. Whole-chapter replay works; a direct minigame replay shortcut remains pending. No merge to main.
 # Development status — 13 October 2026
 
 ## 2D animation polish — feature branch
@@ -72,4 +74,3 @@ Remaining: personalize the placeholder letter in data/story.json, supply license
 ## Active complete-redesign request
 Phase A is implemented as an architectural checkpoint: layered MUN/dining/Ikura rooms, depth-sorted actors and foreground tables, integrated seating animation, accessible delegations, clipped container chat and an editable Guillermo quiz. Full production art, Phase B staging, Minecraft reconstruction and animated kidnapping/rescue remain unfinished. See REDESIGN_STATUS.md for exact continuation. Do not treat the earlier playable release as meeting the new cinematic acceptance bar.
 Phase A release validation: all seven suites pass (503/231/177/255/220/12/63 checks), 29 native source/exported captures, UI and camera smoke checks. Intermediate build: builds/redesign-phase-a/One More Adventure Amor.exe; ZIP: builds/One More Adventure Amor Redesign Phase A.zip. It does not include the requested 3D reconstruction or cinematics.
-
