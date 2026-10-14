@@ -1,24 +1,17 @@
 # One More Adventure, Amor
 
-A complete first playable anniversary adventure in Godot 4.7.2 / GDScript: 2D pixel-art memories and ending surrounding a 3D voxel rescue chapter. Spanish dialogue, expressive portraits, outfit-specific walking sprites, replaceable instrumental audio, forgiving activities, keepsakes, saves and credits.
+An anniversary game in Godot 4.7.2 / GDScript: nostalgic 2D pixel-art memories and ending around a 3D voxel adventure. The complete six-chapter route is playable. The Director's Cut cinematic overhaul is in progress.
 
 ## Play on Windows
 
-Open builds/redesign-phase-a/One More Adventure Amor.exe, keeping its .pck in the same folder. Godot installation is not required to play. Alternatively extract builds/One More Adventure Amor Redesign Phase A.zip and open the executable. The build is unsigned.
+Latest milestone 1 playtest-fix build: `builds/directors-cut-playtest-fixes/One More Adventure Amor.exe`, with its matching `.pck`. Or extract `builds/One More Adventure Amor Directors Cut Playtest Fixes.zip`. Earlier releases remain available. This development build still has an explicitly editable personal-letter placeholder and pending final instrumental music.
 
-WASD: walk. E / Space / Enter: interact or advance dialogue. Mouse or 1–3: choices. Esc: pause. In 3D, move the mouse to look and left-click to swing the sword. Follow the objective and nearby marker; failed activities/combat retry generously. Pause includes save, restart scene, settings and menu. Progress autosaves and unlocks chapter selection.
+WASD moves; E interacts; P opens the phone; Esc pauses. Space/E/Esc skips new book cinematics. In 3D, mouse looks and left-click swings the sword. Settings include Reduced Motion. New Game starts in the Memory Room, which returns between chapters. Its five optional personal keepsakes and completed chapter replays never gate the ending. Replay returns to the main journey checkpoint.
 
-## Edit
+## Edit and continue
 
-Open project.godot in Godot 4.7.2 and press F5. Story and personal letter live in data/story.json; the marked letter placeholder needs Guillermo's own words before gifting. See docs/LETTER.md and rebuild using docs/RELEASE.md after changing it.
+Open `project.godot` in Godot 4.7.2 and press F5. Story/letter: `data/story.json`; book metadata: `data/directors_cut.json`. Read `docs/DIRECTORS_CUT.md`, `docs/DEVELOPMENT_STATUS.md` and `docs/CONTINUE_HERE.md` for actual implementation, evidence and unfinished milestones.
 
-All six chapters are implemented and automated checks pass. Target duration and older-laptop performance still need a human playthrough. See docs/DEVELOPMENT_STATUS.md for evidence and limitations, and docs/CONTINUE_HERE.md for continuation instructions.
+Keep memories entirely 2D, the adventure 3D, Guillermo clean-shaven without blush, and reference photographs local/ignored/excluded. The bandana remains Halloween clothing; the five symbolic objects are Yoda keychain, gold A necklace, Guillermo's first-message photograph, MUN diploma and oatmeal recipe. Supplied orders, quiz answers, recipe, swimming and outfit gameplay remain preserved.
 
-
-Chapters 1–2 now include populated MUN/restaurant environments, optional UN trivia and conversations, illustrated ordering and safe scene exits. Existing synthetic music is muted until instrumental recordings are supplied; sound effects remain. See docs/CHAPTER_OVERHAUL.md and docs/AUDIO.md.
-
-
-Current polish adds visible required props/NPCs and doors/gates throughout, ambient MUN/Ikura interactions and music-folder reload without rebuilding. See docs/POLISH_PASS.md and docs/AUDIO.md.
-
-
-The latest package is a **Phase A redesign checkpoint**, not the completed cinematic overhaul. Room architecture/seating/chat and the editable Guillermo quiz are implemented; final art, broader 2D staging, Minecraft reconstruction and kidnapping/rescue animation remain pending. See docs/REDESIGN_STATUS.md for exact continuation.
+Automated QA traverses the complete route. Human pacing and older-laptop performance remain to be evaluated. Supply Guillermo's own letter before gifting; see `docs/LETTER.md`. Music uses the replacement pipeline described in `docs/AUDIO.md`.

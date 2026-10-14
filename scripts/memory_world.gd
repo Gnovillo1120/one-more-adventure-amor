@@ -205,9 +205,11 @@ func _register_target_visuals() -> void:
 
 func _sync_target_visuals() -> void:
 	var current: String="exit" if completed else str(mandatory_target().id)
+	var selected: Dictionary=context_target()
 	for id in target_visuals:
 		var prop: Node2D=target_visuals[id]
 		prop.enabled=id==current
+		prop.highlighted=selected.get("id","")==id
 		prop.visible=id!="exit" or completed
 		if prop.visual_kind=="companion":prop.visible=location not in ["phone","yacht"]
 		if prop.visual_kind=="player":prop.position=player_position
@@ -248,12 +250,33 @@ func nearest_target() -> Dictionary:
 	var distance:=INTERACTION_RADIUS
 	for target in interaction_targets():
 		var d:=player_position.distance_to(_point(target.position))
-		if d<distance:distance=d;best=target
+		if d<distance and clear_interaction_line(_point(target.position)):distance=d;best=target
 	return best
 
+func clear_interaction_line(destination: Vector2) -> bool:
+	for area in blockers:
+		# The target's own furniture may contain its ground anchor.
+		if area.has_point(destination):continue
+		for i in range(1,8):
+			if area.grow(-2).has_point(player_position.lerp(destination,i/8.0)):return false
+	return true
+
+func context_target() -> Dictionary:
+	var game: Node=get_parent()
+	if not active:return {}
+	if game.has_method("_dialogue_open") and (game.is_paused or game._dialogue_open() or is_instance_valid(game.modal)):return {}
+	if is_instance_valid(living) and (living.busy or living.phone_open):return {}
+	return nearest_target()
+
+func indicator_rect(target: Dictionary) -> Rect2:
+	var kind: String=target.get("visual",{}).get("kind","")
+	var offset:=Vector2(-10,-122) if kind in ["npc","companion","player","door","gate","arch"] else Vector2(30,-48)
+	return Rect2(_point(target.position)+offset,Vector2(20,20))
+
 func prompt() -> String:
-	var target:=nearest_target()
-	return "E · "+str(target.label) if not target.is_empty() else ""
+	var target:=context_target()
+	if target.is_empty():return ""
+	return "E · Leer carta" if scene_id=="letter" and target.id=="main" else "E · "+str(target.label)
 
 func can_stand(p: Vector2) -> bool:
 	if not WALK_BOUNDS.has_point(p):return false
@@ -313,6 +336,7 @@ func _blocked(p: Vector2) -> bool:
 
 func interact() -> void:
 	if not active: return
+	if is_instance_valid(living) and living.busy:return
 	var target:=nearest_target()
 	if target.is_empty():return
 	if target.id=="exit":
@@ -401,14 +425,11 @@ func _draw() -> void:
 			draw_rect(Rect2(center-Vector2(8,0),Vector2(6,6)),Color("d56581"));draw_rect(Rect2(center,Vector2(6,6)),Color("d56581"));draw_rect(Rect2(center-Vector2(6,-6),Vector2(10,4)),Color("d56581"));draw_rect(Rect2(center-Vector2(3,-10),Vector2(4,4)),Color("d56581"))
 		elif effect=="diploma":
 			draw_texture_rect(load("res://assets/art/sprites/diploma.png"),Rect2(player_position+Vector2(20,-45),Vector2(40,40)),false)
-	for item in interaction_targets():
-		if str(item.id).begins_with("living:") or item.get("visual",{}).get("kind","")=="phone":continue
-		var target:=_point(item.position)
-		var required: bool=item.id=="exit" or item.id==mandatory_target().id
-		var color:=Color("ffe1a0") if required else Color("9fbfbd")
-		draw_arc(target+Vector2(0,3),19 if required else 12,0,TAU,16,Color(color,.7+sin(clock*3)*.15),2)
-		if required:draw_string(ThemeDB.fallback_font,target+Vector2(-8,-100),"↓",HORIZONTAL_ALIGNMENT_LEFT,-1,23,color)
-		elif not optional_seen.has(item.id):draw_string(ThemeDB.fallback_font,target+Vector2(-4,-85),"…",HORIZONTAL_ALIGNMENT_LEFT,-1,19,color)
+	var selected:=context_target()
+	if not selected.is_empty() and location!="beach" and selected.has("visual"):
+		var badge:=indicator_rect(selected)
+		draw_rect(badge,Color("152331"));draw_rect(badge,Color("ebc48a"),false,1)
+		draw_string(ThemeDB.fallback_font,badge.position+Vector2(5,15),"E",HORIZONTAL_ALIGNMENT_LEFT,20,14,Color("ffe1a0"))
 	var text:=prompt()
 	if text!="":
 		draw_rect(Rect2(335,600,610,45),Color("152331"))

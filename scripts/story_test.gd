@@ -180,10 +180,13 @@ func _run() -> void:
 	await process_frame
 	verify(game.test_mode, "test mode enabled")
 	game._start_fresh()
+	game.director.skip_cinematic();game.director.enter_next();game.director.skip_cinematic()
 	alternate_choices()
 	var guard := 0
 	while game.stage != "credits" and guard < 30:
 		guard += 1
+		if game.stage=="hub":
+			game.director.enter_next();game.director.skip_cinematic();continue
 		if game.stage == "voxel":
 			await run_voxel()
 			await process_frame

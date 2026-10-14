@@ -1,0 +1,36 @@
+{
+	"card_interaction": true,
+	"complete": true,
+	"native_photo_unlocked": true,
+	"pose_12": {
+		"busy": true,
+		"frame": 0,
+		"unlocked": false
+	},
+	"pose_132": {
+		"busy": true,
+		"frame": 3,
+		"unlocked": true
+	},
+	"pose_180": {
+		"busy": true,
+		"frame": 4,
+		"unlocked": true
+	},
+	"pose_229": {
+		"busy": false,
+		"frame": 4,
+		"unlocked": true
+	},
+	"pose_45": {
+		"busy": true,
+		"frame": 1,
+		"unlocked": false
+	},
+	"pose_90": {
+		"busy": true,
+		"frame": 2,
+		"unlocked": false
+	},
+	"renderer": "NVIDIA GeForce RTX 3070 Laptop GPU"
+}

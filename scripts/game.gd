@@ -1,5 +1,8 @@
 extends Node
 ## Shared progression, dialogue, menus, settings and durable chapter checkpoints.
+const DirectorsCut = preload("res://scripts/directors_cut.gd")
+var director: Node
+var reduced_motion := false
 const MemoryWorld = preload("res://scripts/memory_world.gd")
 const VoxelWorld = preload("res://scripts/voxel_world.gd")
 const AudioDirector = preload("res://scripts/audio_director.gd")
@@ -86,7 +89,13 @@ func _ready() -> void:
 	effects = AudioStreamPlayer.new()
 	add_child(effects)
 	_apply_audio()
+	director=DirectorsCut.new();director.game=self;add_child(director)
+	var startup_save:=_read_save()
+	director.restore(startup_save.get("directors_cut",{}) if startup_save.get("directors_cut",{}) is Dictionary else {},startup_save)
 	show_menu()
+	if OS.get_cmdline_user_args().has("--capture-directors"):test_mode=true;director.call_deferred("capture")
+	if OS.get_cmdline_user_args().has("--capture-playtest") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/playtest_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -120,6 +129,7 @@ func _input(event: InputEvent) -> void:
 			challenge.key(code);get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(director) and director.handle_input(event):get_viewport().set_input_as_handled();return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE:
 			if stage != "menu": _toggle_pause()
@@ -162,6 +172,7 @@ func _clear_ui() -> void:
 	hud = null; modal = null; dialog_panel = null
 
 func _clear_world() -> void:
+	if is_instance_valid(director):director.cancel_cinematic();director.clear_room()
 	for world in [memory, voxel]:
 		if is_instance_valid(world):
 			remove_child(world)
@@ -225,7 +236,7 @@ func _background(parent: Node, name: String) -> void:
 func show_menu() -> void:
 	stage = "menu"; is_paused = false; minigame_kind = ""
 	_clear_world(); _clear_ui()
-	_background(ui,"beach")
+	director.title_room()
 	var shade := ColorRect.new(); shade.color=Color(.03,.08,.12,.67);shade.size=Vector2(640,720);ui.add_child(shade)
 	_label(ui,"UNA HISTORIA PARA ANAMI",Rect2(85,80,480,30),17,GOLD)
 	_label(ui,"One More\nAdventure, Amor",Rect2(80,125,500,140),49)
@@ -251,7 +262,7 @@ func _new_game() -> void:
 func _start_fresh() -> void:
 	chapter_state={}
 	chapter_index=0;scene_index=0;keepsakes=[];total_play_seconds=0
-	start_scene()
+	director.new_game()
 
 func _chapter_menu() -> void:
 	_clear_ui(); _background(ui,"beach")
@@ -263,6 +274,7 @@ func _chapter_menu() -> void:
 	_button(p,"Volver",Rect2(35,475,630,50),show_menu)
 
 func _restart_chapter(index: int) -> void:
+	director.state.bookmark={}
 	# Explicit replay starts that chapter's local objectives again.
 	for scene in story.chapters[index].scenes:chapter_state.erase(scene.id)
 	chapter_index = index; scene_index = 0
@@ -315,6 +327,7 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 
 func _build_hud() -> void:
 	hud = Control.new();hud.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui.add_child(hud)
+	if director.replaying():_button(hud,"Volver a la habitación",Rect2(440,110,350,40),director.finish_replay)
 	var top := _panel(hud,Rect2(30,20,990,85),.88)
 	_label(top,"%02d / 06   %s" % [chapter_index+1,_chapter().title],Rect2(20,10,940,30),23,GOLD)
 	objective_label=_label(top,"",Rect2(20,43,940,35),19)
@@ -327,8 +340,6 @@ func _build_hud() -> void:
 	health_label=_label(hud,"",Rect2(35,115,900,35),19,GOLD)
 	_panel(hud,Rect2(25,624,1070,40),.75).visible=stage=="voxel"
 	toast_label=_label(hud,"",Rect2(35,627,1050,40),19,GOLD)
-	for i in range(keepsakes.size()):
-		var icon := TextureRect.new();icon.texture=load("res://assets/art/sprites/%s.png" % ["diploma","gyoza","bandana","cookie"][i]);icon.size=Vector2(36,36);icon.position=Vector2(1080+i*42,110);icon.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;hud.add_child(icon)
 	dialog_panel=_panel(hud,Rect2(65,470,1150,190))
 	dialog_panel.visible=false
 	portrait=TextureRect.new();portrait.position=Vector2(10,0);portrait.size=Vector2(192,192);portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;portrait.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;dialog_panel.add_child(portrait)
@@ -410,7 +421,7 @@ func _target_interaction(id: String) -> void:
 
 func _scene_letter_intro(scene_lines: Array) -> void:
 	# Authored dramatic framing is not presented as Guillermo's private letter.
-	scene_lines.push_front({"speaker":"Narrador","text":"Una llegada inesperada, una silla elegida, una cita, una bandana… Cada recuerdo abrió el camino a otra aventura juntos.","mood":"affectionate"})
+	scene_lines.push_front({"speaker":"Narrador","text":"Un diploma, una fotografía, un llavero guardado, una A dorada y nuestras galletas… Cada recuerdo abrió el camino a otra aventura juntos.","mood":"affectionate"})
 
 func _show_dialogue(new_lines: Array, on_done: Callable, resume_id: String="") -> void:
 	lines=new_lines;line_index=0;dialog_done=on_done;dialogue_resume=resume_id
@@ -677,6 +688,7 @@ func _store_challenge_state() -> void:
 	var local: Dictionary=chapter_state.get(_scene().id,{})
 	var sessions: Dictionary=local.get("challenge_sessions",{})
 	sessions[challenge.session.kind]=challenge.session.state.duplicate(true)
+	director.note(challenge.session.kind,challenge.session.state)
 	local["challenge_sessions"]=sessions;local["active_challenge"]=challenge.session.kind
 	chapter_state[_scene().id]=local
 
@@ -722,7 +734,8 @@ func _complete_scene() -> void:
 		_start_voxel()
 		return
 	if chapter_index==5 and scene_index==_chapter().scenes.size()-1:
-		unlocked=5;save_game();_credits();return
+		if director.replaying():director.finish_replay();return
+		unlocked=5;director.complete(5);save_game();_credits();return
 	scene_completed=true
 	if chapter_index==3 and not keepsakes.has(_chapter().keepsake):keepsakes.append(_chapter().keepsake)
 	if is_instance_valid(memory): memory.completed=true;memory.active=true
@@ -731,10 +744,13 @@ func _complete_scene() -> void:
 	save_game()
 
 func _next_scene() -> void:
+	if director.replaying() and scene_index==_chapter().scenes.size()-1:director.finish_replay();return
 	scene_index+=1
 	if scene_index>=_chapter().scenes.size():
 		if chapter_index<4 and not keepsakes.has(_chapter().keepsake): keepsakes.append(_chapter().keepsake)
+		director.complete(chapter_index)
 		chapter_index+=1;scene_index=0;unlocked=maxi(unlocked,chapter_index)
+		director.show_room();return
 	start_scene()
 
 func _start_voxel(saved: Dictionary = {}) -> void:
@@ -756,7 +772,7 @@ func _transition(title: String, glitch: bool=false) -> void:
 	if test_mode:return
 	var veil:=ColorRect.new();veil.color=Color(INK,1);veil.size=Vector2(1280,720);veil.mouse_filter=Control.MOUSE_FILTER_IGNORE;ui.add_child(veil)
 	var caption:=_label(veil,title,Rect2(200,300,880,100),36,GOLD);caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	if glitch:
+	if glitch and not reduced_motion:
 		for i in range(8):
 			var stripe:=ColorRect.new();stripe.color=Color(.43,.29,.55,.45);stripe.position=Vector2(0,i*90+15);stripe.size=Vector2(1280,8+i%3*4);veil.add_child(stripe)
 	var tween:=create_tween()
@@ -782,14 +798,15 @@ func _toggle_pause() -> void:
 		if is_instance_valid(suspended_modal):suspended_modal.hide()
 		modal=null
 		_set_world_active(false);Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
-		modal=_panel(ui,Rect2(390,120,500,515))
+		modal=_panel(ui,Rect2(390,90,500,575))
 		_label(modal,"Una pausa, amor",Rect2(30,25,440,55),34,GOLD)
 		_button(modal,"Continuar",Rect2(30,105,440,50),_toggle_pause)
 		_button(modal,"Guardar partida",Rect2(30,170,440,50),func(): save_game();_toast("Partida guardada"))
 		_button(modal,"Ajustes",Rect2(30,235,440,50),func(): _settings(_return_pause))
 		_button(modal,"Reiniciar capítulo",Rect2(30,300,440,50),func(): _restart_chapter(chapter_index))
 		_button(modal,"Guardar y volver al menú",Rect2(30,365,440,50),func(): save_game();show_menu())
-		_button(modal,"Álbum de recuerdos",Rect2(30,430,440,50),_album)
+		_button(modal,"Libro de recuerdos",Rect2(30,430,440,50),director.scrapbook)
+		_button(modal,"Fotos de la partida",Rect2(30,495,440,50),_album)
 	else:
 		if is_instance_valid(modal): ui.remove_child(modal);modal.queue_free();modal=null
 		if is_instance_valid(suspended_modal):modal=suspended_modal;modal.show();suspended_modal=null
@@ -812,13 +829,15 @@ func _toggle_phone() -> void:
 			if memory.scene_id=="moncayo" and memory.mandatory_target().id=="photos":_target_interaction("photos")
 			elif memory.location=="phone" and memory.living.state.outfit_phase=="idle":_scene_interaction()
 
-func _album() -> void:
+func _album(on_back: Callable=Callable()) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
 	modal=_panel(ui,Rect2(290,145,700,455));_label(modal,"Nuestro álbum",Rect2(30,20,640,45),32,GOLD)
 	var records: Array=[]
 	for id in chapter_state:
 		var local: Dictionary=chapter_state[id]
-		if local.get("living",{}).get("photo",false):records.append("Foto recreada del modelo" if id in ["foot","goodbye"] else "Foto recreada de Halloween")
+		if local.get("living",{}).get("photo",false):
+			var record: String="Foto recreada del modelo" if id in ["foot","goodbye"] else "Foto recreada de Halloween"
+			if not records.has(record):records.append(record)
 	if keepsakes.has("diploma"):records.append("El diploma del modelo")
 	if chapter_state.get("moncayo",{}).get("step",0)>0:records.append("La conversación que quedó en visto")
 	if chapter_state.get("date",{}).get("successful_challenges",{}).has("order"):records.append("Una mesa para dos en Ikura")
@@ -829,12 +848,12 @@ func _album() -> void:
 		if path!="" and FileAccess.file_exists(path):
 			var image:=Image.load_from_file(path)
 			if image!=null:
-				var preview:=TextureRect.new();preview.texture=ImageTexture.create_from_image(image);preview.position=Vector2(380,175);preview.size=Vector2(275,155);preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;modal.add_child(preview);break
-	_button(modal,"Volver",Rect2(30,375,640,50),_return_pause)
+				var preview:=TextureRect.new();preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;preview.texture=ImageTexture.create_from_image(image);preview.position=Vector2(380,175);modal.add_child(preview);preview.size=Vector2(275,155);break
+	_button(modal,"Volver",Rect2(30,375,640,50),on_back if on_back.is_valid() else _return_pause)
 
 func _settings(on_back: Callable) -> void:
 	if is_instance_valid(modal):ui.remove_child(modal);modal.queue_free()
-	modal=_panel(ui,Rect2(340,115,600,500))
+	modal=_panel(ui,Rect2(340,85,600,550))
 	_label(modal,"Ajustes",Rect2(30,25,540,50),34,GOLD)
 	_label(modal,"Volumen",Rect2(30,100,170,35),22)
 	var slider:=HSlider.new();slider.position=Vector2(205,108);slider.size=Vector2(340,30);slider.min_value=0;slider.max_value=1;slider.step=.01;slider.value=volume;modal.add_child(slider)
@@ -846,20 +865,22 @@ func _settings(on_back: Callable) -> void:
 	screen.toggled.connect(func(value: bool):fullscreen=value;DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if value else DisplayServer.WINDOW_MODE_WINDOWED);_save_settings())
 	var graphics:=CheckButton.new();graphics.text="Gráficos ligeros (recomendado)";graphics.position=Vector2(30,280);graphics.button_pressed=low_graphics;modal.add_child(graphics)
 	graphics.toggled.connect(func(value: bool):low_graphics=value;get_viewport().scaling_3d_scale=.75 if value else 1.0;_save_settings())
-	var music_status:=_label(modal,audio_director.status_text(),Rect2(30,328,540,45),16,GOLD)
-	_button(modal,"Recargar archivos de música",Rect2(30,382,540,42),func():audio_director.reload_tracks();music_status.text=audio_director.status_text())
-	_button(modal,"Volver",Rect2(30,440,540,45),func():ui.remove_child(modal);modal.queue_free();modal=null;on_back.call())
+	var motion:=CheckButton.new();motion.text="Reducir movimiento";motion.position=Vector2(30,325);motion.button_pressed=reduced_motion;modal.add_child(motion)
+	motion.toggled.connect(func(value: bool):reduced_motion=value;_save_settings())
+	var music_status:=_label(modal,audio_director.status_text(),Rect2(30,378,540,45),16,GOLD)
+	_button(modal,"Recargar archivos de música",Rect2(30,432,540,42),func():audio_director.reload_tracks();music_status.text=audio_director.status_text())
+	_button(modal,"Volver",Rect2(30,490,540,45),func():ui.remove_child(modal);modal.queue_free();modal=null;on_back.call())
 
 func _load_settings() -> void:
 	var config:=ConfigFile.new()
 	if config.load(settings_path)==OK:
-		volume=config.get_value("audio","volume",.65);text_speed=config.get_value("accessibility","text_speed",45.0);fullscreen=config.get_value("graphics","fullscreen",false);low_graphics=config.get_value("graphics","low",true)
+		volume=config.get_value("audio","volume",.65);text_speed=config.get_value("accessibility","text_speed",45.0);fullscreen=config.get_value("graphics","fullscreen",false);low_graphics=config.get_value("graphics","low",true);reduced_motion=config.get_value("accessibility","reduced_motion",false)
 	if fullscreen:DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	get_viewport().scaling_3d_scale=.75 if low_graphics else 1.0
 
 func _save_settings() -> void:
 	if test_mode:return
-	var config:=ConfigFile.new();config.set_value("audio","volume",volume);config.set_value("accessibility","text_speed",text_speed);config.set_value("graphics","fullscreen",fullscreen);config.set_value("graphics","low",low_graphics);config.save(settings_path)
+	var config:=ConfigFile.new();config.set_value("accessibility","reduced_motion",reduced_motion);config.set_value("audio","volume",volume);config.set_value("accessibility","text_speed",text_speed);config.set_value("graphics","fullscreen",fullscreen);config.set_value("graphics","low",low_graphics);config.save(settings_path)
 
 func _apply_audio() -> void:
 	if is_instance_valid(audio_director):audio_director.volume=volume
@@ -889,6 +910,7 @@ func _save_payload() -> Dictionary:
 		chapter_state[_scene().id]=local
 	payload["chapter_state"]=chapter_state.duplicate(true)
 	payload["scene_id"]=_scene().id
+	payload["directors_cut"]=director.snapshot()
 	if is_instance_valid(voxel):payload.voxel=voxel.get_save_data()
 	return payload
 
@@ -925,10 +947,14 @@ func load_game() -> void:
 	chapter_index=int(data.chapter);scene_index=clampi(int(data.get("scene",0)),0,_chapter().scenes.size()-1)
 	unlocked=maxi(unlocked,int(data.get("unlocked",0)));keepsakes=data.get("keepsakes",[]);total_play_seconds=data.get("play_seconds",0.0)
 	chapter_state=data.get("chapter_state",{}) if data.get("chapter_state",{}) is Dictionary else {}
+	for i in range(keepsakes.size()):
+		if keepsakes[i]=="Bandana roja":keepsakes[i]="El comienzo de nosotros"
+	director.restore(data.get("directors_cut",{}) if data.get("directors_cut",{}) is Dictionary else {},data)
 	if data.has("scene_id"):
 		for i in range(_chapter().scenes.size()):
 			if _chapter().scenes[i].id==data.scene_id:scene_index=i;break
-	if data.get("stage","")=="voxel":_start_voxel(data.get("voxel",{}))
+	if data.get("stage","") in ["hub","opening"]:director.state.intro_seen=true;director.show_room()
+	elif data.get("stage","")=="voxel":_start_voxel(data.get("voxel",{}))
 	else:start_scene(data.get("completed",false),data.get("position",[]))
 
 func _credits() -> void:

@@ -63,7 +63,7 @@ func run() -> void:
 	var missing:=make("order");verify(not missing.act("submit"),"incomplete order cannot submit")
 	var quiz: Dictionary=config("guillermo")
 	verify(quiz.questions.size()==10,"ten questions")
-	var keys=[0,3,3,1,1,2,1,1,2,4]
+	var keys=[0,3,3,2,1,2,1,2,2,4]
 	for i in range(10):verify(quiz.questions[i].answer==keys[i] and quiz.questions[i].choices.size()==(5 if i==9 else 4),"quiz facts and variable choices")
 	for score in range(11):
 		var s:=make("guillermo");answer_all(s,score)

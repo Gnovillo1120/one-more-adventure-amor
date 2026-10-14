@@ -216,9 +216,9 @@ func _marker(key: String, pos: Vector3, title: String) -> void:
 		_box(Vector3(0, 1.5, 0), Vector3(1.3, .65, .24), Color("d9c3e8"), false, object)
 		_glow_box(Vector3(0, 1.5, -.13), Vector3(.9, .3, .03), Color("b07cff"), 2.0, object)
 	elif key == "fish" or key.begins_with("memory"):
-		var icon: String = "fish" if key == "fish" else ["diploma", "gyoza", "bandana", "cookie"][int(key.trim_prefix("memory"))]
+		var icon: String = "fish"
 		var sprite := Sprite3D.new()
-		sprite.texture = load("res://assets/art/sprites/%s.png" % icon)
+		sprite.texture = load("res://assets/art/sprites/%s.png" % icon) if key=="fish" else load("res://assets/art/directors/%s" % ["mun_diploma.svg","first_photo.svg","yoda_keychain.svg","recipe_card.png"][int(key.trim_prefix("memory"))])
 		sprite.pixel_size = .05
 		sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
@@ -720,7 +720,7 @@ func _end_island() -> void:
 		_box(p + Vector3(0, .7, 0), Vector3(1.5, 1.4, 1.5), Color("8d7aa3"), true)
 		_box(p + Vector3(0, 1.45, 0), Vector3(1.7, .12, 1.7), Color("c4b0d8"))
 		_box(p + Vector3(0, 1.6, 0), Vector3(.7, .35, .7), Color("e8c680"))
-		_marker("memory" + str(i), p, ["Diploma", "Gyoza", "Bandana", "Galleta"][i] + " [E]")
+		_marker("memory" + str(i), p, ["Primer encuentro", "Primer mensaje", "Yoda guardado", "Tiempo juntos"][i] + " [E]")
 
 var guillermo_node: Node3D
 
@@ -927,7 +927,7 @@ func interact() -> void:
 				if _near("memory" + str(i)) and not memories[i]:
 					memories[i] = true
 					_box(targets["memory" + str(i)] + Vector3(0, 2, 0), Vector3(.6, .6, .6), Color("ffd995"))
-					_say("Anami", ["Ese diploma: no sabíamos lo que empezaba.", "Una gyoza y todos los temas que guardamos para nuestra cita.", "La bandana. El comienzo de nosotros.", "La galleta. Hasta nuestros desastres tienen receta." ][i], "affectionate")
+					_say("Anami", ["Ese diploma: no sabíamos lo que empezaba.", "Una fotografía tuya me animó a escribirte primero.", "Guardé aquel Yoda para alguien que un día amaría. Y te lo di a ti.", "Las galletas juntos. Y aquella A dorada: tu primer regalo de cumpleaños para mí." ][i], "affectionate")
 			if memories.all(func(v): return v):
 				_step(10)
 		11:
