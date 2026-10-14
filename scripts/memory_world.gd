@@ -12,7 +12,9 @@ const RoomFixture = preload("res://scripts/room_fixture.gd")
 const MemoryActor = preload("res://scripts/memory_actor.gd")
 const Navigation = preload("res://scripts/memory_navigation.gd")
 const LivingMemories = preload("res://scripts/living_memories.gd")
+const DIPLOMA=preload("res://assets/art/sprites/diploma.png")
 var living: Node2D
+var baking: Control
 var depth_root: Node2D
 var layered := false
 var fixtures: Dictionary = {}
@@ -117,7 +119,12 @@ func _ready() -> void:
 func _build_layers() -> void:
 	depth_root=Node2D.new();depth_root.y_sort_enabled=true;add_child(depth_root)
 	var layouts: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/room_layouts.json"))
-	layered=layouts.has(location)
+	layered=layouts.has(location) and location!="kitchen"
+	if location=="kitchen":
+		background=load("res://assets/art/baking/home_kitchen.png")
+		blockers=[Rect2(200,100,1020,185),Rect2(410,340,470,185),Rect2(110,225,70,100),Rect2(110,400,50,180),Rect2(1160,500,70,80)]
+		player_position=Vector2(320,540);companion_position=Vector2(975,535)
+		var kitchen: Node2D=preload("res://scripts/baking_room.gd").new();kitchen.world=self;add_child(kitchen);move_child(kitchen,0)
 	if layered:
 		background=null;blockers.clear()
 		var room: Node2D=RoomLayer.new();room.location=location;room.z_index=-10;add_child(room)
@@ -235,6 +242,7 @@ func mandatory_target() -> Dictionary:
 	return {"id":"main","label":interaction_label,"position":[companion_position.x,companion_position.y]}
 
 func interaction_targets() -> Array:
+	if is_instance_valid(baking) and not completed:return baking.targets()
 	var result: Array=scene_config.get("optional",[]).duplicate()
 	if is_instance_valid(living):
 		if living.state.zone!="main":return living.targets()
@@ -287,15 +295,20 @@ func can_stand(p: Vector2) -> bool:
 	return true
 
 func safe_position(p: Vector2) -> Vector2:
-	if can_stand(p):return p
+	if stable_position(p):return p
 	var best:=Vector2(265,550)
 	var distance:=INF
 	for x in range(110,1190,10):
 		for y in range(225,580,10):
 			var candidate:=Vector2(x,y)
-			if can_stand(candidate) and p.distance_squared_to(candidate)<distance:
+			if stable_position(candidate) and p.distance_squared_to(candidate)<distance:
 				best=candidate;distance=p.distance_squared_to(candidate)
 	return best
+
+func stable_position(p: Vector2) -> bool:
+	for offset in [Vector2.ZERO,Vector2(.3,0),Vector2(-.3,0),Vector2(0,.3),Vector2(0,-.3)]:
+		if WALK_BOUNDS.has_point(p+offset) and not can_stand(p+offset):return false
+	return can_stand(p)
 
 func move_by(step: Vector2) -> void:
 	# Substeps use exactly the same feet rectangle and bounds as navigation QA.
@@ -424,7 +437,7 @@ func _draw() -> void:
 			var center:=player_position+Vector2(15,-105-(2.5-effect_time)*12)
 			draw_rect(Rect2(center-Vector2(8,0),Vector2(6,6)),Color("d56581"));draw_rect(Rect2(center,Vector2(6,6)),Color("d56581"));draw_rect(Rect2(center-Vector2(6,-6),Vector2(10,4)),Color("d56581"));draw_rect(Rect2(center-Vector2(3,-10),Vector2(4,4)),Color("d56581"))
 		elif effect=="diploma":
-			draw_texture_rect(load("res://assets/art/sprites/diploma.png"),Rect2(player_position+Vector2(20,-45),Vector2(40,40)),false)
+			draw_texture_rect(DIPLOMA,Rect2((companion_position if scene_id=="award" else player_position)+Vector2(20,-45),Vector2(40,40)),false)
 	var selected:=context_target()
 	if not selected.is_empty() and location!="beach" and selected.has("visual"):
 		var badge:=indicator_rect(selected)
@@ -563,3 +576,11 @@ func _draw_room() -> void:
 		"phone":
 			draw_rect(Rect2(320,230,340,90),Color("c1bda4")); draw_rect(Rect2(520,244,38,60),Color("263e54"))
 		_: pass
+
+func deliver_food() -> void:
+	if get_meta("food_delivered",false):return
+	set_meta("food_delivered",true)
+	var table: Node2D=fixtures.get("couple_table")
+	if not is_instance_valid(table):return
+	for i in range(3):
+		var plate:=Sprite2D.new();plate.texture=load("res://assets/art/overhaul/%s.png"%["gyozas","ramen","sushi"][i]);plate.position=Vector2(-55+i*55,-52);plate.scale=Vector2(45,35)/plate.texture.get_size();plate.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;table.add_child(plate)
