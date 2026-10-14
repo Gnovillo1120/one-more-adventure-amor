@@ -350,7 +350,7 @@ func _blocked(p: Vector2) -> bool:
 func interact() -> void:
 	if not active: return
 	if is_instance_valid(living) and living.busy:return
-	var target:=nearest_target()
+	var target:=context_target() if is_instance_valid(baking) and not completed else nearest_target()
 	if target.is_empty():return
 	if target.id=="exit":
 		exited.emit()

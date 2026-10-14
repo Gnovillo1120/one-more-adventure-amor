@@ -1,3 +1,7 @@
+# Continue here — cookie E input fix
+
+Fixed the cookie quiz-to-kitchen progression blocker on the existing `feature/directors-cut-milestone-2` branch. The retained challenge controller intercepted physical E before world interaction. Input ownership now distinguishes walking from close-ups; pantry/fridge/sink E collects ingredients/tools, counter requirements explain missing items, and all later phases are validated through actual key events. Read `COOKIE_INPUT_FIX.md` first. Fourteen suites pass, and actual source/Windows full baking runs complete via Input.parse_input_event. Corrected build/ZIP is under `builds/directors-cut-milestone-2-input-fix/`, with evidence in `docs/milestone2/input_fix/`. Original M2 build is preserved. No art/cinematic expansion; no merge into main. Earlier M2 method-driven captures do not prove keyboard routing.
+
 # Continue here — Director’s Cut Milestone 2
 
 Current branch: `feature/directors-cut-milestone-2`, based on stable main `b472b49`. Read `MILESTONE_2.md` and current `DEVELOPMENT_STATUS.md`. Do not restart the working game. The 2D cinematic controller, spatial domestic kitchen, physical baking phases, persistent partial actions and source/export evidence are implemented. Preserve all M1 playtest fixes, five objects, corrected quiz facts, saves and no-blush/clean-shaven sprites.

@@ -101,6 +101,11 @@ func _ready() -> void:
 		var runner: Node=load("res://scripts/playtest_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture-milestone2") and OS.get_cmdline_user_args().has("--self-test"):
 		var runner: Node=load("res://scripts/milestone2_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
+	if OS.get_cmdline_user_args().has("--validate-baking-input") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/baking_input_runner.gd").new();runner.game=self
+		for argument in OS.get_cmdline_user_args():
+			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
+		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -128,8 +133,11 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if not is_instance_valid(challenge) or is_paused:return
+	if challenge is BakingView and challenge.in_kitchen():return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var code: int=event.physical_keycode
+		if challenge is BakingView and code!=KEY_ESCAPE:
+			challenge.key(code);get_viewport().set_input_as_handled();return
 		if code in [KEY_ENTER,KEY_SPACE] or (code>=KEY_1 and code<=KEY_9) or (challenge.session.kind=="order" and code in [KEY_Q,KEY_W,KEY_R]):
 			challenge.key(code);get_viewport().set_input_as_handled()
 
@@ -142,7 +150,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		if is_paused: return
-		if is_instance_valid(challenge):
+		if is_instance_valid(challenge) and not (challenge is BakingView and challenge.in_kitchen()):
 			challenge.key(event.physical_keycode)
 			return
 		if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible and event.physical_keycode in [KEY_PAGEUP,KEY_PAGEDOWN,KEY_HOME,KEY_END]:

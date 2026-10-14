@@ -41,9 +41,45 @@ func targets() -> Array:
 		result.append({"id":"baking:"+id,"label":{"pantry":"Despensa · ingredientes","fridge":"Frigorífico · mantequilla / huevos / reposo","sink":"Agua y utensilios","counter":"Preparar la masa","oven":"Horno · 190°C","rack":"Rejilla · enfriar y probar"}[id],"position":STATIONS[id],"kind":"baking"})
 	return result
 
+func in_kitchen() -> bool:
+	return session.state.station==""
+
+func missing_ingredients() -> Array:
+	return session.data.ingredients.filter(func(item: Dictionary):return not session.state.pantry.has(item.id))
+
+func kitchen_objective() -> void:
+	if session.state.phase=="gather":
+		game._set_objective("Reunir ingredientes · %d / %d · %s · encimera al terminar"%[session.data.ingredients.size()-missing_ingredients().size(),session.data.ingredients.size(),"utensilios listos" if session.state.tools else "agua / utensilios en el fregadero"])
+	else:
+		game._set_objective(TITLES[session.state.phase]+" · "+{"pantry":"despensa","fridge":"frigorífico","counter":"encimera","oven":"horno","rack":"rejilla"}[session.station_for_phase()]+" · E")
+
+func explain(text: String) -> void:
+	game.memory.living.note.position=Vector2(130,155)
+	game.memory.living.note.size=Vector2(1020,100)
+	game.memory.living.note.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	game.memory.living.announce(text)
+	game._sfx("interact")
+
 func show_station(id: String) -> void:
 	if game.is_paused:return
 	var phase: String=session.state.phase
+	if phase=="gather" and id in ["pantry","fridge","sink"]:
+		var gathered: Array=[]
+		for item in session.data.ingredients:
+			var source: String="fridge" if item.id in ["eggs","butter"] else "sink" if item.id=="water" else "pantry"
+			if source==id and not session.state.pantry.has(item.id):
+				session.state.pantry.append(item.id);gathered.append(item.name)
+		if id=="sink":session.state.tools=true
+		changed.emit();kitchen_objective()
+		explain("Recogido: "+", ".join(gathered)+(" · bol, batidor, cucharas, bandeja y tenedor listos." if id=="sink" else ".") if not gathered.is_empty() else "Ya recogimos todo de aquí."+(" Utensilios listos." if id=="sink" else ""))
+		return
+	if phase=="gather" and id=="counter":
+		var missing:=missing_ingredients()
+		if not missing.is_empty() or not session.state.tools:
+			var names: Array=missing.map(func(item: Dictionary):return item.name)
+			if not session.state.tools:names.append("utensilios del fregadero")
+			explain("Antes de mezclar, faltan: "+", ".join(names)+".");return
+		session.act("gather");changed.emit();phase=session.state.phase
 	if id=="sink":
 		session.state.tools=true
 		if session.state.phase=="gather" and not session.state.pantry.has("water"):session.state.pantry.append("water")
@@ -52,15 +88,15 @@ func show_station(id: String) -> void:
 		game._sfx("interact");return
 	if phase=="gather" and id=="fridge":session.state.station="fridge"
 	elif id!=session.station_for_phase() and phase not in ["intro","quiz","result"]:
-		game.memory.living.announce("Siguiente: "+str(TITLES[phase])+" · "+{"pantry":"despensa","fridge":"frigorífico","counter":"encimera","oven":"horno","rack":"rejilla"}[session.station_for_phase()]);return
+		explain("Siguiente: "+str(TITLES[phase])+" · "+{"pantry":"despensa","fridge":"frigorífico","counter":"encimera","oven":"horno","rack":"rejilla"}[session.station_for_phase()]);return
 	else:session.state.station=id
 	redraw()
 
 func leave_counter() -> void:
 	pouring=false;whisk=false;grabbed=false;session.state.station=""
-	if is_instance_valid(panel):panel.queue_free();panel=null
+	if is_instance_valid(panel):remove_child(panel);panel.queue_free();panel=null
 	game.modal=null;game.memory.active=true;mouse_filter=Control.MOUSE_FILTER_IGNORE
-	game._set_objective(TITLES[session.state.phase]+" · "+{"pantry":"despensa","fridge":"frigorífico","counter":"encimera","oven":"horno","rack":"rejilla"}[session.station_for_phase()]+" · E")
+	kitchen_objective()
 	changed.emit();queue_redraw()
 
 func act(id: String, value: Variant = null) -> void:

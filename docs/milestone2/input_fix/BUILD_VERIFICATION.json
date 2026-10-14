@@ -1,0 +1,21 @@
+{
+  "native_input_checks": 826,
+  "native_input_failures": 0,
+  "actual_input_events": 1701,
+  "export_frames": 35,
+  "previous_m2_zip_unchanged": true,
+  "files": {
+    "builds\\directors-cut-milestone-2-input-fix\\One More Adventure Amor.exe": {
+      "bytes": 109268480,
+      "sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562"
+    },
+    "builds\\directors-cut-milestone-2-input-fix\\One More Adventure Amor.pck": {
+      "bytes": 5160324,
+      "sha256": "300db03e1286da900d60bef3d0f2f7e2e6a8f674651d47dcc21c8e93486f71ed"
+    },
+    "builds\\One More Adventure Amor Directors Cut Milestone 2 Input Fix.zip": {
+      "bytes": 42989760,
+      "sha256": "639104809f8169e3e28a20796770cd0331a852939b8ede4e0415bd92d6cd5bd4"
+    }
+  }
+}

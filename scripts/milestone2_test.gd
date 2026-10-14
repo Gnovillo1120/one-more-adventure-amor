@@ -53,10 +53,10 @@ func run() -> void:
 		game.memory.player_position=origin
 		verify(reachable,"station reachable: "+target.id)
 	game.memory.player_position=Vector2(1160,350);game.memory.interact()
-	verify(game.modal==view and view.session.state.station=="pantry","E opens nearby station")
-	view.key(KEY_SPACE);verify(view.session.state.pantry.has(view.gather_ids[0]),"keyboard chooses pantry ingredient")
+	verify(game.modal==null and view.session.state.pantry.has("flour"),"pantry interaction collects ingredients in world")
+	verify(view.session.state.pantry.size()==10,"pantry collects complete dry group")
 	view.leave_counter();verify(game.modal==null and game.memory.active,"Tab returns without losing actions")
-	view.show_station("fridge");view.act("ingredient","eggs");view.leave_counter()
+	view.show_station("fridge");view.leave_counter()
 	verify(view.session.state.pantry.has("eggs"),"fridge selection retained")
 	var payload: Dictionary=JSON.parse_string(JSON.stringify(game._save_payload()))
 	game.chapter_state=payload.chapter_state;game.start_scene(false,payload.position)
