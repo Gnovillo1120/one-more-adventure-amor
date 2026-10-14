@@ -31,3 +31,7 @@ Thumbs.db
 
 /docs/directors/**/*.import
 /docs/playtest/**/*.import
+/docs/milestone2/**/*.import
+/docs/milestone2/*_log.txt
+/docs/milestone2/*_stdout.txt
+/docs/milestone2/*_stderr.txt

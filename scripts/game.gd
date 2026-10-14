@@ -2,11 +2,13 @@ extends Node
 ## Shared progression, dialogue, menus, settings and durable chapter checkpoints.
 const DirectorsCut = preload("res://scripts/directors_cut.gd")
 var director: Node
+var cinema: Node
 var reduced_motion := false
 const MemoryWorld = preload("res://scripts/memory_world.gd")
 const VoxelWorld = preload("res://scripts/voxel_world.gd")
 const AudioDirector = preload("res://scripts/audio_director.gd")
 const ChallengeView = preload("res://scripts/memory_challenge_view.gd")
+const BakingView = preload("res://scripts/baking_view.gd")
 var challenge: Control
 var audio_director: Node
 var chapter_state: Dictionary = {}
@@ -90,12 +92,20 @@ func _ready() -> void:
 	add_child(effects)
 	_apply_audio()
 	director=DirectorsCut.new();director.game=self;add_child(director)
+	cinema=preload("res://scripts/memory_cinematic.gd").new();cinema.game=self;add_child(cinema)
 	var startup_save:=_read_save()
 	director.restore(startup_save.get("directors_cut",{}) if startup_save.get("directors_cut",{}) is Dictionary else {},startup_save)
 	show_menu()
 	if OS.get_cmdline_user_args().has("--capture-directors"):test_mode=true;director.call_deferred("capture")
 	if OS.get_cmdline_user_args().has("--capture-playtest") and OS.get_cmdline_user_args().has("--self-test"):
 		var runner: Node=load("res://scripts/playtest_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
+	if OS.get_cmdline_user_args().has("--capture-milestone2") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/milestone2_capture_runner.gd").new();runner.game=self;add_child(runner);runner.call_deferred("run")
+	if OS.get_cmdline_user_args().has("--validate-baking-input") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/baking_input_runner.gd").new();runner.game=self
+		for argument in OS.get_cmdline_user_args():
+			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
+		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -123,12 +133,16 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if not is_instance_valid(challenge) or is_paused:return
+	if challenge is BakingView and challenge.in_kitchen():return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var code: int=event.physical_keycode
+		if challenge is BakingView and code!=KEY_ESCAPE:
+			challenge.key(code);get_viewport().set_input_as_handled();return
 		if code in [KEY_ENTER,KEY_SPACE] or (code>=KEY_1 and code<=KEY_9) or (challenge.session.kind=="order" and code in [KEY_Q,KEY_W,KEY_R]):
 			challenge.key(code);get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(cinema) and cinema.handle(event):get_viewport().set_input_as_handled();return
 	if is_instance_valid(director) and director.handle_input(event):get_viewport().set_input_as_handled();return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE:
@@ -136,7 +150,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 		if is_paused: return
-		if is_instance_valid(challenge):
+		if is_instance_valid(challenge) and not (challenge is BakingView and challenge.in_kitchen()):
 			challenge.key(event.physical_keycode)
 			return
 		if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible and event.physical_keycode in [KEY_PAGEUP,KEY_PAGEDOWN,KEY_HOME,KEY_END]:
@@ -172,6 +186,7 @@ func _clear_ui() -> void:
 	hud = null; modal = null; dialog_panel = null
 
 func _clear_world() -> void:
+	if is_instance_valid(cinema):cinema.cancel()
 	if is_instance_valid(director):director.cancel_cinematic();director.clear_room()
 	for world in [memory, voxel]:
 		if is_instance_valid(world):
@@ -312,6 +327,7 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	memory.living.outfit_finished.connect(func():_finish_task())
 	if position_data.size()==2:memory.player_position=memory.safe_position(Vector2(position_data[0],position_data[1]))
 	memory.restore_pose()
+	if s.id=="date" and local.get("cinematics",[]).has("date"):memory.deliver_food()
 	memory.interacted.connect(_scene_interaction)
 	memory.target_interacted.connect(_target_interaction)
 	memory.exited.connect(_next_scene)
@@ -319,7 +335,12 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	_refresh_objective()
 	_play_music("intimate" if s.id=="pool" else ["memory","date","halloween","cookies","mystery","beach"][chapter_index])
 	_transition(_scene().title)
-	if not completed and not local.get("dialogue_checkpoint",{}).is_empty():
+	if not completed and local.has("cinematic_checkpoint"):
+		var shot: String=local.cinematic_checkpoint
+		if shot=="date":cinema.play(shot,_food_arrival)
+		elif shot in ["pool","caucus","invitation"]:cinema.play(shot,_finish_task)
+		else:cinema.play(shot,_scene_dialogue)
+	elif not completed and not local.get("dialogue_checkpoint",{}).is_empty():
 		_restore_dialogue(local.dialogue_checkpoint)
 	elif not completed and local.get("active_challenge","")!="":
 		_open_challenge(local.active_challenge)
@@ -365,6 +386,8 @@ func _scene_interaction() -> void:
 
 func _scene_dialogue() -> void:
 	var s := _scene()
+	if s.id in ["foot","award","goodbye","reconnect","moncayo","dance","improvise"] and not chapter_state.get(s.id,{}).get("cinematics",[]).has(s.id):
+		cinema.play(s.id,_scene_dialogue);return
 	var scene_lines: Array = s.lines.duplicate(true)
 	if s.id=="award":_sfx("applause")
 	if s.id in ["lunch","award"] and chapter_state.get("caucus",{}).has("trivia_score"):
@@ -393,6 +416,9 @@ func _store_memory_state() -> void:
 	chapter_state[_scene().id]=local
 
 func _target_interaction(id: String) -> void:
+	if id.begins_with("baking:") and is_instance_valid(challenge) and challenge is BakingView:
+		if not is_paused:challenge.show_station(id.trim_prefix("baking:"))
+		return
 	if _dialogue_open() or minigame_kind!="" or is_paused:return
 	if id.begins_with("living:"):
 		memory.living.perform(id);return
@@ -679,6 +705,9 @@ func _close_minigame() -> void:
 	_finish_task()
 
 func _finish_task() -> void:
+	var id: String=_scene().id
+	if id in ["caucus","invitation","pool"] and not chapter_state.get(id,{}).get("cinematics",[]).has(id):
+		cinema.play(id,_finish_task);return
 	var after: Array=_scene().get("after",[])
 	if not after.is_empty(): _show_dialogue(after,_complete_scene,"after")
 	else: _complete_scene()
@@ -697,7 +726,7 @@ func _open_challenge(kind: String) -> void:
 	if not paths.has(kind):return
 	var local: Dictionary=chapter_state.get(_scene().id,{})
 	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/%s.json" % paths[kind]))
-	challenge=ChallengeView.new();ui.add_child(challenge);modal=challenge
+	challenge=BakingView.new() if kind=="cookies" else ChallengeView.new();ui.add_child(challenge);modal=challenge
 	minigame_kind=kind;_set_world_active(false)
 	challenge.changed.connect(func():_store_challenge_state();save_game())
 	challenge.completed.connect(_challenge_complete)
@@ -723,8 +752,11 @@ func _challenge_complete(kind: String) -> void:
 		# Keep the passed result as the checkpoint until closing dialogue completes.
 		# Loading during that dialogue offers Continue without replaying the challenge.
 		if kind=="guillermo":
-			_show_dialogue([{"speaker":"Mesero","text":"Listo: sus gyozas, miso ramen y sushi. ¡Buen provecho!","mood":"happy"}],_finish_task,"arrival")
+			cinema.play("date",_food_arrival)
 		else:_finish_task()
+
+func _food_arrival() -> void:
+	_show_dialogue([{"speaker":"Mesero","text":"Listo: sus gyozas, miso ramen y sushi. ¡Buen provecho!","mood":"happy"}],_finish_task,"arrival")
 
 func _complete_scene() -> void:
 	var local: Dictionary=chapter_state.get(_scene().id,{})
@@ -810,7 +842,7 @@ func _toggle_pause() -> void:
 	else:
 		if is_instance_valid(modal): ui.remove_child(modal);modal.queue_free();modal=null
 		if is_instance_valid(suspended_modal):modal=suspended_modal;modal.show();suspended_modal=null
-		_set_world_active(not _dialogue_open() and minigame_kind=="")
+		_set_world_active(not _dialogue_open() and (minigame_kind=="" or (challenge is BakingView and challenge.session.state.station=="")))
 		if stage=="voxel" and not _dialogue_open(): Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 
 func _return_pause() -> void:

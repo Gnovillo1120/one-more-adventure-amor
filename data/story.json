@@ -2262,14 +2262,13 @@
                 "id": "main",
                 "label": "Preparar nuestras galletas",
                 "position": [
-                  805,
-                  490
+                  975,
+                  535
                 ],
                 "kind": "talk",
                 "lines": [],
                 "visual": {
-                  "kind": "item",
-                  "art": "res://assets/art/sprites/cookie.png"
+                  "kind": "companion"
                 }
               }
             ],
@@ -2281,14 +2280,13 @@
                 "id": "pantry",
                 "kind": "prop",
                 "visual": {
-                  "kind": "table",
                   "fixture": "pantry"
                 },
                 "position": [
-                  270,
-                  395
+                  1160,
+                  320
                 ],
-                "label": "DESPENSA",
+                "label": "Revisar la despensa",
                 "lines": [
                   {
                     "speaker": "Guillermo",
@@ -2301,14 +2299,13 @@
                 "id": "mixing",
                 "kind": "prop",
                 "visual": {
-                  "kind": "table",
                   "fixture": "mixing"
                 },
                 "position": [
-                  550,
-                  395
+                  640,
+                  555
                 ],
-                "label": "MEZCLA",
+                "label": "Revisar el bol",
                 "lines": [
                   {
                     "speaker": "Guillermo",
@@ -2321,14 +2318,13 @@
                 "id": "fridge",
                 "kind": "prop",
                 "visual": {
-                  "kind": "table",
                   "fixture": "fridge"
                 },
                 "position": [
-                  870,
-                  395
+                  280,
+                  310
                 ],
-                "label": "FRÍO",
+                "label": "Revisar el frigorífico",
                 "lines": [
                   {
                     "speaker": "Guillermo",
@@ -2341,14 +2337,13 @@
                 "id": "oven",
                 "kind": "prop",
                 "visual": {
-                  "kind": "table",
                   "fixture": "oven"
                 },
                 "position": [
-                  1070,
-                  395
+                  945,
+                  315
                 ],
-                "label": "HORNO",
+                "label": "Revisar el horno",
                 "lines": [
                   {
                     "speaker": "Guillermo",
@@ -2357,6 +2352,14 @@
                   }
                 ]
               }
+            ],
+            "spawn": [
+              320,
+              540
+            ],
+            "companion": [
+              975,
+              535
             ]
           }
         }

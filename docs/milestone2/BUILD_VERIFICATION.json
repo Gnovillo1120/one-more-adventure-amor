@@ -1,0 +1,21 @@
+{
+  "engine": "Godot 4.7.2 GL Compatibility",
+  "qa_checks": 2603,
+  "suites": 13,
+  "native_source_frames": 23,
+  "native_export_frames": 23,
+  "files": {
+    "builds\\directors-cut-milestone-2\\One More Adventure Amor.exe": {
+      "bytes": 109268480,
+      "sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562"
+    },
+    "builds\\directors-cut-milestone-2\\One More Adventure Amor.pck": {
+      "bytes": 5149680,
+      "sha256": "f438c8b2e5dfb24a72c4c12b9150157eec97ead990ff28bd7354b9fd47845ab0"
+    },
+    "builds\\One More Adventure Amor Directors Cut Milestone 2.zip": {
+      "bytes": 42978895,
+      "sha256": "71dcd7982ee95d0651f8c351b739ef8d8e099140cc5e82c77326ee7016d89df1"
+    }
+  }
+}

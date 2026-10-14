@@ -25,6 +25,8 @@ func answer_all(session: RefCounted, score: int) -> void:
 		if i>=score:answer=q.points.find(0.0) if session.kind=="debate" else (answer+1)%q.choices.size()
 		session.act("answer",answer);roundtrip(session);session.act("next");roundtrip(session)
 func bake(session: RefCounted, perfect: bool=true) -> void:
+	if session.state.get("version",0)==2:
+		preload("res://scripts/baking_test_driver.gd").new().bake(session,perfect);return
 	for item in session.data.ingredients:session.act("ingredient",item.id)
 	if not perfect:session.act("ingredient","pepper")
 	session.act("gather");roundtrip(session)

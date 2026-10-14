@@ -1,0 +1,70 @@
+{
+  "total_checks": 2603,
+  "suites": [
+    {
+      "suite": "ANIMATION_POLISH_QA",
+      "checks": 222,
+      "failures": 0
+    },
+    {
+      "suite": "AUDIO_PIPELINE_QA",
+      "checks": 12,
+      "failures": 0
+    },
+    {
+      "suite": "CHAPTER_OVERHAUL_QA",
+      "checks": 170,
+      "failures": 0
+    },
+    {
+      "suite": "DIRECTORS_CUT_QA",
+      "checks": 69,
+      "failures": 0
+    },
+    {
+      "suite": "LIVING_MEMORIES_QA",
+      "checks": 89,
+      "failures": 0
+    },
+    {
+      "suite": "MINIGAMES_QA",
+      "checks": 686,
+      "failures": 0
+    },
+    {
+      "suite": "MILESTONE2_QA",
+      "checks": 53,
+      "failures": 0
+    },
+    {
+      "suite": "NAVIGATION_QA",
+      "checks": 220,
+      "failures": 0
+    },
+    {
+      "suite": "PERSISTENCE_QA",
+      "checks": 206,
+      "failures": 0
+    },
+    {
+      "suite": "PLAYTEST_FIXES_QA",
+      "checks": 98,
+      "failures": 0
+    },
+    {
+      "suite": "REDESIGN_PHASE_A_QA",
+      "checks": 63,
+      "failures": 0
+    },
+    {
+      "suite": "STORY_QA",
+      "checks": 470,
+      "failures": 0
+    },
+    {
+      "suite": "TARGET_VISIBILITY_QA",
+      "checks": 245,
+      "failures": 0
+    }
+  ]
+}
