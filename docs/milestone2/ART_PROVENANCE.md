@@ -35,4 +35,3 @@ Local original: `.codex/generated_images/01a12398-aa13-7940-9736-9b23c3038753/ex
 ```text
 Production sprite transparent background, one isolated cream ceramic flour canister with sage-green lid and a small wooden measuring scoop leaning against it. Nostalgic authentic crisp 2D pixel art for a cozy RPG baking counter, deliberately limited 24-color palette, warm amber shading in discrete block clusters, no smooth gradients, no blur, no painterly style. Front three quarter counter perspective, container fills frame, no letters or UI, no backdrop or shadowoutsideobject. Match reference ceramic greens and cozy domestic utensils but create original object. Intended runtime sprite64x80 with nearestneighbor scaling. Actual transparency.
 ```
-
