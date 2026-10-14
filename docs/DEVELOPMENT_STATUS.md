@@ -1,3 +1,11 @@
+# Director’s Cut Milestone 2 — 14 October 2026
+
+Implementation `f6d06dc` on `feature/directors-cut-milestone-2` from stable main `b472b49`. Reviewed all eight local cookie references before design. Added a cozy domestic kitchen with spatial stations, original nearest-filtered pixel assets and playable measuring/mixing/egg/tray/fork/oven/cooling interactions. Scores derive from actual physical actions; imperfect batches always advance. Active legacy recipes adapt, completed scores and new partial actions persist. Reusable skip-safe 2D staging now supports UESS, Salinas/phone, Ikura food delivery and Halloween seated/leaning/kiss animation. M1 room/five objects, corrected quiz facts, clean-shaven/no-blush sprites and voxel route are preserved.
+
+Thirteen suites pass 2,603 checks, including the complete 17-scene/219-dialogue-step story route. Native source and actual Windows release evidence cover 23 frames each, plus baking/mixing/kiss GIFs. Release-only diagnostic capture assertions were corrected so saving and validation execute in exported builds. Separate Windows build/ZIP: `builds/directors-cut-milestone-2/`; prior playtest ZIP hash is verified unchanged. Controls, references, provenance, QA and limitations: `MILESTONE_2.md`; hashes: `milestone2/BUILD_VERIFICATION.json`.
+
+Private references remain ignored/untracked/export-excluded. The personal letter is still an explicit placeholder and final licensed music remains pending. This is a development build; remaining Director’s Cut milestones and human pacing/laptop testing are not claimed complete. No merge into main.
+
 # Milestone 1 playtest fixes — 13 October 2026
 
 Continued existing `feature/directors-cut` from clean `6fc3c13`. Removed the explicit decorative-keepsake HUD loop, the extra lobby bench and generic interaction signposts. Added nearest-target contextual E indicators with obstruction/range/modal checks, preserving real environment signs. Conference photography now uses five phone-action phases in four directions, formal/Halloween sleeve variants, subject focus/flash and an original shutter sound. Unlock occurs at the shutter, remains separate from the Instagram keepsake, survives saves and deduplicates album entries. Fixed the oversized actual-photo preview. The beach card has its own anchor and bottom prompt, without moving Guillermo.
