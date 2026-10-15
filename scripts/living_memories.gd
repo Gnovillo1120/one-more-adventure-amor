@@ -267,6 +267,7 @@ func populate() -> void:
 		var base: Vector2=world.safe_position(centers[i%8]+Vector2(sin(i*2.4)*42,cos(i*1.75)*28))
 		if world.location=="lobby" and base.distance_to(Vector2(465,485))<115:base=world.safe_position(base+Vector2(120,-80))
 		if world.scene_id=="pool" and base.distance_to(world.companion_position)<140:base=world.safe_position(base+Vector2(100,100))
+		if world.location in ["lobby","debate"]:actor.texture=preload("res://scripts/supporting_cast.gd").sprite(i%8);actor.atlas_row=-1
 		actor.position=base;world.depth_root.add_child(actor)
 		guests.append({"actor":actor,"origin":base,"destination":world.safe_position(base+Vector2(55 if i%2 else -55,35 if i%3 else -35)),"wait":float(i%7)*.7,"walking":false,"index":i,"speed":25.0+i%5*7})
 	if world.location in ["party","pool"]:
@@ -326,7 +327,12 @@ func tick(delta: float) -> void:
 		actor.action_offset_y=-90.0 if action in ["enter_pool","exit_pool"] else -50.0
 		actor.water_pose=action not in ["enter_pool","exit_pool"]
 		actor.action_frame=Anim.swim_frame(action,transition_time if pool_transition!="" else animation_clock)
-	if busy and world.location=="lobby" and action=="drink":actor.action_texture=load("res://assets/art/living/anami_fountain.png");actor.action_row=0
+	if busy and world.location=="lobby" and action=="drink":
+		# Columns are down/left/right/up views, NOT consecutive drinking frames.
+		# Hold the authored left-facing lean; move vertically by one source pixel.
+		actor.action_texture=load("res://assets/art/living/anami_fountain.png")
+		actor.action_row=0;actor.action_frame=1
+		actor.action_offset_y=-90.0+2.0*sin(PI*clampf(action_time/2.2,0,1))
 	if world.scene_id=="invitation" and state.pieces.size()>0 and state.outfit_phase!="complete":
 		# These legacy stage rows are directional views, not walking cycles.
 		actor.action_texture=load("res://assets/art/living/anami_outfits.png");actor.action_row=state.pieces.size()-1;actor.action_frame=world.direction
@@ -343,6 +349,7 @@ func tick(delta: float) -> void:
 		if world.scene_id=="pool" and action=="affection":npc.modulate.a=.4;npc.column=0;continue
 		npc.modulate.a=1
 		guest.wait-=delta
+		npc.walking=guest.wait<=0 and guest.speed>0
 		if guest.wait>0:
 			# Dance poses 1/2 only on dancers; a brief gesture 3 on chatters.
 			var local_time: float=world.clock*(.7+guest.index%5*.13)+guest.index*1.37

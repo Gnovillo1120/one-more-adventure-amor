@@ -20,6 +20,8 @@ func p(x: float,y: float,w: float,h: float,color: String) -> void:
 	draw_rect(Rect2(x,y,w,h),Color(color))
 
 func _draw() -> void:
+	if kind=="table" and variant=="dining":
+		dining_table();return
 	match kind:
 		"fridge","oven","storage":
 			p(-width/2,-108,width,110,"394955");p(-width/2+4,-104,width-8,100,"c9c9b2" if kind=="fridge" else "76543e")
@@ -89,3 +91,15 @@ func _draw() -> void:
 			p(-24,-65,48,16,"293c46")
 			draw_string(ThemeDB.fallback_font,Vector2(-22,-52),"SALIDA",HORIZONTAL_ALIGNMENT_CENTER,44,12,Color("e9d9ab"))
 
+
+func dining_table() -> void:
+	# Broad round linen tops and hanging navy skirts, reconstructed as stepped pixels.
+	var half:=width/2
+	p(-half+8,-48,width-16,43,"343e52");p(-half+24,-9,width-48,20,"343e52")
+	for x in range(int(-half+26),int(half-20),14):p(x,-20,4,28,"556176")
+	p(-half+24,-83,width-48,8,"f1ead5");p(-half+8,-75,width-16,12,"e8e2cc")
+	p(-half,-63,width,28,"e3ddc7");p(-half+8,-35,width-16,12,"d6cfb8");p(-half+24,-23,width-48,8,"c5c0ab")
+	p(-half+12,-62,width-24,3,"f4edda")
+	for x in [-half+40,half-40]:
+		p(x-16,-53,32,16,"b9c2b4");p(x-13,-55,26,18,"f9edcf")
+	p(-7,-65,14,20,"6a8468");p(-12,-71,12,12,"829775");p(1,-75,12,12,"95a782")

@@ -13,38 +13,86 @@
     {
       "id": "gyozas",
       "name": "Gyozas",
-      "description": "Dumplings dorados · para compartir",
-      "art": "res://assets/art/overhaul/gyozas.png"
+      "description": "Dumplings dorados con salsa de soya",
+      "art": "res://assets/art/overhaul/gyozas.png",
+      "section": "Entradas"
     },
     {
       "id": "ramen",
       "name": "Miso ramen",
       "description": "Caldo de miso, fideos y toppings",
-      "art": "res://assets/art/overhaul/ramen.png"
+      "art": "res://assets/art/overhaul/ramen.png",
+      "section": "Ramen"
     },
     {
       "id": "sushi",
       "name": "Sushi",
       "description": "Piezas de arroz, pescado y vegetales",
-      "art": "res://assets/art/overhaul/sushi.png"
+      "art": "res://assets/art/overhaul/sushi.png",
+      "section": "Sushi"
     },
     {
       "id": "edamame",
       "name": "Edamame",
       "description": "Vainas de soya con sal",
-      "art": "res://assets/art/overhaul/edamame.png"
+      "art": "res://assets/art/overhaul/edamame.png",
+      "section": "Entradas"
     },
     {
       "id": "tempura",
       "name": "Tempura",
       "description": "Vegetales en una masa ligera",
-      "art": "res://assets/art/overhaul/tempura.png"
+      "art": "res://assets/art/overhaul/tempura.png",
+      "section": "Entradas"
     },
     {
       "id": "yakitori",
       "name": "Yakitori",
       "description": "Brochetas de pollo a la parrilla",
-      "art": "res://assets/art/overhaul/yakitori.png"
+      "art": "res://assets/art/overhaul/yakitori.png",
+      "section": "Platos"
+    },
+    {
+      "id": "california",
+      "name": "California roll",
+      "description": "Arroz, aguacate y surimi",
+      "section": "Sushi",
+      "art": "res://assets/art/polish/menu_california.png"
+    },
+    {
+      "id": "salmon_roll",
+      "name": "Salmón roll",
+      "description": "Salmón y pepino",
+      "section": "Sushi",
+      "art": "res://assets/art/polish/menu_salmon_roll.png"
+    },
+    {
+      "id": "shoyu",
+      "name": "Shoyu ramen",
+      "description": "Caldo de soya y fideos",
+      "section": "Ramen",
+      "art": "res://assets/art/polish/menu_shoyu.png"
+    },
+    {
+      "id": "katsu",
+      "name": "Pollo katsu",
+      "description": "Pollo crujiente con arroz",
+      "section": "Platos",
+      "art": "res://assets/art/polish/menu_katsu.png"
+    },
+    {
+      "id": "te_verde",
+      "name": "Té verde",
+      "description": "Infusión caliente",
+      "section": "Bebidas",
+      "art": "res://assets/art/polish/menu_te_verde.png"
+    },
+    {
+      "id": "limonada",
+      "name": "Limonada",
+      "description": "Limón y hielo",
+      "section": "Bebidas",
+      "art": "res://assets/art/polish/menu_limonada.png"
     }
   ]
 }

@@ -898,7 +898,7 @@
                   317
                 ],
                 "walk": 0,
-                "seated": true
+                "seated": false
               },
               {
                 "name": "Delegado",

@@ -106,11 +106,11 @@
   "dining": {
     "fixtures": [
       {
-        "id": "left_top",
+        "id": "middle_round",
         "kind": "table",
         "position": [
-          320,
-          350
+          470,
+          450
         ],
         "width": 180,
         "label": "",
