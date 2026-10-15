@@ -1,0 +1,36 @@
+{
+  "generator": "built-in imagegen tool",
+  "private_reference_uploads": false,
+  "requests": [
+    {
+      "source": "assets/art/concepts/polish_cast_source.png",
+      "transparent_background": true,
+      "referenced_images": [],
+      "prompt": "Original production sprite sheet for a nostalgic top-down pixel RPG, crisp hand placed pixels, limited warm palette, dark fine outlines, classic tiny RPG proportions large readable heads. TRANSPARENT background. Exactly 4 columns by 3 rows, 12 clearly isolated full body characters centered one per equal cell with generous margins. No labels or shadows outside bodies. Each designed for32x48 pixels. All young adult university students around18 except two young staff. Row1: light-skinned blond male student navy suit; dark-skinned male student short black curls olive suit; tan female student long straight black hair cream blouse teal skirt; brown-skinned female student high ponytail burgundy suit. Row2: pale female student blond bob dark green blazer; medium-skinned male student short wavy chestnut hair blue shirt; dark-skinned female student short natural curls gold blouse navy trousers; light-skinned female student long auburn wavy hair charcoal suit. Row3: Moncayo youthful tan male short curly black hair black rectangular glasses friendly round face subtle short dark beard navy crewneck over pale collar; MUN president youthful tan male side-parted dark brown wavy hair rectangular glasses clean shaven black suit white shirt red tie; female catering server medium skin tied black bun white service shirt green apron; male Japanese restaurant waiter dark hair neat cut black waistcoat white shirt. Faces and hair silhouettes genuinely different not recolors. Front facing slight topdown viewpoint fullbody each. No photorealism or smooth illustration, no text, no props, no reference photo reproduction. Original designs from written specifications."
+    },
+    {
+      "source": "assets/art/concepts/polish_moncayo_source.png",
+      "transparent_background": true,
+      "referenced_images": [],
+      "prompt": "Production sprite sheet original tiny top-down pixel RPG character, transparent background. One consistent young adult tan male, short curly black hair, black rectangular glasses, light subtle short dark beard, friendly round face, navy crewneck sweater over pale collared shirt, tan trousers dark brown shoes. Exactly 4 columns by 4 rows, 16 isolated full body cells. Character rendered in crisp limited palette hand-crafted pixel art with large head and small classic RPG body, designed for 32x48 pixels. Row 1 FOUR down-facing walking frames, every frame down-facing. Row 2 FOUR left-facing walking frames, every frame left-facing. Row 3 FOUR right-facing walking frames, every frame right-facing. Row 4 FOUR back-facing walking frames, every frame facing away. Each row is one direction throughout. Alternating feet and opposite arms, torso stable, frame 1 standing, frame 2 left step, frame 3 passing pose, frame 4 right step. No labels, no shadows outside body, no grids. Generous equal gutters. Same proportions same outfit throughout; authentic pixel art not painted cartoon. Entire feet included."
+    },
+    {
+      "source": "assets/art/concepts/polish_menu_source.png",
+      "transparent_background": true,
+      "referenced_images": [
+        "assets/art/overhaul/ramen.png",
+        "assets/art/overhaul/sushi.png"
+      ],
+      "prompt": "Create ORIGINAL production pixel-art food icons matching the tiny warm palette, dark outlines and three-quarter top-down perspective of the provided original game food assets. Transparent background. Exactly 2 columns by 3 rows, six clearly separated individual icons with generous margins and no labels. Each designed for64x48 pixels with crisp intentional pixels. Row1 left: Japanese ceramic tea cup with visible green tea, small handle, saucer and subtle steam. Row1 right: glass of yellow lemonade with white ice, lemon slice and straw, no alcohol bottle. Row2 left: plate of chicken katsu, golden crumbed cutlet cut into strips, white rice mound and shredded cabbage. Row2 right: California maki rolls, dark nori ring, white rice, green avocado and pink surimi center, arranged on a dark Japanese rectangular plate. Row3 left: salmon maki rolls with orange salmon and cucumber centers, arranged on a matching dark plate. Row3 right: shoyu ramen in a warm brown ceramic bowl, dark soy broth, yellow noodles, egg, green scallions. No text, no prices, no smooth gradients, no photorealism, not an actual historical restaurant menu. All are original icons, not photographs."
+    },
+    {
+      "source": "assets/art/concepts/polish_ingredients_source.png",
+      "transparent_background": true,
+      "referenced_images": [
+        "assets/art/baking/jar.png",
+        "assets/art/baking/bowl.png"
+      ],
+      "prompt": "Create original production pixel RPG kitchen ingredient sprites matching the provided original game props: crisp hard pixels, tiny detailed warm domestic palette, soft cream ceramic and homely glass containers, dark brown fine outlines, three-quarter countertop viewpoint. Transparent background. Exactly THREE columns by THREE rows, nine completely isolated sprites, generous equal gutters. Each designed for64x80 pixels. Every container is OPEN ready for pouring, no lid attached. No hands, no utensils, no loose lids, no text or labels, no extra objects. Row1 left: open cream paper bag of flour with pale fine powder visible; middle: open clear glass canister of white granulated sugar; right: open brown paper bag of brown sugar, warm brown granules visible. Row2 left: open glass jar of pale beige quick oat flakes; middle: small open spice jar of rust-brown ground cinnamon; right: small open white cardboard carton of baking soda with folded-back flaps and white powder visible. Row3 left: small open glass jar of white salt crystals; middle: slender open amber vanilla extract bottle with a dark empty neck and brown liquid, no cap; right: ONLY a small white ceramic plate with three golden-yellow chunks of softened butter, no wrapper, no knife. Different recognizable silhouettes and appropriate contents, no generic duplicated flour jars. Keep object scale and perspective coherent, no shadow outside objects. Authentic intentionally limited palette pixel art, not painterly illustration."
+    }
+  ]
+}

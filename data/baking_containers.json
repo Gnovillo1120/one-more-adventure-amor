@@ -1,0 +1,65 @@
+{
+  "flour": {
+    "art": "res://assets/art/polish/ingredient_flour.png",
+    "mouth": [
+      32,
+      17
+    ]
+  },
+  "white_sugar": {
+    "art": "res://assets/art/polish/ingredient_white_sugar.png",
+    "mouth": [
+      32,
+      12
+    ]
+  },
+  "brown_sugar": {
+    "art": "res://assets/art/polish/ingredient_brown_sugar.png",
+    "mouth": [
+      32,
+      19
+    ]
+  },
+  "oats": {
+    "art": "res://assets/art/polish/ingredient_oats.png",
+    "mouth": [
+      32,
+      15
+    ]
+  },
+  "cinnamon": {
+    "art": "res://assets/art/polish/ingredient_cinnamon.png",
+    "mouth": [
+      32,
+      25
+    ]
+  },
+  "soda": {
+    "art": "res://assets/art/polish/ingredient_soda.png",
+    "mouth": [
+      32,
+      34
+    ]
+  },
+  "salt": {
+    "art": "res://assets/art/polish/ingredient_salt.png",
+    "mouth": [
+      32,
+      31
+    ]
+  },
+  "vanilla": {
+    "art": "res://assets/art/polish/ingredient_vanilla.png",
+    "mouth": [
+      32,
+      5
+    ]
+  },
+  "butter": {
+    "art": "res://assets/art/polish/ingredient_butter.png",
+    "mouth": [
+      56,
+      42
+    ]
+  }
+}

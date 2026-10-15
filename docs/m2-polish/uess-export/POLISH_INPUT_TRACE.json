@@ -1,0 +1,8437 @@
+{
+  "checks": 690,
+  "events": [
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 2316
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 2356
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 2356
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 2523
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 2531
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 2673
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 2681
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 2848
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 2856
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 2924
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 2924
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 2933
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 2941
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 3108
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 3116
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 3283
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 3291
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 3462
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 3470
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 3637
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 3645
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 3812
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 3820
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 3987
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 3995
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 4073
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 4074
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 4123
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 4132
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 4299
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 4307
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 4473
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 4482
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 4648
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 4657
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 4824
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 4832
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 4998
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 5007
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 5173
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 5182
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 5348
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 5357
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 5523
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 5532
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 5698
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 5707
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 5873
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 5882
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6048
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6057
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6223
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6232
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6398
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6407
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6573
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6582
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6748
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6757
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 6923
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 6932
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7098
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 7107
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7273
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 7282
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7448
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 7457
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7623
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 7632
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7798
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 7807
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 7979
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 8177
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 8178
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 9644
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 9646
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 9646
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 9842
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 9850
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10017
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10025
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10196
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10204
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10362
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10371
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10537
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10545
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10712
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10721
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 10832
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 10840
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11007
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11015
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11182
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11190
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11357
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11365
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11530
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11539
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11705
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11714
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11880
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11889
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12055
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12064
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12230
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 12239
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 12380
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 12575
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 12577
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 12755
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 12757
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 12947
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 12955
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14279
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14282
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 14282
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 14429
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14438
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14604
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14613
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14780
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14788
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14954
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14963
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15129
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15138
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15304
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15313
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15479
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15488
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15654
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15663
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15829
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15838
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16004
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16013
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16179
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16188
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16354
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16363
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16529
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16538
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16704
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16713
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16879
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 17077
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 17078
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18547
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18549
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 18549
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 18731
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18739
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18906
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18914
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19081
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19089
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19256
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19264
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19431
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19439
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19606
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19614
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19781
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19789
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19956
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19964
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20131
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20139
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20306
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20314
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20481
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20489
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20656
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20664
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20831
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20839
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21006
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21014
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21181
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 21189
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 21331
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 21525
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 21526
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23020
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23023
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 23023
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 23171
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23179
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23346
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23354
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23521
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23529
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23696
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23704
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23871
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23879
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 24046
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24054
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 24221
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24229
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 24396
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24404
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 24571
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24579
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 24746
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24754
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 24921
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 24929
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25096
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25104
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25271
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25279
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25446
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25454
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25621
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25629
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25796
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25804
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 25971
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 25979
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 26146
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 26154
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 26321
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 26329
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 26496
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 26504
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 26671
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 26679
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 26846
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 26854
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27021
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 27029
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27196
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 27204
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27371
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 27379
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27546
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 27554
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27720
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 27729
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 27895
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 27904
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 28045
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 28054
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 28195
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 28204
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 28696
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 28696
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 29143
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 29144
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 29584
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 29585
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30024
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 30121
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 30123
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30123
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30148
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 30157
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 30290
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30298
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30465
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30473
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30640
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30648
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30815
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30823
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 30990
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 30998
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 31165
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 31173
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 31340
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 31348
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 31515
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 31523
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 31690
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 31698
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 31865
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 31873
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32040
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32048
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32215
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32223
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32390
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32398
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32565
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32573
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32740
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32748
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 32915
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 32923
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33090
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33098
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33265
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33273
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33440
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33448
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33615
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33623
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33790
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33798
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 33965
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 33973
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 34140
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 34148
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 34315
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 34323
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 34490
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 34498
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 34665
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 34673
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 34840
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 34848
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 35015
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 35023
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 35190
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 35198
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 35365
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 35373
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 35540
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 35548
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 35690
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 35698
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 35840
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36129
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36129
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36520
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36520
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36524
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36528
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36537
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36545
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36554
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36562
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36570
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36578
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36588
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36595
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36603
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36612
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36621
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36628
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36637
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36646
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36654
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36662
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36670
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36678
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36688
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36695
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36703
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36712
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36721
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36729
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36737
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36745
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36755
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36762
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36770
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36778
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36788
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36795
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36803
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36812
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 36820
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 36828
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 37889
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 37967
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 37975
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 38116
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 38125
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 38291
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 38300
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 38466
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 38475
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 38641
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 38650
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 38816
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 38825
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 38991
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39000
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 39166
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39175
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 39341
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39350
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 39516
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39525
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 39691
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39700
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 39866
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 39875
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40042
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40050
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40216
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40225
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40391
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40400
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40566
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40575
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40741
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40750
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 40916
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 40925
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41091
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41100
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41266
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41275
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41441
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41450
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41616
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41625
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41791
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41800
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 41966
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 41975
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 42141
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 42150
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 42316
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 42325
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 42491
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 42500
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 42666
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 42675
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 42841
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 42850
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43016
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43025
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43191
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43200
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43366
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43375
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43541
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43550
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43716
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43725
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 43891
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 43900
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 44066
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 44075
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 44241
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 44250
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 44416
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 44425
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 44591
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 44600
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 44766
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 44775
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 44941
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 44950
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 45116
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 45125
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 45291
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 45300
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 45441
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 45643
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 45644
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 50663
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 50670
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 50670
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 50674
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 50674
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 50724
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 50732
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 50899
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 50907
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51074
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51082
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51249
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51257
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51424
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51432
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51602
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51607
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51774
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51782
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 51949
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 51957
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52124
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 52132
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52299
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 52307
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52474
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 52482
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52649
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 52657
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52824
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 52832
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 52999
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 53007
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 53174
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 53182
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 53349
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 53357
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 53524
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 53532
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 53674
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 53874
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 53875
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54053
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54054
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54234
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54235
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54238
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54243
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54252
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54259
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54268
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54276
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54286
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54293
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54301
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54309
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54319
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54326
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54334
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54343
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54352
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54359
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54368
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54376
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54386
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54393
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54401
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54409
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54419
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54426
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54434
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54443
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 54451
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 54459
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 55512
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 55622
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 55630
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 55772
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 55780
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 55947
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 55955
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56122
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 56130
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56297
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 56305
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56472
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 56480
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56647
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 56655
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56822
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 56830
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 56997
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57005
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 57172
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57180
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 57347
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57355
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 57522
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57530
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 57697
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57705
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 57872
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 57880
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58047
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58055
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58222
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58230
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58397
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58405
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58572
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58580
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58747
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58755
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 58922
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 58930
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59097
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59105
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59272
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59280
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59447
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59455
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59622
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59630
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59797
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59805
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 59972
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 59980
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 60147
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 60155
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 60322
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 60330
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 60497
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 60505
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 60672
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 60680
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 60847
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 60855
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61022
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 61030
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61197
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 61205
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61372
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 61380
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61547
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 61555
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61722
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 61730
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 61897
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 61905
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62072
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62080
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62247
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62255
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62422
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62430
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62597
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62605
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62772
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62780
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 62947
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 62955
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 63097
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 63294
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 63295
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 63469
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 63470
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 63653
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 63661
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Space",
+      "pressed": true,
+      "time_ms": 63670
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Space",
+      "pressed": false,
+      "time_ms": 63678
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 64919
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 64925
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 64925
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 65029
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 65037
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 65179
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 65187
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 65354
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 65362
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 65529
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 65537
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 65704
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 65712
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 65879
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 65887
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66054
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66062
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66229
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66237
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66404
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66412
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66579
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66587
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66754
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66762
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 66929
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 66937
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67104
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67112
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67279
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67287
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67454
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67462
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67629
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67637
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67804
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67812
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 67979
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 67987
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 68154
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 68162
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 68329
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 68337
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 68479
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 68681
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 68681
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 70918
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 70924
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 70924
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71062
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71070
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71237
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71245
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71412
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71420
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71587
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71595
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71762
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71770
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 71929
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 71937
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72104
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 72112
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72279
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 72287
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72454
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 72462
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72629
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 72637
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72804
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 72812
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 72979
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 73180
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 73180
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 75407
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 75412
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 75412
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 75526
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 75534
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 75701
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 75902
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 75902
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 78143
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 78150
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 78150
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 78271
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 78279
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 78446
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 78648
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 78649
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 81869
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 81887
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 81895
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 82037
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 82046
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 82187
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 82195
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 82337
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82544
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82546
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82732
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82732
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82736
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82740
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82749
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82757
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82768
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82774
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82782
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82790
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82800
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82807
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82815
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82824
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 82832
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 82840
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 82898
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 83742
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 83751
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 83892
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 83901
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84067
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84076
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84242
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84251
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84417
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84426
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84592
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84601
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84767
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84776
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 84942
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 84951
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85117
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 85126
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85292
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 85301
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85467
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 85476
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85642
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 85651
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85817
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 85826
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 85992
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86001
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 86167
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86176
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 86342
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86351
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 86517
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86526
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 86692
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86701
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 86867
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 86876
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87042
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87051
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87217
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87226
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87392
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87401
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87567
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87576
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87742
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87751
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 87917
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 87925
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88092
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88100
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88267
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88275
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88442
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88450
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88617
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88626
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88792
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88800
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 88967
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 88975
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 89142
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 89150
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 89317
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 89325
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 89492
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 89500
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 89667
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 89675
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 89842
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 89850
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90017
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90025
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90192
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90200
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90367
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90375
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90542
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90550
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90717
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90725
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 90892
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 90900
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91067
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91075
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91242
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91250
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91417
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91425
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91592
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91600
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91767
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91775
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 91942
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 91950
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92117
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 92125
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92292
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 92300
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92467
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 92475
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92642
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 92650
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92817
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 92825
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 92992
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 93000
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 93167
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 93175
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 93342
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 93350
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 93517
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 93525
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 93692
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 93700
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 93867
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 93875
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 94042
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 94050
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 94217
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 94225
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 94392
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 94400
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 94567
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 94575
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 94742
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 94750
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 94892
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 94900
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 95042
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95242
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95243
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95427
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95428
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95470
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95472
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95671
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95672
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95673
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95680
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95689
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95696
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95705
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95713
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95906
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95907
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95909
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95915
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95924
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95931
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 95940
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 95948
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96149
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96150
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96152
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96158
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96167
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96175
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96183
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96191
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96387
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96387
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96390
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96395
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96602
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96603
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96605
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96611
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96621
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96628
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96636
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96644
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 96848
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 96848
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 97929
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 97934
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 97934
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 98040
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 98048
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 98190
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 98198
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 98365
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 98373
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 98540
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 98548
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 98715
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 98723
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 98890
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 99087
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 99088
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 99263
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 99264
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 99435
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 99436
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 99437
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 99444
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 99452
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 99460
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 99553
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 99561
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 99561
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 99706
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 99714
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 99881
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 99889
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100056
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100064
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100231
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100239
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100406
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100414
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100581
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100589
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100756
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100764
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 100931
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 100939
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101106
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101114
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101281
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101289
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101456
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101464
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101631
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101639
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101806
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101814
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 101981
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 101989
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 102156
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 102164
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 102331
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 102339
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 102506
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 102514
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 102681
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 102689
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 102858
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 102864
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103031
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103039
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103206
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103214
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103381
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103389
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103556
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103564
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103731
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103739
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 103906
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 103914
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104081
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104089
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104256
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104264
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104431
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104439
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104606
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104614
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104781
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104789
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 104956
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 104964
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 105131
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 105139
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 105306
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 105314
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 105481
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 105489
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 105656
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 105664
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 105831
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 105839
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106006
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106014
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106181
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106189
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106356
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106364
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106531
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106539
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106706
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106714
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 106880
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 106889
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107056
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107064
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107230
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107239
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107405
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107414
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107581
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107589
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107756
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107764
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 107930
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 107939
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108105
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108114
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108280
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108289
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108456
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108464
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108630
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108639
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108805
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108814
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 108980
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 108989
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 109155
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 109164
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 109330
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 109339
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 109505
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 109514
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 109680
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 109689
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 109855
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 109864
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110030
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110039
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110205
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110214
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110380
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110390
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110555
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110564
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110730
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110739
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 110905
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 110914
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 111080
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 111089
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 111255
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 111264
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 111430
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 111439
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 111605
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 111614
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 111780
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 111789
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 111955
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 111964
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 112130
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 112139
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 112305
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 112314
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 112480
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 112489
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 112655
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 112664
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 112830
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 112839
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 113005
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 113014
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 113155
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 113164
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 113305
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 113581
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 113582
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 113818
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 113827
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 113835
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 113843
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 113932
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 113937
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 113937
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 114059
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 114067
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 114209
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": true,
+      "time_ms": 114217
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "A",
+      "pressed": false,
+      "time_ms": 114359
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 114367
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 114509
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114705
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114706
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114887
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114888
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114891
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114896
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114904
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114912
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114922
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114929
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114937
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114946
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114955
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114962
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114971
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 114979
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 114988
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 115027
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 115030
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 115036
+    },
+    {
+      "inventory": [],
+      "phase": "intro",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 115220
+    },
+    {
+      "inventory": [],
+      "phase": "intro",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 115221
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Enter",
+      "pressed": true,
+      "time_ms": 115235
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Enter",
+      "pressed": false,
+      "time_ms": 115244
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Right",
+      "pressed": true,
+      "time_ms": 115445
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Right",
+      "pressed": false,
+      "time_ms": 115450
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Left",
+      "pressed": true,
+      "time_ms": 115651
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Left",
+      "pressed": false,
+      "time_ms": 115656
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Q",
+      "pressed": true,
+      "time_ms": 115666
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Q",
+      "pressed": false,
+      "time_ms": 115672
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": true,
+      "time_ms": 115689
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": false,
+      "time_ms": 115697
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 115707
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 115713
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": true,
+      "time_ms": 115729
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": false,
+      "time_ms": 115737
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "R",
+      "pressed": true,
+      "time_ms": 115748
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "R",
+      "pressed": false,
+      "time_ms": 115756
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": true,
+      "time_ms": 115774
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": false,
+      "time_ms": 115782
+    },
+    {
+      "inventory": [],
+      "phase": "result",
+      "physical_key": "Enter",
+      "pressed": true,
+      "time_ms": 115790
+    },
+    {
+      "inventory": [],
+      "phase": "result",
+      "physical_key": "Enter",
+      "pressed": false,
+      "time_ms": 115793
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Enter",
+      "pressed": true,
+      "time_ms": 115994
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Enter",
+      "pressed": false,
+      "time_ms": 116001
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Q",
+      "pressed": true,
+      "time_ms": 116011
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "Q",
+      "pressed": false,
+      "time_ms": 116019
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": true,
+      "time_ms": 116038
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "1",
+      "pressed": false,
+      "time_ms": 116048
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 116058
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 116065
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "2",
+      "pressed": true,
+      "time_ms": 116081
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "2",
+      "pressed": false,
+      "time_ms": 116088
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "R",
+      "pressed": true,
+      "time_ms": 116099
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "R",
+      "pressed": false,
+      "time_ms": 116106
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "3",
+      "pressed": true,
+      "time_ms": 116125
+    },
+    {
+      "inventory": [],
+      "phase": "play",
+      "physical_key": "3",
+      "pressed": false,
+      "time_ms": 116134
+    },
+    {
+      "inventory": [],
+      "phase": "result",
+      "physical_key": "Enter",
+      "pressed": true,
+      "time_ms": 116140
+    },
+    {
+      "inventory": [],
+      "phase": "result",
+      "physical_key": "Enter",
+      "pressed": false,
+      "time_ms": 116143
+    }
+  ],
+  "failures": 0,
+  "fountain_frames": [
+    {
+      "approach": [
+        440.0,
+        540.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        440.0,
+        540.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        440.0,
+        540.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        440.0,
+        540.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        440.0,
+        540.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        380.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        380.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        380.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        380.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        380.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        500.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        500.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        500.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        500.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        500.0,
+        485.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        490.0,
+        475.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        490.0,
+        475.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        490.0,
+        475.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        490.0,
+        475.0
+      ],
+      "frame": 1,
+      "row": 0
+    },
+    {
+      "approach": [
+        490.0,
+        475.0
+      ],
+      "frame": 1,
+      "row": 0
+    }
+  ],
+  "guillermo_meal_progress": [
+    {
+      "meal": 0,
+      "position": [
+        306.0,
+        335.0
+      ]
+    },
+    {
+      "meal": 1,
+      "position": [
+        306.0,
+        335.0
+      ]
+    },
+    {
+      "meal": 2,
+      "position": [
+        451.0,
+        335.0
+      ]
+    },
+    {
+      "meal": 3,
+      "position": [
+        596.0,
+        335.0
+      ]
+    },
+    {
+      "meal": 4,
+      "position": [
+        741.0,
+        335.0
+      ]
+    }
+  ]
+}

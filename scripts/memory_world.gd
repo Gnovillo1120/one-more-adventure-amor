@@ -15,6 +15,7 @@ const LivingMemories = preload("res://scripts/living_memories.gd")
 const DIPLOMA=preload("res://assets/art/sprites/diploma.png")
 var living: Node2D
 var baking: Control
+var staging: Node2D
 var depth_root: Node2D
 var layered := false
 var fixtures: Dictionary = {}
@@ -64,7 +65,7 @@ func waiter_movement(approach: bool) -> void:
 	if is_instance_valid(waiter_tween):waiter_tween.kill()
 	if not is_instance_valid(waiter_actor):
 		waiter_actor=MemoryActor.new();waiter_actor.world=self;waiter_actor.npc=true
-		if npc_art.size()>4:waiter_actor.texture=npc_art[4]
+		waiter_actor.texture=preload("res://scripts/supporting_cast.gd").sprite(11);waiter_actor.walking=true
 		waiter_actor.position=Vector2(1130,530) if approach else Vector2(1030,430)
 		if is_instance_valid(depth_root):depth_root.add_child(waiter_actor)
 		else:add_child(waiter_actor)
@@ -102,7 +103,7 @@ func _ready() -> void:
 	if scene_config.has("companion"):companion_position=_point(scene_config.companion)
 	exit_position=_point(scene_config.get("exit",[1080,550]))
 	for i in range(8):
-		var path: String="res://assets/art/overhaul/npc_%d.png" % i
+		var path: String=("res://assets/art/polish/cast_%d.png" if location in ["debate","dining","lobby","auditorium"] else "res://assets/art/overhaul/npc_%d.png") % i
 		if ResourceLoader.exists(path):npc_art.append(load(path))
 	if location=="yacht":blockers=[Rect2(110,225,1080,120)]
 	_build_layers()
@@ -140,6 +141,7 @@ func _build_layers() -> void:
 		var entry: Dictionary=scene_config.npcs[i]
 		if int(entry.sprite)>=npc_art.size():continue
 		var actor: Node2D=MemoryActor.new();actor.world=self;actor.npc=true;actor.texture=npc_art[int(entry.sprite)];actor.position=_point(entry.position);actor.seated=entry.get("seated",false);actor.idle_phase=i
+		if entry.get("name","")=="Presidencia":actor.texture=preload("res://scripts/supporting_cast.gd").sprite(9)
 		depth_root.add_child(actor);population_actors.append({"actor":actor,"data":entry})
 		if layered and actor.seated:
 			var chair: Node2D=RoomFixture.new();chair.kind="chair";chair.variant=location;chair.position=actor.position;depth_root.add_child(chair);depth_root.move_child(chair,0)
@@ -149,11 +151,15 @@ func _update_actors() -> void:
 	if actors.is_empty():return
 	actors.anami.position=player_position;actors.anami.row=direction;actors.anami.column=(int(clock*8)%4) if moving or dancing else 0;actors.anami.seated=seated
 	actors.guillermo.position=companion_position;actors.guillermo.column=(int(clock*4)%4) if dancing else 0
-	actors.guillermo.seated=location in ["dining","beach","pool"] or (location=="ikura" and seated)
+	if is_instance_valid(baking) and baking.session.state.phase=="quiz":actors.guillermo.column=int(baking.helper_clock*7)%4
+	if is_instance_valid(staging) and scene_id=="lunch":actors.guillermo.seated=(seated or completed) and companion_position.distance_to(Vector2(950,420))<2
+	else:actors.guillermo.seated=location in ["dining","beach","pool"] or (location=="ikura" and seated)
+	for person in ["anami","guillermo"]:actors[person].eating=location=="ikura" and seated and get_meta("food_delivered",false)
 	for entry in population_actors:
 		var npc: Dictionary=entry.data;var actor: Node2D=entry.actor
 		var base:=_point(npc.position);var offset:=Vector2(roundf(sin(clock*.65+actor.idle_phase)*float(npc.get("walk",0))),0)
 		actor.position=base+offset if can_stand(base+offset) else base
+		actor.walking=not actor.seated and absf(float(npc.get("walk",0)))>0
 
 func seat_couple(on_done: Callable) -> void:
 	if seating:return
@@ -204,6 +210,13 @@ func _register_target_visuals() -> void:
 			prop.environment_object=fixtures.get(prop.descriptor.fixture)
 		if prop.visual_kind=="npc":
 			var actor: Node2D=MemoryActor.new();actor.world=self;actor.npc=true;actor.texture=prop.texture
+			if location in ["debate","dining","lobby","auditorium"]:actor.texture=preload("res://scripts/supporting_cast.gd").sprite(int(target.get("sprite",0)))
+			if scene_id=="moncayo" and target.id=="main":actor.texture=preload("res://scripts/supporting_cast.gd").sprite(8)
+			var casting=preload("res://scripts/supporting_cast.gd")
+			for dialogue_line in target.get("lines",[]):
+				if casting.SPEAKERS.has(dialogue_line.get("speaker","")):
+					actor.texture=casting.sprite(casting.SPEAKERS[dialogue_line.speaker]);break
+			if scene_id=="moncayo" and target.id=="main":actor.texture=load("res://assets/art/polish/moncayo_walk.png");actor.npc=false
 			for entry in population_actors:
 				if entry.actor.position.distance_to(prop.position)<1:
 					actor.seated=entry.actor.seated;entry.actor.visible=false
@@ -234,6 +247,9 @@ func _point(value: Array) -> Vector2:
 	return Vector2(value[0],value[1])
 
 func mandatory_target() -> Dictionary:
+	if is_instance_valid(staging):
+		var staged: Dictionary=staging.target()
+		if not staged.is_empty():return staged
 	var steps: Array=scene_config.get("steps",[])
 	if quest_step<steps.size():
 		var target: Dictionary=steps[quest_step].duplicate(true)
@@ -402,7 +418,7 @@ func apply_line(speaker: String, text: String) -> void:
 		effect="ouch";effect_time=1.5
 	if text.contains("Anami kisses") or text.contains("besó") or text.contains("beso"):
 		effect="heart";effect_time=2.5
-	if scene_id=="award" and speaker=="Anami":effect="diploma";effect_time=3
+	if scene_id=="award" and speaker=="Anami" and not is_instance_valid(staging):effect="diploma";effect_time=3
 	if scene_id=="pool" and (text.contains("novia") or text.contains("quiero")):
 		seated=true;player_position=companion_position+Vector2(-48,-15)
 	if scene_id=="pool" and is_instance_valid(living):
@@ -582,5 +598,6 @@ func deliver_food() -> void:
 	set_meta("food_delivered",true)
 	var table: Node2D=fixtures.get("couple_table")
 	if not is_instance_valid(table):return
+	var steam: Node2D=preload("res://scripts/meal_presentation.gd").new();steam.world=self;steam.position=Vector2(0,-65);table.add_child(steam)
 	for i in range(3):
 		var plate:=Sprite2D.new();plate.texture=load("res://assets/art/overhaul/%s.png"%["gyozas","ramen","sushi"][i]);plate.position=Vector2(-55+i*55,-52);plate.scale=Vector2(45,35)/plate.texture.get_size();plate.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;table.add_child(plate)

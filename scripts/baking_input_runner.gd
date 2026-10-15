@@ -1,4 +1,5 @@
 extends Node
+const BakingView = preload("res://scripts/baking_view.gd")
 ## End-to-end input regression. No station/key/act/interact methods are called.
 signal finished(checks: int, failures: int)
 var game: Node
@@ -8,6 +9,31 @@ var failures := 0
 var events: Array = []
 var input_label: Label
 var capture := false
+var motion_samples: Dictionary = {}
+var motion_saving := false
+var imperfect := false
+
+func _process(_delta: float) -> void:
+	if not capture or motion_saving or not is_instance_valid(game.challenge) or not game.challenge is BakingView:return
+	var v: Control=game.challenge
+	var name: String=""
+	var frame:=0
+	if v.animation.elapsed<v.animation.duration:
+		name=v.animation.event
+		if name=="measure":name+="_%02d"%int(v.animation.before.index)
+		frame=int(v.animation.t()*6)
+	elif v.session.state.phase=="measure" and v.session.state.fill>.1:
+		name="pour_%02d"%int(v.session.state.index);frame=mini(4,int(v.session.state.fill*4))
+	elif v.session.state.phase in ["dry","cream","combine","oats"]:
+		name="mix_"+v.session.state.phase;frame=int(v.session.state.mix*5)
+	if name=="":return
+	var key: String=name+"_%02d"%frame
+	if motion_samples.has(key):return
+	motion_samples[key]=true;motion_saving=true
+	await RenderingServer.frame_post_draw
+	var result: Error=get_viewport().get_texture().get_image().save_png(directory.path_join("motion_"+key+".png"))
+	if result!=OK:verify(false,"motion capture written")
+	motion_saving=false
 
 func verify(ok: bool, message: String) -> void:
 	checks+=1
@@ -23,10 +49,11 @@ func phase() -> String:
 	return str(game.challenge.session.state.phase) if is_instance_valid(game.challenge) else "dialogue" if game._dialogue_open() else "world"
 
 func inventory() -> Array:
-	return game.challenge.session.state.pantry if is_instance_valid(game.challenge) else []
+	return game.challenge.session.state.get("pantry",[]) if is_instance_valid(game.challenge) else []
 
 func tap(code: int) -> void:
 	inject(code,true);await get_tree().process_frame;inject(code,false);await get_tree().process_frame
+	while is_instance_valid(game.challenge) and game.challenge.get("transition_pending")==true:await get_tree().process_frame
 
 func shot(name: String) -> void:
 	if not capture:return
@@ -37,13 +64,18 @@ func shot(name: String) -> void:
 func axis(code: int, coordinate: int, goal: float) -> void:
 	inject(code,true)
 	var deadline: int=Time.get_ticks_msec()+12000
-	while absf(game.memory.player_position[coordinate]-goal)>2 and Time.get_ticks_msec()<deadline:
+	while absf(game.memory.player_position[coordinate]-goal)>.1 and Time.get_ticks_msec()<deadline:
+		# Fine steering still uses physical polling; avoid oscillation at a short waypoint
+		# when a capture or filesystem scan produces an unusually long native frame.
+		var real_delta:=maxf(.016,get_process_delta_time()/Engine.time_scale)
+		Engine.time_scale=clampf(absf(game.memory.player_position[coordinate]-goal)/(205.0*real_delta*3),.001,1)
 		await get_tree().process_frame
 		var forward: bool=game.memory.player_position[coordinate]<goal
 		var next_code: int=(KEY_D if forward else KEY_A) if coordinate==0 else (KEY_S if forward else KEY_W)
 		if next_code!=code:inject(code,false);code=next_code;inject(code,true)
 	inject(code,false);await get_tree().process_frame
-	verify(absf(game.memory.player_position[coordinate]-goal)<=3,"walking key reaches waypoint: %s goal %s axis %d active %s"%[game.memory.player_position,goal,coordinate,game.memory.active])
+	Engine.time_scale=1.0
+	verify(absf(game.memory.player_position[coordinate]-goal)<=.2,"walking key reaches waypoint: %s goal %s axis %d active %s"%[game.memory.player_position,goal,coordinate,game.memory.active])
 
 func walk(point: Vector2) -> void:
 	if DisplayServer.get_name()=="headless":
@@ -79,7 +111,23 @@ func hold_until(code: int, field: String, target: float) -> void:
 	inject(code,false);await get_tree().process_frame
 	verify(float(game.challenge.session.state[field])>=target,"held key advances "+field)
 
+func mouse_button(point: Vector2, down: bool) -> void:
+	var event:=InputEventMouseButton.new();event.button_index=MOUSE_BUTTON_LEFT;event.pressed=down;event.position=point;event.global_position=point
+	Input.parse_input_event(event);Input.flush_buffered_events()
+	events.append({"mouse":"left","pressed":down,"position":[point.x,point.y],"phase":phase()})
+	await get_tree().process_frame
+
+func mouse_mix() -> void:
+	var previous:=Vector2(740,355);await mouse_button(previous,true)
+	for i in range(1,25):
+		var point:=Vector2(640,355)+Vector2(cos(i*TAU/24)*100,sin(i*TAU/24)*70)
+		var event:=InputEventMouseMotion.new();event.position=point;event.global_position=point;event.relative=point-previous;event.button_mask=MOUSE_BUTTON_MASK_LEFT
+		Input.parse_input_event(event);Input.flush_buffered_events();previous=point;await get_tree().process_frame
+	await mouse_button(previous,false)
+	verify(game.challenge.session.state.mix>.2,"actual mouse circle moves whisk and mixes")
+
 func run() -> void:
+	imperfect=OS.get_cmdline_user_args().has("--baking-imperfect")
 	capture=DisplayServer.get_name()!="headless" and directory!=""
 	if capture:
 		DirAccess.make_dir_recursive_absolute(directory)
@@ -95,6 +143,15 @@ func run() -> void:
 		await tap(KEY_1 if game._dialogue_open() and game.lines[game.line_index].has("choices") else KEY_E)
 	verify(phase()=="intro","real memory input opens prep quiz")
 	await tap(KEY_ENTER)
+	if DisplayServer.get_name()!="headless":
+		var helper_frames: Array=[];var helper_rows: Array=[]
+		for i in range(12):
+			await get_tree().create_timer(.18).timeout;await shot("quiz_helper_%02d"%i)
+			var actor: Node2D=game.memory.actors.guillermo
+			helper_frames.append(actor.column);helper_rows.append(actor.row)
+			verify(game.memory.can_stand(game.memory.companion_position),"quiz helper stays outside cabinetry")
+		verify(helper_frames.has(1) and helper_frames.has(2) and helper_frames.has(3),"quiz helper actually animates its walking frames")
+		verify(helper_rows.has(1) and helper_rows.has(2),"quiz helper turns once at route endpoint")
 	for i in range(3):await tap(KEY_1)
 	verify(phase()=="gather" and game.memory.active and game.modal==null,"real quiz events release kitchen controls")
 	await station("counter","00_counter_missing")
@@ -110,23 +167,38 @@ func run() -> void:
 	if DisplayServer.get_name()=="headless":
 		print("BAKING_INPUT_QA: %d checks; %d failures; quiz-to-gather through Input.parse_input_event"%[checks,failures]);finished.emit(checks,failures);return
 	while phase()=="measure":
-		await hold_until(KEY_SPACE,"fill",1.0);await tap(KEY_ENTER)
+		if int(game.challenge.session.state.index)==0:
+			await mouse_button(Vector2(310,310),true)
+			var deadline: int=Time.get_ticks_msec()+4000
+			while game.challenge.session.state.fill<.25 and Time.get_ticks_msec()<deadline:await get_tree().process_frame
+			await mouse_button(Vector2(310,310),false)
+			verify(game.challenge.session.state.fill>=.25,"actual mouse hold pours flour")
+		await hold_until(KEY_SPACE,"fill",.5 if imperfect else 1.0);await tap(KEY_ENTER)
 	for expected in ["dry","cream"]:
-		verify(phase()==expected,"mix phase "+expected);await hold_until(KEY_SPACE,"mix",1.0);await tap(KEY_ENTER)
-	for egg in range(2):await tap(KEY_G);await tap(KEY_T);await tap(KEY_T);await tap(KEY_ENTER)
-	verify(phase()=="combine" and game.challenge.session.state.shells==0,"real egg controls incorporate two eggs")
+		verify(phase()==expected,"mix phase "+expected)
+		if expected=="dry":await mouse_mix()
+		await hold_until(KEY_SPACE,"mix",.3 if imperfect else 1.0);await tap(KEY_ENTER)
+	for egg in range(2):
+		await tap(KEY_G);await tap(KEY_T)
+		if not imperfect:await tap(KEY_T)
+		await tap(KEY_ENTER)
+	verify(phase()=="combine" and game.challenge.session.state.shells==(2 if imperfect else 0),"real egg controls incorporate two eggs, with appropriate shells")
 	for expected in ["combine","oats"]:
 		for i in range(3):await tap(KEY_A)
-		await hold_until(KEY_SPACE,"mix",1.0);await tap(KEY_ENTER)
+		await hold_until(KEY_SPACE,"mix",.3 if imperfect else 1.0);await tap(KEY_ENTER)
 	verify(phase()=="chill" and game.memory.active,"dough returns to walkable kitchen")
 	await station("oven","05_oven_too_soon")
 	verify(game.memory.living.note.text.contains("frigorífico"),"wrong station explains chilling requirement")
 	await station("fridge","06_chill");await tap(KEY_ENTER)
 	verify(phase()=="preheat","fridge E and Enter chill dough")
-	await station("oven","07_preheat");await tap(KEY_2);await tap(KEY_ENTER)
+	await station("oven","07_preheat");await tap(KEY_1 if imperfect else KEY_2);await tap(KEY_ENTER)
 	verify(phase()=="tray","oven E and Enter preheat")
-	await station("counter","08_tray");await tap(KEY_S)
-	for i in range(7):await tap(KEY_ENTER)
+	await station("counter","08_tray")
+	if not imperfect:await tap(KEY_S)
+	await mouse_button(Vector2(469,296),true);await mouse_button(Vector2(469,296),false)
+	while game.challenge.transition_pending:await get_tree().process_frame
+	verify(game.challenge.session.state.portions.size()==1,"actual mouse places a portion")
+	for i in range(6):await tap(KEY_ENTER)
 	verify(phase()=="flatten","real tray controls form portions")
 	for i in range(6):await tap(KEY_D);await tap(KEY_ENTER)
 	verify(phase()=="oven" and game.memory.active,"fork controls finish tray")
@@ -140,18 +212,20 @@ func run() -> void:
 	await station("oven")
 	while game.challenge.session.state.minutes<4:await get_tree().process_frame
 	await tap(KEY_S)
-	while game.challenge.session.state.minutes<8.5:await get_tree().process_frame
+	while game.challenge.session.state.minutes<(12 if imperfect else 8.5):await get_tree().process_frame
 	await shot("10_perfect_window");await tap(KEY_ENTER)
 	verify(phase()=="cool" and game.challenge.session.state.swapped,"physical oven controls remove timed batch")
 	await station("rack","11_cooling")
 	while game.challenge.session.state.cool<5:await get_tree().process_frame
 	await tap(KEY_ENTER);await station("rack");await tap(KEY_ENTER)
-	verify(phase()=="result" and game.challenge.session.state.passed and game.challenge.session.state.score>=95,"full input bake reaches good result")
+	var result_score: int=game.challenge.session.state.score
+	verify(phase()=="result" and game.challenge.session.state.passed and (result_score<60 if imperfect else result_score>=95),"full input bake reaches forgiving imperfect result" if imperfect else "full input bake reaches good result")
 	await shot("12_result");await tap(KEY_ENTER)
 	guard=0
 	while game._dialogue_open() and guard<70:guard+=1;await tap(KEY_E)
 	verify(game.scene_completed and game.keepsakes.has(game._chapter().keepsake),"real input completes cookie chapter")
+	await shot("13_cookie_memory_complete")
 	if capture:
-		var file:=FileAccess.open(directory.path_join("INPUT_TRACE.json"),FileAccess.WRITE);file.store_string(JSON.stringify({"checks":checks,"failures":failures,"input_events":events},"  "));file.close()
+		var file:=FileAccess.open(directory.path_join("INPUT_TRACE.json"),FileAccess.WRITE);file.store_string(JSON.stringify({"checks":checks,"failures":failures,"score":result_score,"imperfect":imperfect,"input_events":events},"  "));file.close()
 	print("BAKING_INPUT_QA: %d checks; %d failures; complete workflow through Input.parse_input_event"%[checks,failures])
 	finished.emit(checks,failures)

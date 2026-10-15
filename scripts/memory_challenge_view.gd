@@ -7,6 +7,7 @@ const Session = preload("res://scripts/memory_challenge_session.gd")
 var session: RefCounted
 var game: Node
 var category := 0
+var menu_page := 0
 var buttons: Array[Button] = []
 var body: VBoxContainer
 var panel: PanelContainer
@@ -108,14 +109,19 @@ func _order() -> void:
 		for dish in session.data.dishes:
 			if dish.id==selected:name+="\n"+dish.name
 		button(tabs,("● " if category==i else "")+name,func():category=i;redraw(),55)
-	buttons.clear() # Number keys choose food; category keys are Q/W/R.
+	var pages:=HBoxContainer.new();body.add_child(pages)
+	button(pages,"← Página",func():menu_page=posmod(menu_page-1,2);redraw(),32)
+	label(pages,"Carta inspirada · %d / 2"%(menu_page+1),18,accent)
+	button(pages,"Página →",func():menu_page=posmod(menu_page+1,2);redraw(),32)
+	buttons.clear() # Number keys choose visible dishes; Q/W/R choose diner.
 	var grid:=GridContainer.new();grid.columns=3;grid.add_theme_constant_override("h_separation",10);grid.add_theme_constant_override("v_separation",8);body.add_child(grid)
-	for dish in session.data.dishes:
+	for dish in session.data.dishes.slice(menu_page*6,menu_page*6+6):
 		var tile:=VBoxContainer.new();tile.size_flags_horizontal=Control.SIZE_EXPAND_FILL;tile.custom_minimum_size.x=305;grid.add_child(tile)
 		image(tile,dish.art,Vector2(90,55))
+		label(tile,dish.get("section","")+" · "+dish.description,14,accent)
 		button(tile,("✓ " if session.state.order[category]==dish.id else "")+dish.name,func():act("dish",[category,dish.id]);category=mini(category+1,2);redraw(),48)
 	var submit:=button(body,"Enviar pedido completo · Enter",func():act("submit"));submit.disabled=session.state.order.has("")
-	label(body,"Q/W/R: categoría · 1–6: plato · Enter: enviar · todos se revisan juntos",15,accent)
+	label(body,"Q/W/R: categoría · 1–6: plato · ←/→ página · Enter: enviar · todos se revisan juntos",15,accent)
 
 func _cookies() -> void:
 	var s: Dictionary=session.state
@@ -173,6 +179,7 @@ func key(code: int) -> void:
 	if session.kind=="cookies" and session.state.phase=="pantry" and code==KEY_ENTER:act("gather");return
 	if session.kind=="order" and session.state.phase=="play":
 		if code in [KEY_Q,KEY_W,KEY_R]:category=[KEY_Q,KEY_W,KEY_R].find(code);redraw();return
+		if code in [KEY_LEFT,KEY_RIGHT]:menu_page=posmod(menu_page+(1 if code==KEY_RIGHT else -1),2);redraw();return
 		if code==KEY_ENTER:act("submit");return
 	if code>=KEY_1 and code<=KEY_9:
 		var index:=int(code-KEY_1)

@@ -1,3 +1,9 @@
+# Director’s Cut — Milestone 2 polish, in progress — 14 October 2026
+
+Working exclusively on `feature/directors-cut-m2-polish`, created from clean, updated main `fe935b3`. Existing kitchen E routing, gameplay, saves, private references and previous builds preserved. Inspected all eight cookie references, dining hall, auditorium, lobby, Moncayo, presidency and character/pose references locally. No private reference uploaded to image generation.
+
+Implemented a first countertop choreography pass (distinct ingredients, textured separate bowls, egg halves/yolk, scoop movement, fork contact, gradual baking), a stable left-facing fountain action, generated original supporting cast/portrait crops, serving-line semantic stages, ceremony seat gate and expanded paged Ikura choices. These are work in progress: native visual review and regression fixes are underway. Do not treat this branch as release-ready yet. Source and export evidence, full suite results and final build details will be added after validation.
+
 # Cookie input progression fix — 14 October 2026
 
 Fixed the cookie quiz-to-kitchen progression blocker on the existing `feature/directors-cut-milestone-2` branch. The retained challenge controller intercepted physical E before world interaction. Input ownership now distinguishes walking from close-ups; pantry/fridge/sink E collects ingredients/tools, counter requirements explain missing items, and all later phases are validated through actual key events. Read `COOKIE_INPUT_FIX.md` first. Fourteen suites pass, and actual source/Windows full baking runs complete via Input.parse_input_event. Corrected build/ZIP is under `builds/directors-cut-milestone-2-input-fix/`, with evidence in `docs/milestone2/input_fix/`. Original M2 build is preserved. No art/cinematic expansion; no merge into main. Earlier M2 method-driven captures do not prove keyboard routing.

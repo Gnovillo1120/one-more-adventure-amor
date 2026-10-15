@@ -140,4 +140,6 @@ func evaluate_cookie() -> int:
 func quality() -> String:
 	if state.minutes>10:return "Muy tostadas"
 	if state.minutes<8:return "Blanditas"
-	return "Dorado perfecto" if state.score>=90 else "Hechas juntos"
+	if state.score>=90:return "Dorado perfecto"
+	if state.score>=75:return "Caseras y ricas"
+	return "Desiguales, hechas juntos" if state.score>=50 else "Nuestra tanda experimental"

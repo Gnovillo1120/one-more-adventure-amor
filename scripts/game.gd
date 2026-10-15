@@ -106,6 +106,11 @@ func _ready() -> void:
 		for argument in OS.get_cmdline_user_args():
 			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
 		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
+	if OS.get_cmdline_user_args().has("--validate-polish-input") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/polish_input_runner.gd").new();runner.game=self
+		for argument in OS.get_cmdline_user_args():
+			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
+		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -138,10 +143,11 @@ func _input(event: InputEvent) -> void:
 		var code: int=event.physical_keycode
 		if challenge is BakingView and code!=KEY_ESCAPE:
 			challenge.key(code);get_viewport().set_input_as_handled();return
-		if code in [KEY_ENTER,KEY_SPACE] or (code>=KEY_1 and code<=KEY_9) or (challenge.session.kind=="order" and code in [KEY_Q,KEY_W,KEY_R]):
+		if code in [KEY_ENTER,KEY_SPACE] or (code>=KEY_1 and code<=KEY_9) or (challenge.session.kind=="order" and code in [KEY_Q,KEY_W,KEY_R,KEY_LEFT,KEY_RIGHT]):
 			challenge.key(code);get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(memory) and is_instance_valid(memory.staging) and memory.staging.handle(event):get_viewport().set_input_as_handled();return
 	if is_instance_valid(cinema) and cinema.handle(event):get_viewport().set_input_as_handled();return
 	if is_instance_valid(director) and director.handle_input(event):get_viewport().set_input_as_handled();return
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -327,6 +333,8 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	memory.living.outfit_finished.connect(func():_finish_task())
 	if position_data.size()==2:memory.player_position=memory.safe_position(Vector2(position_data[0],position_data[1]))
 	memory.restore_pose()
+	if s.id in ["lunch","award"]:
+		memory.staging=preload("res://scripts/memory_staging.gd").new();memory.staging.world=memory;memory.add_child(memory.staging)
 	if s.id=="date" and local.get("cinematics",[]).has("date"):memory.deliver_food()
 	memory.interacted.connect(_scene_interaction)
 	memory.target_interacted.connect(_target_interaction)
@@ -375,6 +383,8 @@ func _set_objective(text: String) -> void:
 
 func _scene_interaction() -> void:
 	if _dialogue_open() or minigame_kind != "": return
+	if is_instance_valid(memory.staging) and not memory.staging.target().is_empty():
+		memory.living.announce("Primero: "+str(memory.staging.target().label));return
 	_sfx("interact")
 	var s := _scene()
 	if s.id=="foot" and not memory.living.state.encounter:
@@ -403,6 +413,8 @@ func _scene_dialogue() -> void:
 
 func _refresh_objective() -> void:
 	if not is_instance_valid(memory):return
+	if is_instance_valid(memory.staging) and memory.scene_id=="award" and memory.staging.state.ceremony=="announcing":
+		_set_objective("Presidencia · Mejor Delegado · E / Espacio para saltar");return
 	if memory.scene_id=="invitation" and memory.living.state.outfit_phase in ["active","failed"]:
 		_set_objective("Vestido · bandana roja · zapatillas blancas · E" if memory.living.state.outfit_phase=="active" else "Se hizo tarde · vuelve al espejo para reintentar · E");return
 	_set_objective("Recuerdo completo · Salida iluminada · E. También puedes seguir explorando." if memory.completed else str(memory.mandatory_target().label)+" · E")
@@ -420,6 +432,8 @@ func _target_interaction(id: String) -> void:
 		if not is_paused:challenge.show_station(id.trim_prefix("baking:"))
 		return
 	if _dialogue_open() or minigame_kind!="" or is_paused:return
+	if id.begins_with("staging:") and is_instance_valid(memory.staging):
+		memory.staging.interact(id);return
 	if id.begins_with("living:"):
 		memory.living.perform(id);return
 	if id=="seat" and not memory.seated:
@@ -492,8 +506,7 @@ func _show_line() -> void:
 	elif person!="":
 		var atlas := AtlasTexture.new();atlas.atlas=load("res://assets/art/sprites/%s_%s.png" % [person,"halloween" if chapter_index==2 else "formal" if chapter_index==0 else "casual"]);atlas.region=Rect2(0,0,32,48);portrait.texture=atlas
 	else:
-		var npc:=int(entry.get("npc_sprite",-1))
-		portrait.texture=load("res://assets/art/overhaul/npc_%d.png" % npc) if npc>=0 and ResourceLoader.exists("res://assets/art/overhaul/npc_%d.png" % npc) else null
+		portrait.texture=preload("res://scripts/supporting_cast.gd").portrait(speaker_label.text)
 	if is_instance_valid(memory) and is_instance_valid(memory.phone_ui) and memory.phone_ui.visible:_sfx("notify")
 	advance_button.visible=not entry.has("choices")
 	if entry.has("choices"):

@@ -208,7 +208,9 @@ func _run() -> void:
 			walk_to(Vector2(target.position[0],target.position[1]))
 			game.memory.interact()
 			if id=="foot":await create_timer(1.4).timeout
-			verify(game._dialogue_open(), "%s hotspot starts dialogue" % id)
+			if target.id.begins_with("staging:"):
+				verify(not game._dialogue_open(),"physical serving / seating precedes relationship dialogue")
+			else:verify(game._dialogue_open(), "%s hotspot starts dialogue" % id)
 			drain_dialogue()
 			if game.minigame_kind!="":break
 		minigame()

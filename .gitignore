@@ -35,3 +35,6 @@ Thumbs.db
 /docs/milestone2/*_log.txt
 /docs/milestone2/*_stdout.txt
 /docs/milestone2/*_stderr.txt
+/docs/m2-polish/**/*.import
+/docs/m2-polish/qa/*.log
+/docs/m2-polish/**/motion_*.png
