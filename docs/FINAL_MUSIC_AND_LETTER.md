@@ -61,3 +61,5 @@ python tools/prepare_local_soundtrack.py
 # Music-free EXE: add --expect-no-music.
 python tools/package_final_music_letter.py
 ```
+
+Implementation commit `de56354` is pushed. No merge. PR creation awaits browser sign-in after connector 403; [prepared PR text and comparison](PR_FINAL_MUSIC_LETTER.md).
