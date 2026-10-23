@@ -105,7 +105,7 @@ func run() -> void:
 		if child is Button:chapter_buttons.append(child)
 	chapter_buttons[1].pressed.emit();verify(game.chapter_index==1 and game.memory.active,"chapter select returns to gameplay")
 	game._toggle_pause();game._toggle_pause();verify(game.memory.active,"pause returns to gameplay")
-	verify(not game.audio_director.track_available,"unavailable orchestral music honestly silent")
+	verify(game.audio_director.theme==game._scene_music(),"chapter selection and pause preserve the correct music mapping")
 	game.test_mode=true
 	for path in saved:verify((FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else null)==saved[path],"real save unchanged")
 	for path in [SLOT,SLOT+".tmp",SLOT+".bak","user://qa_chapter_settings.cfg"]:DirAccess.remove_absolute(path)

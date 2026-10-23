@@ -12,6 +12,7 @@ var inspected := ""
 var art_view: TextureRect
 var art_clock := 0.0
 var book_visible := false
+var book_music := ""
 
 func _ready() -> void:
 	data=JSON.parse_string(FileAccess.get_file_as_string("res://data/directors_cut.json"))
@@ -45,7 +46,7 @@ func restore(saved: Dictionary, legacy: Dictionary) -> void:
 	if legacy.get("stage","")=="credits" and not recovered(5):state.recovered.append(5)
 
 func clear_room() -> void:
-	book_visible=false;art_view=null;inspected=""
+	book_visible=false;book_music="";art_view=null;inspected=""
 	if is_instance_valid(room):game.remove_child(room);room.queue_free()
 	room=null
 
@@ -108,7 +109,7 @@ func show_room() -> void:
 	game._button(game.ui,"Continuar la aventura",Rect2(30,660,335,45),enter_next)
 	game._button(game.ui,"Abrir el libro",Rect2(380,660,235,45),scrapbook)
 	game._button(game.ui,"Pausa · Esc",Rect2(1025,660,225,45),game._toggle_pause)
-	game._play_music("intimate");game.save_game()
+	game._play_music("memories_hub");game.save_game()
 
 func enter_next() -> void:
 	if is_instance_valid(cinema):return
@@ -132,6 +133,7 @@ func remove_modal() -> void:
 
 func close_book() -> void:
 	remove_modal()
+	if book_music!="":game._play_music(book_music);book_music=""
 	if game.is_paused:game._return_pause()
 
 func frame_art(parent: Node, path: String, rect: Rect2) -> TextureRect:
@@ -145,9 +147,14 @@ func decorate_book(panel: Control, fold_x: float=275) -> void:
 		if child is Label:child.add_theme_color_override("font_color",Color("594435") if child.get_theme_font_size("font_size")>=27 else Color("273845"))
 	var fold:=ColorRect.new();fold.color=Color("c5ab82");fold.position=Vector2(fold_x,85);fold.size=Vector2(2,395);fold.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(fold)
 
+func _book_music() -> void:
+	if book_music=="":book_music=game.current_theme
+	game._play_music("memories_hub")
+
 func scrapbook() -> void:inspect_keepsake(0)
 
 func inspect_keepsake(index: int) -> void:
+	_book_music()
 	remove_modal();book_visible=true;var entry: Dictionary=data.keepsakes[index];inspected=entry.id;art_clock=0
 	if not state.seen.has(entry.id):state.seen.append(entry.id)
 	game.modal=game._panel(game.ui,Rect2(90,65,1100,570),.98)
@@ -186,6 +193,7 @@ func open_box() -> void:
 	game.save_game()
 
 func inspect_page(index: int) -> void:
+	_book_music()
 	remove_modal();book_visible=true;var page: Dictionary=data.pages[index]
 	game.modal=game._panel(game.ui,Rect2(90,65,1100,570),.98);var panel: Control=game.modal
 	game._label(panel,"Seis páginas de nuestra aventura",Rect2(30,20,1040,45),30,game.GOLD)

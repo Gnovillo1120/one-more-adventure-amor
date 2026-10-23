@@ -12,6 +12,8 @@ var track_root := "res://assets/audio/instrumental"
 var external_root := ""
 var user_root := "user://music"
 var loaded_path := ""
+var local_root := "res://music"
+var loop_config: Dictionary = {}
 
 func _ready() -> void:
 	manifest=JSON.parse_string(FileAccess.get_file_as_string("res://data/audio_tracks.json"))
@@ -20,11 +22,18 @@ func _ready() -> void:
 		var player:=AudioStreamPlayer.new();add_child(player);players.append(player)
 
 func _process(_delta: float) -> void:
+	# Reuse the same two players to blend the loop seam, including silent tails.
+	if selected>=0 and players[selected].playing and (not fade or not fade.is_running()):
+		var audio: AudioStream=players[selected].stream
+		var end: float=minf(audio.get_length(),float(loop_config.get("loop_end",audio.get_length())))
+		var seconds: float=clampf(float(loop_config.get("loop_crossfade",.8)),.05,2)
+		if end-float(loop_config.get("loop_start",0))>4 and players[selected].get_playback_position()>=end-seconds:
+			_crossfade(audio,seconds,maxf(0,float(loop_config.get("loop_start",0))))
 	for i in range(2):players[i].volume_db=linear_to_db(maxf(volume*gains[i],.00001))
 
 func _stream(name: String) -> AudioStream:
 	loaded_path=""
-	for folder in [external_root,user_root,track_root]:
+	for folder in [external_root,user_root,local_root,track_root]:
 		if folder=="":continue
 		var config: Dictionary=manifest.get("tracks",{}).get(name,{}).duplicate()
 		var loop_file: String=folder+"/tracks.json"
@@ -36,8 +45,8 @@ func _stream(name: String) -> AudioStream:
 		for extension in ["ogg","wav"]:
 			var path: String="%s/%s.%s" % [folder,name,extension]
 			var audio: AudioStream
-			if ResourceLoader.exists(path):audio=load(path)
-			elif FileAccess.file_exists(path):audio=AudioStreamOggVorbis.load_from_file(path) if extension=="ogg" else AudioStreamWAV.load_from_file(path)
+			if FileAccess.file_exists(path):audio=AudioStreamOggVorbis.load_from_file(path) if extension=="ogg" else AudioStreamWAV.load_from_file(path)
+			elif ResourceLoader.exists(path):audio=load(path)
 			else:continue
 			if audio==null:continue
 			if audio is AudioStreamOggVorbis:audio.loop=true;audio.loop_offset=maxf(0,float(config.get("loop_start",0)))
@@ -47,6 +56,7 @@ func _stream(name: String) -> AudioStream:
 				var frames: int=audio.data.size()/divisor
 				audio.loop_begin=clampi(int(float(config.get("loop_start",0))*audio.mix_rate),0,maxi(0,frames-1))
 				audio.loop_end=clampi(int(float(config.loop_end)*audio.mix_rate),audio.loop_begin+1,frames) if config.get("loop_end",0)>0 else frames
+			loop_config=config
 			loaded_path=path
 			return audio
 	return null
@@ -55,7 +65,7 @@ func reload_tracks() -> void:
 	var previous:=theme;theme="";play(previous)
 
 func status_text() -> String:
-	return "Música instrumental: "+theme if track_available else "Música pendiente · añade archivos a music junto al juego."
+	return "Música: "+theme if track_available else "Música pendiente · añade archivos a music junto al juego."
 
 func play(name: String, seconds: float = 1.25) -> void:
 	if theme==name:return
@@ -63,10 +73,14 @@ func play(name: String, seconds: float = 1.25) -> void:
 	if fade and fade.is_valid():fade.kill()
 	var audio:=_stream(name)
 	track_available=audio!=null
+	_crossfade(audio,seconds,maxf(0,float(loop_config.get("loop_start",0))))
+
+func _crossfade(audio: AudioStream, seconds: float, from: float=0.0) -> void:
+	if fade and fade.is_valid():fade.kill()
 	var previous:=selected
 	selected=1 if selected==0 else 0
 	players[selected].stop();players[selected].stream=audio;gains[selected]=0
-	if audio:players[selected].play()
+	if audio:players[selected].play(from)
 	var target:=selected
 	var starts:=gains.duplicate()
 	fade=create_tween()

@@ -59,7 +59,7 @@ func run() -> void:
 	game.test_mode=true;game.chapter_index=0;game.scene_index=0;game._start_fresh();game.test_mode=false;game.save_game();game.show_menu();game.load_game();verify(game.stage=="hub" and not is_instance_valid(d.cinema),"interrupted opening save recovers without cutscene lock")
 	game.test_mode=true;game.reduced_motion=true;game._start_fresh();verify(d.room.player_position==Vector2(665,510),"reduced motion uses stable introductory composition")
 	d.skip_cinematic();d.state.hub_position=[1,1];d.show_room();verify(d.room.legal(d.room.player_position),"invalid saved room position repaired safely")
-	verify(game.story.personal_letter.is_placeholder,"real personal letter never invented")
+	verify(not game.story.personal_letter.is_placeholder,"real personal letter supplied by Guillermo")
 	d.restore({"hub_position":["bad"],"bookmark":{"unexpected":1},"notes":{"cookies":false},"recovered":[99,"bad",0]},{});verify(d.state.bookmark.is_empty() and d.state.notes.is_empty() and d.state.hub_position==[665,550] and d.state.recovered==[0],"malformed optional book data recovers without losing legacy route")
 	for path in [SLOT,SLOT+".bak",SLOT+".tmp"]:DirAccess.remove_absolute(path)
 	print("DIRECTORS_CUT_QA: %d checks; %d failures" % [checks,failures.size()]);game.queue_free();await process_frame;await process_frame;quit(0 if failures.is_empty() else 1)
