@@ -1,0 +1,111 @@
+{
+  "branch": "feature/final-music-and-letter",
+  "base_main": "80a5dc6",
+  "letter": {
+    "sha256_utf8": "b77187c3afb2bb006d4ffe1b20f010a7d1e852fd0fdcbe7c715dd4ed313447fc",
+    "characters": 1333,
+    "source": "Exact text supplied by Guillermo; no wording edits."
+  },
+  "native_runs": {
+    "source": {
+      "checks": 184,
+      "failures": 0,
+      "tracks": 11,
+      "without_recordings": false
+    },
+    "windows": {
+      "checks": 184,
+      "failures": 0,
+      "tracks": 11,
+      "without_recordings": false
+    },
+    "windows-without-music": {
+      "checks": 155,
+      "failures": 0,
+      "tracks": 11,
+      "without_recordings": true
+    }
+  },
+  "headless_suites": {
+    "animation_polish_test": {
+      "checks": 222,
+      "failures": 0
+    },
+    "audio_pipeline_test": {
+      "checks": 12,
+      "failures": 0
+    },
+    "baking_input_test": {
+      "checks": 17,
+      "failures": 0
+    },
+    "chapter_overhaul_test": {
+      "checks": 170,
+      "failures": 0
+    },
+    "directors_cut_test": {
+      "checks": 69,
+      "failures": 0
+    },
+    "living_memories_test": {
+      "checks": 89,
+      "failures": 0
+    },
+    "m2_polish_test": {
+      "checks": 46,
+      "failures": 0
+    },
+    "memory_minigames_test": {
+      "checks": 2198,
+      "failures": 0
+    },
+    "milestone2_test": {
+      "checks": 53,
+      "failures": 0
+    },
+    "navigation_test": {
+      "checks": 220,
+      "failures": 0
+    },
+    "persistence_test": {
+      "checks": 194,
+      "failures": 0
+    },
+    "playtest_fixes_test": {
+      "checks": 98,
+      "failures": 0
+    },
+    "redesign_test": {
+      "checks": 63,
+      "failures": 0
+    },
+    "story_test": {
+      "checks": 486,
+      "failures": 0
+    },
+    "target_visibility_test": {
+      "checks": 245,
+      "failures": 0
+    }
+  },
+  "headless_checks": 4182,
+  "recordings_in_public_git_or_pck": false,
+  "files": {
+    "builds\\final-music-letter\\One More Adventure Amor.exe": {
+      "bytes": 109268480,
+      "sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562"
+    },
+    "builds\\final-music-letter\\One More Adventure Amor.pck": {
+      "bytes": 5295296,
+      "sha256": "b2d427270f633284b2c68f4ca7ab15dc3c5ead4f2be47c07c7d2ded78dac0ec9"
+    },
+    "builds\\One More Adventure Amor Final Music and Letter.zip": {
+      "bytes": 43103505,
+      "sha256": "332bced9a16e5fa8b1a24b5634437de3066f7fd33cee4c92bed9ab043db99fcc"
+    },
+    "builds\\LOCAL ONLY - One More Adventure Amor Soundtrack Overlay.zip": {
+      "bytes": 74767236,
+      "sha256": "a14067b0c7bc4a59d29afac6ac66249cd1fc9c6a6c546a049dc6950c76467fa5"
+    }
+  }
+}

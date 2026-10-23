@@ -65,7 +65,7 @@ func run() -> void:
 	world.player_position=Vector2(790,480);verify(world.prompt()=="E · Leer carta","letter uses unobtrusive HUD label")
 	verify(not Rect2(335,600,610,45).intersects(Rect2(world.companion_position-Vector2(32,96),Vector2(64,96))),"card HUD avoids Guillermo")
 	world.interact();verify(game._dialogue_open() and world.prompt()=="","letter interaction works and prompt hides during dialogue")
-	verify(game.story.personal_letter.is_placeholder,"personal letter remains user-editable placeholder")
+	verify(not game.story.personal_letter.is_placeholder,"personal letter uses the supplied original text")
 	scene(0,2);game.memory.player_position=Vector2(1020,570);game.memory.interact();game.memory.living.tick(.8);game.start_scene();await process_frame
 	verify(root.canvas_transform==Transform2D.IDENTITY and not game.memory.living.busy,"restart during focus frees camera and unlocks controls")
 	verify(not game.memory.living.state.photo,"restart before shutter cannot unlock an untaken photograph")

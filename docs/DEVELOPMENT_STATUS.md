@@ -1,3 +1,13 @@
+# Final music and letter integration — 23 October 2026
+
+Completed on `feature/final-music-and-letter` from latest main `80a5dc6`. All eleven supplied recordings are mapped through the existing AudioDirector. Runtime names are normalized; original recordings are archived locally, OGG bytes are unchanged, and UESS FLAC was actually converted losslessly to 48 kHz stereo 16-bit WAV with matching decoded PCM hashes. Scene/loop crossfades, pause-book music restoration, volume/mute, reload and sound effects work. Recordings remain ignored and excluded from the PCK/public Git; redistribution rights/artist metadata were not supplied. A separate local-only overlay provides playback beside the EXE.
+
+The sunset letter now contains Guillermo’s exact supplied 1,333-character text, checksum-verified without spelling, punctuation or wording changes. Its parchment card scrolls with mouse/keyboard, has no timer, restores from saves/legacy placeholders, plays ending music and reopens from credits. Existing beach/credits, replay, saves and all gameplay remain; no Minecraft/gameplay/art overhaul in this pass.
+
+All fifteen regression suites pass **4,182 checks**. Native integration passes **184 source**, **184 Windows with soundtrack**, and **155 Windows without recordings** checks. Every supplied recording produced nonzero mixer output; actual key/mouse events verify letter opening/scrolling, volume and replay. Full seventeen-scene route passes. Letter captures and package hashes are under `docs/final-music-letter/`; details and all filenames/mappings: `docs/FINAL_MUSIC_AND_LETTER.md`.
+
+Ready-to-play local EXE: `builds/final-music-letter-local/One More Adventure Amor.exe`. Distributable ZIP: `builds/One More Adventure Amor Final Music and Letter.zip`. Private overlay: `builds/LOCAL ONLY - One More Adventure Amor Soundtrack Overlay.zip`. Prior builds/reference photographs are preserved. No merge into main. Implementation `de56354` is committed and pushed. PR creation awaits GitHub browser sign-in: connector 403; stored-token fallback rejected by automatic approval review without execution. Prepared PR text and comparison: `docs/PR_FINAL_MUSIC_LETTER.md`.
+
 # Director’s Cut — Milestone 2 polish, in progress — 14 October 2026
 
 Working exclusively on `feature/directors-cut-m2-polish`, created from clean, updated main `fe935b3`. Existing kitchen E routing, gameplay, saves, private references and previous builds preserved. Inspected all eight cookie references, dining hall, auditorium, lobby, Moncayo, presidency and character/pose references locally. No private reference uploaded to image generation.

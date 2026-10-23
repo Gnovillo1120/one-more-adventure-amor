@@ -143,10 +143,10 @@ func _run() -> void:
 		for scene in chapter.scenes:
 			for entry in scene.lines + scene.after:
 				line_count += 1
-				check_text(entry.text, scene.id)
+				if not entry.get("personal_letter",false):check_text(entry.text, scene.id)
 				if entry.has("choices"):
 					for choice in entry.choices: check_text(choice, scene.id + " choice", 17, 850, 31)
-	for paragraph in game.story.personal_letter.paragraphs: check_text(paragraph, "personal letter")
+	verify(not game.story.personal_letter.is_placeholder and game.story.personal_letter.paragraphs.size()==1,"supplied letter uses the scrollable card; verified separately")
 	var expected_lines:=0
 	for chapter in game.story.chapters:
 		for scene in chapter.scenes:expected_lines+=scene.lines.size()+scene.after.size()

@@ -1,14 +1,10 @@
 {
   "dialogue_note": "Diálogos dramatizados a partir de recuerdos; no son transcripciones históricas.",
   "personal_letter": {
-    "is_placeholder": true,
-    "title": "CARTA PERSONAL — BORRADOR EDITABLE",
+    "is_placeholder": false,
+    "title": "Para Anami",
     "paragraphs": [
-      "[Guillermo: escribe aquí tu carta para Anami. Este espacio es un marcador editable, no una transcripción de tus palabras.]",
-      "[Puedes contar qué sentiste cuando se conocieron, qué recuerdos te hacen sonreír y qué nuevas aventuras esperas compartir.]",
-      "Te amo, amor.",
-      "Felices 3 años. ❤️",
-      "21 de octubre de 2023 — 21 de octubre de 2026"
+      "Hola amor de mi alma! Gracias por jugar este juego y feliz 3 años. I know its not the most polished game in the world and its actually my first game I Ever made. However, I hope you were able to enjoy it. I cant believe that we have reached the 3 year mark in our relationship. Looking back on it, there is nothing I would change about the way our relationship has evolved. Whether it be our evolution in gaming, starting from board games like monopoly all the way to videogames like Roblox and minecart, or the unique activities we share together such as making cookies together, sacando a Emma o honey, o Nuestros charcuterie board dates. Todo ha sido tan especial para mi que vivirlo los últimos 3 anos me ha llenado con una sensación de fullness and satisfaction with life. When I was single, there defenitly was a sence of FOMO or moments of sadness that would hit when you reflect on being alone, seeing your friends get girlfriends, and feeling as if you are getting left behind in life. Desde que tu haz entrado en mi vida, i have not had a single episode of sadness once where I felt envious of other people, felt as if I were alone, nothing. And a lot of this is thanks to you. I love you with all my heart and all my soul, you have been and will continue to be an amazing presence in my life. Te amo mi amor! Feliz 3 años."
     ]
   },
   "chapters": [
@@ -2652,44 +2648,10 @@
           "interact_label": "Leer la carta",
           "lines": [
             {
-              "speaker": "Narrador",
-              "text": "CARTA PERSONAL — MARCADOR EDITABLE. El texto final de Guillermo todavía no ha sido escrito.",
-              "mood": "neutral"
-            },
-            {
               "speaker": "Guillermo",
-              "text": "[Escribe aquí tu carta para Anami en data/story.json, sección personal_letter. Estas líneas son un espacio reservado, no palabras privadas atribuidas a Guillermo.]",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "[Puedes recordar lo inesperado de conocerse, las risas, las aventuras compartidas y lo que esperas vivir a su lado.]",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Te amo, amor.",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Guillermo",
-              "text": "Felices 3 años. ❤️",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Narrador",
-              "text": "21 de octubre de 2023 — 21 de octubre de 2026",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Anami",
-              "text": "Una aventura más, amor.",
-              "mood": "affectionate"
-            },
-            {
-              "speaker": "Narrador",
-              "text": "Gracias por jugar. Esta historia continúa fuera de la pantalla.",
-              "mood": "affectionate"
+              "text": "Hola amor de mi alma! Gracias por jugar este juego y feliz 3 años. I know its not the most polished game in the world and its actually my first game I Ever made. However, I hope you were able to enjoy it. I cant believe that we have reached the 3 year mark in our relationship. Looking back on it, there is nothing I would change about the way our relationship has evolved. Whether it be our evolution in gaming, starting from board games like monopoly all the way to videogames like Roblox and minecart, or the unique activities we share together such as making cookies together, sacando a Emma o honey, o Nuestros charcuterie board dates. Todo ha sido tan especial para mi que vivirlo los últimos 3 anos me ha llenado con una sensación de fullness and satisfaction with life. When I was single, there defenitly was a sence of FOMO or moments of sadness that would hit when you reflect on being alone, seeing your friends get girlfriends, and feeling as if you are getting left behind in life. Desde que tu haz entrado en mi vida, i have not had a single episode of sadness once where I felt envious of other people, felt as if I were alone, nothing. And a lot of this is thanks to you. I love you with all my heart and all my soul, you have been and will continue to be an amazing presence in my life. Te amo mi amor! Feliz 3 años.",
+              "mood": "affectionate",
+              "personal_letter": true
             }
           ],
           "after": [],

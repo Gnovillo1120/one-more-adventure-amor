@@ -38,3 +38,8 @@ Thumbs.db
 /docs/m2-polish/**/*.import
 /docs/m2-polish/qa/*.log
 /docs/m2-polish/**/motion_*.png
+
+# User-supplied recordings: local only, no redistribution authorization.
+/music/
+/docs/final-music-letter/qa/*.log
+/docs/final-music-letter/**/*.import

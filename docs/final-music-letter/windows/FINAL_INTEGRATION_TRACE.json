@@ -1,0 +1,1389 @@
+{
+  "checks": 184,
+  "events": [
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 9873
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 9883
+    },
+    {
+      "mouse": "left",
+      "phase": "dialogue",
+      "position": [
+        640.0,
+        545.0
+      ],
+      "pressed": true
+    },
+    {
+      "mouse": "left",
+      "phase": "dialogue",
+      "position": [
+        640.0,
+        545.0
+      ],
+      "pressed": false
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 9952
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 9960
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 9968
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 9975
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 10291
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 10322
+    },
+    {
+      "mouse": "left",
+      "phase": "world",
+      "position": [
+        640.0,
+        545.0
+      ],
+      "pressed": true
+    },
+    {
+      "mouse": "left",
+      "phase": "world",
+      "position": [
+        640.0,
+        545.0
+      ],
+      "pressed": false
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 10773
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 10774
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": true,
+      "time_ms": 10776
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Escape",
+      "pressed": false,
+      "time_ms": 10780
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Home",
+      "pressed": true,
+      "time_ms": 10806
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "Home",
+      "pressed": false,
+      "time_ms": 10812
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "End",
+      "pressed": true,
+      "time_ms": 11026
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "End",
+      "pressed": false,
+      "time_ms": 11026
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": true,
+      "time_ms": 11117
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "S",
+      "pressed": false,
+      "time_ms": 11123
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 11123
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 11312
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11314
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11528
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11529
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11739
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11740
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 11955
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 11956
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12132
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12133
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12345
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12346
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12559
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12560
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12738
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12739
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 12962
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 12963
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 13177
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 13179
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 13393
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 13395
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 13585
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 13586
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 13809
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 13826
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14032
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14034
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14232
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14233
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14455
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14456
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14663
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14665
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 14876
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 14877
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15086
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15086
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15303
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15304
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15433
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15454
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15664
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15665
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 15881
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 15882
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16099
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16100
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16316
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16317
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16534
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16535
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16752
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16753
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 16970
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 16971
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 17159
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 17170
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 17374
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 17375
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 17601
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 17602
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 17819
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 17820
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18037
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18038
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18255
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18255
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18473
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18474
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18686
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18687
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 18901
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 18902
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19119
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19120
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19336
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19337
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19554
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19555
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19765
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19766
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 19983
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 19983
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20200
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20201
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20418
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20419
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20635
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20636
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 20853
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 20854
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21071
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21072
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21289
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21290
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21507
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21507
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21725
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21726
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 21942
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 21944
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 22148
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 22149
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 22364
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 22370
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 22596
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 22597
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 22799
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 22800
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23017
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23018
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23235
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": true,
+      "time_ms": 23236
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "D",
+      "pressed": false,
+      "time_ms": 23452
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 23453
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 23669
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 23671
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 23870
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 23872
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 24095
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 24096
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 24312
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": true,
+      "time_ms": 24313
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "W",
+      "pressed": false,
+      "time_ms": 24497
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 24771
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 24774
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "End",
+      "pressed": true,
+      "time_ms": 24965
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "End",
+      "pressed": false,
+      "time_ms": 24966
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Home",
+      "pressed": true,
+      "time_ms": 25617
+    },
+    {
+      "inventory": [],
+      "phase": "dialogue",
+      "physical_key": "Home",
+      "pressed": false,
+      "time_ms": 25619
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 25628
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 25631
+    },
+    {
+      "mouse": "left",
+      "phase": "world",
+      "position": [
+        435.0,
+        545.0
+      ],
+      "pressed": true
+    },
+    {
+      "mouse": "left",
+      "phase": "dialogue",
+      "position": [
+        435.0,
+        545.0
+      ],
+      "pressed": false
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": true,
+      "time_ms": 25839
+    },
+    {
+      "inventory": [],
+      "phase": "world",
+      "physical_key": "E",
+      "pressed": false,
+      "time_ms": 25842
+    }
+  ],
+  "failures": 0,
+  "letter_sha256": "b77187c3afb2bb006d4ffe1b20f010a7d1e852fd0fdcbe7c715dd4ed313447fc",
+  "routes": [
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/play_game.ogg",
+      "scene": "arrival",
+      "stage": "menu",
+      "theme": "play_game"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/memories_hub.ogg",
+      "scene": "arrival",
+      "stage": "hub",
+      "theme": "memories_hub"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "arrival",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "caucus",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "foot",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "lunch",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "award",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "goodbye",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/yacht.ogg",
+      "scene": "moncayo",
+      "stage": "memory",
+      "theme": "yacht"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/intimate.ogg",
+      "scene": "reconnect",
+      "stage": "memory",
+      "theme": "intimate"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ikura.ogg",
+      "scene": "date",
+      "stage": "memory",
+      "theme": "ikura"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/intimate.ogg",
+      "scene": "invitation",
+      "stage": "memory",
+      "theme": "intimate"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/halloween.ogg",
+      "scene": "dance",
+      "stage": "memory",
+      "theme": "halloween"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/intimate.ogg",
+      "scene": "pool",
+      "stage": "memory",
+      "theme": "intimate"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/cookies.ogg",
+      "scene": "improvise",
+      "stage": "memory",
+      "theme": "cookies"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/minecraft.ogg",
+      "scene": "present",
+      "stage": "memory",
+      "theme": "minecraft"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/minecraft.ogg",
+      "scene": "reunion",
+      "stage": "memory",
+      "theme": "minecraft"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ending.ogg",
+      "scene": "sunset",
+      "stage": "memory",
+      "theme": "ending"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ending.ogg",
+      "scene": "letter",
+      "stage": "memory",
+      "theme": "ending"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/minecraft.ogg",
+      "scene": "present",
+      "stage": "voxel",
+      "theme": "minecraft"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/boss.ogg",
+      "scene": "present",
+      "stage": "voxel",
+      "theme": "boss"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/memories_hub.ogg",
+      "scene": "present",
+      "stage": "voxel",
+      "theme": "memories_hub"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/boss.ogg",
+      "scene": "present",
+      "stage": "voxel",
+      "theme": "boss"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/memories_hub.ogg",
+      "scene": "arrival",
+      "stage": "memory",
+      "theme": "memories_hub"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "scene": "arrival",
+      "stage": "memory",
+      "theme": "uess"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ending.ogg",
+      "scene": "letter",
+      "stage": "memory",
+      "theme": "ending"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ending.ogg",
+      "scene": "letter",
+      "stage": "credits",
+      "theme": "ending"
+    },
+    {
+      "loaded_path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/play_game.ogg",
+      "scene": "letter",
+      "stage": "menu",
+      "theme": "play_game"
+    }
+  ],
+  "tracks": [
+    {
+      "available": true,
+      "duration": 105.342666625977,
+      "mixer_peak": 0.0229480285197496,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/play_game.ogg",
+      "track": "play_game"
+    },
+    {
+      "available": true,
+      "duration": 105.342666625977,
+      "mixer_peak": 0.062152624130249,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/memories_hub.ogg",
+      "track": "memories_hub"
+    },
+    {
+      "available": true,
+      "duration": 153.669145833333,
+      "mixer_peak": 0.216441839933395,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/uess.wav",
+      "track": "uess"
+    },
+    {
+      "available": true,
+      "duration": 121.019996643066,
+      "mixer_peak": 0.0477938652038574,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ikura.ogg",
+      "track": "ikura"
+    },
+    {
+      "available": true,
+      "duration": 62.5053329467773,
+      "mixer_peak": 0.0602015107870102,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/yacht.ogg",
+      "track": "yacht"
+    },
+    {
+      "available": true,
+      "duration": 131.774673461914,
+      "mixer_peak": 0.0892182216048241,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/halloween.ogg",
+      "track": "halloween"
+    },
+    {
+      "available": true,
+      "duration": 64.0733337402344,
+      "mixer_peak": 0.0334438867866993,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/intimate.ogg",
+      "track": "intimate"
+    },
+    {
+      "available": true,
+      "duration": 68.2519989013672,
+      "mixer_peak": 0.17132069170475,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/cookies.ogg",
+      "track": "cookies"
+    },
+    {
+      "available": true,
+      "duration": 67.8359985351563,
+      "mixer_peak": 0.0667723640799522,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/minecraft.ogg",
+      "track": "minecraft"
+    },
+    {
+      "available": true,
+      "duration": 115.17733001709,
+      "mixer_peak": 0.149141237139702,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/boss.ogg",
+      "track": "boss"
+    },
+    {
+      "available": true,
+      "duration": 83.3133316040039,
+      "mixer_peak": 0.00544835533946753,
+      "path": "C:/Users/gsnov/OneDrive/Documents/one-more-adventure-amor/builds/final-music-letter-local/music/ending.ogg",
+      "track": "ending"
+    }
+  ],
+  "without_recordings": false
+}

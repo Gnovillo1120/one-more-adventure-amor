@@ -1,13 +1,104 @@
 {
-  "note": "Replacement recordings have NOT been supplied. Existing synthetic music is preserved but muted. Sound cues remain enabled.",
+  "note": "User-selected recordings remain local. No redistribution rights supplied; public export excludes music/. Install the separate local overlay beside the EXE. No artist metadata was present; attribution remains unverified.",
   "tracks": {
-    "uees": {"instruments": "light acoustic piano, pizzicato strings, flute", "loop_start": 0},
-    "ikura": {"instruments": "romantic acoustic piano, gentle strings", "loop_start": 0},
-    "halloween": {"instruments": "rhythmic party ambience", "loop_start": 0},
-    "intimate": {"instruments": "intimate piano, soft strings", "loop_start": 0},
-    "cookies": {"instruments": "playful pizzicato strings, woodwinds", "loop_start": 0},
-    "minecraft": {"instruments": "atmospheric strings, flute, harp", "loop_start": 0},
-    "boss": {"instruments": "dramatic orchestral percussion and strings", "loop_start": 0},
-    "ending": {"instruments": "expressive piano, soft string arrangement", "loop_start": 0}
+    "play_game": {
+      "original_filename": "PlayGame.ogg",
+      "file": "play_game.ogg",
+      "scene": "Main menu / start screen",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "memories_hub": {
+      "original_filename": "Memories Hub.ogg",
+      "file": "memories_hub.ogg",
+      "scene": "Memory Room and scrapbook",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "uess": {
+      "original_filename": "Uess.flac",
+      "file": "uess.wav",
+      "scene": "UESS MUN chapter",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "ikura": {
+      "original_filename": "ikura.ogg",
+      "file": "ikura.ogg",
+      "scene": "Ikura restaurant",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "yacht": {
+      "original_filename": "Yacht.ogg",
+      "file": "yacht.ogg",
+      "scene": "Salinas Yacht Club",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "halloween": {
+      "original_filename": "Haloween.ogg",
+      "file": "halloween.ogg",
+      "scene": "Halloween party",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "intimate": {
+      "original_filename": "intimate.ogg",
+      "file": "intimate.ogg",
+      "scene": "Poolside confession / romantic phone moments",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "cookies": {
+      "original_filename": "Cookies.ogg",
+      "file": "cookies.ogg",
+      "scene": "Cookie-making",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "minecraft": {
+      "original_filename": "minecraft.ogg",
+      "file": "minecraft.ogg",
+      "scene": "Minecraft exploration",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "boss": {
+      "original_filename": "boss.ogg",
+      "file": "boss.ogg",
+      "scene": "The Forgotten One confrontation",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    },
+    "ending": {
+      "original_filename": "ending.ogg",
+      "file": "ending.ogg",
+      "scene": "Sunset beach, personal letter and credits",
+      "loop_start": 0,
+      "loop_crossfade": 0.8,
+      "artist": "Not provided in source metadata",
+      "redistribution_authorized": false
+    }
   }
 }

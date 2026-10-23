@@ -51,6 +51,7 @@ var lines: Array = []
 var line_index := 0
 var dialog_done: Callable
 var dialogue_resume := ""
+var letter_view: Panel
 var revealed := 0.0
 var text_speed := 45.0
 var volume := .65
@@ -111,6 +112,11 @@ func _ready() -> void:
 		for argument in OS.get_cmdline_user_args():
 			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
 		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
+	if OS.get_cmdline_user_args().has("--validate-final-integration") and OS.get_cmdline_user_args().has("--self-test"):
+		var runner: Node=load("res://scripts/final_integration_runner.gd").new();runner.game=self
+		for argument in OS.get_cmdline_user_args():
+			if argument.begins_with("--capture-dir="):runner.directory=argument.trim_prefix("--capture-dir=")
+		add_child(runner);runner.finished.connect(func(_checks: int, failures: int):get_tree().quit(0 if failures==0 else 1));runner.call_deferred("run")
 	if OS.get_cmdline_user_args().has("--capture"): call_deferred("_capture_gallery")
 	if OS.get_cmdline_user_args().has("--capture-minigames"):call_deferred("_capture_minigames")
 	if OS.get_cmdline_user_args().has("--capture-living"):call_deferred("_capture_living")
@@ -127,7 +133,7 @@ func _process(delta: float) -> void:
 		var distance: float=voxel.player.position.distance_to(voxel.current_target())
 		health_label.text = "SALUD  %d / 100   ·   Clic: espada   ·   Objetivo: %d m" % [int(voxel.health),int(distance)]
 		if is_instance_valid(toast_label):toast_label.text=voxel.get_prompt()
-		if voxel.quest_index >= 8 and current_theme != "boss": _play_music("boss")
+		if voxel.quest_index >= 8 and current_theme != "boss" and not director.book_visible: _play_music("boss")
 	if autosave_pending and is_instance_valid(voxel) and not is_paused:
 		autosave_pending = false
 		save_game()
@@ -147,6 +153,8 @@ func _input(event: InputEvent) -> void:
 			challenge.key(code);get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(letter_view) and _dialogue_open() and not is_paused and event is InputEventKey and event.pressed and letter_view.scroll_key(event.physical_keycode):
+		get_viewport().set_input_as_handled();return
 	if is_instance_valid(memory) and is_instance_valid(memory.staging) and memory.staging.handle(event):get_viewport().set_input_as_handled();return
 	if is_instance_valid(cinema) and cinema.handle(event):get_viewport().set_input_as_handled();return
 	if is_instance_valid(director) and director.handle_input(event):get_viewport().set_input_as_handled();return
@@ -184,6 +192,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_sfx("swing")
 
 func _clear_ui() -> void:
+	letter_view=null
 	challenge=null
 	suspended_modal=null
 	for child in ui.get_children():
@@ -268,7 +277,7 @@ func show_menu() -> void:
 	_button(ui,"Ajustes",Rect2(85,579,190,46),func(): _settings(show_menu))
 	_button(ui,"Salir",Rect2(285,579,190,46),func(): get_tree().quit())
 	_label(ui,"21 OCT 2023 — 21 OCT 2026\nHecho con amor · Diálogos dramatizados",Rect2(85,659,520,50),15,GOLD)
-	_play_music("beach")
+	_play_music("play_game")
 
 func _new_game() -> void:
 	if FileAccess.file_exists(save_path):
@@ -341,7 +350,7 @@ func start_scene(completed: bool = false, position_data: Array = []) -> void:
 	memory.exited.connect(_next_scene)
 	_build_hud()
 	_refresh_objective()
-	_play_music("intimate" if s.id=="pool" else ["memory","date","halloween","cookies","mystery","beach"][chapter_index])
+	_play_music(_scene_music())
 	_transition(_scene().title)
 	if not completed and local.has("cinematic_checkpoint"):
 		var shot: String=local.cinematic_checkpoint
@@ -403,12 +412,7 @@ func _scene_dialogue() -> void:
 	if s.id in ["lunch","award"] and chapter_state.get("caucus",{}).has("trivia_score"):
 		scene_lines.append({"speaker":"Guillermo","text":"Por cierto, tu evaluación diplomática quedó en %d de 6. El diploma sigue siendo mío, ¿ya?" % int(chapter_state.caucus.trivia_score),"mood":"playful"})
 	if chapter_index==5 and s.id=="letter":
-		scene_lines=[]
-		if story.personal_letter.get("is_placeholder",true):
-			scene_lines.append({"speaker":"Carta personal · borrador editable","text":story.personal_letter.title,"mood":"affectionate"})
-		for paragraph in story.personal_letter.paragraphs:
-			scene_lines.append({"speaker":"Guillermo","text":paragraph,"mood":"affectionate"})
-		_scene_letter_intro(scene_lines)
+		scene_lines=[{"speaker":"Guillermo","text":"\n\n".join(story.personal_letter.paragraphs),"mood":"affectionate","personal_letter":true}]
 	_show_dialogue(scene_lines,func(): _begin_task(s.task),"scene")
 
 func _refresh_objective() -> void:
@@ -473,6 +477,8 @@ func _show_dialogue(new_lines: Array, on_done: Callable, resume_id: String="") -
 
 func _restore_dialogue(checkpoint: Dictionary) -> void:
 	var context: String=checkpoint.get("context","")
+	if _scene().id=="letter" and context=="scene":
+		_scene_dialogue();return # Replace legacy placeholder checkpoints with the supplied letter.
 	var callback: Callable
 	if context=="scene":callback=func():_begin_task(_scene().task)
 	elif context=="after":callback=_complete_scene
@@ -495,6 +501,8 @@ func _show_line() -> void:
 	dialog_text.text=entry.get("text","")
 	if is_instance_valid(memory):memory.apply_line(speaker_label.text,dialog_text.text)
 	revealed=0;dialog_text.visible_characters=0
+	if entry.get("personal_letter",false):
+		_show_letter_card();return
 	for c in choices.get_children(): choices.remove_child(c);c.queue_free()
 	var expression: String=entry.get("mood","neutral")
 	var person: String="anami" if speaker_label.text=="Anami" else "guillermo" if speaker_label.text=="Guillermo" else ""
@@ -521,6 +529,15 @@ func _show_line() -> void:
 		dialog_panel.position.y=470;dialog_panel.size.y=190
 		dialog_text.size.y=112
 	choices.visible=false
+
+func _show_letter_card() -> void:
+	for child in dialog_panel.get_children():child.hide()
+	dialog_panel.position=Vector2(140,65);dialog_panel.size=Vector2(1000,590)
+	if is_instance_valid(letter_view):letter_view.queue_free()
+	letter_view=preload("res://scripts/personal_letter_view.gd").new();dialog_panel.add_child(letter_view);letter_view.setup(dialog_text.text)
+	advance_button.position=Vector2(660,520);advance_button.size=Vector2(300,48);advance_button.text="Continuar · E";advance_button.show();dialog_panel.move_child(advance_button,-1)
+	revealed=dialog_text.text.length();dialog_text.visible_characters=-1
+	_play_music("ending")
 
 func _dialogue_open() -> bool:
 	return is_instance_valid(dialog_panel) and dialog_panel.visible
@@ -929,13 +946,18 @@ func _save_settings() -> void:
 
 func _apply_audio() -> void:
 	if is_instance_valid(audio_director):audio_director.volume=volume
-	if is_instance_valid(music):music.volume_db=linear_to_db(maxf(volume,.0001))
+	if is_instance_valid(audio_director):audio_director._process(0)
 	if is_instance_valid(effects):effects.volume_db=linear_to_db(maxf(volume*.55,.0001))
 
+func _scene_music() -> String:
+	var s:=_scene()
+	if s.location in ["pool","phone"]:return "intimate"
+	if s.location=="yacht":return "yacht"
+	return ["uess","ikura","halloween","cookies","minecraft","ending"][chapter_index]
+
 func _play_music(theme: String) -> void:
-	if current_theme==theme:return
 	current_theme=theme
-	var mapped: String={"memory":"uees","date":"ikura","mystery":"minecraft","beach":"ending"}.get(theme,theme)
+	var mapped: String={"memory":"uess","date":"ikura","mystery":"minecraft","beach":"ending"}.get(theme,theme)
 	audio_director.play(mapped)
 
 func _sfx(name: String) -> void:
@@ -1007,8 +1029,9 @@ func _credits() -> void:
 	var p:=_panel(ui,Rect2(210,120,860,485),.9)
 	_label(p,"One More Adventure, Amor",Rect2(35,30,790,60),40,GOLD)
 	_label(p,"Te amo, amor.\nFelices 3 años. ♥\n21 de octubre de 2023 — 21 de octubre de 2026",Rect2(35,115,790,115),28)
-	_label(p,"Una aventura de Guillermo para Anami\nDesarrollo y arte original: Codex · Motor: Godot\nMúsica instrumental: archivos de reemplazo pendientes\nDiálogos dramatizados · Carta personal editable",Rect2(35,265,790,115),21)
-	_button(p,"Volver al menú",Rect2(35,405,790,50),show_menu)
+	_label(p,"Una aventura de Guillermo para Anami\nDesarrollo y arte original: Codex · Motor: Godot\nMúsica seleccionada por Guillermo · Créditos: music/CREDITS.md\nDiálogos dramatizados · Carta de Guillermo, texto original",Rect2(35,265,790,115),21)
+	_button(p,"Leer la carta de nuevo",Rect2(35,400,380,50),func():chapter_index=5;scene_index=1;start_scene(true);_scene_dialogue())
+	_button(p,"Volver al menú",Rect2(445,400,380,50),show_menu)
 
 func _notification(what: int) -> void:
 	if what==NOTIFICATION_WM_CLOSE_REQUEST:save_game();get_tree().quit()
